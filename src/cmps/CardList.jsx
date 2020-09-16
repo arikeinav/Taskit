@@ -1,8 +1,8 @@
 import React from 'react'
 
-export default function CardGroup() {
+export function CardList() {
     return (
-        <div>
+        <div >
             
         </div>
     )
