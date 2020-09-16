@@ -10,7 +10,7 @@ export function loadBoards() {
 }
 export function loadBoard(boardId) {
   return async (dispatch) => {
-    const board = await boardService.getById(boardId)
+    const board = await boardService.loadBoard(boardId)
       dispatch({ type: "SET_BOARD", board });
    
   };
@@ -37,5 +37,36 @@ export function updateBoard(board) {
      board = await boardService.save(board)
       dispatch({ type: "UPDATE_BOARD", board });
    
+  };
+}
+
+export function removeGroup(board,groupId) {
+  return async (dispatch) => {
+    board =  await boardService.removeGroup(board._id,groupId)
+    dispatch({ type: "UPDATE_BOARD", board });
+   
+  };
+}
+
+export function addGroup(board,group) {
+  return async (dispatch) => {
+  board= await boardService.addGroup(board._id,group)
+   dispatch({ type: "UPDATE_BOARD", board });
+  
+  };
+}
+export function removeCard(board,groupId,cardId) {
+  return async (dispatch) => {
+   board= await boardService.removeCard(board._id,groupId,cardId)
+    dispatch({ type: "UPDATE_BOARD", board });
+   
+  };
+}
+
+export function addCard(board,groupId,card) {
+  return async (dispatch) => {
+   board=await boardService.addCard(board._id,groupId,card)
+   dispatch({ type: "UPDATE_BOARD", board });
+  
   };
 }
