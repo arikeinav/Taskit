@@ -14,7 +14,6 @@ function getById(boardId) {
 //   return httpService.get(`board/${boardId}`)
 }
 
-
 async function save(board) {
  
   if (board._id) {
