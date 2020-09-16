@@ -1,9 +1,15 @@
 import React from 'react'
+import { NavLink, withRouter } from 'react-router-dom';
 
-export default function NavBar() {
+function _NavBar() {
     return (
-        <div>
-            <p>nav</p>
-        </div>
+        <nav className="nav-bar flex">
+            <NavLink className="nav-item" to="/">Home</NavLink>
+            <NavLink className="nav-item" to="/board">Boeards</NavLink>
+            {/* <NavLink className="nav-item" to="/board/bexample">Public Board</NavLink> */}
+            <div className="nav-item">Loginnnnnnnnnnnn</div>
+        </nav>
     )
 }
+
+export const NavBar = withRouter(_NavBar)
