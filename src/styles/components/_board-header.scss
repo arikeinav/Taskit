@@ -1,0 +1,9 @@
+.board-header{
+    background-color:rgb(252, 183, 183);
+    height: $board-header-height;
+
+    .board-name{
+        margin:0 ;
+        padding: 10px;
+    }
+}

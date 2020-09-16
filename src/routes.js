@@ -8,7 +8,7 @@ export default [
     //     component: BoardDetails
     // },
     {
-        path: '/board/b123',
+        path: '/board/:boardId',
         component: BoardDetails
     },
     {
