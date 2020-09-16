@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Home() {
+export function BoardDetails() {
     return (
         <div>
-            <h1>shaharr!!!!!</h1>
+            <p>BoardDetails</p>
         </div>
     )
 }
