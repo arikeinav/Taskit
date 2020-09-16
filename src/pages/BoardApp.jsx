@@ -1,9 +1,17 @@
 import React from 'react'
+import BoardList from '../cmps/BoardList'
 
-export function BoardApp() {
+
+export class BoardApp extends React.Component {
+
+    render(){
     return (
-        <div>
-            <p>BoardApp</p>
+        <div className="board-app">
+            <h1>Most popular templates</h1>
+            <BoardList />
+
+
         </div>
     )
+    }
 }
