@@ -1,7 +1,6 @@
 import React from 'react';
 import routes from './routes.js'
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
-
 import { NavBar } from './cmps/NavBar'
 
 

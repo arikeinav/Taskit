@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function CardPreview() {
+export function CardPreview() {
     return (
         <div>
-            
+            <h1>preview</h1>
         </div>
     )
 }

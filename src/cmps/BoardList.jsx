@@ -1,10 +1,10 @@
 import React from 'react'
-import BoardPreview from './BoardPreview.jsx'
+import BoardPreview from './BoardPreview';
 
-export  function BoardList(boards, onRemove) {
-    return (
-        <div>
-           { boards.map(board => <BoardPreview onRemove={onRemove} board={ board } key={ board._id } />)}
+
+export function BoardList({boards}) {
+    console.log(boards);
+    return <div>
+           { boards.map(board => <BoardPreview  board={ board } key={ board._id } />)}
         </div>
-    )
 }
