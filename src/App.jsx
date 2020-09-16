@@ -5,6 +5,7 @@ import { HashRouter as Router } from 'react-router-dom';
 
 // import { NavBar } from './cmps/NavBar'
 
+
 function App() {
   return (
     <div className="App">
