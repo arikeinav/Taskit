@@ -7,10 +7,12 @@
 // // Basics
 @import "basics/helpers.scss";
 // @import "basics/layout.scss";
-// @import "basics/base.scss";
+@import "basics/_base.scss";
 // @import "basics/links.scss";
 // @import "basics/buttons.scss";
 
 // // Components
+@import "cmps/board-preview";
+@import "cmps/board-list";
 // @import "components/main-header.scss";
 // @import "components/cat-card.scss";
