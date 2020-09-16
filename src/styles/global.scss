@@ -2,7 +2,7 @@
 // @import "setup/variables.scss";
 // @import "setup/functions.scss";
 // @import "setup/mixins.scss";
-// @import "setup/typography.scss";
+@import "./setup/typography";
 
 // // Basics
 @import "basics/helpers.scss";
@@ -12,6 +12,7 @@
 // @import "basics/buttons.scss";
 
 // // Components
+@import "./cmps/_navbar.scss";
 @import "cmps/board-preview";
 @import "cmps/board-list";
 // @import "components/main-header.scss";

@@ -1,0 +1,13 @@
+.nav-bar{
+    height: 10vh;
+    padding: 0 10px;
+    background-color: #407088;
+    color: white;
+    grid-template-columns: 1fr 1fr 6fr 1fr 1fr;
+}
+.nav-bar a{
+    color: white;
+}
+.logo{
+    margin:auto;
+}
