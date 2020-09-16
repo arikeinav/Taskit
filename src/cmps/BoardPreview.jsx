@@ -1,9 +1,14 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
-export default function BoardPreview() {
+export default function BoardPreview({board}) {
+
+
     return (
-        <div>
-          preview!  
+       <div><Link to={`/board/${board._id}`}>
+       <div style={{backgroundColor:`${board.style.bgColor}`}} className="board-preview">
+          <h3>{board.title}</h3> 
         </div>
+        </Link></div>
     )
 }
