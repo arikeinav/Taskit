@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
-// import Avatar from '@material-ui/core/Avatar';
+import {Avatar} from '@material-ui/core';
+import {AvatarGroup} from '@material-ui/lab';
 
 export class BoardHeader extends Component {
 
@@ -13,19 +14,23 @@ export class BoardHeader extends Component {
     }
 
     render() {
+        const { board } = this.props
+        console.log("BoardHeader -> render -> members", board.members)
         return (
             <div className="board-header flex space-between">
-                <p className="board-name">Board Name</p>
-                {/* <div className="board-name">{this.props.board.title}</div> */}
+                <div className="board-name">{board.title}</div>
+
                 <section className="avatar-members flex">
-                    <p>Members:</p>
-                    {/* {this.props.board.members.map(member =>{
-                    <Avatar alt={member.userName} src={member.imgUrl}  />
-                })} */}
-                    {/* <Avatar alt="Shahar" src="" >SK</Avatar>
-                    <Avatar alt="Arik" src="" >SS</Avatar>
-                    <Avatar alt="Shlomi">AE</Avatar> */}
+                    <AvatarGroup max={3}>
+                        {board.members.map(member =>
+                            member.imgUrl ?
+                                <Avatar key={member._id} asrc={member.imgUrl}></Avatar>
+                                :
+                                <Avatar key={member._id} src={member.imgUrl}>{member.userName.substring(0, 1).toUpperCase()}{member.userName.substring(1, 2).toUpperCase()}</Avatar>
+                        )}
+                    </AvatarGroup>
                 </section>
+
                 <div className="flex">
                     <button >Invite</button>
                     <button >Menu</button>

@@ -2,28 +2,38 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 
-// import { GroupList } from '../cmps/GroupList'
 import { loadBoard } from '../store/actions/boardActions'
 import { BoardHeader } from '../cmps/BoardHeader'
+import { CardList } from '../cmps/CardList'
+import { CardDetails } from '../cmps/CardDetails'
 
-export class BoardDetails extends Component {
 
+export class _BoardDetails extends Component {
 
-
-    async componentDidMount() {
-        const { boardId } = this.props.match.params
-        console.log("BoardDetails -> componentDidMount -> boardId", boardId)
-        // const board = await boardService.getById(boardId)
+    state = {
+        isDetailsShown: false
     }
+
+    componentDidMount() {
+        const { boardId } = this.props.match.params
+        this.props.loadBoard(boardId)
+    }
+    changeIsDetailsShown = (val) => {
+        this.setState({ isDetailsShown: val})
+    }
+
 
     render() {
         const { board } = this.props
-        console.log("BoardDetails -> render -> board", board)
+        if (board === null) return <div>Loading...</div>
         return (
-            <div className="board-details">
-                <BoardHeader />
-                {/* <BoardHeader board={board}/> */}
-                {/* <GroupList group={group} /> */}
+            <div className="board-details ">
+                <BoardHeader board={board} />
+                <div className="groups-container flex">
+                    {board.groups.map(group => <CardList group={group} key={group.id} changeIsDetailsShown={this.changeIsDetailsShown}/>)}
+                    <button className="add-group">Add Group</button>
+                </div>
+                {this.state.isDetailsShown && <CardDetails cardId={this.state.isDetailsShown}/>}
             </div>
         )
     }
@@ -33,9 +43,7 @@ const mapStateToProps = state => ({
     board: state.boardReducer.currBoard
 
 })
-
 const mapDispatchToProps = {
     loadBoard
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(BoardDetails)
+export const BoardDetails = connect(mapStateToProps, mapDispatchToProps)(_BoardDetails)

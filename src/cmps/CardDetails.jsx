@@ -4,8 +4,9 @@ import { connect } from 'react-redux'
 export class CardDetails extends Component {
     render() {
         return (
-            <div>
-                
+            <div className="dark-modal">
+
+                <p>{this.props.cardId}</p>
             </div>
         )
     }

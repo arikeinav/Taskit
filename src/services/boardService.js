@@ -10,7 +10,7 @@ export const boardService = {
 };
 
 function getById(boardId) {
-    return boards
+    return boards.filter(board => board._id === boardId)[0]
 //   return httpService.get(`board/${boardId}`)
 }
 

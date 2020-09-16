@@ -1,9 +1,14 @@
 import React from 'react'
 
-export function CardList() {
+import { CardPreview } from './CardPreview'
+
+export function CardList({ group, changeIsDetailsShown }) {
+
     return (
-        <div >
-            
+        <div className="card-list">
+            <p>{group.title}</p>
+            {group.cards.map(card => <CardPreview card={card} key={card.id} changeIsDetailsShown={changeIsDetailsShown} />)}
+            <button>+ Add card</button>
         </div>
     )
 }
