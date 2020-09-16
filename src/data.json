@@ -1,180 +1,180 @@
 {
-    "board": {
-      "_id": "b101",
-      "title": "Trello project",
-      "createdAt": 1589983468418,
-      "createdBy": {
-        "_id": "u101"
-      },
-      "style": {
-        "bgColor": "#26de81",
-        "bgImg": ""
-      },
-      "members": [
-        {
-          "_id": "u102",
-          "userName": "Shahar Sadof",
-          "imgUrl": "https://www.google.com"
-        },
-        {
-          "_id": "u101",
-          "userName": "Arik Einav",
-          "imgUrl": "http://some-img"
-        },
-        {
-          "_id": "u103",
-          "userName": "Shlomi Koplianski",
-          "imgUrl": "http://some-img"
-        }
-      ],
-      "groups": [
-        {
-          "id": "l101",
-          "title": "Tasks",
-          "cards": [
-            {
-              "id": "c101",
-              "title": "Finish progressive App",
-              "description": "description...",
-             
-              "checklists": [
-                {
-                  "id": "t101",
-                  "title": "Checklist",
-                  "todos": [
-                    {
-                      "title": "To Do 1",
-                      "isDone": false,
-                      "id": "212jX"
-                    }
-                  ]
-                }
-              ],
-              "assignedMembers": [
-                {
-                  "_id": "u102",
-                  "userName": "Shahar Sadof",
-                  "imgUrl": "https://www.google.com"
-                }
-              ],
-              "labels": [
-                {
-                  "id": "101",
-                  "title": "done",
-                  "color": "#61bd4f"
-                }
-              ],
-              
-              "createdAt": 1590999730348,
-              "dueDate": 16156215211,
-              "byMember": {
-                "_id": "u102",
-                "userName": "Shahar Sadof"
-              },
-              
-                "bgColor": "#26de81",
-              
-              "imgUrl": "https://www.google.com"
-            },
-            {
-              "id": "c102",
-              "title": "Add Samples"
-            }
-          ]
-        },
-        {
-          "id": "l102",
-          "title": "In progres",
-          "cards": [
-            {
-              "id": "c103",
-              "title": "Go surfing"
-            },
-            {
-              "id": "c104",
-              "title": "Finish the fucking sprint",
-              "description": "Write an amazing Trello app and make it work!!!!",
-              "checklists": [
-                {
-                  "id": "YEhmF",
-                  "title": "Checklist",
-                  "todos": [
-                    {
-                      "title": "To Do 1",
-                      "isDone": false,
-                      "id": "212jX"
-                    }
-                  ]
-                }
-              ],
-              "assignedMembers": [
-                {
-                  "_id": "u102",
-                  "userName": "Shahar Sadof",
-                  "imgUrl": "https://www.google.com"
-                }
-              ],
-              "labels": [
-                {
-                  "id": "101",
-                  "title": "done",
-                  "color": "#61bd4f"
-                }
-              ],
-              "createdAt": 1590999730348,
-              "dueDate": 16156215211,
-              "byMember": {
-                "_id": "u103",
-                "userName": "Shlomi Koplianski"
-              },
-              "style": {
-                "bgColor": "#26de81"
-              }
-            }
-          ]
-        }
-      ],
-      "activities": [
-        {
-          "id": "a101",
-          "txt": "Changed Color",
-          "createdAt": 154514,
-          "byMember": {
-            "_id": "u103",
-            "userName": "Shlomi Koplianski",
-            "imgUrl": "http://some-img"
-          },
-          "card": {
-            "id": "c101",
-            "title": "Replace Logo"
-          }
-        }
-      ]
+  "board": {
+    "_id": "b101",
+    "title": "Trello project",
+    "createdAt": 1589983468418,
+    "createdBy": {
+      "_id": "u101"
     },
-    "user": [
+    "style": {
+      "bgColor": "#26de81",
+      "bgImg": ""
+    },
+    "members": [
       {
         "_id": "u102",
         "userName": "Shahar Sadof",
-        "password": "aBambi123",
         "imgUrl": "https://www.google.com"
       },
       {
         "_id": "u101",
         "userName": "Arik Einav",
-        "password": "aBambi123",
         "imgUrl": "http://some-img"
-  
       },
       {
         "_id": "u103",
         "userName": "Shlomi Koplianski",
-        "password": "aBambi123",
         "imgUrl": "http://some-img"
+      }
+    ],
+    "groups": [
+      {
+        "id": "l101",
+        "title": "Tasks",
+        "cards": [
+          {
+            "id": "c101",
+            "title": "Finish progressive App",
+            "description": "description...",
+           
+            "checklists": [
+              {
+                "id": "t101",
+                "title": "Checklist",
+                "todos": [
+                  {
+                    "title": "To Do 1",
+                    "isDone": false,
+                    "id": "212jX"
+                  }
+                ]
+              }
+            ],
+            "assignedMembers": [
+              {
+                "_id": "u102",
+                "userName": "Shahar Sadof",
+                "imgUrl": "https://www.google.com"
+              }
+            ],
+            "labels": [
+              {
+                "id": "101",
+                "title": "done",
+                "color": "#61bd4f"
+              }
+            ],
+            
+            "createdAt": 1590999730348,
+            "dueDate": 16156215211,
+            "byMember": {
+              "_id": "u102",
+              "userName": "Shahar Sadof"
+            },
+            
+              "bgColor": "#26de81",
+            
+            "imgUrl": "https://www.google.com"
+          },
+          {
+            "id": "c102",
+            "title": "Add Samples"
+          }
+        ]
       },
-       {
-        "_id": "u104",
-        "userName": "Guest",
-        "imgUrl": "http://default"
+      {
+        "id": "l102",
+        "title": "In progres",
+        "cards": [
+          {
+            "id": "c103",
+            "title": "Go surfing"
+          },
+          {
+            "id": "c104",
+            "title": "Finish the fucking sprint",
+            "description": "Write an amazing Trello app and make it work!!!!",
+            "checklists": [
+              {
+                "id": "YEhmF",
+                "title": "Checklist",
+                "todos": [
+                  {
+                    "title": "To Do 1",
+                    "isDone": false,
+                    "id": "212jX"
+                  }
+                ]
+              }
+            ],
+            "assignedMembers": [
+              {
+                "_id": "u102",
+                "userName": "Shahar Sadof",
+                "imgUrl": "https://www.google.com"
+              }
+            ],
+            "labels": [
+              {
+                "id": "101",
+                "title": "done",
+                "color": "#61bd4f"
+              }
+            ],
+            "createdAt": 1590999730348,
+            "dueDate": 16156215211,
+            "byMember": {
+              "_id": "u103",
+              "userName": "Shlomi Koplianski"
+            },
+            "style": {
+              "bgColor": "#26de81"
+            }
+          }
+        ]
+      }
+    ],
+    "activities": [
+      {
+        "id": "a101",
+        "txt": "Changed Color",
+        "createdAt": 154514,
+        "byMember": {
+          "_id": "u103",
+          "userName": "Shlomi Koplianski",
+          "imgUrl": "http://some-img"
+        },
+        "card": {
+          "id": "c101",
+          "title": "Replace Logo"
+        }
       }
     ]
-  }
+  },
+  "user": [
+    {
+      "_id": "u102",
+      "userName": "Shahar Sadof",
+      "password": "aBambi123",
+      "imgUrl": "https://www.google.com"
+    },
+    {
+      "_id": "u101",
+      "userName": "Arik Einav",
+      "password": "aBambi123",
+      "imgUrl": "http://some-img"
+
+    },
+    {
+      "_id": "u103",
+      "userName": "Shlomi Koplianski",
+      "password": "aBambi123",
+      "imgUrl": "http://some-img"
+    },
+     {
+      "_id": "u104",
+      "userName": "Guest",
+      "imgUrl": "http://default"
+    }
+  ]
+}
