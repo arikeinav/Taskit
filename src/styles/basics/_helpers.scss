@@ -1,9 +1,7 @@
 // flex helpers
 
 .flex {
-
     display: flex;
-
     > *.full {
         flex: 1;
     }
