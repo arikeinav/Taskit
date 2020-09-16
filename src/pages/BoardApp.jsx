@@ -1,5 +1,5 @@
 import React from 'react'
-import BoardList from '../cmps/BoardList'
+import {BoardList} from '../cmps/BoardList'
 
 
 export class BoardApp extends React.Component {
