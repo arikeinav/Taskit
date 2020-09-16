@@ -3,32 +3,36 @@ import { connect } from 'react-redux'
 import { BoardList } from '../cmps/BoardList'
 import { loadBoards } from '../store/actions/boardActions'
 
-export class BoardApp extends Component {
+class _BoardApp extends Component {
+
 
     componentDidMount() {
         this.props.loadBoards()
+        console.log('boards', this.props.boards);
     }
 
 
     render() {
+        const {boards} = this.props
         return (
             <div className="board-app">
                 <h1>Most popular templates</h1>
-                <BoardList boards={this.props.boards} />
+                <BoardList boards={boards} />
             </div>
         )
 
     }
 }
 
-const mapStateToProps = (state) => ({
-    boards: state.boardReducer.boards
-})
+const mapStateToProps = (state) => {
+    console.log('state:',state);
+    return { boards: state.boardReducer.boards }
+}
 
 const mapDispatchToProps = {
     loadBoards
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BoardApp)
+export const BoardApp = connect(mapStateToProps, mapDispatchToProps)(_BoardApp)
 
 
