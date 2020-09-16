@@ -32,7 +32,6 @@ const initialState = {
         return {
           ...state,
           currBoard: action.board,
-         
         };
   
       default:

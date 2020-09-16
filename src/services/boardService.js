@@ -13,11 +13,11 @@ export const boardService = {
   addCard,
 };
 
-function loadBoard(boardId){
+function loadBoard(boardId) {
 
   const board = boards.find(board => board._id === boardId)
   return board
-//   return httpService.get(`board/${boardId}`)
+  //   return httpService.get(`board/${boardId}`)
 }
 
 // function getById(boardId) {
@@ -29,13 +29,13 @@ function loadBoard(boardId){
 async function save(board) {
   if (board._id) {
     console.log('board')
-    return  httpService.put(`board/${board._id}`, board);
-  } 
+    return httpService.put(`board/${board._id}`, board);
+  }
   else {
- 
-  const addedBoard  =  httpService.post(`board`, board);
-  return  addedBoard
-}
+
+    const addedBoard = httpService.post(`board`, board);
+    return addedBoard
+  }
 }
 function query(filterBy) {
   console.log(boards);
@@ -49,49 +49,53 @@ function removeBoard(boardId) {
   return httpService.delete(`board/${boardId}`);
 }
 
-function addGroup(boardId,group){
-  group={id: 'l'+ makeId(),
-  title: group.title,}
-const board = boards.find(board => board._id === boardId)
-board.groups.push(group)
-return board
+function addGroup(boardId, group) {
+  group = {
+    id: 'l' + makeId(),
+    title: group.title,
+  }
+  const board = boards.find(board => board._id === boardId)
+  board.groups.push(group)
+  return board
 }
 
-function removeGroup(boardId,groupId){
-const board =  boards.find(board => board._id === boardId)
-var groupIdx = board.groups.findIndex(group => group.id === groupId)
-board.groups.splice(1,groupIdx)
-return board
-}
-
-
-
-function removeCard(boardId,groupId,cardId){
-const board = boards.find(board => board._id === boardId)
-const group = board.groups.find(group => group.id === groupId)
-var carIdx = group.findIndex(card => card.id === cardId)
-group.splice(1,carIdx)
-return board
-}
-
-
-function addCard(boardId,groupId,card){
-  card={id: 'c'+ makeId(),
-  title: card.title,}
-const board = boards.find(board => board._id === boardId)
-const group = board.groups.find(group => group.id === groupId)
-group.cards.push(card)
-return board
-
+function removeGroup(boardId, groupId) {
+  const board = boards.find(board => board._id === boardId)
+  var groupIdx = board.groups.findIndex(group => group.id === groupId)
+  board.groups.splice(1, groupIdx)
+  return board
 }
 
 
 
-function makeId(length =3 ) {
+function removeCard(boardId, groupId, cardId) {
+  const board = boards.find(board => board._id === boardId)
+  const group = board.groups.find(group => group.id === groupId)
+  var carIdx = group.findIndex(card => card.id === cardId)
+  group.splice(1, carIdx)
+  return board
+}
+
+
+function addCard(boardId, groupId, card) {
+  card = {
+    id: 'c' + makeId(),
+    title: card.title,
+  }
+  const board = boards.find(board => board._id === boardId)
+  const group = board.groups.find(group => group.id === groupId)
+  group.cards.push(card)
+  return board
+
+}
+
+
+
+function makeId(length = 3) {
   var txt = '';
   var possible = '0123456789';
   for (var i = 0; i < length; i++) {
-      txt += possible.charAt(Math.floor(Math.random() * possible.length));
+    txt += possible.charAt(Math.floor(Math.random() * possible.length));
   }
   return txt;
 }

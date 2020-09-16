@@ -21,28 +21,32 @@ export class _BoardDetails extends Component {
     changeIsDetailsShown = (val) => {
         this.setState({ isDetailsShown: val})
     }
-
+    onAddGroup = (board) => {
+        const group = {title: 'new Grouppppp'}
+        this.props.addGroup(board, group)
+    }
 
     render() {
         const { board } = this.props
         if (board === null) return <div>Loading...</div>
+        console.log("render111111111 -> groups", board.groups)
         return (
             <div className="board-details ">
                 <BoardHeader board={board} />
                 <div className="groups-container flex">
                     {board.groups.map(group => <CardList group={group} key={group.id} changeIsDetailsShown={this.changeIsDetailsShown}/>)}
-                    <button className="add-group">Add Group</button>
+                    <button className="add-group" onClick={() => this.onAddGroup(board)}>Add Group</button>
                 </div>
-                {this.state.isDetailsShown && <CardDetails cardId={this.state.isDetailsShown}/>}
+                {this.state.isDetailsShown && <CardDetails cardId={this.state.isDetailsShown} changeIsDetailsShown={this.changeIsDetailsShown}/>}
             </div>
         )
     }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => {
+    return {
     board: state.boardReducer.currBoard
-
-})
+}}
 const mapDispatchToProps = {
     loadBoard,
     updateBoard,
