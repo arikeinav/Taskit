@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 
-import { loadBoard } from '../store/actions/boardActions'
+import { loadBoard, updateBoard, removeGroup, addGroup, removeCard, addCard } from '../store/actions/boardActions'
 import { BoardHeader } from '../cmps/BoardHeader'
 import { CardList } from '../cmps/CardList'
 import { CardDetails } from '../cmps/CardDetails'
@@ -44,6 +44,11 @@ const mapStateToProps = state => ({
 
 })
 const mapDispatchToProps = {
-    loadBoard
+    loadBoard,
+    updateBoard,
+    removeGroup,
+    addGroup,
+    removeCard,
+    addCard
 }
 export const BoardDetails = connect(mapStateToProps, mapDispatchToProps)(_BoardDetails)
