@@ -1,6 +1,6 @@
 
 import httpService from './httpService';
-const board = require('../data.json')
+const boards = require('../data.json')
 
 export const boardService = {
   query,
@@ -28,10 +28,10 @@ async function save(board) {
 }
 }
 function query(filterBy) {
-  var queryStr =''
-  if (filterBy)  queryStr = `?name=${filterBy.name}&type=${filterBy.type}&inStock=${filterBy.inStock}`;
-  return httpService.get(`board${queryStr|| ''}`);
-  
+  // var queryStr =''
+  // if (filterBy)  queryStr = `?name=${filterBy.name}&type=${filterBy.type}&inStock=${filterBy.inStock}`;
+  // return httpService.get(`board${queryStr|| ''}`);
+  return boards
 }
 
 function removeBoard(boardId) {
