@@ -7,7 +7,7 @@ function _NavBar() {
             <NavLink className="nav-item" to="/">Home</NavLink>
             <NavLink className="nav-item" to="/board">Boeards</NavLink>
             {/* <NavLink className="nav-item" to="/board/bexample">Public Board</NavLink> */}
-            <div className="nav-item">Loginnnnnnnnnnnn</div>
+            <div className="nav-item">Login</div>
         </nav>
     )
 }
