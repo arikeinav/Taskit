@@ -1,18 +1,24 @@
-// flex helpers
 
-.flex {
-    display: flex;
-    > *.full {
-        flex: 1;
-    }
-    &.column {
-        flex-direction: column;
-    }
-    &.justify-center {
-        justify-content: center;
-    }
-    &.align-center {
-        align-items: center;
-    }
+
+
+/* HELPERS */
+
+.grid {
+    display:grid;
 }
+ .flex{
+     display: flex;
+ }
+ .column{
+     flex-direction: column;
+ }
+ .justify-center{
+     justify-content: center;
+ }
+.align-center{
+    align-items: center;
+}
+.space-between{
+    justify-content: space-between;
 
+}
