@@ -1,11 +1,12 @@
 import React from 'react'
 
-import { CardList } from '../cmps/CardList'
+import { CardList } from './cmps/CardList'
 
-export function GroupList() {
+export function GroupList({ group }) {
     return (
         <div>
-            
+            <p>dfdd</p>
+            {/* {group.cards.map( <CardList />)} */}
         </div>
     )
 }

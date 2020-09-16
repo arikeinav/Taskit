@@ -15,7 +15,7 @@ export class BoardHeader extends Component {
     render() {
         return (
             <div className="board-header flex space-between">
-                <p lassName="board-name">Board Name</p>
+                <p className="board-name">Board Name</p>
                 {/* <div className="board-name">{this.props.board.title}</div> */}
                 <section className="avatar-members flex">
                     <p>Members:</p>
