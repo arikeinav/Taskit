@@ -5,7 +5,7 @@ export class BoardHeader extends Component {
     render() {
         return (
             <div className="board-header">
-                <p>{board.title}</p>
+                {/* <p>{board.title}</p> */}
             </div>
         )
     }
@@ -13,7 +13,7 @@ export class BoardHeader extends Component {
 
 const mapStateToProps = state => {
     return {
-        board = state.boardReducer.currBoard
+        // board = state.boardReducer.currBoard
     }
 }
 const mapDispatchToProps = {
