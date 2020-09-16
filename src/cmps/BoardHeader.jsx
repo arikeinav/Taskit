@@ -1,48 +1,41 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 
-// import Avatar from '@material-ui/core/Avatar';
-
+import {Avatar} from '@material-ui/core';
+import {AvatarGroup} from '@material-ui/lab';
 
 export class BoardHeader extends Component {
-    
+
     state = {
-        bord: {}
+        filterBy: ''
     }
 
     async componentDidMount() {
-        const bord = await require('../data.json').board
-        console.log("BoardHeader -> componentDidMount -> bord", bord)
-        this.setState({bord})
+
     }
 
-    
     render() {
+        const { board } = this.props
+        console.log("BoardHeader -> render -> members", board.members)
         return (
-            <div className="board-header flex">
-            <p>gggg</p>
-                {/* <p>{this.state.board.title}</p> */}
-                <section className="avatar-members flex">
-                    {/* {this.state.board.members.map(member =>{
-                    <Avatar alt={member.userName} src={member.imgUrl}  />
-                })} */}
-                    {/* <Avatar alt="Shahar" src="" >SK</Avatar>
-                    <Avatar alt="Arik" src="" >SS</Avatar>
-                    <Avatar alt="Shlomi">AE</Avatar> */}
+            <div className="board-header flex space-between">
+                <div className="board-name">{board.title}</div>
 
+                <section className="avatar-members flex">
+                    <AvatarGroup max={3}>
+                        {board.members.map(member =>
+                            member.imgUrl ?
+                                <Avatar key={member._id} asrc={member.imgUrl}></Avatar>
+                                :
+                                <Avatar key={member._id} src={member.imgUrl}>{member.userName.substring(0, 1).toUpperCase()}{member.userName.substring(1, 2).toUpperCase()}</Avatar>
+                        )}
+                    </AvatarGroup>
                 </section>
+
+                <div className="flex">
+                    <button >Invite</button>
+                    <button >Menu</button>
+                </div>
             </div>
         )
     }
 }
-
-const mapStateToProps = state => {
-    return {
-        // board = state.boardReducer.currBoard
-    }
-}
-const mapDispatchToProps = {
-
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(BoardHeader)

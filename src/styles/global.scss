@@ -1,13 +1,13 @@
 // // Setup
-// @import "setup/variables.scss";
+@import "setup/variables.scss";
 // @import "setup/functions.scss";
 // @import "setup/mixins.scss";
 @import "./setup/typography";
 
-// // Basics
+// Basics
 @import "basics/helpers.scss";
 // @import "basics/layout.scss";
-@import "basics/_base.scss";
+@import "basics/base.scss";
 // @import "basics/links.scss";
 // @import "basics/buttons.scss";
 
@@ -17,3 +17,6 @@
 @import "cmps/board-list";
 // @import "components/main-header.scss";
 // @import "components/cat-card.scss";
+@import "components/board-header.scss";
+@import "components/card-list.scss";
+@import "components/card.scss";

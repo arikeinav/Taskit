@@ -14,12 +14,12 @@
       {
         "_id": "u102",
         "userName": "Shahar Sadof",
-        "imgUrl": "https://www.google.com"
+        "imgUrl": ""
       },
       {
         "_id": "u101",
         "userName": "Arik Einav",
-        "imgUrl": "http://some-img"
+        "imgUrl": ""
       },
       {
         "_id": "u103",
@@ -165,12 +165,12 @@
       {
         "_id": "u102",
         "userName": "Shahar Sadof",
-        "imgUrl": "https://www.google.com"
+        "imgUrl": ""
       },
       {
         "_id": "u101",
         "userName": "Arik Einav",
-        "imgUrl": "http://some-img"
+        "imgUrl": ""
       },
       {
         "_id": "u103",
@@ -331,11 +331,11 @@
     ],
     "groups": [
       {
-        "id": "l101",
+        "id": "l103",
         "title": "Tasks",
         "cards": [
           {
-            "id": "c101",
+            "id": "c103",
             "title": "Finish progressive App",
             "description": "description...",
            
@@ -379,13 +379,13 @@
             "imgUrl": "https://www.google.com"
           },
           {
-            "id": "c102",
+            "id": "c104",
             "title": "Add Samples"
           }
         ]
       },
       {
-        "id": "l102",
+        "id": "l104",
         "title": "In progres",
         "cards": [
           {
