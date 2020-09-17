@@ -10,10 +10,10 @@ export function CardList({ group, changeIsDetailsShown }) {
             <p>{group.title}</p>
             <Droppable droppableId={group.id}>
                 {provided => (
-                    <div>
+                    <div ref={provided.innerRef} >
                         {
                             group.cards.map((card,index) =>
-                                <CardPreview index={index} innerref={provided.innerRef} {...provided.droppableProps} card={card} key={card.id} changeIsDetailsShown={changeIsDetailsShown} groupId={group.id} />)
+                                <CardPreview index={index}  {...provided.droppableProps} card={card} key={card.id} changeIsDetailsShown={changeIsDetailsShown} groupId={group.id} />)
                         }
                         {provided.placeholder}
                     </div>

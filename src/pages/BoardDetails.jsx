@@ -38,7 +38,7 @@ export class _BoardDetails extends Component {
         return (
             <div className="board-details ">
                 <BoardHeader board={board} />
-                <DragDropContext onDragEnd={this.onDragEnd()}>
+                <DragDropContext onDragEnd={this.onDragEnd}>
                     <div className="groups-container flex">
                      {board.groups.map(group =><CardList group={group} key={group.id} changeIsDetailsShown={this.changeIsDetailsShown} />)}
                         <button className="add-group btn" onClick={() => this.onAddGroup(board)}>Add Group</button>

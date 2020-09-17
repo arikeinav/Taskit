@@ -11,7 +11,7 @@ export function CardPreview({ card, changeIsDetailsShown, groupId, index }) {
     return (
         <Draggable draggableId={card.id} index={index}>
             {(provided) => (
-                <div className="card" onClick={() => openCardDetails(card.id)} {...provided.draggableProps} {...provided.dragHandleProps} innerref={provided.innerRef}>
+                <div className="card" onClick={() => openCardDetails(card.id)} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
                     <p>{card.title}</p>
                 </div>
             )}
