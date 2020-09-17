@@ -1,0 +1,35 @@
+.card-modal{
+    
+    
+    .empty-modal {
+        visibility: visible;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .details-modal{
+        background-color: rgb(255, 255, 0);
+        position: fixed;
+        display: block;
+        position: fixed;
+        right: 0;
+        height: 100%;
+        width: 230px;
+        z-index: 4;
+        cursor: pointer;
+    }
+    .nav-bar-open {
+        position: fixed;
+        display: block;
+        position: fixed;
+        right: 0;
+        height: 100%;
+        width: 230px;
+        z-index: 4;
+
+    }
+}
