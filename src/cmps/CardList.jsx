@@ -27,7 +27,7 @@ export class CardList extends React.Component {
                 {this.state.isAddCard ?
                     <AddText onAdd={this.props.onAdd} type="Card" groupId={group.id} doneAddCard={this.doneAddCard}/>
                     :
-                    <button onClick={() => this.onEditCard()}>+ Add card</button>
+                    <button className="btn" onClick={() => this.onEditCard()}>+ Add card</button>
                 }
             </div>
         )
