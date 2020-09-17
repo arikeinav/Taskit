@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { login} from "../store/actions/userActions";
+import TextField from "@material-ui/core/TextField"
 
 class _Login extends Component {
   state = {
@@ -28,6 +29,7 @@ class _Login extends Component {
       return this.setState({ msg: "Please enter user/password" });
     }
     const userCreds = { username, password };
+    this.props.onClose()
     this.props.login(userCreds);
     this.setState({ loginCred: { username: "", password: "" } });
   };
@@ -35,25 +37,36 @@ class _Login extends Component {
   render() {
     return (
       <div className="test">
-        <h2>{this.state.msg}</h2>
+        
         <form onSubmit={this.doLogin}>
-          <input
+          
+              <TextField
+            id="outlined-basic"
             type="text"
             name="username"
             value={this.state.loginCred.username}
             onChange={this.loginHandleChange}
-            placeholder="username"
+            label="Username"
+            variant="outlined"
           />
+
           <br />
-          <input
+          <br />
+          <br />
+
+          <TextField
+            id="outlined-password-input"
+            label="Password"
             type="password"
             name="password"
             value={this.state.loginCred.password}
             onChange={this.loginHandleChange}
-            placeholder="Password"
+            autoComplete="current-password"
+            variant="outlined"
           />
           <br />
-          <button>Login</button>
+          <h2>{this.state.msg}</h2>
+          <button className="btn">Login</button>
         </form>
       </div>
     );

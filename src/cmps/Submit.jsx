@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { signup } from "../store/actions/userActions";
+import TextField from "@material-ui/core/TextField";
 
 class _Submit extends Component {
   state = {
@@ -23,36 +24,47 @@ class _Submit extends Component {
 
   doSignup = async (ev) => {
     ev.preventDefault();
-    const { username, password} = this.state.signupCred;
+    const { username, password } = this.state.signupCred;
     if (!username || !password) {
       return this.setState({ msg: "All inputs are required!" });
     }
-    const signupCreds = { username, password};
+    const signupCreds = { username, password };
     this.props.signup(signupCreds);
+    this.props.onClose();
     this.setState({ signupCred: { username: "", password: "" } });
   };
 
   render() {
     return (
       <div className="test">
-        <h2>{this.state.msg}</h2>
         <form onSubmit={this.doSignup}>
-          <input
+         
+          <TextField
+            id="outlined-basic"
             type="text"
             name="username"
             value={this.state.signupCred.username}
             onChange={this.signupHandleChange}
-            placeholder="Username"
+            label="Username"
+            variant="outlined"
           />
+
           <br />
-          <input
-            name="password"
+          <br />
+          <br />
+
+          <TextField
+            id="outlined-password-input"
+            label="Password"
             type="password"
+            name="password"
             value={this.state.signupCred.password}
             onChange={this.signupHandleChange}
-            placeholder="Password"
+            autoComplete="current-password"
+            variant="outlined"
           />
           <br />
+          <h2>{this.state.msg}</h2>
           <button className="btn">Signup</button>
         </form>
       </div>
