@@ -6,30 +6,49 @@ import { loadBoard, updateBoard, removeGroup, addGroup, removeCard, addCard } fr
 import { BoardHeader } from '../cmps/BoardHeader'
 import { CardList } from '../cmps/CardList'
 import { CardDetails } from '../cmps/CardDetails'
+import { AddText } from '../cmps/AddText'
 
 
 export class _BoardDetails extends Component {
 
     state = {
-        isDetailsShown: false
+        isDetailsShown: false,
+        isAddGroup: false
     }
 
     componentDidMount() {
         const { boardId } = this.props.match.params
         this.props.loadBoard(boardId)
-    
+
     }
-    componentDidUpdate(prevProps, prevState) {
-        console.log('am i changing??');
+
+    updateState = (key, val) => {
+        this.setState({ [key]: val })
     }
-    
-    changeIsDetailsShown = (val) => {
-        this.setState({ isDetailsShown: val})
+
+    // changeIsDetailsShown = (val) => {
+    //     this.setState({ isDetailsShown: val })
+    // }
+    onEditGroup = () => {
+        this.setState({ isAddGroup: true })
     }
-    onAddGroup = (board) => {
-        const group = {title: 'new Grouppppp'}
-        this.props.addGroup(board, group)
-        
+    onAdd = (type, text, groupId) => {
+        if (type === 'Group') {
+            this.setState({ isAddGroup: false })
+            const group = { title: text }
+            this.props.addGroup(this.props.board, group)
+        } else if (type === 'Card') {
+            const card = { title: text }
+            this.props.addCard(this.props.board, groupId, card)
+        }
+    }
+    onRemoveGroup = (groupId) => {
+        this.props.removeGroup(this.props.board, groupId)
+    }
+    onRemoveCard = (cardId) => {
+        console.log("onRemoveCard -> this.state.isDetailsShown.groupId", this.state.isDetailsShown.groupId)
+        console.log("onRemoveCard -> cardId", cardId)
+        this.props.removeCard(this.props.board, this.state.isDetailsShown.groupId, cardId)
     }
 
     render() {
@@ -39,11 +58,15 @@ export class _BoardDetails extends Component {
             <div className="board-details ">
                 <BoardHeader board={board} />
                 <div className="groups-container flex">
-                    {board.groups.map(group => <CardList group={group} key={group.id} changeIsDetailsShown={this.changeIsDetailsShown}/>)}
-                    <button className="add-group btn" onClick={() => this.onAddGroup(board)}>Add Group</button>
+                    {board.groups.map(group => <CardList onAdd={this.onAdd} group={group} key={group.id} updateState={this.updateState} onRemoveGroup={this.onRemoveGroup} />)}
+                    {this.state.isAddGroup ?
+                        <AddText onAdd={this.onAdd} type="Group" groupId={null} />
+                        :
+                        <button className="add-group btn" onClick={() => this.onEditGroup()}>Add Group</button>
+                    }
                 </div>
-                {this.state.isDetailsShown.cardId && 
-                <CardDetails cardId={this.state.isDetailsShown.cardId} groupId={this.state.isDetailsShown.groupId} changeIsDetailsShown={this.changeIsDetailsShown}/>}
+                {this.state.isDetailsShown.cardId &&
+                    <CardDetails updateState={this.updateState} onRemoveCard={this.onRemoveCard} cardId={this.state.isDetailsShown.cardId} groupId={this.state.isDetailsShown.groupId} />}
             </div>
         )
     }
@@ -51,8 +74,9 @@ export class _BoardDetails extends Component {
 
 const mapStateToProps = (state) => {
     return {
-    board: state.boardReducer.currBoard
-}}
+        board: state.boardReducer.currBoard
+    }
+}
 const mapDispatchToProps = {
     loadBoard,
     updateBoard,

@@ -1,10 +1,10 @@
 import React from 'react'
 
-export function CardPreview({ card, changeIsDetailsShown, groupId }) {
+export function CardPreview({ card, updateState, groupId }) {
 
     const openCardDetails = (cardId) => {
-        changeIsDetailsShown({cardId ,groupId})
-    }
+        updateState('isDetailsShown', {cardId ,groupId})
+       }
 
     return (
         <div className="card" onClick={() => openCardDetails(card.id)}>
