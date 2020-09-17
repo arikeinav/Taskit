@@ -7,7 +7,6 @@ import { BoardHeader } from '../cmps/BoardHeader'
 import { CardList } from '../cmps/CardList'
 import { CardDetails } from '../cmps/CardDetails'
 import { AddText } from '../cmps/AddText'
-import { AddImg } from '../cmps/AddImg'
 
 
 export class _BoardDetails extends Component {
@@ -51,7 +50,6 @@ export class _BoardDetails extends Component {
         if (board === null) return <div>Loading...</div>
         return (
             <div className="board-details ">
-            {/* <AddImg /> */}
                 <BoardHeader board={board} />
                 <div className="groups-container grid">
                     {board.groups.map(group => <CardList onAdd={this.onAdd} group={group} key={group.id} updateState={this.updateState} onRemoveGroup={this.onRemoveGroup} />)}

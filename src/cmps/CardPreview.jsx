@@ -7,8 +7,9 @@ export function CardPreview({ card, updateState, groupId }) {
     }
 
     return (
-        <div className="card" onClick={() => openCardDetails(card.id)}>
+        <div className="card-preview" onClick={() => openCardDetails(card.id)}>
             <p>{card.title}</p>
+            {card.imgUrl && <img className="img-caed-preview" src={card.imgUrl} alt="Loading"/>}
         </div>
     )
 }

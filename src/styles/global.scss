@@ -1,28 +1,22 @@
 // // Setup
 @import "setup/variables.scss";
-// @import "setup/functions.scss";
-// @import "setup/mixins.scss";
 @import "./setup/typography";
 
 // Basics
 @import "basics/helpers.scss";
-// @import "basics/layout.scss";
 @import "basics/base.scss";
-// @import "basics/links.scss";
 @import "./basics/buttons";
 
 // // Components
 @import "./cmps/_navbar.scss";
 @import "cmps/board-preview";
 @import "./cmps/board-list";
-// @import "components/main-header.scss";
-// @import "components/cat-card.scss";
 @import "cmps/board-header.scss";
 @import "cmps/card-list.scss";
-@import "cmps/card.scss";
 @import "cmps/card-details";
 @import "cmps/card-preview";
 @import "cmps/card-details";
+@import "cmps/add-img";
 //views/
 @import "./views/home-page";
 @import "./views/board-details";

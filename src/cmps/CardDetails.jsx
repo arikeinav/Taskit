@@ -2,16 +2,24 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
+
 import { boardService } from '../services/boardService'
+import { AddImg } from './AddImg'
+import { updateCard } from '../store/actions/boardActions'
 
 export class _CardDetails extends Component {
 
     state = {
-        card: null
+        card: null,
+        isAddImgModalShown: false
     }
     async componentDidMount() {
         const card = await boardService.getCardById(this.props.board, this.props.groupId, this.props.cardId)
         this.setState({ card })
+    }
+    updateState = (key, val) => {
+        this.setState({ [key]: val })
+        console.log('hey');
     }
     onRmoveModal = () => {
         this.props.updateState('isDetailsShown', false)
@@ -20,13 +28,21 @@ export class _CardDetails extends Component {
         this.onRmoveModal()
         this.props.onRemoveCard(this.state.card.id)
     }
+    addImgToCard = (card) => {
+        this.props.updateCard(this.props.board, this.props.groupId, card)
+    }
+    onRemoveImg = () => {
+        const card = this.state.card
+        delete card.imgUrl
+        this.props.updateCard(this.props.board, this.props.groupId, card)
+    }
 
     render() {
         if (!this.state.card) return <div>Loading...</div>
-        const card = this.state.card
+        const { card } = this.state
         return (
             <div className="card-modal">
-            
+
                 <div className="empty-modal" onClick={this.onRmoveModal}></div>
 
                 <div className="details-modal">
@@ -53,14 +69,21 @@ export class _CardDetails extends Component {
                             </section>
                             <p>description:</p>
                             <textarea>{card.description}</textarea>
+                            {card.imgUrl &&
+                                <div>
+                                    <img className="card-img" src={card.imgUrl} alt="Loading" />
+                                    <button onClick={this.onRemoveImg} className="btn">Remove Image</button>
+                                </div>
+                            }
                         </div>
                         <div className="side-bar-details">
-                            <button>Add Cover Image</button>
+                            <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}>Add Cover Image</button>
                             <button onClick={this.onHandleRemove} className="btn">Delete Card</button>
-                               
                         </div>
                     </div>
                 </div>
+                { this.state.isAddImgModalShown && <AddImg card={card} updateState={this.updateState} />
+                }
             </div>
         )
     }
@@ -72,7 +95,7 @@ const mapStateToProps = state => {
     }
 }
 const mapDispatchToProps = {
-
+    updateCard
 }
 
 export const CardDetails = connect(mapStateToProps, mapDispatchToProps)(_CardDetails)

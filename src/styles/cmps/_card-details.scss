@@ -16,10 +16,14 @@
         position: fixed;
         display: block;
         position: fixed;
-        left: 40vw;
+        left: 15vw;
         top: 20vh;
-        height: 60vh;
-        width: 60vh;
+        width: 60vw;
         z-index: 11;
+
+        .card-img{
+            width: 100%;
+            height: 100px;
+        }
     }
 }

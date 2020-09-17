@@ -53,7 +53,7 @@ function addGroup(boardId, group) {
   group = {
     id: 'g' + makeId(),
     title: group.title,
-    cards:[]
+    cards: []
   }
   const board = boards.find(board => board._id === boardId)
   board.groups.push(group)
@@ -89,14 +89,22 @@ function addCard(boardId, groupId, card) {
 }
 
 function updateCard(boardId, groupId, card) {
-  var cardId=card.id;
+  var cardId = card.id;
   const board = boards.find(board => board._id === boardId);
   const group = board.groups.find(group => group.id === groupId);
   let cardIdx = group.cards.findIndex(card => card.id === cardId);
-  group.cards.splice(cardIdx,1,card)
+  group.cards.splice(cardIdx, 1, card)
   return board
 
 }
+
+// function addImgToCard(boardId, groupId, card, imgUrl) {
+//   const board = boards.find(board => board._id === boardId);
+//   const group = board.groups.find(group => group.id === groupId);
+//   let cardIdx = group.cards.findIndex(card => card.id === cardId);
+//   group.cards.splice(cardIdx, 1, card)
+//   return board
+// }
 
 
 
