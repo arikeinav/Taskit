@@ -11,15 +11,16 @@ export class AddText extends React.Component {
     }
     onSubmit = (ev) => {
         ev.preventDefault();
-        this.props.type === 'Card' && this.props.doneAddCard()
-        this.props.onAdd(this.props.type ,this.state.text, this.props.groupId)
-        this.setState({ text:'' })
+        (this.props.type === 'Card') && this.props.updateState('isAddCard', false)
+
+        this.props.onAdd(this.props.type, this.state.text, this.props.groupId)
+        this.setState({ text: '' })
     }
     render() {
         return (
             <div>
                 <form onSubmit={this.onSubmit}>
-                    <textarea placeholder="Group name"
+                    <input placeholder="Group name"
                         type="text"
                         onChange={this.handleValueChange}
                         value={this.state.text}
