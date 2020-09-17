@@ -18,6 +18,10 @@ export class _BoardDetails extends Component {
         const { boardId } = this.props.match.params
         this.props.loadBoard(boardId)
     }
+    componentDidUpdate(prevProps, prevState) {
+        console.log('am i changing??');
+    }
+    
     changeIsDetailsShown = (val) => {
         this.setState({ isDetailsShown: val})
     }
@@ -34,7 +38,7 @@ export class _BoardDetails extends Component {
                 <BoardHeader board={board} />
                 <div className="groups-container flex">
                     {board.groups.map(group => <CardList group={group} key={group.id} changeIsDetailsShown={this.changeIsDetailsShown}/>)}
-                    <button className="add-group" onClick={() => this.onAddGroup(board)}>Add Group</button>
+                    <button className="add-group btn" onClick={() => this.onAddGroup(board)}>Add Group</button>
                 </div>
                 {this.state.isDetailsShown.cardId && 
                 <CardDetails cardId={this.state.isDetailsShown.cardId} groupId={this.state.isDetailsShown.groupId} changeIsDetailsShown={this.changeIsDetailsShown}/>}

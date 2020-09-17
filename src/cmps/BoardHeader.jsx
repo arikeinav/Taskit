@@ -15,7 +15,7 @@ export class BoardHeader extends Component {
 
     render() {
         const { board } = this.props
-        console.log("BoardHeader -> render -> members", board.members)
+        
         return (
             <div className="board-header flex space-between">
                 <div className="board-name">{board.title}</div>
