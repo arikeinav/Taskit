@@ -3,15 +3,34 @@ import { NavLink, withRouter } from 'react-router-dom';
 import {Login} from './Login'
 import {Submit} from './Submit'
 import {Modal} from './Modal'
+import { connect } from "react-redux";
+import { logout} from "../store/actions/userActions";
 
 class _NavBar extends React.Component {
 
     state ={
-        isLogedShow:false
+        isLogged:false,
+        isSignIn:false,
+        isModalShow:false,
+        isIn:false
     }
-onIsLogedShow=()=>{
-    this.setState({isLogedShow:true})
+
+onIsLogged=()=>{
+    this.setState({isLogged:true,isModalShow:true,isSignIn:false})
+
 }
+onIsSubmit=()=>{
+    this.setState({isSignIn:true,isModalShow:true,isLogged:false})
+}
+
+onCloseModal=()=>{
+    this.setState({isSignIn:false,isModalShow:false,isLogged:false,isIn:true})
+}
+onLogOut=()=>{
+    this.setState({isIn:false})
+    this.props.logout()
+}
+
     render(){
     return (
         <nav className="nav-bar grid align-center">
@@ -19,15 +38,35 @@ onIsLogedShow=()=>{
            <div className="navdiv-s"><NavLink  to="/board">Boards</NavLink></div>
            <div className="logo">Task<span className="logo-i">i</span>t</div>
            
-    {this.state.isLogedShow && <Login />}
-    {this.state.isLogedShow && <Submit />}
-
-           <div className="navdiv-s"> <NavLink to="/board/b123">Test Board</NavLink></div>
-         
-            <div className="navdiv-s signup" onClick={this.onIsSubmitShow}>Sign Up</div>
-            <div className="navdiv-s login" onClick={this.onIsLogedShow}>Login</div>
+           <div className={`navdiv-s   ${(!this.state.isIn) ? '' : 'hide'}`}> <NavLink to="/board/b101">Test Board</NavLink></div>
+            <div className={`navdiv-s signup ${(!this.state.isIn) ? '' : 'hide'}`} onClick={this.onIsSubmit}>Sign Up</div>
+            <div className={`navdiv-s login  ${(!this.state.isIn) ? '' : 'hide'}`} onClick={this.onIsLogged}>Login</div>
+            <div className={`navdiv-s login  ${(!this.state.isIn) ? 'hide' : ''}`} onClick={this.onLogOut}>LogOut</div>
+           
+    {this.state.isLogged &&  <Modal
+              
+              onClose={this.onCloseModal}
+              children={<Login onClose={this.onCloseModal} />}
+            />}
+    {this.state.isSignIn &&  <Modal
+              
+              onClose={this.onCloseModal}
+              children={<Submit onClose={this.onCloseModal} />}
+            />}
         </nav>
     )
 }}
 
-export const NavBar = withRouter(_NavBar)
+const mapStateToProps = (state) => {
+    return {
+      loggedInUser: state.userReducer.loggedInUser,
+    };
+  };
+  const mapDispatchToProps = {
+    logout,
+  };
+
+export const NavBar = connect(mapStateToProps, mapDispatchToProps)(withRouter(_NavBar));
+
+
+  
