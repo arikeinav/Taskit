@@ -71,15 +71,13 @@ function removeGroup(boardId, groupId) {
 function removeCard(boardId, groupId, cardId) {
   const board = boards.find(board => board._id === boardId)
   const group = board.groups.find(group => group.id === groupId)
-  console.log("removeCard -> group", group)
   const carIdx = group.cards.findIndex(card => card.id === cardId)
-  group.cards.splice(1, carIdx)
+  group.cards.splice(carIdx, 1)
   return board
 }
 
 
 function addCard(boardId, groupId, card) {
-  console.log("addCaaaaaaaaaaard -> groupId", groupId)
   card = {
     id: 'c' + makeId(),
     title: card.title,

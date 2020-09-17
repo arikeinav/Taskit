@@ -13,16 +13,14 @@ body{
     font-family: roboto;
 }
 
-// ul{
-//     list-style: none;
-// }
 
-// ul li{
-//     font-family: Comforta,serif;
-//     background-color: #f5deb314;
-//     color:#ffdbc5;
-//     padding: 25px;
-//     border-radius:  15px 50px;
-//     height: 100%;
-//     width: 100%;
-// }
+.empty-modal {
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+}
