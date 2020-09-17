@@ -1,6 +1,5 @@
 import React from 'react'
 import { Droppable } from 'react-beautiful-dnd'
-
 import { CardPreview } from './CardPreview'
 import { AddText } from './AddText'
 

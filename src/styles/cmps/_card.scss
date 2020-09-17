@@ -1,4 +1,13 @@
 .card{
-    background-color: rgb(226, 155, 155);
+
+    background-color: rgba(255, 255, 255, 0.822);
+    border:1px solid #dcdcdc;
+    box-shadow:  1px;
+    border-radius: 5px;
+    padding: 0 4px;
+    min-height: 45px;
+    margin-bottom:5px;
     cursor: pointer;
+    display:flex;
 }
+
