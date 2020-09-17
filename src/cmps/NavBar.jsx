@@ -9,6 +9,7 @@ function _NavBar() {
            <div className="logo">Taskit</div>
            <div className="navdiv-s"> <NavLink className="nav-item" to="/board/b123">Test Board</NavLink></div>
             {/* <NavLink className="nav-item" to="/board/bexample">Public Board</NavLink> */}
+            <div className="navdiv-s nav-item">Sign Up</div>
             <div className="navdiv-s nav-item">Login</div>
         </nav>
     )
