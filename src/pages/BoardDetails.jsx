@@ -29,7 +29,6 @@ export class _BoardDetails extends Component {
     render() {
         const { board } = this.props
         if (board === null) return <div>Loading...</div>
-        console.log("render111111111 -> groups", board.groups)
         return (
             <div className="board-details ">
                 <BoardHeader board={board} />
@@ -37,7 +36,8 @@ export class _BoardDetails extends Component {
                     {board.groups.map(group => <CardList group={group} key={group.id} changeIsDetailsShown={this.changeIsDetailsShown}/>)}
                     <button className="add-group" onClick={() => this.onAddGroup(board)}>Add Group</button>
                 </div>
-                {this.state.isDetailsShown && <CardDetails cardId={this.state.isDetailsShown} changeIsDetailsShown={this.changeIsDetailsShown}/>}
+                {this.state.isDetailsShown.cardId && 
+                <CardDetails cardId={this.state.isDetailsShown.cardId} groupId={this.state.isDetailsShown.groupId} changeIsDetailsShown={this.changeIsDetailsShown}/>}
             </div>
         )
     }

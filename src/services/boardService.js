@@ -11,6 +11,7 @@ export const boardService = {
   removeGroup,
   removeCard,
   addCard,
+  getCardById
 };
 
 function loadBoard(boardId) {
@@ -86,10 +87,13 @@ function addCard(boardId, groupId, card) {
   const group = board.groups.find(group => group.id === groupId)
   group.cards.push(card)
   return board
-
 }
 
 
+function getCardById(board, groupId, cardId) {
+  const group = board.groups.find(group => group.id === groupId)
+  return group.cards.find(card => card.id === cardId)
+}
 
 function makeId(length = 3) {
   var txt = '';

@@ -1,9 +1,9 @@
 import React from 'react'
 
-export function CardPreview({card, changeIsDetailsShown}) {
+export function CardPreview({ card, changeIsDetailsShown, groupId }) {
 
     const openCardDetails = (cardId) => {
-        changeIsDetailsShown(card.id)
+        changeIsDetailsShown({cardId ,groupId})
     }
 
     return (
