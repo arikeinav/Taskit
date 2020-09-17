@@ -53,7 +53,7 @@ export class _BoardDetails extends Component {
             <div className="board-details ">
             {/* <AddImg /> */}
                 <BoardHeader board={board} />
-                <div className="groups-container flex">
+                <div className="groups-container grid">
                     {board.groups.map(group => <CardList onAdd={this.onAdd} group={group} key={group.id} updateState={this.updateState} onRemoveGroup={this.onRemoveGroup} />)}
                     {this.state.isAddGroup ?
                         <AddText onAdd={this.onAdd} type="Group" groupId={null} />
