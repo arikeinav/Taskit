@@ -10,12 +10,12 @@ const initialState = {
         console.log('action.boards:',action.boards);
         return {
           ...state,
-          boards: action.boards,
+          boards: [...action.boards],
         };
         case "SET_BOARD":
             return {
               ...state,
-              currBoard: action.board,
+              currBoard: {...action.board},
             };
       case "REMOVE_BOARD":
         return {
@@ -31,7 +31,7 @@ const initialState = {
       case "UPDATE_BOARD":
         return {
           ...state,
-          currBoard: action.board,
+          currBoard: {...action.board},
         };
   
       default:
