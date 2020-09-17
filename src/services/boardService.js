@@ -71,14 +71,8 @@ function removeGroup(boardId, groupId) {
 function removeCard(boardId, groupId, cardId) {
   const board = boards.find(board => board._id === boardId)
   const group = board.groups.find(group => group.id === groupId)
-<<<<<<< HEAD
   var carIdx = group.findIndex(card => card.id === cardId)
   group.splice(carIdx,1)
-=======
-  console.log("removeCard -> group", group)
-  const carIdx = group.cards.findIndex(card => card.id === cardId)
-  group.cards.splice(1, carIdx)
->>>>>>> 98d95fb8bb0f6444af0be441dcef570d5562de0c
   return board
 }
 
