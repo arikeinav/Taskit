@@ -30,7 +30,8 @@ export class _BoardDetails extends Component {
         this.setState({ isAddGroup: true }) 
     }
     onAdd = (type, text, groupId) => {
-        console.log("onAdssssssssssssd -> groupId", groupId)
+
+        console.log("sssssssssssss -> groupId", groupId)
         if (type === 'Group') {
             this.setState({ isAddGroup: false })
             const group = { title: text }

@@ -11,7 +11,10 @@ export class CardList extends React.Component {
     onEditCard = () => {
         this.setState({ isAddCard: true })
     }
-
+    doneAddCard = () => {
+        this.setState({ isAddCard: false })
+    }
+    
     render() {
         const group = this.props.group
         return (
@@ -22,7 +25,7 @@ export class CardList extends React.Component {
                 </header>
                 {group.cards.map(card => <CardPreview card={card} key={card.id} changeIsDetailsShown={this.props.changeIsDetailsShown} groupId={group.id} />)}
                 {this.state.isAddCard ?
-                    <AddText onAdd={this.props.onAdd} type="Card" groupId={group.id}/>
+                    <AddText onAdd={this.props.onAdd} type="Card" groupId={group.id} doneAddCard={this.doneAddCard}/>
                     :
                     <button onClick={() => this.onEditCard()}>+ Add card</button>
                 }
