@@ -17,7 +17,7 @@ onIsLogedShow=()=>{
         <nav className="nav-bar grid align-center">
            <div className="navdiv-s"> <NavLink  to="/">Home</NavLink></div>
            <div className="navdiv-s"><NavLink  to="/board">Boards</NavLink></div>
-           <div className="logo">Taskit</div>
+           <div className="logo">Task<span className="logo-i">i</span>t</div>
            
     {this.state.isLogedShow && <Login />}
     {this.state.isLogedShow && <Submit />}
