@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { login} from "../store/actions/userActions";
 
 class _Login extends Component {
@@ -27,10 +27,14 @@ class _Login extends Component {
     if (!username || !password) {
       return this.setState({ msg: "Please enter user/password" });
     }
+
     const userCreds = { username, password };
     this.props.login(userCreds);
     this.setState({ loginCred: { username: "", password: "" } });
   };
+
+
+    
 
   render() {
     return (
@@ -66,7 +70,9 @@ const mapStateToProps = (state) => {
   };
 };
 const mapDispatchToProps = {
+    
   login,
 };
+
 
 export const Login = connect(mapStateToProps, mapDispatchToProps)(_Login);
