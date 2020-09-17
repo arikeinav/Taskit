@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
-
 import { loadBoard, updateBoard, removeGroup, addGroup, removeCard, addCard } from '../store/actions/boardActions'
 import { BoardHeader } from '../cmps/BoardHeader'
 import { CardList } from '../cmps/CardList'
 import { CardDetails } from '../cmps/CardDetails'
-
+import { DragDropContext } from 'react-beautiful-dnd'
 
 export class _BoardDetails extends Component {
 
@@ -21,13 +19,17 @@ export class _BoardDetails extends Component {
     componentDidUpdate(prevProps, prevState) {
         console.log('am i changing??');
     }
-    
+
     changeIsDetailsShown = (val) => {
-        this.setState({ isDetailsShown: val})
+        this.setState({ isDetailsShown: val })
     }
     onAddGroup = (board) => {
-        const group = {title: 'new Grouppppp'}
+        const group = { title: 'new Grouppppp' }
         this.props.addGroup(board, group)
+    }
+
+    onDragEnd=result=>{
+//todo
     }
 
     render() {
@@ -36,12 +38,14 @@ export class _BoardDetails extends Component {
         return (
             <div className="board-details ">
                 <BoardHeader board={board} />
-                <div className="groups-container flex">
-                    {board.groups.map(group => <CardList group={group} key={group.id} changeIsDetailsShown={this.changeIsDetailsShown}/>)}
-                    <button className="add-group btn" onClick={() => this.onAddGroup(board)}>Add Group</button>
-                </div>
-                {this.state.isDetailsShown.cardId && 
-                <CardDetails cardId={this.state.isDetailsShown.cardId} groupId={this.state.isDetailsShown.groupId} changeIsDetailsShown={this.changeIsDetailsShown}/>}
+                <DragDropContext onDragEnd={this.onDragEnd()}>
+                    <div className="groups-container flex">
+                     {board.groups.map(group =><CardList group={group} key={group.id} changeIsDetailsShown={this.changeIsDetailsShown} />)}
+                        <button className="add-group btn" onClick={() => this.onAddGroup(board)}>Add Group</button>
+                    </div>
+                </DragDropContext>
+                {this.state.isDetailsShown.cardId &&
+                    <CardDetails cardId={this.state.isDetailsShown.cardId} groupId={this.state.isDetailsShown.groupId} changeIsDetailsShown={this.changeIsDetailsShown} />}
             </div>
         )
     }
@@ -49,8 +53,9 @@ export class _BoardDetails extends Component {
 
 const mapStateToProps = state => {
     return {
-    board: state.boardReducer.currBoard
-}}
+        board: state.boardReducer.currBoard
+    }
+}
 const mapDispatchToProps = {
     loadBoard,
     updateBoard,
