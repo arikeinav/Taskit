@@ -2,10 +2,10 @@ import React from 'react'
 import { Draggable } from 'react-beautiful-dnd'
 
 
-export function CardPreview({ card, changeIsDetailsShown, groupId, index }) {
+export function CardPreview({ card, updateState, groupId, index }) {
 
     const openCardDetails = (cardId) => {
-        changeIsDetailsShown({ cardId, groupId })
+        updateState('isDetailsShown', { cardId, groupId })
     }
 
     return (

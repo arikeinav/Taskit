@@ -59,7 +59,6 @@ export function removeCard(board, groupId, cardId) {
   return async (dispatch) => {
     board = await boardService.removeCard(board._id, groupId, cardId)
     dispatch({ type: "UPDATE_BOARD", board });
-
   };
 }
 
@@ -67,6 +66,5 @@ export function addCard(board, groupId, card) {
   return async (dispatch) => {
     board = await boardService.addCard(board._id, groupId, card)
     dispatch({ type: "UPDATE_BOARD", board });
-
   };
 }

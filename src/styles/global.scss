@@ -14,7 +14,7 @@
 // // Components
 @import "./cmps/_navbar.scss";
 @import "cmps/board-preview";
-@import "cmps/board-list";
+@import "./cmps/board-list";
 // @import "components/main-header.scss";
 // @import "components/cat-card.scss";
 @import "cmps/board-header.scss";
@@ -22,3 +22,7 @@
 @import "cmps/card.scss";
 @import "cmps/card-details";
 @import "cmps/card-preview";
+@import "cmps/card-details";
+//views/
+@import "./views/home-page";
+@import "./views/board-details";
