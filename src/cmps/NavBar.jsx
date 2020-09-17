@@ -15,15 +15,17 @@ onIsLogedShow=()=>{
     render(){
     return (
         <nav className="nav-bar grid align-center">
-           <div className="navdiv-s"> <NavLink className="nav-item" to="/">Home</NavLink></div>
-           <div className="navdiv-s"><NavLink className="nav-item" to="/board">Boards</NavLink></div>
+           <div className="navdiv-s"> <NavLink  to="/">Home</NavLink></div>
+           <div className="navdiv-s"><NavLink  to="/board">Boards</NavLink></div>
            <div className="logo">Taskit</div>
-           <div className="navdiv-s"> <NavLink className="nav-item" to="/board/b123">Test Board</NavLink></div>
-            <div className="navdiv-s nav-item" onClick={this.onIsLogedShow}>Login</div>
-            <div className="navdiv-s nav-item" onClick={this.onIsSubmitShow}>Submit</div>
+           
     {this.state.isLogedShow && <Login />}
     {this.state.isLogedShow && <Submit />}
 
+           <div className="navdiv-s"> <NavLink to="/board/b123">Test Board</NavLink></div>
+         
+            <div className="navdiv-s signup" onClick={this.onIsSubmitShow}>Sign Up</div>
+            <div className="navdiv-s login" onClick={this.onIsLogedShow}>Login</div>
         </nav>
     )
 }}

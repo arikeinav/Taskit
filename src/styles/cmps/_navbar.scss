@@ -1,15 +1,29 @@
 .nav-bar{
     height: 10vh;
     padding: 0 10px;
-    background-color: #407088;
+    background-color: #077b91d1;
     color: white;
-    grid-template-columns: 1fr 1fr 6fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 6fr 1fr 1fr 1fr;
 }
 .nav-bar a{
     color: white;
+    font-family: hand-write;
 }
 .logo{
     margin:auto;
-    font-family: logo;
+    font-family: hand-write;
     font-size: 2.5rem;
+    grid-column:4/5;
+}
+.navdiv-s{
+    font-family: hand-write;
+    font-size: 1.4rem;  
+    margin: auto; 
+}
+
+.signup{
+    grid-column:6/7;
+}
+.login{
+    grid-column:7/8;
 }
