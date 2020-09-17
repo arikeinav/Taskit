@@ -19,6 +19,7 @@ export class _BoardDetails extends Component {
     componentDidMount() {
         const { boardId } = this.props.match.params
         this.props.loadBoard(boardId)
+    
     }
 
 
@@ -65,7 +66,7 @@ export class _BoardDetails extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         board: state.boardReducer.currBoard
     }
