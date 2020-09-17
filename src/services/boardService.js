@@ -11,7 +11,8 @@ export const boardService = {
   removeGroup,
   removeCard,
   addCard,
-  getCardById
+  getCardById,
+  updateCard
 };
 
 function loadBoard(boardId) {
