@@ -53,6 +53,7 @@ function addGroup(boardId, group) {
   group = {
     id: 'l' + makeId(),
     title: group.title,
+    cards:[]
   }
   const board = boards.find(board => board._id === boardId)
   board.groups.push(group)
