@@ -1,7 +1,7 @@
 .nav-bar{
     height: 10vh;
     padding: 0 10px;
-    background-color: #407088;
+    background-color: #077b91d1;
     color: white;
     grid-template-columns: 1fr 1fr 6fr 1fr 1fr;
 }
@@ -10,6 +10,7 @@
 }
 .logo{
     margin:auto;
-    font-family: logo;
+    font-family: hand-write;
+    color:rgba(0, 255, 255, 0.877);
     font-size: 2.5rem;
 }
