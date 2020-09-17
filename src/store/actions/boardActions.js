@@ -56,6 +56,9 @@ export function addGroup(board, group) {
   };
 }
 export function removeCard(board, groupId, cardId) {
+  console.log("removeCard -> cardId", cardId)
+  console.log("removeCard -> groupId", groupId)
+  console.log("removeCard -> board", board)
   return async (dispatch) => {
     board = await boardService.removeCard(board._id, groupId, cardId)
     dispatch({ type: "UPDATE_BOARD", board });
@@ -63,9 +66,6 @@ export function removeCard(board, groupId, cardId) {
 }
 
 export function addCard(board, groupId, card) {
-  console.log("addCard -> card", card)
-  console.log("addCard -> groupId", groupId)
-  console.log("addCard -> board", board)
   return async (dispatch) => {
     board = await boardService.addCard(board._id, groupId, card)
     dispatch({ type: "UPDATE_BOARD", board });

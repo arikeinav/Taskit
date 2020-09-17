@@ -19,19 +19,20 @@ export class _BoardDetails extends Component {
     componentDidMount() {
         const { boardId } = this.props.match.params
         this.props.loadBoard(boardId)
-    
+
     }
 
-
-    changeIsDetailsShown = (val) => {
-        this.setState({ isDetailsShown: val }) 
+    updateState = (key, val) => {
+        this.setState({ [key]: val })
     }
+
+    // changeIsDetailsShown = (val) => {
+    //     this.setState({ isDetailsShown: val })
+    // }
     onEditGroup = () => {
-        this.setState({ isAddGroup: true }) 
+        this.setState({ isAddGroup: true })
     }
     onAdd = (type, text, groupId) => {
-
-        console.log("sssssssssssss -> groupId", groupId)
         if (type === 'Group') {
             this.setState({ isAddGroup: false })
             const group = { title: text }
@@ -41,9 +42,13 @@ export class _BoardDetails extends Component {
             this.props.addCard(this.props.board, groupId, card)
         }
     }
-
     onRemoveGroup = (groupId) => {
         this.props.removeGroup(this.props.board, groupId)
+    }
+    onRemoveCard = (cardId) => {
+        console.log("onRemoveCard -> this.state.isDetailsShown.groupId", this.state.isDetailsShown.groupId)
+        console.log("onRemoveCard -> cardId", cardId)
+        this.props.removeCard(this.props.board, this.state.isDetailsShown.groupId, cardId)
     }
 
     render() {
@@ -53,15 +58,15 @@ export class _BoardDetails extends Component {
             <div className="board-details ">
                 <BoardHeader board={board} />
                 <div className="groups-container flex">
-                    {board.groups.map(group => <CardList onAdd={this.onAdd} group={group} key={group.id} changeIsDetailsShown={this.changeIsDetailsShown} onRemoveGroup={this.onRemoveGroup} />)}
+                    {board.groups.map(group => <CardList onAdd={this.onAdd} group={group} key={group.id} updateState={this.updateState} onRemoveGroup={this.onRemoveGroup} />)}
                     {this.state.isAddGroup ?
-                        <AddText onAdd={this.onAdd} type="Group" groupId={null}/>
+                        <AddText onAdd={this.onAdd} type="Group" groupId={null} />
                         :
                         <button className="add-group btn" onClick={() => this.onEditGroup()}>Add Group</button>
                     }
                 </div>
                 {this.state.isDetailsShown.cardId &&
-                    <CardDetails cardId={this.state.isDetailsShown.cardId} groupId={this.state.isDetailsShown.groupId} changeIsDetailsShown={this.changeIsDetailsShown} />}
+                    <CardDetails updateState={this.updateState} onRemoveCard={this.onRemoveCard} cardId={this.state.isDetailsShown.cardId} groupId={this.state.isDetailsShown.groupId} />}
             </div>
         )
     }

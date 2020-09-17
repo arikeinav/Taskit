@@ -9,16 +9,16 @@ export class _CardDetails extends Component {
     state = {
         card: null
     }
-
     async componentDidMount() {
         const card = await boardService.getCardById(this.props.board, this.props.groupId, this.props.cardId)
         this.setState({ card })
     }
-
-
-
     onRmoveModal = () => {
-        this.props.changeIsDetailsShown(false)
+        this.props.updateState('isDetailsShown', false)
+    }
+    onHandleRemove = () => {
+        this.onRmoveModal()
+        this.props.onRemoveCard(this.state.card.id)
     }
 
     render() {
@@ -35,21 +35,23 @@ export class _CardDetails extends Component {
                     </header>
                     <button>Invit</button>
                     <section className="avatar-members flex">
-                        <AvatarGroup max={3}>
-                            {card.assignedMembers.map(member => {
-                                console.log("render -> member", member)
-                                return member.imgUrl ?
-                                    <Avatar key={member._id} asrc={member.imgUrl}></Avatar>
-                                    :
-                                    <Avatar key={member._id} src={member.imgUrl}>{member.userName.substring(0, 1).toUpperCase()}{member.userName.substring(1, 2).toUpperCase()}</Avatar>
-                            }
-                            )}
-                        </AvatarGroup>
+                        {card.assignedMembers &&
+                            <AvatarGroup max={3}>
+                                {card.assignedMembers.map(member => {
+                                    console.log("render -> member", member)
+                                    return member.imgUrl ?
+                                        <Avatar key={member._id} asrc={member.imgUrl}></Avatar>
+                                        :
+                                        <Avatar key={member._id} src={member.imgUrl}>{member.userName.substring(0, 1).toUpperCase()}{member.userName.substring(1, 2).toUpperCase()}</Avatar>
+                                }
+                                )}
+                            </AvatarGroup>
+                        }
                     </section>
                     <p>description:</p>
                     {/* <textarea>{card.description}</textarea> */}
 
-
+                    <button onClick={this.onHandleRemove} className="btn">Delete Card</button>
                 </div>
             </div>
         )

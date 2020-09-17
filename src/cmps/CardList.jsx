@@ -12,7 +12,7 @@ export class CardList extends React.Component {
         this.setState({ isAddCard: true })
     }
     doneAddCard = () => {
-        this.setState({ isAddCard: false })
+        this.setState({ isAddGroup: false })
     }
     
     render() {
@@ -23,7 +23,7 @@ export class CardList extends React.Component {
                     <p>{group.title}</p>
                     <button className="btn" onClick={() => this.props.onRemoveGroup(group.id)}>X</button>
                 </header>
-                {group.cards.map(card => <CardPreview card={card} key={card.id} changeIsDetailsShown={this.props.changeIsDetailsShown} groupId={group.id} />)}
+                {group.cards.map(card => <CardPreview card={card} key={card.id} updateState={this.props.updateState} groupId={group.id} />)}
                 {this.state.isAddCard ?
                     <AddText onAdd={this.props.onAdd} type="Card" groupId={group.id} doneAddCard={this.doneAddCard}/>
                     :

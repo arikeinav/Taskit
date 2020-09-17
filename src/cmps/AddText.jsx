@@ -13,6 +13,7 @@ export class AddText extends React.Component {
         ev.preventDefault();
         this.props.type === 'Card' && this.props.doneAddCard()
         this.props.onAdd(this.props.type ,this.state.text, this.props.groupId)
+        this.setState({ text:'' })
     }
     render() {
         return (
