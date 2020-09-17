@@ -24,13 +24,13 @@
       {
         "_id": "u103",
         "userName": "Shlomi Koplianski",
-        "imgUrl": "http://some-img"
+        "imgUrl": ""
       }
     ],
     "groups": [
       {
-        "id": "l101",
-        "title": "Tasks",
+        "id": "g101",
+        "title": "Backlog",
         "cards": [
           {
             "id": "c101",
@@ -78,12 +78,24 @@
           },
           {
             "id": "c102",
-            "title": "Add Samples"
+            "title": "Find a Logo for the app"
+          },
+          {
+            "id": "c111",
+            "title": "Discover React D&D"
+          },
+          {
+            "id": "c112",
+            "title": "Buy huney for Rosh Hashana"
+          },
+          {
+            "id": "c113",
+            "title": "Learn about sockets!!!"
           }
         ]
       },
       {
-        "id": "l102",
+        "id": "g102",
         "title": "In progres",
         "cards": [
           {
@@ -91,8 +103,107 @@
             "title": "Go surfing"
           },
           {
+            "id": "c108",
+            "title": "Design the home page"
+          },
+          {
+            "id": "c109",
+            "title": "Discover React D&D"
+          },
+          {
+            "id": "c115",
+            "title": "sleep"
+          },
+          {
+            "id": "c114",
+            "title": "Finish the sprint!!!"
+          },
+          {
             "id": "c104",
-            "title": "Finish the fucking sprint",
+            "title": "Write an amazing Trello app and make it work!!!!",
+            "description": "Write an amazing Trello app and make it work!!!!",
+            "checklists": [
+              {
+                "id": "YEhmF",
+                "title": "Checklist",
+                "todos": [
+                  {
+                    "title": "To Do 1",
+                    "isDone": false,
+                    "id": "212jX"
+                  }
+                ]
+              }
+            ],
+            "assignedMembers": [
+              {
+                "_id": "u102",
+                "userName": "Shahar Sadof",
+                "imgUrl": "https://www.google.com"
+              }
+            ],
+            "labels": [
+              {
+                "id": "101",
+                "title": "done",
+                "color": "#61bd4f"
+              }
+            ],
+            "createdAt": 1590999730348,
+            "dueDate": 16156215211,
+            "byMember": {
+              "_id": "u103",
+              "userName": "Shlomi Koplianski"
+            },
+            "style": {
+              "bgColor": "#26de81"
+            }
+          }
+        ]
+      },
+      {
+        "id": "g103",
+        "title": "Done",
+        "cards": [
+          {
+            "id": "c205",
+            "title": "Buy wine"
+          },
+          {
+            "id": "c201",
+            "title": "Design the main app page"
+          },
+          {
+            "id": "c202",
+            "title": "Buy a fish head"
+          },
+          {
+            "id": "c203",
+            "title": "Dont forget to fast in Yom Kippur"
+          },
+          {
+            "id": "c204",
+            "title": "Design the home page"
+          },
+          {
+            "id": "c201",
+            "title": "Design the main app page"
+          },
+          {
+            "id": "c202",
+            "title": "Buy a fish head"
+          },
+          {
+            "id": "c203",
+            "title": "Dont forget to fast in Yom Kippur"
+          },
+          {
+            "id": "c204",
+            "title": "Design the home page"
+          },
+          {
+            "id": "c205",
+            "title": "Discover React D&D",
             "description": "Write an amazing Trello app and make it work!!!!",
             "checklists": [
               {
@@ -180,7 +291,7 @@
     ],
     "groups": [
       {
-        "id": "l101",
+        "id": "g101",
         "title": "Tasks",
         "cards": [
           {
@@ -234,7 +345,7 @@
         ]
       },
       {
-        "id": "l102",
+        "id": "g102",
         "title": "In progres",
         "cards": [
           {
@@ -331,7 +442,7 @@
     ],
     "groups": [
       {
-        "id": "l103",
+        "id": "g103",
         "title": "Tasks",
         "cards": [
           {
@@ -385,7 +496,7 @@
         ]
       },
       {
-        "id": "l104",
+        "id": "g104",
         "title": "In progres",
         "cards": [
           {

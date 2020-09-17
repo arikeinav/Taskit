@@ -17,6 +17,7 @@ export class _BoardDetails extends Component {
     componentDidMount() {
         const { boardId } = this.props.match.params
         this.props.loadBoard(boardId)
+    
     }
     componentDidUpdate(prevProps, prevState) {
         console.log('am i changing??');
@@ -28,6 +29,7 @@ export class _BoardDetails extends Component {
     onAddGroup = (board) => {
         const group = {title: 'new Grouppppp'}
         this.props.addGroup(board, group)
+        
     }
 
     render() {
@@ -47,7 +49,7 @@ export class _BoardDetails extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
     board: state.boardReducer.currBoard
 }}
