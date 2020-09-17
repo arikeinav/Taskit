@@ -11,6 +11,7 @@ export const boardService = {
   removeGroup,
   removeCard,
   addCard,
+  updateCard
 };
 
 function loadBoard(boardId) {
@@ -28,17 +29,15 @@ function loadBoard(boardId) {
 
 async function save(board) {
   if (board._id) {
-    console.log('board')
     return httpService.put(`board/${board._id}`, board);
   }
   else {
-
     const addedBoard = httpService.post(`board`, board);
     return addedBoard
   }
 }
 function query(filterBy) {
-  console.log(boards);
+
   // var queryStr =''
   // if (filterBy)  queryStr = `?name=${filterBy.name}&type=${filterBy.type}&inStock=${filterBy.inStock}`;
   // return httpService.get(`board${queryStr|| ''}`);
@@ -51,8 +50,9 @@ function removeBoard(boardId) {
 
 function addGroup(boardId, group) {
   group = {
-    id: 'l' + makeId(),
+    id: 'g' + makeId(),
     title: group.title,
+    cards:[]
   }
   const board = boards.find(board => board._id === boardId)
   board.groups.push(group)
@@ -88,6 +88,22 @@ function addCard(boardId, groupId, card) {
   return board
 
 }
+
+function updateCard(boardId, groupId, card) {
+  var cardId=card.id;
+  const board = boards.find(board => board._id === boardId);
+  const group = board.groups.find(group => group.id === groupId);
+  let cardIdx = group.cards.findIndex(card => card.id === cardId);
+  group.cards.splice(cardIdx,1,card)
+  return board
+
+}
+
+
+
+
+
+
 
 
 

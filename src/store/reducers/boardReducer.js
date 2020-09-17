@@ -1,6 +1,6 @@
 const initialState = {
     boards: [],
-    currBoard :null
+    currBoard : null
 
   };
   
