@@ -17,10 +17,10 @@ export class BoardHeader extends Component {
         const { board } = this.props
         
         return (
-            <div className="board-header flex space-between">
-                <div className="board-name">{board.title}</div>
+            <div className="board-header grid">
+                <div className="board-name BH1">{board.title}</div>
 
-                <section className="avatar-members flex">
+                <section className="BH2 avatar-members flex">
                     <AvatarGroup max={3}>
                         {board.members.map(member =>
                             member.imgUrl ?
@@ -31,10 +31,10 @@ export class BoardHeader extends Component {
                     </AvatarGroup>
                 </section>
 
-                <div className="flex">
-                    <button >Invite</button>
-                    <button >Menu</button>
-                </div>
+                
+                    <button className="BH3 btn">Invite</button>
+                    <button className="BH4 btn">Menu</button>
+                
             </div>
         )
     }

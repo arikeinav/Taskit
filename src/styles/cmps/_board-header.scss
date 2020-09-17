@@ -1,9 +1,22 @@
 .board-header{
-    background-color:rgb(252, 183, 183);
+    background-color:rgba(124, 124, 124, 0.568);
     height: $board-header-height;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color:white; 
+    grid-template-columns: 1fr 3fr 0.5fr 0.5fr;
+}
 
-    .board-name{
-        margin:0 ;
-        padding: 10px;
-    }
+.BH1{
+    text-align: left;
+    margin: auto;
+    padding-inline-end: 70px;
+}
+.BH4{
+    margin: auto;
+    // width: 95%;
+}
+.BH3{
+    margin: auto;
+    margin-left:50%;
 }
