@@ -1,14 +1,32 @@
 import React from 'react'
 
 import { CardPreview } from './CardPreview'
+import { AddText } from './AddText'
 
-export function CardList({ group, changeIsDetailsShown }) {
+export class CardList extends React.Component {
 
-    return (
-        <div className="card-list">
-            <p>{group.title}</p>
-            {group.cards.map(card => <CardPreview card={card} key={card.id} changeIsDetailsShown={changeIsDetailsShown} groupId={group.id}/>)}
-            <button>+ Add card</button>
-        </div>
-    )
+    state = {
+        isAddCard:false
+    }
+    onEditCard = () => {
+        this.setState({ isAddCard: true })
+    }
+
+    render() {
+        const group = this.props.group
+        return (
+            <div className="card-list">
+                <header className="flex space-between">
+                    <p>{group.title}</p>
+                    <button className="btn" onClick={() => this.props.onRemoveGroup(group.id)}>X</button>
+                </header>
+                {group.cards.map(card => <CardPreview card={card} key={card.id} changeIsDetailsShown={this.props.changeIsDetailsShown} groupId={group.id} />)}
+                {this.state.isAddCard ?
+                    <AddText onAdd={this.props.onAdd} type="Card" groupId={group.id}/>
+                    :
+                    <button onClick={() => this.onEditCard()}>+ Add card</button>
+                }
+            </div>
+        )
+    }
 }

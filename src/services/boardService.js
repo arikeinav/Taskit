@@ -69,7 +69,6 @@ function removeGroup(boardId, groupId) {
 }
 
 
-
 function removeCard(boardId, groupId, cardId) {
   const board = boards.find(board => board._id === boardId)
   const group = board.groups.find(group => group.id === groupId)
@@ -80,6 +79,7 @@ function removeCard(boardId, groupId, cardId) {
 
 
 function addCard(boardId, groupId, card) {
+  console.log("addCaaaaaaaaaaard -> groupId", groupId)
   card = {
     id: 'c' + makeId(),
     title: card.title,
