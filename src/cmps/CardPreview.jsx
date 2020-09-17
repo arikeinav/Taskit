@@ -13,6 +13,7 @@ export function CardPreview({ card, updateState, groupId, index }) {
             {(provided) => (
                 <div className="card" onClick={() => openCardDetails(card.id)} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
                     <p>{card.title}</p>
+                    {card.imgUrl && <img className="img-caed-preview" src={card.imgUrl} alt="Loading"/>}
                 </div>
             )}
         </Draggable>

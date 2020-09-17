@@ -54,7 +54,7 @@
               {
                 "_id": "u102",
                 "userName": "Shahar Sadof",
-                "imgUrl": "https://www.google.com"
+                "imgUrl": ""
               }
             ],
             "labels": [
@@ -74,7 +74,7 @@
             
               "bgColor": "#26de81",
             
-            "imgUrl": "https://www.google.com"
+            "imgUrl": "https://res.cloudinary.com/cloudinary-img/image/upload/v1600352682/Taskit/caleb-jones-G3EMue5dLO0-unsplash_gujo4j.jpg"
           },
           {
             "id": "c102",
@@ -104,7 +104,8 @@
           },
           {
             "id": "c108",
-            "title": "Design the home page"
+            "title": "Design the home page",
+            "imgUrl": "https://res.cloudinary.com/cloudinary-img/image/upload/v1600352679/Taskit/tony-yeung-Exq6e9gH4Ag-unsplash_e7ltjx.jpg"
           },
           {
             "id": "c109",

@@ -68,3 +68,17 @@ export function addCard(board, groupId, card) {
     dispatch({ type: "UPDATE_BOARD", board });
   };
 }
+
+export function updateCard(board, groupId, card) {
+  return async (dispatch) => {
+    board = await boardService.addCard(board._id, groupId, card)
+    dispatch({ type: "UPDATE_BOARD", board });
+  };
+}
+
+// export function addImgToCard(board, groupId, card, imgUrl) {
+//   return async (dispatch) => {
+//     board = await boardService.addImgToCard(board._id, groupId, card, imgUrl)
+//     dispatch({ type: "UPDATE_IMG_TO_CARD", board });
+//   };
+// }

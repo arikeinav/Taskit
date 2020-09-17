@@ -6,7 +6,6 @@ import { CardList } from '../cmps/CardList'
 import { CardDetails } from '../cmps/CardDetails'
 import { DragDropContext } from 'react-beautiful-dnd'
 import { AddText } from '../cmps/AddText'
-import { AddImg } from '../cmps/AddImg'
 
 
 export class _BoardDetails extends Component {
@@ -54,7 +53,6 @@ export class _BoardDetails extends Component {
         if (board === null) return <div>Loading...</div>
         return (
             <div className="board-details ">
-                {/* <AddImg /> */}
                 <BoardHeader board={board} />
                 {this.state.isDetailsShown.cardId &&
                     <CardDetails cardId={this.state.isDetailsShown.cardId} groupId={this.state.isDetailsShown.groupId} changeIsDetailsShown={this.changeIsDetailsShown} />}

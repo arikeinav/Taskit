@@ -1,0 +1,22 @@
+.add-img-page{
+
+    .add-img-modal{
+        background-color: #F4F5F7;
+        position: fixed;
+        display: block;
+        position: fixed;
+        left: 5vw;
+        top: 10vh;
+        height: 80vh;
+        width: 90vw;
+        z-index: 11;
+    
+    }
+    .img-preview{
+        width: 130px;
+        height: 100px;
+        z-index: 12;
+        margin: 10px;
+        cursor: pointer;
+    }
+}
