@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
 
+import {cloudinaryService} from '../services/cloudinaryService'
+
 export class AddImg extends Component {
 
     onSelectImg = (imgUrl) => {
         this.props.card.imgUrl = imgUrl
-        console.log("AddImg -> onSelectImg -> this.props.card", this.props.card)
         this.props.updateState('isAddImgModalShown', false)
         return this.props.card
-    }   
+    }
+    onAddImg = async (ev) => {
+        const imgUrl = await cloudinaryService.uploadImg(ev)
+        this.onSelectImg(imgUrl)
+      }
 
     render() {
         const imgUrls = [
@@ -21,10 +26,13 @@ export class AddImg extends Component {
             <div className="add-img-page">
                 <div className="empty-modal" onClick={() => this.props.updateState('isAddImgModalShown', false)}></div>
                 <div className="add-img-modal">
-
                     {imgUrls.map((imgUrl, index) => <img onClick={() => this.onSelectImg(imgUrl)} className="img-preview" key={index} src={imgUrl} alt="Loading" />)}
-                </div>
 
+                    <div className="add-private-img">
+                        <label> Add your image </label>
+                        <input onChange={this.onAddImg} type="file" />
+                    </div>
+                </div>
             </div>
         )
     }
