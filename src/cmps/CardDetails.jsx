@@ -2,7 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
-import { ColorModal } from './ColorModal'
+
+// date picker
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+
+// import { ColorModal } from './ColorModal'
 import { boardService } from '../services/boardService'
 import { AddImg } from './AddImg'
 import { updateCard } from '../store/actions/boardActions'
@@ -13,7 +19,8 @@ export class _CardDetails extends Component {
         card: null,
         isAddImgModalShown: false,
         isColorShown: false,
-        isDescriptionEdit: false
+        isDescriptionEdit: false,
+        startDate: new Date()
     }
     async componentDidMount() {
         const card = await boardService.getCardById(this.props.board, this.props.groupId, this.props.cardId)
@@ -46,8 +53,6 @@ export class _CardDetails extends Component {
         this.updateState('isDescriptionEdit', false)
         this.saveCard()
     }
-    
-
     updateTextCard = (key, val) => {
         this.setState(prevState => ({
             card: {
@@ -56,11 +61,14 @@ export class _CardDetails extends Component {
             }
         }))
     }
-
+    handleChangeDate = date => {
+        this.setState({
+            startDate: date
+        })
+    }
     render() {
         if (!this.state.card) return <div>Loading...</div>
         const { card } = this.state
-        console.log("renderrrrrrrrrrrr", card)
         return (
             <div className="card-modal flex align-center">
 
@@ -71,8 +79,8 @@ export class _CardDetails extends Component {
                         <h3>{card.title}</h3>
                         <button onClick={this.onRmoveModal}>X</button>
                     </header>
-                    <div className="flex">
-                        <div className="details-body">
+                    <div className="flex space-between">
+                        <div className="modal-details-left">
                             <button>Invite</button>
                             <section className="avatar-members flex">
                                 {card.assignedMembers &&
@@ -91,7 +99,7 @@ export class _CardDetails extends Component {
                             <div>
                                 <p>description:</p>
                                 <textarea
-                                className={this.state.isDescriptionEdit ? "edit-card-description" : "not-edit-card-description"}
+                                    className={this.state.isDescriptionEdit ? "edit-card-description" : "not-edit-card-description"}
                                     value={this.state.card.description ? this.state.card.description : ''}
                                     onChange={(ev) => this.updateTextCard('description', ev.target.value)}
                                     placeholder="Add a more details description..."
@@ -107,15 +115,27 @@ export class _CardDetails extends Component {
                                     <button onClick={this.onRemoveImg} className="btn">Remove Image</button>
                                 </div>
                             }
+
                         </div>
-                        <div className="side-bar-details">
+                        <div className="side-bar-details-right flex column">
                             <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}>Add Cover Image</button>
                             <button onClick={this.onHandleRemove} className="btn">Delete Card</button>
+
+
+
+                            <DatePicker
+                                selected={this.state.startDate}
+                                onChange={this.handleChangeDate}
+                                showTimeSelect
+                                dateFormat="Pp"
+                            />
+
+
+
                         </div>
                     </div>
+                    {this.state.isAddImgModalShown && <AddImg card={card} updateState={this.updateState} />}
                 </div>
-                { this.state.isAddImgModalShown && <AddImg card={card} updateState={this.updateState} />
-                }
             </div>
         )
     }

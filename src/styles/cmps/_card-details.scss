@@ -1,34 +1,33 @@
 .card-modal{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 9;
+
     
     
-    .empty-modal {
-        visibility: visible;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 10;
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.5);
-    }
+
     .details-modal{
-        background-color: #F4F5F7;
-        position: fixed;
-        display: flex;
-        position: fixed;
-        left: 15vw;
-        top: 20vh;
-        width: 60vw;
-        height: 60%;
-        z-index: 11;
         flex-direction: column;
+        background-color: #F4F5F7;
+        display: flex;
+        margin: 50px auto 0;
+        width: 750px;
+        min-height: 300px;
+        z-index: 11;
 
         .card-img{
             object-fit:cover;
             width: 40%;
             height: 40%;
         }
-
+        .modal-details-left{
+            width:100%;
+        }
+        .side-bar-details-right{
+            width: 222px;
+        }
         .not-edit-card-description{
             background-color: #F4F5F7;
             cursor: pointer;
@@ -39,7 +38,6 @@
         .edit-card-description{
             resize: none;
             width: 100%;
-            // border-style: none
         }
     }
 }
