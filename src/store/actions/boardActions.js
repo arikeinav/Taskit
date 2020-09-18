@@ -71,7 +71,7 @@ export function addCard(board, groupId, card) {
 
 export function updateCard(board, groupId, card) {
   return async (dispatch) => {
-    board = await boardService.addCard(board._id, groupId, card)
+    board = await boardService.updateCard(board._id, groupId, card)
     dispatch({ type: "UPDATE_BOARD", board });
   };
 }

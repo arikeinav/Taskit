@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
-import {ColorModal} from './ColorModal'
+import { ColorModal } from './ColorModal'
 import { boardService } from '../services/boardService'
 import { AddImg } from './AddImg'
 import { updateCard } from '../store/actions/boardActions'
@@ -12,7 +12,7 @@ export class _CardDetails extends Component {
     state = {
         card: null,
         isAddImgModalShown: false,
-        isColorShown:false,
+        isColorShown: false,
         isDescriptionEdit: false
     }
     async componentDidMount() {
@@ -23,6 +23,7 @@ export class _CardDetails extends Component {
         this.setState({ [key]: val })
     }
     onRmoveModal = () => {
+        this.saveCard()
         this.props.updateState('isDetailsShown', false)
     }
     onHandleRemove = () => {
@@ -37,30 +38,35 @@ export class _CardDetails extends Component {
         delete card.imgUrl
         this.props.updateCard(this.props.board, this.props.groupId, card)
     }
+    saveCard = () => {
+        this.updateState('isDescriptionEdit', false)
+        this.props.updateCard(this.props.board, this.props.groupId, this.state.card)
+    }
+    doneEdit = () => {
+        this.updateState('isDescriptionEdit', false)
+        this.saveCard()
+    }
+    
+
     updateTextCard = (key, val) => {
-        if(!this.state.card.hasOwnProperty('description')) {
-            this.setState(prevState => ({
-                card : {
-                    ...prevState.card,
-                    description: ''
-                }
-            }))
-        }
         this.setState(prevState => ({
-            ...prevState,
-            [key]: val
+            card: {
+                ...prevState.card,
+                [key]: val
+            }
         }))
     }
 
     render() {
         if (!this.state.card) return <div>Loading...</div>
         const { card } = this.state
+        console.log("renderrrrrrrrrrrr", card)
         return (
             <div className="card-modal">
 
                 <div className="empty-modal" onClick={this.onRmoveModal}></div>
 
-                <div className="details-modal">
+                <div className="details-modal" onClick={this.doneEdit}>
                     <header className="card-header flex space-between">
                         <h3>{card.title}</h3>
                         <button onClick={this.onRmoveModal}>X</button>
@@ -84,15 +90,14 @@ export class _CardDetails extends Component {
 
                             <div>
                                 <p>description:</p>
-
                                 <textarea
-                                    onChange={() => this.updateTextCard('card.description', this.state.card.description)}
-                                    value={this.state.card.description}
+                                className={this.state.isDescriptionEdit ? "edit-card-description" : "not-edit-card-description"}
+                                    value={this.state.card.description ? this.state.card.description : ''}
+                                    onChange={(ev) => this.updateTextCard('description', ev.target.value)}
                                     placeholder="Add a more details description..."
                                     onClick={() => this.updateState('isDescriptionEdit', true)}>
                                 </textarea>
-
-                                {this.state.isDescriptionEdit && <button onClick={() => this.updateTextCard('card', this.state.card.description)} className="btn">Save</button>}
+                                {this.state.isDescriptionEdit && <button onClick={this.saveCard} className="btn">Save</button>}
                             </div>
 
 
