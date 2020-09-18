@@ -9,10 +9,11 @@ export function CardPreview({ card, updateState, groupId, index }) {
     }
 
     return (
-        <Draggable draggableId={card.id} index={index}>
+        <Draggable draggableId={card.id} index={index} >
             {(provided) => (
-                <div className="card-preview" onClick={() => openCardDetails(card.id)} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                    <p>{card.title}</p>
+                <div className="card-preview flex column"  onClick={() => openCardDetails(card.id)} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                    {/* <div style={{ backgroundColor: "blue" }}>Labels</div> */}
+                    <p className="p-card-preview">{card.title}</p>
                     {card.imgUrl && <img className="img-card-preview" src={card.imgUrl} alt="Loading"/>}
                 </div>
             )}

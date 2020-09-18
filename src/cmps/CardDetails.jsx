@@ -62,7 +62,7 @@ export class _CardDetails extends Component {
         const { card } = this.state
         console.log("renderrrrrrrrrrrr", card)
         return (
-            <div className="card-modal">
+            <div className="card-modal flex align-center">
 
                 <div className="empty-modal" onClick={this.onRmoveModal}></div>
 
