@@ -12,8 +12,8 @@ export class _CardDetails extends Component {
     state = {
         card: null,
         isAddImgModalShown: false,
-        isColorShown:false
-
+        isColorShown:false,
+        isDescriptionEdit: false
     }
     async componentDidMount() {
         const card = await boardService.getCardById(this.props.board, this.props.groupId, this.props.cardId)
@@ -21,7 +21,6 @@ export class _CardDetails extends Component {
     }
     updateState = (key, val) => {
         this.setState({ [key]: val })
-        console.log('hey');
     }
     onRmoveModal = () => {
         this.props.updateState('isDetailsShown', false)
@@ -37,6 +36,20 @@ export class _CardDetails extends Component {
         const card = this.state.card
         delete card.imgUrl
         this.props.updateCard(this.props.board, this.props.groupId, card)
+    }
+    updateTextCard = (key, val) => {
+        if(!this.state.card.hasOwnProperty('description')) {
+            this.setState(prevState => ({
+                card : {
+                    ...prevState.card,
+                    description: ''
+                }
+            }))
+        }
+        this.setState(prevState => ({
+            ...prevState,
+            [key]: val
+        }))
     }
 
     render() {
@@ -59,7 +72,6 @@ export class _CardDetails extends Component {
                                 {card.assignedMembers &&
                                     <AvatarGroup max={3}>
                                         {card.assignedMembers.map(member => {
-                                            console.log("render -> member", member)
                                             return member.imgUrl ?
                                                 <Avatar key={member._id} asrc={member.imgUrl}></Avatar>
                                                 :
@@ -69,8 +81,21 @@ export class _CardDetails extends Component {
                                     </AvatarGroup>
                                 }
                             </section>
-                            <p>description:</p>
-                            <textarea>{card.description}</textarea>
+
+                            <div>
+                                <p>description:</p>
+
+                                <textarea
+                                    onChange={() => this.updateTextCard('card.description', this.state.card.description)}
+                                    value={this.state.card.description}
+                                    placeholder="Add a more details description..."
+                                    onClick={() => this.updateState('isDescriptionEdit', true)}>
+                                </textarea>
+
+                                {this.state.isDescriptionEdit && <button onClick={() => this.updateTextCard('card', this.state.card.description)} className="btn">Save</button>}
+                            </div>
+
+
                             {card.imgUrl &&
                                 <div>
                                     <img className="card-img" src={card.imgUrl} alt="Loading" />
