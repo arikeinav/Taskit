@@ -61,9 +61,10 @@ function addGroup(boardId, group) {
 }
 
 function removeGroup(boardId, groupId) {
+  console.log(groupId)
   const board = boards.find(board => board._id === boardId)
   var groupIdx = board.groups.findIndex(group => group.id === groupId)
-  board.groups.splice(1, groupIdx)
+  board.groups.splice(groupIdx,1)
   return board
 }
 
