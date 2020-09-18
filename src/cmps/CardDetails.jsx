@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
-
+import {ColorModal} from './ColorModal'
 import { boardService } from '../services/boardService'
 import { AddImg } from './AddImg'
 import { updateCard } from '../store/actions/boardActions'
@@ -11,7 +11,9 @@ export class _CardDetails extends Component {
 
     state = {
         card: null,
-        isAddImgModalShown: false
+        isAddImgModalShown: false,
+        isColorShown:false
+
     }
     async componentDidMount() {
         const card = await boardService.getCardById(this.props.board, this.props.groupId, this.props.cardId)
