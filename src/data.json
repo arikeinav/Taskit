@@ -270,7 +270,7 @@
         ]
       },
       {
-        "id": "g101",
+        "id": "g106",
         "title": "Tasks",
         "cards": [
           {
@@ -315,7 +315,7 @@
             
               "bgColor": "#26de81",
             
-            "imgUrl": "https://www.google.com"
+            "imgUrl": "https://res.cloudinary.com/cloudinary-img/image/upload/v1600352682/Taskit/caleb-jones-G3EMue5dLO0-unsplash_gujo4j.jpg"
           },
           {
             "id": "c102",
