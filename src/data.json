@@ -1,7 +1,7 @@
 {
   "board": [{
     "_id": "b101",
-    "title": "Trello project",
+    "title": "Example project",
     "createdAt": 1589983468418,
     "createdBy": {
       "_id": "u101"
@@ -29,13 +29,13 @@
     ],
     "groups": [
       {
-        "id": "g10111",
+        "id": "g101",
         "title": "Backlog",
         "cards": [
           {
             "id": "c101",
             "title": "Finish progressive App",
-            "description": "The app should be great!",
+            "description": "The app should look great!",
            
             "checklists": [
               {
@@ -78,19 +78,26 @@
           },
           {
             "id": "c102",
-            "title": "Find a Logo for the app"
+            "title": "Find a Logo for the app",
+            "description": "The new Logo should be unik and colorfall"
           },
           {
             "id": "c111",
-            "title": "Discover React D&D"
+            "title": "Discover React D&D",
+            "description": "Try making this drag and drop shit work"
           },
           {
             "id": "c112",
-            "title": "Buy huney for Rosh Hashana"
+            "title": "Buy huney for Rosh Hashana",
+            "description": "Don't you dare forget otherwise your wife will be very angry.",
+            "imgUrl":"https://res.cloudinary.com/cloudinary-img/image/upload/v1600352680/Taskit/luca-bravo-alS7ewQ41M8-unsplash_h9h4nj.jpg"
+
           },
           {
             "id": "c113",
-            "title": "Learn about sockets!!!"
+            "title": "Learn about sockets!!!",
+            "description": "make sure that every drag and drop action is viewed by online members"
+
           }
         ]
       },
@@ -100,28 +107,33 @@
         "cards": [
           {
             "id": "c103",
-            "title": "Go surfing"
+            "title": "Go surfing",
+            "description": "Sea Activitie is permitted during the quarantine, so try to make time for it during the sprint "
           },
           {
             "id": "c108",
             "title": "Design the home page",
+            "description": "Make sure that the home page reflects the content of website",
             "imgUrl": "https://res.cloudinary.com/cloudinary-img/image/upload/v1600352679/Taskit/tony-yeung-Exq6e9gH4Ag-unsplash_e7ltjx.jpg"
           },
           {
             "id": "c109",
-            "title": "Discover React D&D"
+            "title": "Discover React D&D",
+            "description": "Learn about react D&D and start to implement"
           },
           {
             "id": "c115",
-            "title": "sleep"
+            "title": "sleep",
+            "description": "Dont forget to sleep and rest during the sprint"
           },
           {
             "id": "c114",
-            "title": "Finish the sprint!!!"
+            "title": "Finish the sprint!!!",
+            "description": ""
           },
           {
             "id": "c104",
-            "title": "Write an amazing Trello app and make it work!!!!",
+            "title": "Design Trello",
             "description": "Write an amazing Trello app and make it work!!!!",
             "checklists": [
               {
@@ -168,31 +180,41 @@
         "cards": [
           {
             "id": "c2052",
-            "title": "Buy wine"
+            "title": "Buy wine",
+            "description": "2 Pinot Noir and 3 Sauvignon Blanc"
           },
           {
             "id": "c2011",
-            "title": "Design the main app page"
+            "title": "main page",
+            "description": "Design the main app page",
+            "imgUrl":"https://res.cloudinary.com/cloudinary-img/image/upload/v1600352460/Taskit/daniel-chen-cNaEqXSsZ0k-unsplash_acw6rx.jpg"
+
           },
           {
             "id": "c202sa",
-            "title": "Buy a fish head"
+            "title": "Buy a fish head",
+            "description": "You will probably have to buy the whole fish..."
           },
           {
             "id": "c203123",
-            "title": "Dont forget to fast in Yom Kippur"
+            "title": "Fast in Yom Kippur",
+            "description": "If you have to work on the project durring Kippur, then next year you will fast an extra day!!!"
           },
           {
             "id": "c204223",
-            "title": "Design the home page"
+            "title": "css",
+            "description": "Make the app look awesome ",
+            "imgUrl":"https://res.cloudinary.com/cloudinary-img/image/upload/v1600352678/Taskit/seth-doyle--AFVBe7VGqQ-unsplash_xjlclq.jpg"
           },
           {
             "id": "c201",
-            "title": "Design the main app page"
+            "title": "color modal",
+            "description": "Make a color modal for the card edit cmp"
           },
           {
             "id": "c202",
-            "title": "Buy a fish head"
+            "title": "Data",
+            "description": "Add more fake data to the json file"
           },
           {
             "id": "c203",
@@ -200,11 +222,118 @@
           },
           {
             "id": "c204",
-            "title": "Design the home page"
+            "title": "Board img",
+            "description": "Add img adding for each board"
           },
           {
             "id": "c205",
-            "title": "Discover React D&D",
+            "title": " Card img",
+            "description": "Add img adding for each card",
+            "imgUrl":"https://res.cloudinary.com/cloudinary-img/image/upload/v1600352679/Taskit/tony-yeung-Exq6e9gH4Ag-unsplash_e7ltjx.jpg",
+            "checklists": [
+              {
+                "id": "YEhmF",
+                "title": "Checklist",
+                "todos": [
+                  {
+                    "title": "To Do 1",
+                    "isDone": false,
+                    "id": "212jX"
+                  }
+                ]
+              }
+            ],
+            "assignedMembers": [
+              {
+                "_id": "u102",
+                "userName": "Shahar Sadof",
+                "imgUrl": "https://www.google.com"
+              }
+            ],
+            "labels": [
+              {
+                "id": "101",
+                "title": "done",
+                "color": "#61bd4f"
+              }
+            ],
+            "createdAt": 1590999730348,
+            "dueDate": 16156215211,
+            "byMember": {
+              "_id": "u103",
+              "userName": "Shlomi Koplianski"
+            },
+            "style": {
+              "bgColor": "#26de81"
+            }
+          }
+        ]
+      },
+      {
+        "id": "g106",
+        "title": "Tasks",
+        "cards": [
+          {
+            "id": "c101",
+            "title": "Finish progressive App!!",
+            "description": "description...",
+           
+            "checklists": [
+              {
+                "id": "t101",
+                "title": "Checklist",
+                "todos": [
+                  {
+                    "title": "To Do 1",
+                    "isDone": false,
+                    "id": "212jX"
+                  }
+                ]
+              }
+            ],
+            "assignedMembers": [
+              {
+                "_id": "u102",
+                "userName": "Shahar Sadof",
+                "imgUrl": "https://www.google.com"
+              }
+            ],
+            "labels": [
+              {
+                "id": "101",
+                "title": "done",
+                "color": "#61bd4f"
+              }
+            ],
+            
+            "createdAt": 1590999730348,
+            "dueDate": 16156215211,
+            "byMember": {
+              "_id": "u102",
+              "userName": "Shahar Sadof"
+            },
+            
+              "bgColor": "#26de81",
+            
+            "imgUrl": "https://res.cloudinary.com/cloudinary-img/image/upload/v1600352682/Taskit/caleb-jones-G3EMue5dLO0-unsplash_gujo4j.jpg"
+          },
+          {
+            "id": "c102",
+            "title": "Add Samples"
+          }
+        ]
+      },
+      {
+        "id": "g104",
+        "title": "QA",
+        "cards": [
+          {
+            "id": "c1031",
+            "title": "Company name"
+          },
+          {
+            "id": "c1041",
+            "title": "Finish the fucking sprint",
             "description": "Write an amazing Trello app and make it work!!!!",
             "checklists": [
               {
@@ -254,7 +383,7 @@
         "byMember": {
           "_id": "u103",
           "userName": "Shlomi Koplianski",
-          "imgUrl": "http://some-img"
+          "imgUrl": ""
         },
         "card": {
           "id": "c101",
@@ -415,7 +544,7 @@
     ]
   },{
     "_id": "b103",
-    "title": "Trello project",
+    "title": "Stam project",
     "createdAt": 1589983468418,
     "createdBy": {
       "_id": "u101"
