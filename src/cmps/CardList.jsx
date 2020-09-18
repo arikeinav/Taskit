@@ -32,7 +32,7 @@ render() {
             {this.state.isAddCard ?
                 <AddText onAdd={this.props.onAdd} type="Card" groupId={group.id} updateState={this.updateState} />
                 :
-                <button onClick={() => this.updateState('isAddCard', true)}>+ Add card</button>
+                <button className="btn" onClick={() => this.updateState('isAddCard', true)}>+ Add card</button>
             }
         </div>
     )
