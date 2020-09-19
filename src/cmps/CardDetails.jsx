@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
 
+import TextField from '@material-ui/core/TextField';
+
 // date picker
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -28,6 +30,9 @@ export class _CardDetails extends Component {
     }
     updateState = (key, val) => {
         this.setState({ [key]: val })
+        // console.log("updateState -> val", val)
+        // console.log("updateState -> key", key)
+
     }
     onRmoveModal = () => {
         this.saveCard()
@@ -46,10 +51,12 @@ export class _CardDetails extends Component {
         this.props.updateCard(this.props.board, this.props.groupId, card)
     }
     saveCard = () => {
+        console.log("saveCard -> saveCard")
         this.updateState('isDescriptionEdit', false)
         this.props.updateCard(this.props.board, this.props.groupId, this.state.card)
     }
     doneEdit = () => {
+        console.log("doneEdit -> doneEdit")
         this.updateState('isDescriptionEdit', false)
         this.saveCard()
     }
@@ -71,6 +78,8 @@ export class _CardDetails extends Component {
 
     render() {
 
+        console.log("render -> this.state.isDescriptionEdit", this.state.isDescriptionEdit)
+
         if (!this.state.card) return <div>Loading...</div>
         const { card } = this.state
         return (
@@ -78,14 +87,14 @@ export class _CardDetails extends Component {
 
                 <div className="empty-modal" onClick={this.onRmoveModal}></div>
 
-                <div className="details-modal" onClick={this.doneEdit}>
+                <div className="details-modal">
                     <header className="card-header flex space-between">
                         <h3>{card.title}</h3>
                         <button onClick={this.onRmoveModal}>X</button>
                     </header>
                     <div className="flex space-between">
                         <div className="modal-details-left">
-                            <button>Invite</button>
+                            <button className="btn">Invite</button>
                             <section className="avatar-members flex">
                                 {card.assignedMembers &&
                                     <AvatarGroup max={3}>
@@ -99,7 +108,7 @@ export class _CardDetails extends Component {
                                     </AvatarGroup>
                                 }
                             </section>
-                            
+
                             {(this.state.isTimeEdit || this.state.card.dueDate) &&
                                 <div>
                                     < DatePicker
@@ -112,18 +121,42 @@ export class _CardDetails extends Component {
                                 </div>
                             }
                             <div>
-                            <div className="flex">
-                                
-                            </div>
-                                <p>description:</p>
-                                <textarea
+                                <div className="edit-header flex">
+                                    <p>description</p>
+                                    <button className="btn" onClick={() => this.updateState('isDescriptionEdit', true)}>Edit</button>
+                                </div>
+                                {this.state.isDescriptionEdit ?
+                                    <div >
+                                        <TextField
+                                            id="outlined-multiline-static"
+                                            // label="Multiline"
+                                            multiline
+                                            rows={4}
+                                            defaultValue="Default Value"
+                                            variant="outlined"
+                                            className="edit-card-description"
+                                        />
+                                        <button onClick={this.saveCard} className="btn">Save</button>
+                                    </div>
+                                    :
+                                    <textarea
+                                        className="not-edit-card-description"
+                                        value={this.state.card.description ? this.state.card.description : ''}
+                                        onChange={(ev) => this.updateLocalCard('description', ev.target.value)}
+                                        placeholder="Add a more details description..."
+                                        onClick={() => this.updateState('isDescriptionEdit', true)}>
+                                    </textarea>
+                                }
+
+                                {/* {this.state.isDescriptionEdit && } */}
+                                {/* <textarea
                                     className={this.state.isDescriptionEdit ? "edit-card-description" : "not-edit-card-description"}
                                     value={this.state.card.description ? this.state.card.description : ''}
                                     onChange={(ev) => this.updateLocalCard('description', ev.target.value)}
                                     placeholder="Add a more details description..."
                                     onClick={() => this.updateState('isDescriptionEdit', true)}>
                                 </textarea>
-                                {this.state.isDescriptionEdit && <button onClick={this.saveCard} className="btn">Save</button>}
+                                {this.state.isDescriptionEdit && <button onClick={this.saveCard} className="btn">Save</button>} */}
                             </div>
                             {card.imgUrl &&
                                 <div>
