@@ -21,7 +21,7 @@ export class _BoardDetails extends Component {
     }
     
     componentDidUpdate(prevProps, prevState) {
-        console.log('initial gState of groups',this.props.board.groups);
+        console.log('GSTATE of groups',this.props.board.groups);
     }
 
     updateState = (key, val) => {
