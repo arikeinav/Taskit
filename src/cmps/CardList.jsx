@@ -2,6 +2,13 @@ import React from 'react'
 import { Droppable } from 'react-beautiful-dnd'
 import { CardPreview } from './CardPreview'
 import { AddText } from './AddText'
+import styled from 'styled-components'
+
+
+const Container = styled.div`
+transition: background-color 0.2s ease;
+background-color: ${props => (props.isDraggingOver ? '#3493A5' : '#EBECF0')}
+`
 
 export class CardList extends React.Component {
 
@@ -22,12 +29,14 @@ render() {
             </header>
 
             <Droppable droppableId={group.id}>
-                {provided => (
+                {(provided, snapshot) => (
                    
-                    <div ref={provided.innerRef} >
-                        {group.cards.map((card,index) => <CardPreview index={index}  {...provided.droppableProps} card={card} key={card.id} updateState={this.props.updateState} groupId={group.id} />)}
+                    <Container ref={provided.innerRef}
+                    {...provided.droppableProps} 
+                    isDraggingOver={snapshot.isDraggingOver}>
+                        {group.cards.map((card,index) => <CardPreview index={index} card={card} key={card.id} updateState={this.props.updateState} groupId={group.id} />)}
                         {provided.placeholder}
-                    </div>
+                    </Container>
                 )}</Droppable>
 
             {this.state.isAddCard ?
