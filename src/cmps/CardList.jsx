@@ -23,6 +23,7 @@ render() {
 
             <Droppable droppableId={group.id}>
                 {provided => (
+                   
                     <div ref={provided.innerRef} >
                         {group.cards.map((card,index) => <CardPreview index={index}  {...provided.droppableProps} card={card} key={card.id} updateState={this.props.updateState} groupId={group.id} />)}
                         {provided.placeholder}
