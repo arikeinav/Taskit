@@ -7,12 +7,10 @@ a{
     color:#1b0f07;
 }
 
-
 body{
     margin: 0;
     font-family: roboto;
 }
-
 
 .empty-modal {
     visibility: visible;
@@ -24,10 +22,3 @@ body{
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.44);
 }
-// .empty-modal {
-//     visibility: visible;
-//     z-index: 10;
-//     width: 100vw;
-//     height: 100vh;
-//     background-color: rgba(0, 0, 0, 0.5);
-// }

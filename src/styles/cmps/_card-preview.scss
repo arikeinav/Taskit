@@ -9,6 +9,14 @@
     margin-bottom:5px;
     cursor: pointer;
     display:flex;
+
+
+    .small-small-label{
+        width: 36px;
+        height: 6px;
+        margin: 0 1.5px;
+        border-radius:3px;
+    }
 }
 .img-card-preview{
     object-fit:contain;
