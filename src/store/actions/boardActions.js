@@ -33,6 +33,7 @@ export function addBoard(board) {
 }
 
 export function updateBoard(board) {
+  console.log(board)
   return async (dispatch) => {
     board = await boardService.save(board)
     dispatch({ type: "UPDATE_BOARD", board });
@@ -40,41 +41,48 @@ export function updateBoard(board) {
   };
 }
 
-export function removeGroup(board, groupId) {
-  return async (dispatch) => {
-    board = await boardService.removeGroup(board._id, groupId)
-    dispatch({ type: "UPDATE_BOARD", board });
+// export function removeGroup(board, groupId) {
+//   console.log('removeGroup')
+//   return async (dispatch) => {
+//     board = await boardService.removeGroup(board._id, groupId)
+//     dispatch({ type: "UPDATE_BOARD", board });
 
-  };
-}
+//   };
+// }
 
-export function addGroup(board, group) {
-  return async (dispatch) => {
-    board = await boardService.addGroup(board._id, group)
-    dispatch({ type: "UPDATE_BOARD", board });
+// export function addGroup(board, group) {
+//   console.log('addGroup')
+//   return async (dispatch) => {
+//     board = await boardService.addGroup(board._id, group)
+//     dispatch({ type: "UPDATE_BOARD", board });
 
-  };
-}
-export function removeCard(board, groupId, cardId) {
-  return async (dispatch) => {
-    board = await boardService.removeCard(board._id, groupId, cardId)
-    dispatch({ type: "UPDATE_BOARD", board });
-  };
-}
+//   };
+// }
+// export function removeCard(board, groupId, cardId) {
+//   console.log('removeCard')
+//   return async (dispatch) => {
+//     board = await boardService.removeCard(board._id, groupId, cardId)
+//     dispatch({ type: "UPDATE_BOARD", board });
+//   };
+// }
 
-export function addCard(board, groupId, card) {
-  return async (dispatch) => {
-    board = await boardService.addCard(board._id, groupId, card)
-    dispatch({ type: "UPDATE_BOARD", board });
-  };
-}
+// export function addCard(board, groupId, card) {
+//   console.log('addCard')
 
-export function updateCard(board, groupId, card) {
-  return async (dispatch) => {
-    board = await boardService.updateCard(board._id, groupId, card)
-    dispatch({ type: "UPDATE_BOARD", board });
-  };
-}
+//   return async (dispatch) => {
+//     board = await boardService.addCard(board._id, groupId, card)
+//     dispatch({ type: "UPDATE_BOARD", board });
+//   };
+// }
+
+// export function updateCard(board, groupId, card) {
+//   console.log('updateCard')
+
+//   return async (dispatch) => {
+//     board = await boardService.updateCard(board._id, groupId, card)
+//     dispatch({ type: "UPDATE_BOARD", board });
+//   };
+// }
 
 // export function addImgToCard(board, groupId, card, imgUrl) {
 //   return async (dispatch) => {

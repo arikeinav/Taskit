@@ -37,8 +37,15 @@
             border-style: none
         }
         .edit-card-description{
-            resize: none;
+            
             width: 100%;
+        }
+        .edit-header{
+            margin-top:10px;
+            height: 32px;
+            p{
+                margin:5px;
+            }
         }
     }
 }

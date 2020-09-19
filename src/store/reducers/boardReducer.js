@@ -1,7 +1,6 @@
 const initialState = {
     boards: [],
     currBoard : null
-
   };
   
   export function boardReducer(state = initialState, action) {
@@ -29,6 +28,7 @@ const initialState = {
           boards: [...state.boards, action.board],
         };
       case "UPDATE_BOARD":
+        console.log(action.board)
         return {
           ...state,
           currBoard: {...action.board},
