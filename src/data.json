@@ -58,11 +58,7 @@
               }
             ],
             "labels": [
-              {
-                "id": "101",
-                "title": "done",
-                "color": "#61bd4f"
-              }
+              "#FF9F1A"
             ],
             
             "createdAt": 1590999730348,
@@ -156,11 +152,7 @@
               }
             ],
             "labels": [
-              {
-                "id": "101",
-                "title": "done",
-                "color": "#61bd4f"
-              }
+              "#FF9F1A"
             ],
             "createdAt": 1590999730348,
             "dueDate": "",
@@ -251,11 +243,7 @@
               }
             ],
             "labels": [
-              {
-                "id": "101",
-                "title": "done",
-                "color": "#61bd4f"
-              }
+              "#61BD4F"
             ],
             "createdAt": 1590999730348,
             "dueDate": 16156215211,
@@ -299,11 +287,7 @@
               }
             ],
             "labels": [
-              {
-                "id": "101",
-                "title": "done",
-                "color": "#61bd4f"
-              }
+              "#61BD4F"
             ],
             
             "createdAt": 1590999730348,
@@ -356,11 +340,7 @@
               }
             ],
             "labels": [
-              {
-                "id": "101",
-                "title": "done",
-                "color": "#61bd4f"
-              }
+              "#61BD4F"
             ],
             "createdAt": 1590999730348,
             "dueDate": 16156215211,
@@ -450,11 +430,7 @@
               }
             ],
             "labels": [
-              {
-                "id": "101",
-                "title": "done",
-                "color": "#61bd4f"
-              }
+              "#61BD4F"
             ],
             
             "createdAt": 1590999730348,
@@ -507,11 +483,7 @@
               }
             ],
             "labels": [
-              {
-                "id": "101",
-                "title": "done",
-                "color": "#61bd4f"
-              }
+              "#FF9F1A"
             ],
             "createdAt": 1590999730348,
             "dueDate": 16156215211,
@@ -601,11 +573,7 @@
               }
             ],
             "labels": [
-              {
-                "id": "101",
-                "title": "done",
-                "color": "#61bd4f"
-              }
+              "#FF9F1A"
             ],
             
             "createdAt": 1590999730348,
@@ -658,11 +626,7 @@
               }
             ],
             "labels": [
-              {
-                "id": "101",
-                "title": "done",
-                "color": "#61bd4f"
-              }
+              "#FF9F1A"
             ],
             "createdAt": 1590999730348,
             "dueDate": 16156215211,
