@@ -23,6 +23,7 @@ render() {
 
             <Droppable droppableId={group.id}>
                 {provided => (
+                   
                     <div ref={provided.innerRef} >
                         {group.cards.map((card,index) => <CardPreview index={index}  {...provided.droppableProps} card={card} key={card.id} updateState={this.props.updateState} groupId={group.id} />)}
                         {provided.placeholder}
@@ -32,7 +33,7 @@ render() {
             {this.state.isAddCard ?
                 <AddText onAdd={this.props.onAdd} type="Card" groupId={group.id} updateState={this.updateState} />
                 :
-                <button onClick={() => this.updateState('isAddCard', true)}>+ Add card</button>
+                <button className="btn" onClick={() => this.updateState('isAddCard', true)}>+ Add card</button>
             }
         </div>
     )

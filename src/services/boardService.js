@@ -29,13 +29,14 @@ function loadBoard(boardId) {
 // }
 
 async function save(board) {
-  if (board._id) {
-    return httpService.put(`board/${board._id}`, board);
-  }
-  else {
-    const addedBoard = httpService.post(`board`, board);
-    return addedBoard
-  }
+  return board
+  // if (board._id) {
+  //   return httpService.put(`board/${board._id}`, board);
+  // }
+  // else {
+  //   const addedBoard = httpService.post(`board`, board);
+  //   return addedBoard
+  // }
 }
 function query(filterBy) {
 
