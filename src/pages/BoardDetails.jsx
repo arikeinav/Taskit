@@ -19,8 +19,9 @@ export class _BoardDetails extends Component {
         const { boardId } = this.props.match.params
         this.props.loadBoard(boardId)
     }
-
+    
     componentDidUpdate(prevProps, prevState) {
+        console.log('initial gState of groups',this.props.board.groups);
     }
 
     updateState = (key, val) => {
@@ -54,38 +55,71 @@ export class _BoardDetails extends Component {
         if (!destination) return;
         if (destination.droppableId === source.droppableId && destination.index === source.index) return;
 
-        const column = columns.find(column => column.id === source.droppableId);//finding the right group from the groups array
-        //works great till here
+        const start = columns.find(start => start.id === source.droppableId);//finding the group from which a drag was started
+        const finish = columns.find(finish => finish.id === destination.droppableId);//finding the group from which a drag was ended
 
-        // const newTaskIds = [...column.cards];
-        const newTaskIds = Array.from(column.cards);
-        //problem is somewhere above this line
-        const shiftedTask = newTaskIds.find(task => task.id === draggableId)//i added this code-line since the tutorial lacked it
+        if (start === finish) {//in-group movements of cards
+            const newTaskIds = Array.from(start.cards);
+            const shiftedTask = newTaskIds.find(task => task.id === draggableId)//i added this code-line since the tutorial lacked it
 
-        newTaskIds.splice(source.index, 1)
-        newTaskIds.splice(destination.index, 0, shiftedTask)//and this 'shiftedTask' var as well 
+            newTaskIds.splice(source.index, 1)
+            newTaskIds.splice(destination.index, 0, shiftedTask)//and this 'shiftedTask' var as well 
 
 
-        const newColumn = {
-            ...column,
-            cards: newTaskIds,
+            const newColumn = {
+                ...start,
+                cards: newTaskIds,
+            }
+
+            const newGroups = Array.from(columns);
+
+
+            const groupIdx = columns.findIndex(group => group.id === newColumn.id)
+
+            //ok so now i have to repeat the same procedure as in line 69-70 
+            newGroups.splice(groupIdx, 1, newColumn)
+
+            const newState = {
+                ...this.props.board,
+                groups: newGroups
+            }
+            console.log('currBoard at gState is:', this.props.board);
+            console.log('newState is:', newState);
+            this.props.updateBoard(newState)//smth here is passed wrong, and causes an @@Object Object@@
+            return;
+        }
+        // inter-groups-movement of cards:
+        const startTaskIds = Array.from(start.cards); //array-copy of the cards at the start-column
+        const shiftedTask = startTaskIds.find(task => task.id === draggableId)//(my-code) targeting the card i wish to DND and putting it as a var
+        startTaskIds.splice(source.index, 1);//cutting one card out at the start-column
+        const newStart = {
+            ...start,
+            cards: startTaskIds
+        } // creating a start column variable that is spread and also updated with cards (one card less..)
+
+
+        const finishtaskIds = Array.from(finish.cards);
+        finishtaskIds.splice(destination.index, 0 , shiftedTask)
+        const newFinish = {
+            ...finish,
+            cards: finishtaskIds
         }
 
         const newGroups = Array.from(columns);
-       
+//here i need to prepare the final stage where i take the groups array, and make it updated. then i could send it to the newState.
+        const startGroupIdx = newGroups.findIndex(group => group.id === newStart.id)
+        const finishGroupIdx = newGroups.findIndex(group => group.id === newFinish.id)
 
-        const groupIdx = columns.findIndex(group => group.id === newColumn.id)
-
-        //ok so now i have to repeat the same procedure as in line 69-70 
-        newGroups.splice(groupIdx, 1 ,newColumn)
+        newGroups.splice(startGroupIdx,1,newStart)
+        newGroups.splice(finishGroupIdx,1,newFinish)
 
         const newState = {
             ...this.props.board,
-            groups:newGroups
+            groups: newGroups
         }
-        console.log('currBoard at gState is:',this.props.board);
-        console.log('newState is:', newState);
+        console.log('newstate after INTER-GROUPS movement is:', newState);
         this.props.updateBoard(newState)//smth here is passed wrong, and causes an @@Object Object@@
+        return;
     }
 
     render() {
