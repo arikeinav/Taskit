@@ -7,7 +7,6 @@ import { AvatarGroup } from '@material-ui/lab';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-
 // import { ColorModal } from './ColorModal'
 import { boardService } from '../services/boardService'
 import { AddImg } from './AddImg'
@@ -20,7 +19,8 @@ export class _CardDetails extends Component {
         isAddImgModalShown: false,
         isColorShown: false,
         isDescriptionEdit: false,
-        startDate: new Date()
+        isTimeEdit: false,
+        endTask: new Date()
     }
     async componentDidMount() {
         const card = await boardService.getCardById(this.props.board, this.props.groupId, this.props.cardId)
@@ -53,7 +53,7 @@ export class _CardDetails extends Component {
         this.updateState('isDescriptionEdit', false)
         this.saveCard()
     }
-    updateTextCard = (key, val) => {
+    updateLocalCard = (key, val) => {
         this.setState(prevState => ({
             card: {
                 ...prevState.card,
@@ -61,12 +61,16 @@ export class _CardDetails extends Component {
             }
         }))
     }
-    handleChangeDate = date => {
-        this.setState({
-            startDate: date
-        })
+    onRemoveDueDate = () => {
+        this.updateState('isTimeEdit', false)
+        this.updateLocalCard('dueDate', "")
+        this.saveCard()
     }
+
+
+
     render() {
+
         if (!this.state.card) return <div>Loading...</div>
         const { card } = this.state
         return (
@@ -95,44 +99,46 @@ export class _CardDetails extends Component {
                                     </AvatarGroup>
                                 }
                             </section>
-
+                            
+                            {(this.state.isTimeEdit || this.state.card.dueDate) &&
+                                <div>
+                                    < DatePicker
+                                        onChange={date => this.updateLocalCard('dueDate', date)}
+                                        selected={this.state.card.dueDate}
+                                        showTimeSelect
+                                        dateFormat="Pp"
+                                    />
+                                    <button onClick={this.onRemoveDueDate} className="btn">X</button>
+                                </div>
+                            }
                             <div>
+                            <div className="flex">
+                                
+                            </div>
                                 <p>description:</p>
                                 <textarea
                                     className={this.state.isDescriptionEdit ? "edit-card-description" : "not-edit-card-description"}
                                     value={this.state.card.description ? this.state.card.description : ''}
-                                    onChange={(ev) => this.updateTextCard('description', ev.target.value)}
+                                    onChange={(ev) => this.updateLocalCard('description', ev.target.value)}
                                     placeholder="Add a more details description..."
                                     onClick={() => this.updateState('isDescriptionEdit', true)}>
                                 </textarea>
                                 {this.state.isDescriptionEdit && <button onClick={this.saveCard} className="btn">Save</button>}
                             </div>
-
-
                             {card.imgUrl &&
                                 <div>
                                     <img className="card-img" src={card.imgUrl} alt="Loading" />
                                     <button onClick={this.onRemoveImg} className="btn">Remove Image</button>
                                 </div>
                             }
-
                         </div>
+
                         <div className="side-bar-details-right flex column">
                             <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}>Add Cover Image</button>
                             <button onClick={this.onHandleRemove} className="btn">Delete Card</button>
-
-
-
-                            <DatePicker
-                                selected={this.state.startDate}
-                                onChange={this.handleChangeDate}
-                                showTimeSelect
-                                dateFormat="Pp"
-                            />
-
-
-
+                            <button onClick={() => this.updateState('isTimeEdit', true)} className="btn">Due Date</button>
                         </div>
+
                     </div>
                     {this.state.isAddImgModalShown && <AddImg card={card} updateState={this.updateState} />}
                 </div>
