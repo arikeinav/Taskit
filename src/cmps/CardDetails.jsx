@@ -11,7 +11,7 @@ import "react-datepicker/dist/react-datepicker.css";
 // import { ColorModal } from './ColorModal'
 import { boardService } from '../services/boardService'
 import { AddImg } from './AddImg'
-import { updateCard } from '../store/actions/boardActions'
+import { updateBoard } from '../store/actions/boardActions'
 
 export class _CardDetails extends Component {
 
@@ -24,30 +24,42 @@ export class _CardDetails extends Component {
     }
     async componentDidMount() {
         const card = await boardService.getCardById(this.props.board, this.props.groupId, this.props.cardId)
+      
         this.setState({ card })
     }
     updateState = (key, val) => {
         this.setState({ [key]: val })
+      
     }
     onRmoveModal = () => {
         this.saveCard()
         this.props.updateState('isDetailsShown', false)
+        
     }
     onHandleRemove = () => {
-        this.onRmoveModal()
+       
+        this.props.updateState('isDetailsShown', false)
         this.props.onRemoveCard(this.state.card.id)
     }
-    addImgToCard = (card) => {
-        this.props.updateCard(this.props.board, this.props.groupId, card)
-    }
+  
     onRemoveImg = () => {
+       
         const card = this.state.card
         delete card.imgUrl
-        this.props.updateCard(this.props.board, this.props.groupId, card)
+        this.setState({card:card})
+        // this.props.updateCard(this.props.board, this.props.groupId, card)
+
     }
     saveCard = () => {
         this.updateState('isDescriptionEdit', false)
-        this.props.updateCard(this.props.board, this.props.groupId, this.state.card)
+        // this.props.updateCard(this.props.board, this.props.groupId, this.state.card)
+        var cardId = this.state.card.id;
+        const newBoard ={...this.props.board}
+        const group = newBoard.groups.find(group => group.id === this.props.groupId);
+        const cardIdx = group.cards.findIndex(card => card.id === cardId);
+        group.cards.splice(cardIdx, 1, this.state.card)
+        this.props.updateBoard(newBoard)
+
     }
     doneEdit = () => {
         this.updateState('isDescriptionEdit', false)
@@ -60,11 +72,13 @@ export class _CardDetails extends Component {
                 [key]: val
             }
         }))
+      
     }
     handleChangeDate = date => {
         this.setState({
             startDate: date
         })
+      
     }
     render() {
         if (!this.state.card) return <div>Loading...</div>
@@ -74,7 +88,7 @@ export class _CardDetails extends Component {
 
                 <div className="empty-modal" onClick={this.onRmoveModal}></div>
 
-                <div className="details-modal" onClick={this.doneEdit}>
+                <div className="details-modal" >
                     <header className="card-header flex space-between">
                         <h3>{card.title}</h3>
                         <button onClick={this.onRmoveModal}>X</button>
@@ -147,7 +161,7 @@ const mapStateToProps = state => {
     }
 }
 const mapDispatchToProps = {
-    updateCard
+    updateBoard
 }
 
 export const CardDetails = connect(mapStateToProps, mapDispatchToProps)(_CardDetails)
