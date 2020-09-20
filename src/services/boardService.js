@@ -37,6 +37,7 @@ async function save(board) {
 function query(filterBy) {
   // localStorage.setItem('board', JSON.stringify(boards))
   // localStorage.setItem('user', JSON.stringify(users))
+
   return storageService.query('board')
   // var queryStr =''
   // if (filterBy)  queryStr = `?name=${filterBy.name}&type=${filterBy.type}&inStock=${filterBy.inStock}`;
