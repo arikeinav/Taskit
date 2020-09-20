@@ -2,7 +2,7 @@
 // import httpService from './httpService';
 import storageService from './asyncStorageService'
 const boards = require('../data.json').board
-const users = require('../data.json').user
+// const users = require('../data.json').user
 
 export const boardService = {
   query,
@@ -14,6 +14,7 @@ export const boardService = {
 };
 
 function loadBoard(boardId) {
+ 
   return storageService.get('board', boardId)
   //   return httpService.get(`board/${boardId}`)
 }
@@ -26,6 +27,8 @@ async function save(board) {
   //   return httpService.put(`board/${board._id}`, board);
   // }
   else {
+    
+    
     const addedBoard = storageService.post('board', board);
     return addedBoard
   }
@@ -35,8 +38,11 @@ async function save(board) {
   // }
 }
 function query(filterBy) {
-  // localStorage.setItem('board', JSON.stringify(boards))
+  localStorage.setItem('board', JSON.stringify(boards))
   // localStorage.setItem('user', JSON.stringify(users))
+
+ 
+  
 
   return storageService.query('board')
   // var queryStr =''

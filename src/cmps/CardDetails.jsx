@@ -28,6 +28,8 @@ export class _CardDetails extends Component {
         const card = await boardService.getCardById(this.props.board, this.props.groupId, this.props.cardId)
       
         this.setState({ card })
+        console.log(this.state.startDate)
+        
     }
     updateState = (key, val) => {
         this.setState({ [key]: val })
@@ -144,7 +146,7 @@ export class _CardDetails extends Component {
 
 
                             <DatePicker
-                                selected={this.state.startDate}
+                                selected={new Date(450608422390)}
                                 onChange={this.handleChangeDate}
                                 showTimeSelect
                                 dateFormat="Pp"
