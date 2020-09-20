@@ -130,8 +130,10 @@ export class _CardDetails extends Component {
         this.updateLocalCard('dueDate', new Date())
         this.setState({ isTimeEdit: true })
     }
+    
+    
     saveChecklist=(checklists)=>{
-        this.updateTextCard('checklists',checklists)
+        this.updateLocalCard('checklists',checklists)
         this.saveCard()
     }
     onOpenLabelModal = () => {
