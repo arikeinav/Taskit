@@ -3,7 +3,7 @@ import { boardService } from "../../services/boardService";
 export function loadBoards() {
   return async (dispatch) => {
     const boards = await boardService.query()
-    console.log('in actions', boards);
+  
     dispatch({ type: "SET_BOARDS", boards });
 
   };
@@ -33,7 +33,7 @@ export function addBoard(board) {
 }
 
 export function updateBoard(board) {
-  console.log(board)
+ 
   return async (dispatch) => {
     board = await boardService.save(board)
     dispatch({ type: "UPDATE_BOARD", board });

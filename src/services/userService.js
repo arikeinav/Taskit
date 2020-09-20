@@ -1,6 +1,7 @@
-import httpService from "./httpService";
+// import httpService from "./httpService";
+import storageService from './asyncStorageService'
 
-export default {
+export const userService ={
   login,
   logout,
   signup,
@@ -8,28 +9,39 @@ export default {
   update,
   loginAsGuest
 };
+window.userService = userService;
 
 
 
 function getById(userId) {
-  return httpService.get(`user/${userId}`);
+  // return httpService.get(`user/${userId}`);
+  return storageService.get('user', userId)
 }
 
 
 function update(user) {
-  return httpService.put(`user/${user._id}`, user);
+  return storageService.put('user', user)
+  // return httpService.put(`user/${user._id}`, user);
 }
 
 async function login(userCred) {
-  const user = { _id: 'u104', userName: userCred.username}
-  return user
+  // const user = { _id: 'u104', userName: userCred.username}
+  // return user
+  const users = await storageService.query('user')
+  const user = users.find(user => user.userName === userCred.username)
+  if(!user) return
+ else return _handleLogin(user)
+
   // const user = await httpService.post("auth/login", userCred);
   // return _handleLogin(user);
 }
 
 async function signup(userCred) {
-  const user = { id:'u'+ makeId, userName: userCred.username,password:userCred.password}
-  return user
+  userCred._id ='u'+ makeId
+  const user = await storageService.post('user', userCred)
+    return _handleLogin(user)
+  // const user = { id:'u'+ makeId, userName: userCred.username,password:userCred.password}
+  // return user
   // const user = await httpService.post("auth/signup", userCred);
   // return _handleLogin(user);
 }
@@ -37,7 +49,8 @@ async function signup(userCred) {
 async function logout() {
   // await httpService.post("auth/logout");
   // sessionStorage.clear();
-  return
+  sessionStorage.clear()
+  
 }
 
 function _handleLogin(user) {
@@ -45,15 +58,16 @@ function _handleLogin(user) {
   return user;
 }
 
-
 function loginAsGuest(){
     const user = { _id: 'u104', userName: 'Guest'}
     return  user 
        
 }
-function makeId(length = 3) {
+
+
+function makeId(length = 5) {
   var txt = '';
-  var possible = '0123456789';
+  var possible = '0123456789abcdefgABCDEFG';
   for (var i = 0; i < length; i++) {
     txt += possible.charAt(Math.floor(Math.random() * possible.length));
   }

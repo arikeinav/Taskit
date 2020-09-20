@@ -64,7 +64,7 @@ class _Submit extends Component {
             variant="outlined"
           />
           <br />
-          <h2>{this.state.msg}</h2>
+          <h2 style={{color: "red" }}>{this.state.msg}</h2>
           <button className="btn">Signup</button>
         </form>
       </div>

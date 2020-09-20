@@ -6,7 +6,7 @@ const initialState = {
   export function boardReducer(state = initialState, action) {
     switch (action.type) {
       case "SET_BOARDS":
-        console.log('action.boards:',action.boards);
+  
         return {
           ...state,
           boards: [...action.boards],
@@ -28,7 +28,6 @@ const initialState = {
           boards: [...state.boards, action.board],
         };
       case "UPDATE_BOARD":
-        console.log(action.board)
         return {
           ...state,
           currBoard: {...action.board},

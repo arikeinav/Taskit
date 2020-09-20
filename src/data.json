@@ -662,20 +662,20 @@
     {
       "_id": "u102",
       "userName": "Shahar Sadof",
-      "password": "aBambi123",
+      "password": "1234",
       "imgUrl": "https://www.google.com"
     },
     {
       "_id": "u101",
       "userName": "Arik Einav",
-      "password": "aBambi123",
+      "password": "1234",
       "imgUrl": "http://some-img"
 
     },
     {
       "_id": "u103",
       "userName": "Shlomi Koplianski",
-      "password": "aBambi123",
+      "password": "1234",
       "imgUrl": "http://some-img"
     },
      {

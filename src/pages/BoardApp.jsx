@@ -8,7 +8,6 @@ class _BoardApp extends Component {
 
     componentDidMount() {
         this.props.loadBoards()
-        console.log('boards', this.props.boards);
     }
 
 
@@ -30,7 +29,7 @@ class _BoardApp extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log('state:',state);
+  
     return { boards: state.boardReducer.boards }
 }
 
