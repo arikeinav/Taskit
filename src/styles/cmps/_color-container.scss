@@ -1,13 +1,20 @@
 .color-container{
 
-    width:240px;
+    // width:240px;
+    // height: 205px;
+    // background-color: rgba(255, 255, 255, 0.822);
+
+    // position: absolute;
+    // left: 515px;
+    // top: 110px;
+
+    // z-index: 100;
+
+    width: 170px;
     height: 205px;
     background-color: rgba(255, 255, 255, 0.822);
-
-    position: absolute;
-    left: 515px;
-    top: 110px;
-
+    position: relative;
+    left: -3px;
     z-index: 100;
 
     span{

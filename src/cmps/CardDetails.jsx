@@ -97,7 +97,7 @@ export class _CardDetails extends Component {
                 <div className="empty-modal" onClick={this.onRmoveModal}></div>
 
                 <div className="details-modal" >
-                    {this.state.isLabelesEdit && <ColorModal onSaveLabels={this.onSaveLabels} />}
+                   
                     <header className="card-header flex space-between">
                         <h3>{card.title}</h3>
                         <button onClick={this.onRmoveModal}>X</button>
@@ -181,6 +181,7 @@ export class _CardDetails extends Component {
                             <button onClick={this.onHandleRemove} className="btn">Delete Card</button>
                             <button onClick={() => this.updateState('isTimeEdit', true)} className="btn">Due Date</button>
                             <button onClick={() => this.updateState('isLabelesEdit', true)} className="btn">Labels</button>
+                            {this.state.isLabelesEdit && <ColorModal onSaveLabels={this.onSaveLabels} />}
                         </div>
 
                     </div>
