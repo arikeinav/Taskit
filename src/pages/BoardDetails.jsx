@@ -8,6 +8,7 @@ import { DragDropContext } from "react-beautiful-dnd";
 import { AddText } from "../cmps/AddText";
 import { boardService } from "../services/boardService";
 
+
 export class _BoardDetails extends Component {
   state = {
     isDetailsShown: false,
@@ -18,11 +19,10 @@ export class _BoardDetails extends Component {
   componentDidMount() {
     const { boardId } = this.props.match.params;
     this.props.loadBoard(boardId);
-   
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('ondidUpdate:',this.props.board);
+    console.log('ondidUpdate:', this.props.board);
   }
 
   updateState = (key, val) => {
@@ -46,22 +46,15 @@ export class _BoardDetails extends Component {
       this.props.updateBoard(newboard);
     }
   };
-  onRemoveGroup = (groupId) => {
-    var newboard = { ...this.props.board };
-    newboard.groups = newboard.groups.filter((group) => group.id !== groupId);
-    this.props.updateBoard(newboard);
-  };
-  onRemoveCard = (cardId) => {
-    var newboard = JSON.parse(JSON.stringify(this.props.board));
-    const groupIdx = newboard.groups.findIndex(
-      (group) => group.id === this.state.isDetailsShown.groupId
-    );
-    const newCards = Array.from(newboard.groups[groupIdx].cards);
-    const cardIdx = newCards.findIndex((card) => card.id === cardId);
-    newCards.splice(cardIdx, 1);
-    newboard.groups[groupIdx].cards = newCards;
-    this.props.updateBoard(newboard);
-  };
+
+
+  updateState = (key, val) => {
+    this.setState({ [key]: val })
+  }
+  onEditGroup = () => {
+    this.setState({ isAddGroup: true })
+  }
+
 
   onDragEnd = result => {
     const { destination, source, draggableId } = result;
@@ -79,108 +72,101 @@ export class _BoardDetails extends Component {
       newTaskIds.splice(source.index, 1)
       newTaskIds.splice(destination.index, 0, shiftedTask)//and this 'shiftedTask' var as well 
 
-            const newColumn = {
-                ...start,
-                cards: newTaskIds,
-            }
 
-            const newGroups = Array.from(columns);
-
-            const groupIdx = columns.findIndex(group => group.id === newColumn.id)
-
-            //ok so now i have to repeat the same procedure as in line 69-70 
-            newGroups.splice(groupIdx, 1, newColumn)
-
-            const newState = {
-              ...this.props.board,
-              groups: newGroups
-          }
-          console.log('currBoard at gState is:', this.props.board);
-          console.log('newState is:', newState);
-          this.props.updateBoard(newState)//smth here is passed wrong, and causes an @@Object Object@@
-          return;
-      }
-      // inter-groups-movement of cards:
-      const startTaskIds = Array.from(start.cards); //array-copy of the cards at the start-column
-      const shiftedTask = startTaskIds.find(task => task.id === draggableId)//(my-code) targeting the card i wish to DND and putting it as a var
-      startTaskIds.splice(source.index, 1);//cutting one card out at the start-column
-      const newStart = {
-          ...start,
-          cards: startTaskIds
-      } // creating a start column variable that is spread and also updated with cards (one card less..)
-
-
-      const finishtaskIds = Array.from(finish.cards);
-      finishtaskIds.splice(destination.index, 0 , shiftedTask)
-      const newFinish = {
-          ...finish,
-          cards: finishtaskIds
+      const newColumn = {
+        ...start,
+        cards: newTaskIds,
       }
 
       const newGroups = Array.from(columns);
-//here i need to prepare the final stage where i take the groups array, and make it updated. then i could send it to the newState.
-      const startGroupIdx = newGroups.findIndex(group => group.id === newStart.id)
-      const finishGroupIdx = newGroups.findIndex(group => group.id === newFinish.id)
 
-      newGroups.splice(startGroupIdx,1,newStart)
-      newGroups.splice(finishGroupIdx,1,newFinish)
+
+      const groupIdx = columns.findIndex(group => group.id === newColumn.id)
+
+      //ok so now i have to repeat the same procedure as in line 69-70 
+      newGroups.splice(groupIdx, 1, newColumn)
 
       const newState = {
-          ...this.props.board,
-          groups: newGroups
+        ...this.props.board,
+        groups: newGroups
       }
-      console.log('newstate after INTER-GROUPS movement is:', newState);
+      console.log('currBoard at gState is:', this.props.board);
+      console.log('newState is:', newState);
       this.props.updateBoard(newState)//smth here is passed wrong, and causes an @@Object Object@@
       return;
     }
+    // inter-groups-movement of cards:
+    const startTaskIds = Array.from(start.cards); //array-copy of the cards at the start-column
+    const shiftedTask = startTaskIds.find(task => task.id === draggableId)//(my-code) targeting the card i wish to DND and putting it as a var
+    startTaskIds.splice(source.index, 1);//cutting one card out at the start-column
+    const newStart = {
+      ...start,
+      cards: startTaskIds
+    } // creating a start column variable that is spread and also updated with cards (one card less..)
+
+
+    const finishtaskIds = Array.from(finish.cards);
+    finishtaskIds.splice(destination.index, 0, shiftedTask)
+    const newFinish = {
+      ...finish,
+      cards: finishtaskIds
+    }
+
+    const newGroups = Array.from(columns);
+    //here i need to prepare the final stage where i take the groups array, and make it updated. then i could send it to the newState.
+    const startGroupIdx = newGroups.findIndex(group => group.id === newStart.id)
+    const finishGroupIdx = newGroups.findIndex(group => group.id === newFinish.id)
+
+    newGroups.splice(startGroupIdx, 1, newStart)
+    newGroups.splice(finishGroupIdx, 1, newFinish)
+
+    const newState = {
+      ...this.props.board,
+      groups: newGroups
+    }
+    console.log('newstate after INTER-GROUPS movement is:', newState);
+    this.props.updateBoard(newState)//smth here is passed wrong, and causes an @@Object Object@@
+    return;
+  }
+  onRemoveGroup = (groupId) => {
+    var newboard = { ...this.props.board };
+    newboard.groups = newboard.groups.filter((group) => group.id !== groupId);
+    this.props.updateBoard(newboard);
+  };
+  onRemoveCard = (cardId) => {
+    var newboard = JSON.parse(JSON.stringify(this.props.board));
+    const groupIdx = newboard.groups.findIndex(
+      (group) => group.id === this.state.isDetailsShown.groupId
+    );
+    const newCards = Array.from(newboard.groups[groupIdx].cards);
+    const cardIdx = newCards.findIndex((card) => card.id === cardId);
+    newCards.splice(cardIdx, 1);
+    newboard.groups[groupIdx].cards = newCards;
+    this.props.updateBoard(newboard);
+  };
 
 
   render() {
-    const { board } = this.props;
-    if (board === null) return <div>Loading...</div>;
+    const { board } = this.props
+    if (board === null) return <div>Loading...</div>
     return (
       <div className="board-details ">
         <BoardHeader board={board} />
-        {this.state.isDetailsShown.cardId && (
-          <CardDetails
-            cardId={this.state.isDetailsShown.cardId}
-            groupId={this.state.isDetailsShown.groupId}
-            changeIsDetailsShown={this.changeIsDetailsShown}
-          />
-        )}
+        {this.state.isDetailsShown.cardId &&
+          <CardDetails cardId={this.state.isDetailsShown.cardId} groupId={this.state.isDetailsShown.groupId} changeIsDetailsShown={this.changeIsDetailsShown} />}
         <DragDropContext onDragEnd={this.onDragEnd}>
           <div className="groups-container grid">
-            {board.groups.map((group) => (
-              <CardList
-                onAdd={this.onAdd}
-                group={group}
-                key={group.id}
-                updateState={this.updateState}
-                onRemoveGroup={this.onRemoveGroup}
-              />
-            ))}
-            {this.state.isAddGroup ? (
+            {board.groups.map(group => <CardList onAdd={this.onAdd} group={group} key={group.id} updateState={this.updateState} onRemoveGroup={this.onRemoveGroup} />)}
+            {this.state.isAddGroup ?
               <AddText onAdd={this.onAdd} type="Group" groupId={null} />
-            ) : (
-              <button
-                className="add-group btn"
-                onClick={() => this.onEditGroup()}
-              >
-                Add Group
-              </button>
-            )}
-          </div>{" "}
-        </DragDropContext>
-        {this.state.isDetailsShown.cardId && (
-          <CardDetails
-            updateState={this.updateState}
-            onRemoveCard={this.onRemoveCard}
-            cardId={this.state.isDetailsShown.cardId}
-            groupId={this.state.isDetailsShown.groupId}
-          />
-        )}
+              :
+              <button className="add-group btn" onClick={() => this.onEditGroup()}>Add Group</button>
+            }
+          </div> </DragDropContext>
+        {this.state.isDetailsShown.cardId &&
+          <CardDetails updateState={this.updateState} onRemoveCard={this.onRemoveCard} cardId={this.state.isDetailsShown.cardId} groupId={this.state.isDetailsShown.groupId} />}
       </div>
-    );
+    )
   }
 }
 

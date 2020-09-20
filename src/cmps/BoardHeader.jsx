@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-
+import { FaUserCircle } from "react-icons/fa";
 import {Avatar} from '@material-ui/core';
 import {AvatarGroup} from '@material-ui/lab';
-
+import { AiOutlineMenu } from "react-icons/ai";
 export class BoardHeader extends Component {
 
     state = {
@@ -32,8 +32,8 @@ export class BoardHeader extends Component {
                 </section>
 
                 
-                    <button className="BH3 btn">Invite</button>
-                    <button className="BH4 btn">Menu</button>
+                    <button className="BH3 btn"><FaUserCircle style={{marginRight:"5px"}}/>Invite</button>
+                    <button className="BH4 btn"><AiOutlineMenu style={{marginRight:"5px"}}/> Menu</button>
                 
             </div>
         )

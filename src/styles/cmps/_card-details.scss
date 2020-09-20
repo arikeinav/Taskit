@@ -5,18 +5,19 @@
     width: 100vw;
     z-index: 9;
 
-    
-    
-
     .details-modal{
         flex-direction: column;
         background-color: #F4F5F7;
         display: flex;
         margin: 50px auto 0;
-        width: 750px;
-        min-height: 300px;
+        width: 40%;
+        min-height: 500px;
         z-index: 11;
-
+        padding: 20px;
+        .btn-card-remove{
+            padding:0;
+            width: 30px;
+        }
         .card-img{
             object-fit:cover;
             width: 40%;
