@@ -7,13 +7,20 @@ import { connect } from "react-redux";
 import { logout} from "../store/actions/userActions";
 
 class _NavBar extends React.Component {
-
+  _isMounted = false
     state ={
         isLogged:false,
         isSignIn:false,
         isModalShow:false,
         isIn:false
     }
+    
+    componentDidMount(){
+      this._isMounted = true;
+      }
+      componentWillUnmount(){
+        this._isMounted = false;
+      }
 
 onIsLogged=()=>{
     this.setState({isLogged:true,isModalShow:true,isSignIn:false})

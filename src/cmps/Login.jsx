@@ -4,13 +4,21 @@ import { login} from "../store/actions/userActions";
 import TextField from "@material-ui/core/TextField"
 
 class _Login extends Component {
+  _isMounted = false
   state = {
+    
     msg: "",
     loginCred: {
       username: "",
       password: "",
     },
   };
+  componentDidMount(){
+    this._isMounted = true;
+  }
+  componentWillUnmount(){
+    this._isMounted = false;
+  }
 
   loginHandleChange = (ev) => {
     const { name, value } = ev.target;

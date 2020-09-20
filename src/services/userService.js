@@ -9,7 +9,7 @@ export const userService ={
   update,
   loginAsGuest
 };
-window.userService = userService;
+
 
 
 

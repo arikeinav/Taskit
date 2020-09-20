@@ -1,6 +1,7 @@
 import React from "react";
 
 export class Modal extends React.Component {
+  
   render() {
     const { children } = this.props;
     return (
