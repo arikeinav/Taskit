@@ -124,7 +124,7 @@ export class _CardDetails extends Component {
                                 {this.state.isDescriptionEdit && <button onClick={this.saveCard} className="btn">Save</button>}
                             </div>
 
-                            <Checklist />
+                            { (this.state.card.checklist && this.state.card.checklist > 0) && <Checklist checklist={this.state.card.checklist}/>}
 
 
                             {card.imgUrl &&
