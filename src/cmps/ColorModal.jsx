@@ -3,8 +3,19 @@ import React from "react";
 export class ColorModal extends React.Component {
 
     onClickColor = (color, ev) => {
+        const labels = this.props.labels
         ev.stopPropagation();
-        this.props.onSaveLabels(color);
+        if (labels && labels.length > 0) {
+            const isColorInLabels = labels.filter(label => label === color)
+
+            if (isColorInLabels.length > 0) {
+                return
+            } else {
+                this.props.onSaveLabels(color);
+            }
+        } else {
+            this.props.onSaveLabels(color);
+        }
     }
 
     render() {

@@ -130,6 +130,15 @@ export class _CardDetails extends Component {
         this.updateLocalCard('dueDate', new Date())
         this.setState({ isTimeEdit: true })
     }
+    onOpenLabelModal = () => {
+        if (this.state.card.labels) {
+            if (this.state.card.labels.length < 6) {
+                this.setState({ isLabelesEdit: true })
+            }
+        } else {
+            this.setState({ isLabelesEdit: true })
+        }
+    }
 
 
     render() {
@@ -148,19 +157,6 @@ export class _CardDetails extends Component {
                     </header>
                     <div className="flex space-between">
                         <div className="modal-details-left">
-
-                            {/* <button className="btn btn-invite" > <FaUserCircle style={{marginRight:"5px"}}/> Invite</button>
-                            <section className="avatar-members flex">
-                                {card.assignedMembers &&
-                                    <AvatarGroup max={3}>
-                                        {card.assignedMembers.map(member => {
-                                            return member.imgUrl ?
-                                                <Avatar key={member._id} asrc={member.imgUrl}></Avatar>
-                                                :
-                                                <Avatar key={member._id} src={member.imgUrl}>{member.userName.substring(0, 1).toUpperCase()}{member.userName.substring(1, 2).toUpperCase()}</Avatar>
-                                        }
-                                        )}
-                                    </AvatarGroup> */}
 
                             <div className="flex">
                                 <button className="btn btn-invite" > <FaUserCircle style={{ marginRight: "5px" }} /> Invite</button>
@@ -229,31 +225,29 @@ export class _CardDetails extends Component {
                                 }
                             </div>
 
-                        {(this.state.card.checklist && this.state.card.checklist > 0) && <Checklist checklist={this.state.card.checklist} />}
+                            {(this.state.card.checklist && this.state.card.checklist > 0) && <Checklist checklist={this.state.card.checklist} />}
 
 
-                        {card.imgUrl &&
-                            <div>
-                                <img className="card-img" src={card.imgUrl} alt="Loading" />
-                                <button onClick={this.onRemoveImg} className="btn"><FaTrashAlt style={{ marginRight: "5px" }} /> Remove Image</button>
-                            </div>
-                        }
+                            {card.imgUrl &&
+                                <div>
+                                    <img className="card-img" src={card.imgUrl} alt="Loading" />
+                                    <button onClick={this.onRemoveImg} className="btn"><FaTrashAlt style={{ marginRight: "5px" }} /> Remove Image</button>
+                                </div>
+                            }
+                        </div>
+
+                        <div className="side-bar-details-right flex column">
+                            <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{ marginRight: "3px" }} />Cover Image</button>
+                            <button onClick={this.onHandleRemove} className="btn"> <FaTrashAlt style={{ marginRight: "5px" }} />Delete Card</button>
+                            <button className="btn"> <FaCheckCircle style={{ marginRight: "5px" }} />Checklist</button>
+                            <button onClick={this.onOpenDuedate} className="btn">Due Date</button>
+                            <button onClick={this.onOpenLabelModal} className="btn">Labels</button>
+                            {this.state.isLabelesEdit &&
+                                <ColorModal onSaveLabels={this.onSaveLabels} labels={card.labels}/>}
+                        </div>
+
                     </div>
-
-                    <div className="side-bar-details-right flex column">
-                    <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{ marginRight: "3px" }} />Cover Image</button>
-                    <button onClick={this.onHandleRemove} className="btn"> <FaTrashAlt style={{ marginRight: "5px" }} />Delete Card</button>
-                    <button className="btn"> <FaCheckCircle style={{ marginRight: "5px" }} />Checklist</button>
-
-
-                    <button onClick={this.onOpenDuedate} className="btn">Due Date</button>
-
-                    <button onClick={() => this.updateState('isLabelesEdit', true)} className="btn">Labels</button>
-                    {this.state.isLabelesEdit && <ColorModal onSaveLabels={this.onSaveLabels} />}
-                </div>
-
-            </div>
-                    { this.state.isAddImgModalShown && <AddImg card={card} updateState={this.updateState} /> }
+                    {this.state.isAddImgModalShown && <AddImg card={card} updateState={this.updateState} />}
                 </div >
             </div >
         )
