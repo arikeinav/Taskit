@@ -19,8 +19,19 @@ export class ColorModal extends React.Component {
     }
 
     render() {
+        const colors = [
+            '#61BD4F',
+            '#F2D600',
+            '#FF9F1A',
+            '#EB5A46',
+            '#C377E0',
+            '#0079BF',
+        ]
         return (
             <div className="color-container flex column">
+            
+           {colors.map(color => <span onClick={(ev) => this.onClickColor('#61BD4F', ev)} style={{ backgroundColor: "#61BD4F" }} />)}
+
                 <span onClick={(ev) => this.onClickColor('#61BD4F', ev)} style={{ backgroundColor: "#61BD4F" }} ></span>
                 <span onClick={(ev) => this.onClickColor('#F2D600', ev)} style={{ backgroundColor: "#F2D600" }}></span>
                 <span onClick={(ev) => this.onClickColor('#FF9F1A', ev)} style={{ backgroundColor: "#FF9F1A" }}></span>
