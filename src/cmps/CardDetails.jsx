@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
+import { FaCheckCircle, FaUserCircle, FaFileImage,FaTrashAlt } from "react-icons/fa";
 
 // date picker
 import DatePicker from "react-datepicker";
@@ -11,6 +12,7 @@ import "react-datepicker/dist/react-datepicker.css";
 // import { ColorModal } from './ColorModal'
 import { boardService } from '../services/boardService'
 import { AddImg } from './AddImg'
+import { Checklist } from './Checklist'
 import { updateBoard } from '../store/actions/boardActions'
 
 export class _CardDetails extends Component {
@@ -91,11 +93,11 @@ export class _CardDetails extends Component {
                 <div className="details-modal" >
                     <header className="card-header flex space-between">
                         <h3>{card.title}</h3>
-                        <button onClick={this.onRmoveModal}>X</button>
+                        <button className="btn btn-card-remove" onClick={this.onRmoveModal}>X</button>
                     </header>
                     <div className="flex space-between">
                         <div className="modal-details-left">
-                            <button>Invite</button>
+                            <button className="btn btn-invite" > <FaUserCircle style={{marginRight:"5px"}}/> Invite</button>
                             <section className="avatar-members flex">
                                 {card.assignedMembers &&
                                     <AvatarGroup max={3}>
@@ -122,18 +124,22 @@ export class _CardDetails extends Component {
                                 {this.state.isDescriptionEdit && <button onClick={this.saveCard} className="btn">Save</button>}
                             </div>
 
+                            { (this.state.card.checklist && this.state.card.checklist > 0) && <Checklist checklist={this.state.card.checklist}/>}
+
 
                             {card.imgUrl &&
                                 <div>
                                     <img className="card-img" src={card.imgUrl} alt="Loading" />
-                                    <button onClick={this.onRemoveImg} className="btn">Remove Image</button>
+                                    <button onClick={this.onRemoveImg} className="btn"><FaTrashAlt style={{marginRight:"5px"}}/> Remove Image</button>
                                 </div>
                             }
 
                         </div>
                         <div className="side-bar-details-right flex column">
-                            <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}>Add Cover Image</button>
-                            <button onClick={this.onHandleRemove} className="btn">Delete Card</button>
+                            <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{marginRight:"3px"}}/>Cover Image</button>
+                            <button onClick={this.onHandleRemove} className="btn"> <FaTrashAlt style={{marginRight:"5px"}}/>Delete Card</button>
+                            <button className="btn"> <FaCheckCircle style={{marginRight:"5px"}}/>Checklist</button>
+
 
 
 

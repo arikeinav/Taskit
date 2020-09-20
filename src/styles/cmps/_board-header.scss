@@ -4,7 +4,7 @@
     font-weight: 400;
     font-size: 1.5rem;
     color:white; 
-    grid-template-columns: 1fr 3fr 0.5fr 0.5fr;
+    grid-template-columns: 1.5fr 3fr 0.5fr 0.5fr;
 }
 
 .BH1{
@@ -14,9 +14,11 @@
 }
 .BH4{
     margin: auto;
-    // width: 95%;
+    width: 90%;
 }
 .BH3{
     margin: auto;
-    margin-left:50%;
+    width: 90%;
+    // margin-inline-start:20%;
+    
 }

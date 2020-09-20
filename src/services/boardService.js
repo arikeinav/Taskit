@@ -1,8 +1,8 @@
 
 // import httpService from './httpService';
 import storageService from './asyncStorageService'
-// const boards = require('../data.json').board
-// const users = require('../data.json').user
+const boards = require('../data.json').board
+const users = require('../data.json').user
 
 export const boardService = {
   query,
@@ -35,6 +35,9 @@ async function save(board) {
   // }
 }
 function query(filterBy) {
+  // localStorage.setItem('board', JSON.stringify(boards))
+  // localStorage.setItem('user', JSON.stringify(users))
+
   return storageService.query('board')
   // var queryStr =''
   // if (filterBy)  queryStr = `?name=${filterBy.name}&type=${filterBy.type}&inStock=${filterBy.inStock}`;
