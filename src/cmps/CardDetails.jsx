@@ -137,6 +137,10 @@ export class _CardDetails extends Component {
         this.saveCard()
     }
     onOpenLabelModal = () => {
+        if(this.state.isLabelesEdit) {
+            this.setState({ isLabelesEdit: false })
+            return
+        }
         if (this.state.card.labels) {
             if (this.state.card.labels.length < 6) {
                 this.setState({ isLabelesEdit: true })
