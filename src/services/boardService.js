@@ -17,8 +17,7 @@ function loadBoard(boardId) {
  
   return storageService.get('board', boardId)
   //   return httpService.get(`board/${boardId}`)
-  const board = boards.find(board => board._id === boardId)
-  return board
+  
 }
 
 async function save(board) {
