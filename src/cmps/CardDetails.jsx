@@ -24,8 +24,8 @@ export class _CardDetails extends Component {
         endTask: new Date(),
         isLabelesEdit: false
     }
-    async componentDidMount() {
-        const card = await boardService.getCardById(this.props.board, this.props.groupId, this.props.cardId)
+    componentDidMount() {
+        const card = boardService.getCardById(this.props.board, this.props.groupId, this.props.cardId)
         this.setState({ card })
     }
     updateState = (key, val) => {
@@ -135,7 +135,7 @@ export class _CardDetails extends Component {
                             {(this.state.isTimeEdit || this.state.card.dueDate) &&
                                 <div>
                                     < DatePicker
-                                        onChange={date => this.updateLocalCard('dueDate', date)}
+                                        onChange={date => this.updateLocalCard('dueDate', toString(date))}
                                         selected={this.state.card.dueDate}
                                         showTimeSelect
                                         dateFormat="Pp"
