@@ -14,7 +14,8 @@ export const boardService = {
 };
 
 function loadBoard(boardId) {
-  // return storageService.get('board', boardId)
+ 
+  return storageService.get('board', boardId)
   //   return httpService.get(`board/${boardId}`)
   const board = boards.find(board => board._id === boardId)
   return board
@@ -22,26 +23,33 @@ function loadBoard(boardId) {
 
 async function save(board) {
  
-  //  if (board._id)  {
-  //     return storageService.put('board', board)
-  //   }
-  //   return httpService.put(`board/${board._id}`, board);
-  // }
-  // else {
-  //   const addedBoard = storageService.post('board', board);
-  //   return addedBoard
-  // }
-  // else {
-  //   const addedBoard = httpService.post(`board`, board);
+   if (board._id)  {
+      return storageService.put('board', board)
+    }
+    // return httpService.put(`board/${board._id}`, board);
+  
+  else {
+    
+    
+    const addedBoard = storageService.post('board', board);
+    return addedBoard
+    //   const addedBoard = httpService.post(`board`, board);
     // return addedBoard
-  // }
-  return board
+  }
 }
+  
+  
+ 
+  
+
 function query(filterBy) {
-  // localStorage.setItem('board', JSON.stringify(boards))
+  localStorage.setItem('board', JSON.stringify(boards))
   // localStorage.setItem('user', JSON.stringify(users))
-return boards
-  // return storageService.query('board')
+
+ 
+  
+
+  return storageService.query('board')
   // var queryStr =''
   // if (filterBy)  queryStr = `?name=${filterBy.name}&type=${filterBy.type}&inStock=${filterBy.inStock}`;
   // return httpService.get(`board${queryStr|| ''}`);
