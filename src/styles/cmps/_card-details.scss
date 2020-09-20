@@ -47,5 +47,15 @@
                 margin:5px;
             }
         }
+        .small-label{
+            width: 40px;
+            height: 40px;
+            margin: 0 1.5px;
+            border-radius:6px;
+
+            &:hover{
+                opacity: 0.7;
+            }
+        }
     }
 }

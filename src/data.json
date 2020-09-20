@@ -58,15 +58,11 @@
               }
             ],
             "labels": [
-              {
-                "id": "101",
-                "title": "done",
-                "color": "#61bd4f"
-              }
+              "#FF9F1A"
             ],
             
             "createdAt": 1590999730348,
-            "dueDate": 16156215211,
+            "dueDate": 1600732800,
             "byMember": {
               "_id": "u102",
               "userName": "Shahar Sadof"
@@ -156,14 +152,10 @@
               }
             ],
             "labels": [
-              {
-                "id": "101",
-                "title": "done",
-                "color": "#61bd4f"
-              }
+              "#FF9F1A"
             ],
             "createdAt": 1590999730348,
-            "dueDate": 16156215211,
+            "dueDate": "",
             "byMember": {
               "_id": "u103",
               "userName": "Shlomi Koplianski"
@@ -251,11 +243,7 @@
               }
             ],
             "labels": [
-              {
-                "id": "101",
-                "title": "done",
-                "color": "#61bd4f"
-              }
+              "#61BD4F"
             ],
             "createdAt": 1590999730348,
             "dueDate": 16156215211,
@@ -299,11 +287,7 @@
               }
             ],
             "labels": [
-              {
-                "id": "101",
-                "title": "done",
-                "color": "#61bd4f"
-              }
+              "#61BD4F"
             ],
             
             "createdAt": 1590999730348,
@@ -356,11 +340,7 @@
               }
             ],
             "labels": [
-              {
-                "id": "101",
-                "title": "done",
-                "color": "#61bd4f"
-              }
+              "#61BD4F"
             ],
             "createdAt": 1590999730348,
             "dueDate": 16156215211,
@@ -450,11 +430,7 @@
               }
             ],
             "labels": [
-              {
-                "id": "101",
-                "title": "done",
-                "color": "#61bd4f"
-              }
+              "#61BD4F"
             ],
             
             "createdAt": 1590999730348,
@@ -507,11 +483,7 @@
               }
             ],
             "labels": [
-              {
-                "id": "101",
-                "title": "done",
-                "color": "#61bd4f"
-              }
+              "#FF9F1A"
             ],
             "createdAt": 1590999730348,
             "dueDate": 16156215211,
@@ -601,11 +573,7 @@
               }
             ],
             "labels": [
-              {
-                "id": "101",
-                "title": "done",
-                "color": "#61bd4f"
-              }
+              "#FF9F1A"
             ],
             
             "createdAt": 1590999730348,
@@ -658,11 +626,7 @@
               }
             ],
             "labels": [
-              {
-                "id": "101",
-                "title": "done",
-                "color": "#61bd4f"
-              }
+              "#FF9F1A"
             ],
             "createdAt": 1590999730348,
             "dueDate": 16156215211,
