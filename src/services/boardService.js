@@ -2,7 +2,7 @@
 // import httpService from './httpService';
 import storageService from './asyncStorageService'
 const boards = require('../data.json').board
-const users = require('../data.json').user
+// const users = require('../data.json').user
 
 export const boardService = {
   query,
@@ -14,31 +14,34 @@ export const boardService = {
 };
 
 function loadBoard(boardId) {
-  return storageService.get('board', boardId)
+  // return storageService.get('board', boardId)
   //   return httpService.get(`board/${boardId}`)
+  const board = boards.find(board => board._id === boardId)
+  return board
 }
 
 async function save(board) {
  
-   if (board._id)  {
-      return storageService.put('board', board)
-    }
+  //  if (board._id)  {
+  //     return storageService.put('board', board)
+  //   }
   //   return httpService.put(`board/${board._id}`, board);
   // }
-  else {
-    const addedBoard = storageService.post('board', board);
-    return addedBoard
-  }
   // else {
-  //   const addedBoard = httpService.post(`board`, board);
+  //   const addedBoard = storageService.post('board', board);
   //   return addedBoard
   // }
+  // else {
+  //   const addedBoard = httpService.post(`board`, board);
+    // return addedBoard
+  // }
+  return board
 }
 function query(filterBy) {
   // localStorage.setItem('board', JSON.stringify(boards))
   // localStorage.setItem('user', JSON.stringify(users))
-
-  return storageService.query('board')
+return boards
+  // return storageService.query('board')
   // var queryStr =''
   // if (filterBy)  queryStr = `?name=${filterBy.name}&type=${filterBy.type}&inStock=${filterBy.inStock}`;
   // return httpService.get(`board${queryStr|| ''}`);
