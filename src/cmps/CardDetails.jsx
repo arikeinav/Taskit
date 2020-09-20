@@ -6,8 +6,20 @@ import { AvatarGroup } from '@material-ui/lab';
 import TextField from '@material-ui/core/TextField';
 
 // date picker
+// import DatePicker from "react-datepicker";
+// import "react-datepicker/dist/react-datepicker.css";
+// import Grid from '@material-ui/core/Grid';
+// import DateFnsUtils from '@date-io/date-fns';
+// import {
+//     MuiPickersUtilsProvider,
+//     KeyboardTimePicker,
+//     KeyboardDatePicker,
+// } from '@material-ui/pickers';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
+
+
 
 import { ColorModal } from './ColorModal'
 import { boardService } from '../services/boardService'
@@ -21,12 +33,12 @@ export class _CardDetails extends Component {
         isAddImgModalShown: false,
         isDescriptionEdit: false,
         isTimeEdit: false,
-        endTask: new Date(),
         isLabelesEdit: false
     }
     componentDidMount() {
         const card = boardService.getCardById(this.props.board, this.props.groupId, this.props.cardId)
         this.setState({ card })
+        // this.updateLocalCard('dueDate', new Date())
     }
     updateState = (key, val) => {
         this.setState({ [key]: val })
@@ -43,7 +55,7 @@ export class _CardDetails extends Component {
     onRemoveImg = () => {
         const card = this.state.card
         delete card.imgUrl
-        this.setState({ card: card })
+        this.setState({ card })
     }
     saveCard = () => {
         this.updateState('isDescriptionEdit', false)
@@ -59,6 +71,7 @@ export class _CardDetails extends Component {
         this.saveCard()
     }
     updateLocalCard = (key, val) => {
+        console.log("updateLocalCard -> val", val)
         this.setState(prevState => ({
             card: {
                 ...prevState.card,
@@ -66,9 +79,34 @@ export class _CardDetails extends Component {
             }
         }))
     }
-    onRemoveDueDate = () => {
+    onRemoveDuedate = () => {
         this.updateState('isTimeEdit', false)
-        this.updateLocalCard('dueDate', "")
+        const card = this.state.card
+        delete card.dueDate
+        this.setState({ card })
+        this.saveCard()
+    }
+    convert = (str) => {
+        var date = new Date(str),
+            mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+            day = ("0" + date.getDate()).slice(-2);
+        return [date.getFullYear(), mnth, day].join("-");
+    }
+    onSaveDuedate = (selectedDate) => {
+
+
+        console.log("111111111111", selectedDate)
+
+        selectedDate = this.convert(selectedDate)
+
+        console.log("222222222222", selectedDate)
+
+        selectedDate = new Date(selectedDate).getTime() / 1000
+
+        console.log("333333333", selectedDate)
+
+        this.updateState('isTimeEdit', false)
+        this.updateLocalCard('dueDate', selectedDate)
         this.saveCard()
     }
     onSaveLabels = (val) => {
@@ -86,18 +124,22 @@ export class _CardDetails extends Component {
         labelIdx > -1 && labels.splice(labelIdx, 1);
         this.updateLocalCard('labels', labels)
     }
+    onOpenDuedate = () => {
+        this.updateLocalCard('dueDate', new Date())
+        this.setState({ isTimeEdit: true })
+    }
+
 
     render() {
         if (!this.state.card) return <div>Loading...</div>
         const { card } = this.state
-        console.log("render -> card", card)
         return (
             <div className="card-modal flex align-center">
 
                 <div className="empty-modal" onClick={this.onRmoveModal}></div>
 
                 <div className="details-modal" >
-                   
+
                     <header className="card-header flex space-between">
                         <h3>{card.title}</h3>
                         <button onClick={this.onRmoveModal}>X</button>
@@ -132,15 +174,17 @@ export class _CardDetails extends Component {
                                 }
                             </div>
 
-                            {(this.state.isTimeEdit || this.state.card.dueDate) &&
+                            {(this.state.isTimeEdit || card.dueDate) &&
                                 <div>
-                                    < DatePicker
-                                        onChange={date => this.updateLocalCard('dueDate', toString(date))}
-                                        selected={this.state.card.dueDate}
+                                    <DatePicker
+                                        selected={new Date()}
+                                        // selected={card.dueDate ? new Date(card.dueDate) : new Date() }
+                                        onChange={selected => this.onSaveDuedate(selected)}
                                         showTimeSelect
                                         dateFormat="Pp"
                                     />
-                                    <button onClick={this.onRemoveDueDate} className="btn">X</button>
+
+                                    <button onClick={this.onRemoveDuedate} className="btn">X</button>
                                 </div>
                             }
                             <div>
@@ -179,7 +223,9 @@ export class _CardDetails extends Component {
                             <button className="btn">Invite</button>
                             <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}>Add Cover Image</button>
                             <button onClick={this.onHandleRemove} className="btn">Delete Card</button>
-                            <button onClick={() => this.updateState('isTimeEdit', true)} className="btn">Due Date</button>
+
+                            <button onClick={this.onOpenDuedate} className="btn">Due Date</button>
+
                             <button onClick={() => this.updateState('isLabelesEdit', true)} className="btn">Labels</button>
                             {this.state.isLabelesEdit && <ColorModal onSaveLabels={this.onSaveLabels} />}
                         </div>

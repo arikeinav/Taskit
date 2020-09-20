@@ -22,7 +22,7 @@ export class _BoardDetails extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('ondidUpdate:',this.props.board);
+    // console.log('ondidUpdate:',this.props.board);
   }
 
   updateState = (key, val) => {

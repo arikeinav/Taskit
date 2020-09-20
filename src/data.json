@@ -62,7 +62,7 @@
             ],
             
             "createdAt": 1590999730348,
-            "dueDate": "",
+            "dueDate": 1600732800,
             "byMember": {
               "_id": "u102",
               "userName": "Shahar Sadof"
