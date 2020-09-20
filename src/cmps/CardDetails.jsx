@@ -41,6 +41,8 @@ export class _CardDetails extends Component {
         const card = boardService.getCardById(this.props.board, this.props.groupId, this.props.cardId)
         this.setState({ card })
         // this.updateLocalCard('dueDate', new Date())
+       
+        
     }
     updateState = (key, val) => {
         this.setState({ [key]: val })
@@ -79,7 +81,9 @@ export class _CardDetails extends Component {
                 ...prevState.card,
                 [key]: val
             }
+            
         }))
+        console.log(this.state.card)
     }
     onRemoveDuedate = () => {
         this.updateState('isTimeEdit', false)
@@ -94,23 +98,30 @@ export class _CardDetails extends Component {
             day = ("0" + date.getDate()).slice(-2);
         return [date.getFullYear(), mnth, day].join("-");
     }
-    onSaveDuedate = (selectedDate) => {
+//     onSaveDuedate=(selected) => {
 
+// 
+//         console.log("111111111111", selectedDate)
 
-        console.log("111111111111", selectedDate)
+//         selectedDate = this.convert(selectedDate)
 
-        selectedDate = this.convert(selectedDate)
+//         console.log("222222222222", selectedDate)
 
-        console.log("222222222222", selectedDate)
+//         selectedDate = new Date(selectedDate).getTime() / 1000
 
-        selectedDate = new Date(selectedDate).getTime() / 1000
+//         console.log("333333333", selectedDate)
 
-        console.log("333333333", selectedDate)
-
-        this.updateState('isTimeEdit', false)
-        this.updateLocalCard('dueDate', selectedDate)
-        this.saveCard()
-    }
+//         this.updateState('isTimeEdit', false)
+//         this.updateLocalCard('dueDate', selectedDate)
+//         this.saveCard()
+//     }
+    handleChange = (data) => {
+                this.updateState('isTimeEdit', false)
+                this.updateLocalCard('dueDate', data)
+                this.saveCard()
+            }
+   
+  
     onSaveLabels = (val) => {
         this.setState({ isLabelesEdit: false })
         var labels = [val]
@@ -154,6 +165,8 @@ export class _CardDetails extends Component {
     render() {
         if (!this.state.card) return <div>Loading...</div>
         const { card } = this.state
+       
+
         return (
             <div className="card-modal flex align-center">
 
@@ -200,9 +213,10 @@ export class _CardDetails extends Component {
                             {(this.state.isTimeEdit || card.dueDate) &&
                                 <div>
                                     <DatePicker
-                                        selected={new Date()}
-                                        // selected={card.dueDate ? new Date(card.dueDate) : new Date() }
-                                        onChange={selected => this.onSaveDuedate(selected)}
+                                        // selected={new Date(card.dueDate)}
+                                        selected={(card.dueDate) ? new Date(card.dueDate) : new Date() }
+                                        // onChange={selected => this.onSaveDuedate(selected)}
+                                        onChange={this.handleChange}
                                         showTimeSelect
                                         dateFormat="Pp"
                                     />
