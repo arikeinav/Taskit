@@ -12,6 +12,7 @@ import "react-datepicker/dist/react-datepicker.css";
 // import { ColorModal } from './ColorModal'
 import { boardService } from '../services/boardService'
 import { AddImg } from './AddImg'
+import { Checklist } from './Checklist'
 import { updateBoard } from '../store/actions/boardActions'
 
 export class _CardDetails extends Component {
@@ -123,6 +124,8 @@ export class _CardDetails extends Component {
                                 {this.state.isDescriptionEdit && <button onClick={this.saveCard} className="btn">Save</button>}
                             </div>
 
+                            <Checklist />
+
 
                             {card.imgUrl &&
                                 <div>
@@ -135,6 +138,7 @@ export class _CardDetails extends Component {
                         <div className="side-bar-details-right flex column">
                             <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{marginRight:"3px"}}/>Cover Image</button>
                             <button onClick={this.onHandleRemove} className="btn"> <FaTrashAlt style={{marginRight:"5px"}}/>Delete Card</button>
+                            <button className="btn"> <FaTrashAlt style={{marginRight:"5px"}}/>Checklist</button>
 
 
 
