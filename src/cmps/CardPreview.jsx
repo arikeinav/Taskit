@@ -9,6 +9,28 @@ background-color: ${props => (props.isDragging ? '#B5B5B5' : 'rgba(255, 255, 255
 
 export function CardPreview({ card, updateState, groupId, index }) {
 
+
+
+    console.log("componentDidMount -> card.dueDate", card.dueDate)
+
+    function getValidDate() {
+        var a = card.dueDate
+        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        var year = a.getFullYear();
+        var month = months[a.getMonth()];
+        var date = a.getDate();
+        var hour = a.getHours();
+        var min = a.getMinutes();
+        var sec = a.getSeconds();
+        var dueDate = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
+        console.log("getValidDate -> dueDate", dueDate)
+        
+
+        return dueDate
+    }
+
+
+
     const openCardDetails = (cardId) => {
         updateState('isDetailsShown', { cardId, groupId })
     }
@@ -24,6 +46,7 @@ export function CardPreview({ card, updateState, groupId, index }) {
                         }
                     </div>
                     <p className="p-card-preview">{card.title}</p>
+                    <div className="due-date-card-preview">{getValidDate()}</div>
                     {card.imgUrl && <img className="img-card-preview" src={card.imgUrl} alt="Loading" />}
                 </Container >
             )}
