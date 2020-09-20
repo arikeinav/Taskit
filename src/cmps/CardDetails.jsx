@@ -82,6 +82,10 @@ export class _CardDetails extends Component {
         })
       
     }
+    saveChecklist=(checklists)=>{
+        this.updateTextCard('checklists',checklists)
+        this.saveCard()
+    }
     render() {
         if (!this.state.card) return <div>Loading...</div>
         const { card } = this.state
@@ -124,7 +128,7 @@ export class _CardDetails extends Component {
                                 {this.state.isDescriptionEdit && <button onClick={this.saveCard} className="btn">Save</button>}
                             </div>
 
-                            { (this.state.card.checklist && this.state.card.checklist > 0) && <Checklist checklist={this.state.card.checklist}/>}
+                             { this.state.card.checklists && <Checklist saveChecklist={this.saveChecklist} checklists={this.state.card.checklists}/>}
 
 
                             {card.imgUrl &&
