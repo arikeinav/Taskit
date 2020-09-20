@@ -30,13 +30,14 @@ class _Login extends Component {
     }
 
     const userCreds = { username, password };
+    const user = await this.props.login(userCreds)
+      if (!user) this.setState({ msg: "Username or password not exist" })
+      else{
+        console.log(user)
     this.props.onClose()
-    this.props.login(userCreds);
     this.setState({ loginCred: { username: "", password: "" } });
+    }
   };
-
-
-    
 
   render() {
     return (
@@ -69,7 +70,7 @@ class _Login extends Component {
             variant="outlined"
           />
           <br />
-          <h2>{this.state.msg}</h2>
+          <h2 style={{color: "red" }}>{this.state.msg}</h2>
           <button className="btn">Login</button>
         </form>
       </div>

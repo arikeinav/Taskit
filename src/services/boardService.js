@@ -1,6 +1,8 @@
 
-import httpService from './httpService';
-const boards = require('../data.json').board
+// import httpService from './httpService';
+import storageService from './asyncStorageService'
+// const boards = require('../data.json').board
+// const users = require('../data.json').user
 
 export const boardService = {
   query,
@@ -12,42 +14,38 @@ export const boardService = {
 };
 
 function loadBoard(boardId) {
-  const board = boards.find(board => board._id === boardId)
-  return board
+  return storageService.get('board', boardId)
   //   return httpService.get(`board/${boardId}`)
 }
 
-
-
 async function save(board) {
-  return board
-  // if (board._id) {
+ 
+   if (board._id)  {
+      return storageService.put('board', board)
+    }
   //   return httpService.put(`board/${board._id}`, board);
   // }
+  else {
+    const addedBoard = storageService.post('board', board);
+    return addedBoard
+  }
   // else {
   //   const addedBoard = httpService.post(`board`, board);
   //   return addedBoard
   // }
 }
 function query(filterBy) {
-
+  return storageService.query('board')
   // var queryStr =''
   // if (filterBy)  queryStr = `?name=${filterBy.name}&type=${filterBy.type}&inStock=${filterBy.inStock}`;
   // return httpService.get(`board${queryStr|| ''}`);
-  return boards
 }
 
 function removeBoard(boardId) {
-  return httpService.delete(`board/${boardId}`);
+  return storageService.remove('board', boardId)
+
+  // return httpService.delete(`board/${boardId}`);
 }
-
-
-
-
-
-
-
-
 
 function getCardById(board, groupId, cardId) {
   const group = board.groups.find(group => group.id === groupId)

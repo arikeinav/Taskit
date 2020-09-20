@@ -1,16 +1,18 @@
-import { cloneElement } from "react";
-import userService from "../../services/userService";
+// import { cloneElement } from "react";
+import {userService} from "../../services/userService";
 
 
 export function login(userCreds) {
 
   return async dispatch => {
     const user = await userService.login(userCreds);
-    dispatch({ type: 'SET_USER', user });
-    console.log(user)
+    if(!user)return
+    dispatch({ type: 'SET_USER', user }); 
     window.location.assign('#/board')
+    return user
+    }
   };
-}
+
 export function signup(userCreds) {
   return async dispatch => {
     const user = await userService.signup(userCreds);
@@ -34,8 +36,8 @@ export function update(userCreds) {
       window.location.assign('#/board')
     };
   }
-  export function loginAsGuest() {
 
+  export function loginAsGuest() {
     return async dispatch => {
       const user = await userService.loginAsGuest();
       dispatch({ type: 'SET_USER', user });
