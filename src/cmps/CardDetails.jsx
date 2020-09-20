@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
-import { FaUserCircle, FaFileImage,FaTrashAlt } from "react-icons/fa";
+import { FaCheckCircle, FaUserCircle, FaFileImage,FaTrashAlt } from "react-icons/fa";
 
 // date picker
 import DatePicker from "react-datepicker";
@@ -138,7 +138,8 @@ export class _CardDetails extends Component {
                         <div className="side-bar-details-right flex column">
                             <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{marginRight:"3px"}}/>Cover Image</button>
                             <button onClick={this.onHandleRemove} className="btn"> <FaTrashAlt style={{marginRight:"5px"}}/>Delete Card</button>
-                            <button className="btn"> <FaTrashAlt style={{marginRight:"5px"}}/>Checklist</button>
+                            <button className="btn"> <FaCheckCircle style={{marginRight:"5px"}}/>Checklist</button>
+
 
 
 
