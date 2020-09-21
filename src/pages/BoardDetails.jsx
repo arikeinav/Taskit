@@ -9,6 +9,7 @@ import { AddText } from "../cmps/AddText";
 import { boardService } from "../services/boardService";
 
 
+
 export class _BoardDetails extends Component {
   state = {
     isDetailsShown: false,
@@ -150,7 +151,7 @@ export class _BoardDetails extends Component {
     const { board } = this.props
     if (board === null) return <div>Loading...</div>
     return (
-      <div className="board-details " style={{backgroundImage: `url(${board.style.bgImg?board.style.bgImg:''})`}} >
+      <div className="board-details " style={{backgroundImage: `url(${board.style.bgImg?board.style.bgImg:''})`,backgroundSize:"cover",backgroundRepeat: "no-repeat",minHeight: "90vh"}} >
         <BoardHeader board={board} />
         {this.state.isDetailsShown.cardId &&
           <CardDetails cardId={this.state.isDetailsShown.cardId} groupId={this.state.isDetailsShown.groupId} changeIsDetailsShown={this.changeIsDetailsShown} />}
