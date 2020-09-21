@@ -175,7 +175,7 @@ export class _BoardDetails extends Component {
               {this.state.isAddGroup ?
                 <AddText onAdd={this.onAdd} type="Group" groupId={null} />
                 :
-                <button className="add-group btn" onClick={() => this.onEditGroup()}>Add Group</button>
+                <button className="add-group btn" onClick={() => this.onEditGroup()}>Add List</button>
               }
             </div>
           </StickyBox>
