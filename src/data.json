@@ -8,7 +8,7 @@
     },
     "style": {
       "bgColor": "#70adb5",
-      "bgImg": ""
+      "bgImg": "https://res.cloudinary.com/cloudinary-img/image/upload/v1600352682/Taskit/caleb-jones-G3EMue5dLO0-unsplash_gujo4j.jpg"
     },
     "members": [
       {
@@ -62,7 +62,7 @@
             ],
             
             "createdAt": 1590999730348,
-            "dueDate": 1600732800,
+            "dueDate": 4590999730348,
             "byMember": {
               "_id": "u102",
               "userName": "Shahar Sadof"
@@ -349,7 +349,9 @@
               "userName": "Shlomi Koplianski"
             },
             "style": {
-              "bgColor": "#26de81"
+              "bgColor": "#26de81",
+              "imgUrl": "https://res.cloudinary.com/cloudinary-img/image/upload/v1600352682/Taskit/caleb-jones-G3EMue5dLO0-unsplash_gujo4j.jpg"
+
             }
           }
         ]

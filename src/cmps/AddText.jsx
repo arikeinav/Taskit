@@ -11,6 +11,7 @@ export class AddText extends React.Component {
     }
     onSubmit = (ev) => {
         ev.preventDefault();
+        if(!this.state.text) return;
         (this.props.type === 'Card') && this.props.updateState('isAddCard', false)
 
         this.props.onAdd(this.props.type, this.state.text, this.props.groupId)
@@ -26,7 +27,7 @@ export class AddText extends React.Component {
                         value={this.state.text}
                     />
                     <div className="flex">
-                        <button className="btn" onClick={this.onSubmit}>Add Group</button>
+                        <button className="btn" onClick={this.onSubmit}>{this.props.type === 'Card' ? "Add Card" : "Add Group"}</button>
                         <button className="btn">X</button>
                     </div>
                 </form>

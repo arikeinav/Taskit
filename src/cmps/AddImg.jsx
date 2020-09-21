@@ -5,9 +5,14 @@ import {cloudinaryService} from '../services/cloudinaryService'
 export class AddImg extends Component {
 
     onSelectImg = (imgUrl) => {
-        this.props.card.imgUrl = imgUrl
-        this.props.updateState('isAddImgModalShown', false)
-        return this.props.card
+        if(this.props.card){this.props.card.imgUrl = imgUrl
+            this.props.updateState('isAddImgModalShown', false)
+            return this.props.card}
+            else{
+                this.props.onAddimg(imgUrl)
+
+            }
+        
     }
     onAddImg = async (ev) => {
         const imgUrl = await cloudinaryService.uploadImg(ev)
@@ -24,8 +29,8 @@ export class AddImg extends Component {
         ]
         return (
             <div className="add-img-page">
-                <div className="empty-modal" onClick={() => this.props.updateState('isAddImgModalShown', false)}></div>
-                <div className="add-img-modal">
+                 {!this.props.isForBoard&&<div className="empty-modal" onClick={() => this.props.updateState('isAddImgModalShown', false)}></div>}
+                <div className= {(this.props.isForBoard)?'':'add-img-modal'}>
                     {imgUrls.map((imgUrl, index) => <img onClick={() => this.onSelectImg(imgUrl)} className="img-preview" key={index} src={imgUrl} alt="Loading" />)}
 
                     <div className="add-private-img">
@@ -33,7 +38,7 @@ export class AddImg extends Component {
                         <input onChange={this.onAddImg} type="file" />
                     </div>
                 </div>
-            </div>
+ </div>
         )
     }
 }
