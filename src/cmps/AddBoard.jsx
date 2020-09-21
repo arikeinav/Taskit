@@ -14,7 +14,7 @@ export class AddBoard extends React.Component {
     onSubmit = (ev) => {
         ev.preventDefault();
         this.props.saveBoard(this.state.text,this.state.imgUrl)
-        this.setState({ text: '' })
+        this.setState({ text: '' ,imgUrl:''})
     }
 
     onAddimg=(imgUrl) =>{
@@ -33,8 +33,8 @@ export class AddBoard extends React.Component {
                     />
                     <AddImg isForBoard={this.props.isForBoard} onAddimg={this.onAddimg}/>
                     <div className="flex">
-                        <button className="btn" onClick={this.onSubmit}>Add Board</button>
-                        {this.state.imgUrl && <img className="img-card-preview" src={this.state.imgUrl} alt="Loading" />}
+                        <button className="btn" >Add Board</button>
+                        {this.state.imgUrl && <img className="img-board-preview" src={this.state.imgUrl} alt="Loading" />}
                     </div>
                     
                 </form>
