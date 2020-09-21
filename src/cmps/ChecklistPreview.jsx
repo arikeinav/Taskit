@@ -83,8 +83,9 @@ export class _ChecklistPreview extends Component {
     render() {
         const { checklist } = this.props
         return (
-            <div>
-                <h2>Your Todos:</h2>
+            <div className="checklist-preview-div">
+                <h3 style={{textDecoration: 'underline'}}>{checklist.title}</h3>
+                <h4>Your Todos:</h4>
                 {checklist.todos.map(todo => <TodoPreview key={todo.id} todo={todo} onRemoveTodo={this.onRemoveTodo} />)}
                 <button onClick={() => { this.setState({ isTodoEditShown: true }) }} className="btn">Add Todo</button>
                 {this.state.isTodoEditShown &&

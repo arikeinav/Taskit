@@ -46,6 +46,10 @@ export class _CardDetails extends Component {
 
 
     }
+    componentDidUpdate(prevProps, prevState) {
+        console.log('on cardDetails update, checklists:',this.state.card.checklists);
+    }
+    
     updateState = (key, val) => {
         this.setState({ [key]: val })
     }
@@ -100,7 +104,7 @@ export class _CardDetails extends Component {
     //         day = ("0" + date.getDate()).slice(-2);
     //     return [date.getFullYear(), mnth, day].join("-");
     // }
-//     onSaveDuedate=(selected) => {
+    //     onSaveDuedate=(selected) => {
 
     // 
     //         console.log("111111111111", selectedDate)
@@ -149,6 +153,17 @@ export class _CardDetails extends Component {
         this.updateLocalCard('checklists', checklists)
         this.saveCard()
     }
+
+    addNewChecklist = (checklist) => {
+        console.log("New Checklist!:", checklist)
+        if (this.state.card.checklists) {
+            const checklists = Array.from(this.state.card.checklists)
+            checklists.push(checklist)
+            this.saveChecklist(checklists)
+            console.log("!New Checklists!:", checklists)
+        } else { this.saveChecklist([checklist]) }
+
+    }
     onOpenLabelModal = () => {
         if (this.state.isLabelesEdit) {
             this.setState({ isLabelesEdit: false })
@@ -163,8 +178,8 @@ export class _CardDetails extends Component {
         }
     }
     openChecklistEditor = () => {
-       this.setState({isChecklistEdit:true}) 
-        
+        this.setState({ isChecklistEdit: true })
+
     }
 
     render() {
@@ -255,7 +270,7 @@ export class _CardDetails extends Component {
                             </div>
 
                             {this.state.card.checklists && <Checklist saveChecklist={this.saveChecklist} checklists={this.state.card.checklists} />}
-                                {this.state.isChecklistEdit && <ChecklistAdd saveChecklist={this.saveChecklist}/>}
+                            {this.state.isChecklistEdit && <ChecklistAdd addNewChecklist={this.addNewChecklist} />}
 
                             {card.imgUrl &&
                                 <div>
