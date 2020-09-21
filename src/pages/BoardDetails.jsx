@@ -8,6 +8,7 @@ import { DragDropContext } from "react-beautiful-dnd";
 import { AddText } from "../cmps/AddText";
 import { boardService } from "../services/boardService";
 
+import StickyBox from "react-sticky-box";
 
 export class _BoardDetails extends Component {
   state = {
@@ -150,19 +151,39 @@ export class _BoardDetails extends Component {
     const { board } = this.props
     if (board === null) return <div>Loading...</div>
     return (
-      <div className="board-details " style={{backgroundImage: `url(${board.style.bgImg?board.style.bgImg:''})`}} >
+      <div className="board-details " style={{ backgroundImage: `url(${board.style.bgImg ? board.style.bgImg : ''})` }} >
         <BoardHeader board={board} />
         {this.state.isDetailsShown.cardId &&
           <CardDetails cardId={this.state.isDetailsShown.cardId} groupId={this.state.isDetailsShown.groupId} changeIsDetailsShown={this.changeIsDetailsShown} />}
         <DragDropContext onDragEnd={this.onDragEnd}>
-          <div className="groups-container grid">
-            {board.groups.map(group => <CardList onAdd={this.onAdd} group={group} key={group.id} updateState={this.updateState} onRemoveGroup={this.onRemoveGroup} />)}
-            {this.state.isAddGroup ?
-              <AddText onAdd={this.onAdd} type="Group" groupId={null} />
-              :
-              <button className="add-group btn" onClick={() => this.onEditGroup()}>Add Group</button>
-            }
-          </div> </DragDropContext>
+          {/* <div className="groups-container flex"> */}
+          <StickyBox className="groups-container flex">
+
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                overflowY: "hidden",
+                whiteSpace: "nowrap",
+                listStyleType: "none",
+                paddingRight: "20px",
+                flexWrap: "nowrap",
+                height: "78vh",
+                justifyItems: "center"
+              }}
+            >
+              {board.groups.map(group => <CardList onAdd={this.onAdd} group={group} key={group.id} updateState={this.updateState} onRemoveGroup={this.onRemoveGroup} />)}
+              {this.state.isAddGroup ?
+                <AddText onAdd={this.onAdd} type="Group" groupId={null} />
+                :
+                <button className="add-group btn" onClick={() => this.onEditGroup()}>Add Group</button>
+              }
+
+            </div>
+
+          </StickyBox>
+          {/* </div> */}
+        </DragDropContext>
         {this.state.isDetailsShown.cardId &&
           <CardDetails updateState={this.updateState} onRemoveCard={this.onRemoveCard} cardId={this.state.isDetailsShown.cardId} groupId={this.state.isDetailsShown.groupId} />}
       </div>
