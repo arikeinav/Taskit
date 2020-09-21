@@ -155,7 +155,7 @@ export class _BoardDetails extends Component {
         {this.state.isDetailsShown.cardId &&
           <CardDetails cardId={this.state.isDetailsShown.cardId} groupId={this.state.isDetailsShown.groupId} changeIsDetailsShown={this.changeIsDetailsShown} />}
         <DragDropContext onDragEnd={this.onDragEnd}>
-          <div className="groups-container grid">
+          <div className="groups-container flex">
             {board.groups.map(group => <CardList onAdd={this.onAdd} group={group} key={group.id} updateState={this.updateState} onRemoveGroup={this.onRemoveGroup} />)}
             {this.state.isAddGroup ?
               <AddText onAdd={this.onAdd} type="Group" groupId={null} />

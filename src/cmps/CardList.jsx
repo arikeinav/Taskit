@@ -23,8 +23,8 @@ render() {
     const group = this.props.group
     return (
         <div className="card-list">
-            <header className="flex space-between">
-                <p>{group.title}</p>
+            <header style={{minHeight:'50px'}} className="flex space-between">
+                <p className="group-title">{group.title}</p>
                 <button className="btn" onClick={() => this.props.onRemoveGroup(group.id)}>X</button>
             </header>
 

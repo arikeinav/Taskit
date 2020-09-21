@@ -39,7 +39,7 @@ const board={title:txt,style:{imgUrl:imgUrl}}
         return (
             <div className="board-app flex">
                 <div className="ba-sidebar flex column align-center justify-center ninetyVh twentyPw">
-                    sidebar ** sidebar ** sidebar ** sidebar
+                   
                 </div>
                 <div className="ba-boards flex column ninetyVh eightyPw">
                 <h1>Most popular templates</h1>
