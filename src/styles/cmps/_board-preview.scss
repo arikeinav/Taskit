@@ -3,6 +3,7 @@
   min-height: 140px;  
   text-align: center;
 border-radius: 5px;
+
 }
 a{
     text-decoration: none;
@@ -10,4 +11,22 @@ a{
 .board-preview h3{
   color:white;
   
+}
+.board-preview-fake-div {
+  text-align: center;
+  border-radius: 5px;
+  background-color: black;
+  opacity: 0.2;
+  height: 100%;
+}
+
+.board-preview-fake-div:hover {
+  opacity: 0.4;
+}
+.board-preview-title-div{ 
+  position: absolute;
+  margin-inline-start: 60px;
+}
+.board-preview-title-div:hover{ 
+  opacity: 0.4;
 }
