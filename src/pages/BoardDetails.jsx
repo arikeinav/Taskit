@@ -153,10 +153,7 @@ export class _BoardDetails extends Component {
     return (
       <div className="board-details " style={{ backgroundImage: `url(${board.style.bgImg ? board.style.bgImg : ''})` }} >
         <BoardHeader board={board} />
-        {this.state.isDetailsShown.cardId &&
-          <CardDetails cardId={this.state.isDetailsShown.cardId} groupId={this.state.isDetailsShown.groupId} changeIsDetailsShown={this.changeIsDetailsShown} />}
         <DragDropContext onDragEnd={this.onDragEnd}>
-          {/* <div className="groups-container flex"> */}
           <StickyBox className="groups-container flex">
 
             <div
@@ -168,7 +165,7 @@ export class _BoardDetails extends Component {
                 listStyleType: "none",
                 paddingRight: "20px",
                 flexWrap: "nowrap",
-                height: "78vh",
+                height: "100%",
                 justifyItems: "center"
               }}
             >
@@ -178,11 +175,8 @@ export class _BoardDetails extends Component {
                 :
                 <button className="add-group btn" onClick={() => this.onEditGroup()}>Add Group</button>
               }
-
             </div>
-
           </StickyBox>
-          {/* </div> */}
         </DragDropContext>
         {this.state.isDetailsShown.cardId &&
           <CardDetails updateState={this.updateState} onRemoveCard={this.onRemoveCard} cardId={this.state.isDetailsShown.cardId} groupId={this.state.isDetailsShown.groupId} />}

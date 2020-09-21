@@ -21,6 +21,7 @@ export class _ChecklistPreview extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         console.log(this.state.checklist);
+   
     }
 
     onRemoveTodo = (todoId) => {

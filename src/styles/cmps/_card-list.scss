@@ -1,5 +1,13 @@
 .card-list{
-    background-color: #EBECF0;
-    width: 215px;
-    margin: 0 5px;
+    background-color: #ebecf0a6;
+    min-width: 280px;
+    max-width: 280px;
+    margin: 10px 5px;
+    border-radius: 5px;
+    max-height: 82vh;
+}
+.group-title{
+margin:auto;
+ height:20px;
+ font-weight: 600;
 }
