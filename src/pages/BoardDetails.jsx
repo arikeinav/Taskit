@@ -167,7 +167,7 @@ export class _BoardDetails extends Component {
                 listStyleType: "none",
                 paddingRight: "20px",
                 flexWrap: "nowrap",
-                height: "82vh",
+                height: "86vh",
                 justifyItems: "center"
               }}
             >

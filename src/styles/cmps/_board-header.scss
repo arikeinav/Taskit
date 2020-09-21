@@ -1,11 +1,11 @@
 .board-header{
     background-color:rgb(151, 150, 150);
-    height: $board-header-height;
+    height: 6vh;
     font-weight: 400;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color:white; 
     grid-template-columns: 1.5fr 3fr 0.5fr 0.5fr;
-    padding:10px 0;
+    font-family: roboto;
 }
 
 .BH1{
@@ -17,13 +17,13 @@
     margin: auto;
     margin-inline-end: 90%;
 }
-.BH4{
-    margin: auto;
-    width: 90%;
-}
 .BH3{
     margin: auto;
     width: 90%;
     // margin-inline-start:20%;
     
+}
+.BH4{
+    margin: auto;
+    width: 90%;
 }
