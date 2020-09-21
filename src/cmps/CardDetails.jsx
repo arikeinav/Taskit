@@ -26,6 +26,7 @@ import { ColorModal } from './ColorModal'
 import { boardService } from '../services/boardService'
 import { AddImg } from './AddImg'
 import { Checklist } from './Checklist'
+import ChecklistAdd from './ChecklistAdd';
 import { updateBoard } from '../store/actions/boardActions'
 
 export class _CardDetails extends Component {
@@ -35,14 +36,15 @@ export class _CardDetails extends Component {
         isAddImgModalShown: false,
         isDescriptionEdit: false,
         isTimeEdit: false,
-        isLabelesEdit: false
+        isLabelesEdit: false,
+        isChecklistEdit: false
     }
     componentDidMount() {
         const card = boardService.getCardById(this.props.board, this.props.groupId, this.props.cardId)
         this.setState({ card })
         // this.updateLocalCard('dueDate', new Date())
-       
-        
+
+
     }
     updateState = (key, val) => {
         this.setState({ [key]: val })
@@ -81,7 +83,7 @@ export class _CardDetails extends Component {
                 ...prevState.card,
                 [key]: val
             }
-            
+
         }))
         console.log(this.state.card)
     }
@@ -98,30 +100,30 @@ export class _CardDetails extends Component {
             day = ("0" + date.getDate()).slice(-2);
         return [date.getFullYear(), mnth, day].join("-");
     }
-//     onSaveDuedate=(selected) => {
+    //     onSaveDuedate=(selected) => {
 
-// 
-//         console.log("111111111111", selectedDate)
+    // 
+    //         console.log("111111111111", selectedDate)
 
-//         selectedDate = this.convert(selectedDate)
+    //         selectedDate = this.convert(selectedDate)
 
-//         console.log("222222222222", selectedDate)
+    //         console.log("222222222222", selectedDate)
 
-//         selectedDate = new Date(selectedDate).getTime() / 1000
+    //         selectedDate = new Date(selectedDate).getTime() / 1000
 
-//         console.log("333333333", selectedDate)
+    //         console.log("333333333", selectedDate)
 
-//         this.updateState('isTimeEdit', false)
-//         this.updateLocalCard('dueDate', selectedDate)
-//         this.saveCard()
-//     }
+    //         this.updateState('isTimeEdit', false)
+    //         this.updateLocalCard('dueDate', selectedDate)
+    //         this.saveCard()
+    //     }
     handleChange = (data) => {
-                this.updateState('isTimeEdit', false)
-                this.updateLocalCard('dueDate', data)
-                this.saveCard()
-            }
-   
-  
+        this.updateState('isTimeEdit', false)
+        this.updateLocalCard('dueDate', data)
+        this.saveCard()
+    }
+
+
     onSaveLabels = (val) => {
         this.setState({ isLabelesEdit: false })
         var labels = [val]
@@ -141,14 +143,14 @@ export class _CardDetails extends Component {
         this.updateLocalCard('dueDate', new Date())
         this.setState({ isTimeEdit: true })
     }
-    
-    
-    saveChecklist=(checklists)=>{
-        this.updateLocalCard('checklists',checklists)
+
+
+    saveChecklist = (checklists) => {
+        this.updateLocalCard('checklists', checklists)
         this.saveCard()
     }
     onOpenLabelModal = () => {
-        if(this.state.isLabelesEdit) {
+        if (this.state.isLabelesEdit) {
             this.setState({ isLabelesEdit: false })
             return
         }
@@ -160,12 +162,15 @@ export class _CardDetails extends Component {
             this.setState({ isLabelesEdit: true })
         }
     }
-
+    openChecklistEditor = () => {
+       this.setState({isChecklistEdit:true}) 
+        
+    }
 
     render() {
         if (!this.state.card) return <div>Loading...</div>
         const { card } = this.state
-       
+
 
         return (
             <div className="card-modal flex align-center">
@@ -214,7 +219,7 @@ export class _CardDetails extends Component {
                                 <div>
                                     <DatePicker
                                         // selected={new Date(card.dueDate)}
-                                        selected={(card.dueDate) ? new Date(card.dueDate) : new Date() }
+                                        selected={(card.dueDate) ? new Date(card.dueDate) : new Date()}
                                         // onChange={selected => this.onSaveDuedate(selected)}
                                         onChange={this.handleChange}
                                         showTimeSelect
@@ -249,8 +254,8 @@ export class _CardDetails extends Component {
                                 }
                             </div>
 
-                             { this.state.card.checklists && <Checklist saveChecklist={this.saveChecklist} checklists={this.state.card.checklists}/>}
-
+                            {this.state.card.checklists && <Checklist saveChecklist={this.saveChecklist} checklists={this.state.card.checklists} />}
+                                {this.state.isChecklistEdit && <ChecklistAdd saveChecklist={this.saveChecklist}/>}
 
                             {card.imgUrl &&
                                 <div>
@@ -263,11 +268,11 @@ export class _CardDetails extends Component {
                         <div className="side-bar-details-right flex column">
                             <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{ marginRight: "3px" }} />Cover Image</button>
                             <button onClick={this.onHandleRemove} className="btn"> <FaTrashAlt style={{ marginRight: "5px" }} />Delete Card</button>
-                            <button className="btn"> <FaCheckCircle style={{ marginRight: "5px" }} />Checklist</button>
+                            <button className="btn" onClick={() => this.openChecklistEditor()}><FaCheckCircle style={{ marginRight: "5px" }} />Checklist</button>
                             <button onClick={this.onOpenDuedate} className="btn">Due Date</button>
                             <button onClick={this.onOpenLabelModal} className="btn">Labels</button>
                             {this.state.isLabelesEdit &&
-                                <ColorModal onSaveLabels={this.onSaveLabels} labels={card.labels}/>}
+                                <ColorModal onSaveLabels={this.onSaveLabels} labels={card.labels} />}
                         </div>
 
                     </div>
