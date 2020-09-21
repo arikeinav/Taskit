@@ -3,6 +3,8 @@ import { Droppable } from 'react-beautiful-dnd'
 import { CardPreview } from './CardPreview'
 import { AddText } from './AddText'
 import styled from 'styled-components'
+import {SimpleMenu} from './CardListMenu'
+
 
 import Scroll from 'react-scroll';
 var Element = Scroll.Element;
@@ -15,19 +17,27 @@ background-color: ${props => (props.isDraggingOver ? '#3493A5' : '#EBECF0')}
 export class CardList extends React.Component {
 
     state = {
-        isAddCard: false
+        isAddCard: false,
+        isDeleteGroup:false
     }
     updateState = (key, val) => {
         this.setState({ [key]: val })
     }
-
+    onRemoveGroup=(groupId)=>{
+        this.props.onRemoveGroup(groupId)
+    }
+    onShowDeleteTogglle=()=>{
+        let isDelete =!this.state.isDeleteGroup
+        this.setState({isDeleteGroup:isDelete})
+    }
     render() {
         const group = this.props.group
         return (
             <div className="card-list flex column">
                 <header className="card-header flex space-between">
                     <p className="group-title">{group.title}</p>
-                    <button className="btn" onClick={() => this.props.onRemoveGroup(group.id)}>X</button>
+                  <SimpleMenu isDeleteGroup={this.state.isDeleteGroup} onAddCard={this.updateState} onShowDeleteTogglle={this.onShowDeleteTogglle}   onRemove={this.onRemoveGroup} onAddCard={this.updateState} group={group} />
+                  {/* <button className="btn" onClick={() => this.props.onRemoveGroup(group.id)}>X</button> */}
                 </header>
                 <Element name="test7" className="element" id="containerElement" style={{
                     height: 'auto',
