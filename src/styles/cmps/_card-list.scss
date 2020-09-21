@@ -4,10 +4,18 @@
     max-width: 280px;
     margin: 10px 5px;
     border-radius: 5px;
-    max-height: 82vh;
+    max-height: 76vh;
+    height: auto;
+    align-self: flex-start;
 }
 .group-title{
-margin:auto;
+ margin:auto;
  height:20px;
  font-weight: 600;
+}
+.add-card-btn{
+    height: 35px
+}
+.card-header{
+    height: 40px;
 }

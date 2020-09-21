@@ -154,6 +154,7 @@ export class _BoardDetails extends Component {
     return (
       <div className="board-details " style={{backgroundImage: `url(${board.style.bgImg?board.style.bgImg:''})`,backgroundSize:"cover",backgroundRepeat: "no-repeat",minHeight: "90vh"}} >
         <BoardHeader board={board} />
+
         <DragDropContext onDragEnd={this.onDragEnd}>
           <StickyBox className="groups-container flex">
 
@@ -166,7 +167,7 @@ export class _BoardDetails extends Component {
                 listStyleType: "none",
                 paddingRight: "20px",
                 flexWrap: "nowrap",
-                height: "100%",
+                height: "82vh",
                 justifyItems: "center"
               }}
             >
@@ -179,6 +180,7 @@ export class _BoardDetails extends Component {
             </div>
           </StickyBox>
         </DragDropContext>
+
         {this.state.isDetailsShown.cardId &&
           <CardDetails updateState={this.updateState} onRemoveCard={this.onRemoveCard} cardId={this.state.isDetailsShown.cardId} groupId={this.state.isDetailsShown.groupId} />}
       </div>

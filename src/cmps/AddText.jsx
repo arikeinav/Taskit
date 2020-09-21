@@ -17,6 +17,11 @@ export class AddText extends React.Component {
         this.props.onAdd(this.props.type, this.state.text, this.props.groupId)
         this.setState({ text: '' })
     }
+    onRemoveTextEditor = () => {
+        this.props.updateState('isAddCard', false)
+        this.setState({ text: '' })
+    }
+
     render() {
         return (
             <div>
@@ -28,7 +33,7 @@ export class AddText extends React.Component {
                     />
                     <div className="flex">
                         <button className="btn" onClick={this.onSubmit}>{this.props.type === 'Card' ? "Add Card" : "Add Group"}</button>
-                        <button className="btn">X</button>
+                        <button className="btn" onClick={this.onRemoveTextEditor}>X</button>
                     </div>
                 </form>
 
