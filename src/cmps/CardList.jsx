@@ -24,15 +24,17 @@ export class CardList extends React.Component {
     render() {
         const group = this.props.group
         return (
-            <div className="card-list">
-                <header className="flex space-between">
-                    <p>{group.title}</p>
+            <div className="card-list flex column">
+                <header className="card-header flex space-between">
+                    <p className="group-title">{group.title}</p>
                     <button className="btn" onClick={() => this.props.onRemoveGroup(group.id)}>X</button>
                 </header>
                 <Element name="test7" className="element" id="containerElement" style={{
-                    height: '70vh',
+                    height: 'auto',
                     width: '100%',
                     overflow: 'scroll',
+                    overflowX: 'hidden',
+
                 }}>
 
                     <Droppable droppableId={group.id}>
@@ -46,12 +48,12 @@ export class CardList extends React.Component {
                             </Container>
                         )}</Droppable>
 
+                </Element>
                     {this.state.isAddCard ?
                         <AddText onAdd={this.props.onAdd} type="Card" groupId={group.id} updateState={this.updateState} />
                         :
-                        <button className="btn" onClick={() => this.updateState('isAddCard', true)}>+ Add card</button>
+                        <button className="btn add-card-btn" onClick={() => this.updateState('isAddCard', true)}>+ Add card</button>
                     }
-                </Element>
             </div>
         )
     }
