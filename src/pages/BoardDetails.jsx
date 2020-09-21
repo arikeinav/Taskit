@@ -10,6 +10,7 @@ import { boardService } from "../services/boardService";
 
 import StickyBox from "react-sticky-box";
 
+
 export class _BoardDetails extends Component {
   state = {
     isDetailsShown: false,
@@ -151,7 +152,7 @@ export class _BoardDetails extends Component {
     const { board } = this.props
     if (board === null) return <div>Loading...</div>
     return (
-      <div className="board-details " style={{ backgroundImage: `url(${board.style.bgImg ? board.style.bgImg : ''})` }} >
+      <div className="board-details " style={{backgroundImage: `url(${board.style.bgImg?board.style.bgImg:''})`,backgroundSize:"cover",backgroundRepeat: "no-repeat",minHeight: "90vh"}} >
         <BoardHeader board={board} />
         <DragDropContext onDragEnd={this.onDragEnd}>
           <StickyBox className="groups-container flex">

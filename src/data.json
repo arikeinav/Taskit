@@ -8,7 +8,7 @@
     },
     "style": {
       "bgColor": "#70adb5",
-      "bgImg": "https://res.cloudinary.com/cloudinary-img/image/upload/v1600352682/Taskit/caleb-jones-G3EMue5dLO0-unsplash_gujo4j.jpg"
+      "bgImg": "https://res.cloudinary.com/dsfnyykw9/image/upload/v1600670111/marvin-meyer-SYTO3xs06fU-unsplash_gglgjc.jpg"
     },
     "members": [
       {
@@ -34,8 +34,8 @@
         "cards": [
           {
             "id": "c101",
-            "title": "Finish progressive App",
-            "description": "The app should look great!",
+            "title": "Project name",
+            "description": "Find a good name for the app",
            
             "checklists": [
               {
@@ -58,11 +58,11 @@
               }
             ],
             "labels": [
-              "#FF9F1A"
+
             ],
             
             "createdAt": 1590999730348,
-            "dueDate": 4590999730348,
+            "dueDate": "",
             "byMember": {
               "_id": "u102",
               "userName": "Shahar Sadof"
@@ -70,7 +70,13 @@
             
               "bgColor": "#26de81",
             
-            "imgUrl": "https://res.cloudinary.com/cloudinary-img/image/upload/v1600352682/Taskit/caleb-jones-G3EMue5dLO0-unsplash_gujo4j.jpg"
+            "imgUrl": ""
+          },
+          {
+            "id": "c204223",
+            "title": "css",
+            "description": "Make the app look awesome ",
+            "imgUrl":"https://media.giphy.com/media/IoP0PvbbSWGAM/giphy.gif"
           },
           {
             "id": "c102",
@@ -80,13 +86,14 @@
           {
             "id": "c111",
             "title": "Discover React D&D",
-            "description": "Try making this drag and drop shit work"
+            "description": "Try making this drag and drop shit work",
+            "imgUrl":"https://res.cloudinary.com/dsfnyykw9/image/upload/v1600679646/zan-yBEUD8SWABc-unsplash_cvjizx.jpg"
           },
           {
             "id": "c112",
             "title": "Buy huney for Rosh Hashana",
-            "description": "Don't you dare forget otherwise your wife will be very angry.",
-            "imgUrl":"https://res.cloudinary.com/cloudinary-img/image/upload/v1600352680/Taskit/luca-bravo-alS7ewQ41M8-unsplash_h9h4nj.jpg"
+            "description": "Don't you dare forget otherwise your wife will be very angry."
+            
 
           },
           {
@@ -104,18 +111,20 @@
           {
             "id": "c103cc",
             "title": "Go surfing",
-            "description": "Sea Activitie is permitted during the quarantine, so try to make time for it during the sprint "
+            "description": "Sea Activitie is permitted during the quarantine, so try to make time for it during the sprint ",
+            "imgUrl":"https://res.cloudinary.com/dsfnyykw9/image/upload/v1600679895/drew-farwell-hclYua09PJM-unsplash_pqwgtg.jpg"
           },
           {
             "id": "c108rr",
             "title": "Design the home page",
             "description": "Make sure that the home page reflects the content of website",
-            "imgUrl": "https://res.cloudinary.com/cloudinary-img/image/upload/v1600352679/Taskit/tony-yeung-Exq6e9gH4Ag-unsplash_e7ltjx.jpg"
+            "imgUrl":""
+            
           },
           {
             "id": "c109ww",
-            "title": "Discover React D&D",
-            "description": "Learn about react D&D and start to implement"
+            "title": "Project pics",
+            "description": "Find hige quality imgs for the proj..."
           },
           {
             "id": "c115xx",
@@ -125,7 +134,8 @@
           {
             "id": "c114vt",
             "title": "Finish the sprint!!!",
-            "description": ""
+            "description": "",
+            "imgUrl": "https://res.cloudinary.com/cloudinary-img/image/upload/v1600352679/Taskit/tony-yeung-Exq6e9gH4Ag-unsplash_e7ltjx.jpg"
           },
           {
             "id": "c1043f",
@@ -173,15 +183,17 @@
           {
             "id": "c2052",
             "title": "Buy wine",
-            "description": "2 Pinot Noir and 3 Sauvignon Blanc"
+            "description": "2 Pinot Noir and 3 Sauvignon Blanc",
+            "imgUrl":"https://media.giphy.com/media/W1l4OnrJp7vPO/giphy.gif"
           },
           {
             "id": "c2011",
             "title": "main page",
             "description": "Design the main app page",
-            "imgUrl":"https://res.cloudinary.com/cloudinary-img/image/upload/v1600352460/Taskit/daniel-chen-cNaEqXSsZ0k-unsplash_acw6rx.jpg"
+            "imgUrl":""
 
           },
+         
           {
             "id": "c202sa",
             "title": "Buy a fish head",
@@ -193,15 +205,10 @@
             "description": "If you have to work on the project durring Kippur, then next year you will fast an extra day!!!"
           },
           {
-            "id": "c204223",
-            "title": "css",
-            "description": "Make the app look awesome ",
-            "imgUrl":"https://res.cloudinary.com/cloudinary-img/image/upload/v1600352678/Taskit/seth-doyle--AFVBe7VGqQ-unsplash_xjlclq.jpg"
-          },
-          {
             "id": "c201",
             "title": "color modal",
-            "description": "Make a color modal for the card edit cmp"
+            "description": "Make a color modal for the card edit cmp",
+            "imgUrl":"https://res.cloudinary.com/dsfnyykw9/image/upload/v1600675580/pawel-czerwinski-3k9PGKWt7ik-unsplash_n9aon0.jpg"
           },
           {
             "id": "c202",
@@ -216,50 +223,13 @@
             "id": "c204",
             "title": "Board img",
             "description": "Add img adding for each board"
-          },
-          {
-            "id": "c205",
-            "title": " Card img",
-            "description": "Add img adding for each card",
-            "imgUrl":"https://res.cloudinary.com/cloudinary-img/image/upload/v1600352679/Taskit/tony-yeung-Exq6e9gH4Ag-unsplash_e7ltjx.jpg",
-            "checklists": [
-              {
-                "id": "YEhmF",
-                "title": "Checklist",
-                "todos": [
-                  {
-                    "title": "To Do 1",
-                    "isDone": false,
-                    "id": "212jX"
-                  }
-                ]
-              }
-            ],
-            "assignedMembers": [
-              {
-                "_id": "u102",
-                "userName": "Shahar Sadof",
-                "imgUrl": "https://www.google.com"
-              }
-            ],
-            "labels": [
-              "#61BD4F"
-            ],
-            "createdAt": 1590999730348,
-            "dueDate": 16156215211,
-            "byMember": {
-              "_id": "u103",
-              "userName": "Shlomi Koplianski"
-            },
-            "style": {
-              "bgColor": "#26de81"
-            }
           }
+          
         ]
       },
       {
         "id": "g106",
-        "title": "Tasks",
+        "title": "Unresolved",
         "cards": [
           {
             "id": "c10111f",
@@ -291,7 +261,7 @@
             ],
             
             "createdAt": 1590999730348,
-            "dueDate": 16156215211,
+            "dueDate": "",
             "byMember": {
               "_id": "u102",
               "userName": "Shahar Sadof"
@@ -299,7 +269,7 @@
             
               "bgColor": "red",
             
-            "imgUrl": "https://res.cloudinary.com/cloudinary-img/image/upload/v1600352682/Taskit/caleb-jones-G3EMue5dLO0-unsplash_gujo4j.jpg"
+            "imgUrl": "https://res.cloudinary.com/dsfnyykw9/image/upload/v1600680323/jo-szczepanska-5aiRb5f464A-unsplash_qyzckd.jpg"
           },
           {
             "id": "c102c3",
@@ -312,12 +282,52 @@
         "title": "QA",
         "cards": [
           {
+            "id": "c205",
+            "title": " Card img",
+            "description": "Add img adding for each card",
+            "imgUrl":"https://res.cloudinary.com/cloudinary-img/image/upload/v1600352460/Taskit/daniel-chen-cNaEqXSsZ0k-unsplash_acw6rx.jpg",
+            "checklists": [
+              {
+                "id": "YEhmF",
+                "title": "Checklist",
+                "todos": [
+                  {
+                    "title": "To Do 1",
+                    "isDone": false,
+                    "id": "212jX"
+                  }
+                ]
+              }
+            ],
+            "assignedMembers": [
+              {
+                "_id": "u102",
+                "userName": "Shahar Sadof",
+                "imgUrl": "https://www.google.com"
+              }
+            ],
+            "labels": [
+              "#61BD4F"
+            ],
+            "createdAt": 1590999730348,
+            "dueDate": "",
+            "byMember": {
+              "_id": "u103",
+              "userName": "Shlomi Koplianski"
+            },
+            "style": {
+              "bgColor": "#26de81"
+            }
+          },
+          {
             "id": "c1031",
-            "title": "Company name"
+            "title": "Company name",
+            "imgUrl":""
+          
           },
           {
             "id": "c1041",
-            "title": "Finish the fucking sprint",
+            "title": "Finish the sprint",
             "description": "Write an amazing Trello app and make it work!!!!",
             "checklists": [
               {
@@ -343,7 +353,7 @@
               "#61BD4F"
             ],
             "createdAt": 1590999730348,
-            "dueDate": 16156215211,
+            "dueDate": "",
             "byMember": {
               "_id": "u103",
               "userName": "Shlomi Koplianski"
@@ -382,7 +392,7 @@
     },
     "style": {
       "bgColor": "#26de81",
-      "bgImg": ""
+      "bgImg": "https://res.cloudinary.com/dsfnyykw9/image/upload/v1600670073/patrick-perkins-ETRPjvb0KM0-unsplash_cm7bqy.jpg"
     },
     "members": [
       {
@@ -436,7 +446,7 @@
             ],
             
             "createdAt": 1590999730348,
-            "dueDate": 16156215211,
+            "dueDate": "",
             "byMember": {
               "_id": "u102",
               "userName": "Shahar Sadof"
@@ -488,7 +498,7 @@
               "#FF9F1A"
             ],
             "createdAt": 1590999730348,
-            "dueDate": 16156215211,
+            "dueDate": "",
             "byMember": {
               "_id": "u103",
               "userName": "Shlomi Koplianski"
@@ -525,7 +535,7 @@
     },
     "style": {
       "bgColor": "#a37eba",
-      "bgImg": ""
+      "bgImg": "https://res.cloudinary.com/dsfnyykw9/image/upload/v1600670086/giusy-iordache-ZtqDLEkJPcc-unsplash_ywibhv.jpg"
     },
     "members": [
       {
@@ -579,7 +589,7 @@
             ],
             
             "createdAt": 1590999730348,
-            "dueDate": 16156215211,
+            "dueDate": "",
             "byMember": {
               "_id": "u102",
               "userName": "Shahar Sadof"
@@ -631,7 +641,7 @@
               "#FF9F1A"
             ],
             "createdAt": 1590999730348,
-            "dueDate": 16156215211,
+            "dueDate": "",
             "byMember": {
               "_id": "u103",
               "userName": "Shlomi Koplianski"
