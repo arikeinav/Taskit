@@ -33,6 +33,7 @@ export class CardList extends React.Component {
                     height: '70vh',
                     width: '100%',
                     overflow: 'scroll',
+                    overflowX: 'hidden',
                 }}>
 
                     <Droppable droppableId={group.id}>
