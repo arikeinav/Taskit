@@ -30,6 +30,7 @@ export class CardList extends React.Component {
                     <button className="btn" onClick={() => this.props.onRemoveGroup(group.id)}>X</button>
                 </header>
                 <Element name="test7" className="element" id="containerElement" style={{
+                    // height: '100%',
                     height: '70vh',
                     width: '100%',
                     overflow: 'scroll',
