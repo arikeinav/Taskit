@@ -17,6 +17,13 @@ export class CardList extends React.Component {
     state = {
         isAddCard: false
     }
+    
+    componentDidMount() {
+        // const height = document.getElementById('card-container').clientHeight;
+        // console.log("CardList -> componentDidMount -> height", height)
+    }
+    
+
     updateState = (key, val) => {
         this.setState({ [key]: val })
     }
@@ -24,12 +31,12 @@ export class CardList extends React.Component {
     render() {
         const group = this.props.group
         return (
-            <div className="card-list flex column">
+            <div className="card-list flex column" id="card-container">
                 <header className="card-header flex space-between">
                     <p className="group-title">{group.title}</p>
                     <button className="btn" onClick={() => this.props.onRemoveGroup(group.id)}>X</button>
                 </header>
-                <Element name="test7" className="element" id="containerElement" style={{
+                <Element style={{
                     height: 'auto',
                     width: '100%',
                     overflow: 'scroll',

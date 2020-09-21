@@ -21,7 +21,6 @@ export class AddImg extends Component {
 
     render() {
         const imgUrls = [
-            'https://res.cloudinary.com/cloudinary-img/image/upload/v1600352682/Taskit/caleb-jones-G3EMue5dLO0-unsplash_gujo4j.jpg',
             'https://res.cloudinary.com/cloudinary-img/image/upload/v1600352680/Taskit/luca-bravo-alS7ewQ41M8-unsplash_h9h4nj.jpg',
             'https://res.cloudinary.com/cloudinary-img/image/upload/v1600352679/Taskit/tony-yeung-Exq6e9gH4Ag-unsplash_e7ltjx.jpg',
             'https://res.cloudinary.com/cloudinary-img/image/upload/v1600352678/Taskit/seth-doyle--AFVBe7VGqQ-unsplash_xjlclq.jpg',
