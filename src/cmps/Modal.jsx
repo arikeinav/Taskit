@@ -6,7 +6,8 @@ export class Modal extends React.Component {
     const { children } = this.props;
     
     return (
-      <div className={`modal-wrapper ${this.props.show ? "" : "hide"}`} >
+      // <div className={`modal-wrapper ${this.props.show ? "" : "hide"}`}onClick={this.props.onCloseModal} >
+      <div className="modal-wrapper" onClick={this.props.onClose} >
         <div
           className="modal-content flex
 column
