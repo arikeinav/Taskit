@@ -94,13 +94,13 @@ export class _CardDetails extends Component {
         this.setState({ card })
         this.saveCard()
     }
-    convert = (str) => {
-        var date = new Date(str),
-            mnth = ("0" + (date.getMonth() + 1)).slice(-2),
-            day = ("0" + date.getDate()).slice(-2);
-        return [date.getFullYear(), mnth, day].join("-");
-    }
-    //     onSaveDuedate=(selected) => {
+    // convert = (str) => {
+    //     var date = new Date(str),
+    //         mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+    //         day = ("0" + date.getDate()).slice(-2);
+    //     return [date.getFullYear(), mnth, day].join("-");
+    // }
+//     onSaveDuedate=(selected) => {
 
     // 
     //         console.log("111111111111", selectedDate)

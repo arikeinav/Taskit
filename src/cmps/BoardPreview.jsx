@@ -6,7 +6,7 @@ export default function BoardPreview({board}) {
 
     return (
        <div><Link to={`/board/${board._id}`}>
-       <div style= {{backgroundColor:`${board.style.bgColor?board.style.bgColor:'green'}`}} className="board-preview grid">
+       <div style= {board.style.bgImg?{backgroundImage:`url(${board.style.bgImg})`,backgroundSize:"cover",backgroundRepeat: "no-repeat" }:{backgroundColor:`${board.style.bgColor?board.style.bgColor:'green'}`}} className="board-preview grid">
           <h3>{board.title}</h3> 
         </div>
         </Link></div>
