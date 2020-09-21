@@ -11,6 +11,7 @@ h1{
   margin:90px 0 105px;
   margin-inline-end: 12%;
   font-size: 5.5rem;
+  
 }
 pre{
   margin:10px 0;
@@ -21,17 +22,18 @@ font-family: hand-write;
 }
 .home a{
     color:white;
-    margin: 30px; 
-    font-size: 4rem;
+    margin-top: 50px; 
+    font-size: 3.5rem;
     font-weight: 600;
     transform: scale(1);
-	animation: pulse 2s infinite;
+  animation: pulse 2s infinite;
+  font-family: vidaloka;
   
   
   @keyframes pulse {
     0% {
       transform: scale(0.95);
-      color:rgb(129, 127, 1);
+      color:rgb(163, 161, 16);
     }
   
     70% {
@@ -41,17 +43,18 @@ font-family: hand-write;
   
     100% {
       transform: scale(0.95);
-      color:rgb(129, 127, 1);
+      color:rgb(163, 161, 16);
     }
-
-}}
+}
+}
 .home p{
   margin: 0;
 }
-
-.home a:hover {
-
-  text-decoration: none;
-  color:#3d185c;
-   
+.home a:hover{
+  animation-play-state: paused;
 }
+.home p:hover{
+  
+  color:black;
+}
+
