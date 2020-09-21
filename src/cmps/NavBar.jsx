@@ -33,6 +33,10 @@ onIsSubmit=()=>{
 onCloseModal=()=>{
     this.setState({isSignIn:false,isModalShow:false,isLogged:false,isIn:true})
 }
+onClose=()=>{
+    this.setState({isSignIn:false,isModalShow:false,isLogged:false})
+}
+
 onLogOut=()=>{
     this.setState({isIn:false})
     this.props.logout()
@@ -52,13 +56,15 @@ onLogOut=()=>{
            
     {this.state.isLogged &&  <Modal
               
-              onClose={this.onCloseModal}
-              children={<Login onClose={this.onCloseModal} />}
+              onCloseModal={this.onCloseModal}
+              onClose={this.onClose}
+              children={<Login onCloseModal={this.onCloseModal} />}
             />}
     {this.state.isSignIn &&  <Modal
               
-              onClose={this.onCloseModal}
-              children={<Submit onClose={this.onCloseModal} />}
+              onCloseModal={this.onCloseModal}
+              onClose={this.onClose}
+              children={<Submit onCloseModal={this.onCloseModal} />}
             />}
         </nav>
     )
