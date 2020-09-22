@@ -1,27 +1,60 @@
 .home{
 height: 90vh;
-background-image: url("../imgs/seaa.jpg");
+background-image: url("../imgs/1.jpg");
 background-size: cover;
 text-align: center;
-color: white;
+color:rgb(10, 10, 10);
 font-size: 3rem;
 font-family: hand-write;
+h1{
+  font-weight: 600;
+  margin:90px 0 105px;
+  margin-inline-end: 12%;
+  font-size: 5.5rem;
+  
+}
+pre{
+  margin:10px 0;
+margin-inline-end: 32%;
+font-family: hand-write;
+}
 
 }
 .home a{
-    color :white;  
-    margin: 0; 
+    color:white;
+    margin-top: 50px; 
+    font-size: 3.5rem;
+    font-weight: 600;
+    transform: scale(1);
+  animation: pulse 2s infinite;
+  font-family: vidaloka;
+  
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0.95);
+      color:rgb(163, 161, 16);
+    }
+  
+    70% {
+      transform: scale(1);
+      color: black;
+    }
+  
+    100% {
+      transform: scale(0.95);
+      color:rgb(163, 161, 16);
+    }
+}
 }
 .home p{
   margin: 0;
 }
-
-.home a:hover {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='squiggle-link' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.squiggle{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}%3C/style%3E%3Cpath fill='none' stroke='%23453886' stroke-width='2' class='squiggle' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E");
-  background-position: bottom;
-  background-repeat: repeat-x;
-  background-size: 20%;
-  border-bottom: 0;
-  text-decoration: none;
-  color:#3d185c;  
+.home a:hover{
+  animation-play-state: paused;
 }
+.home p:hover{
+  
+  color:black;
+}
+
