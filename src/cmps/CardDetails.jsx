@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
-import { FaCheckCircle, FaUserCircle, FaFileImage, FaTrashAlt,FaEdit } from "react-icons/fa";
+import { FaCheckCircle, FaUserCircle, FaFileImage, FaTrashAlt, FaEdit } from "react-icons/fa";
 
 import TextField from '@material-ui/core/TextField';
 
@@ -196,125 +196,125 @@ export class _CardDetails extends Component {
                     <header className="card-header flex column align-center">
                         {/* <button className="btn btn-card-remove" onClick={this.onRmoveModal}>X</button> */}
                         {card.imgUrl &&
-                            
-                                <img className="card-img" src={card.imgUrl} alt="Loading" />   
-                            }
-                            {card.imgUrl && <button onClick={this.onRemoveImg} className="btn"><FaTrashAlt style={{ marginRight: "5px" }} /> Remove Image</button>}
+
+                            <img className="card-img" src={card.imgUrl} alt="Loading" />
+                        }
+                        {card.imgUrl && <button onClick={this.onRemoveImg} className="btn"><FaTrashAlt style={{ marginRight: "5px" }} /> Remove Image</button>}
                     </header>
                     <div className="body-div flex">
 
 
-                        
-                            <Element style={{
-                                height: '400px',
-                                width: '100%',
-                                overflow: 'scroll',
-                                overflowX: 'hidden',
-                            }}>
-                                <div className="modal-details-left">
-                                        <h3 className="card-title">{card.title}</h3>
 
-                                    <div className="flex">
-                                        <button className="btn btn-invite" > <FaUserCircle style={{ marginRight: "5px" }} /> Invite</button>
-                                        {(card.members && card.members.length > 0) &&
-                                            <div>
-                                                <p className="small-header">Members</p>
-                                                <section className="avatar-members flex">
-                                                    {card.assignedMembers &&
-                                                        <AvatarGroup max={3}>
-                                                            {card.assignedMembers.map(member => {
-                                                                return member.imgUrl ?
-                                                                    <Avatar key={member._id} asrc={member.imgUrl}></Avatar>
-                                                                    :
-                                                                    <Avatar key={member._id} src={member.imgUrl}>{member.userName.substring(0, 1).toUpperCase()}{member.userName.substring(1, 2).toUpperCase()}</Avatar>
-                                                            }
-                                                            )}
-                                                        </AvatarGroup>
-                                                    }
-                                                </section>
-                                            </div>}
-                                        {(card.labels && card.labels.length > 0) &&
-                                            <div>
-                                                <p className="small-header">Labels</p>
-                                                <div className="flex">
-                                                    {card.labels.map(label => <div key={label} onClick={() => this.onRemoveLabel(label)} className="small-label" style={{ backgroundColor: label }} />)}
-                                                </div>
-                                            </div>
-                                        }
-                                    </div>
+                        <Element style={{
+                            height: '400px',
+                            width: '100%',
+                            overflow: 'scroll',
+                            overflowX: 'hidden',
+                        }}>
+                            <div className="modal-details-left">
+                                <h3 className="card-title">{card.title}</h3>
 
-                                    {(this.state.isTimeEdit || card.dueDate) &&
+                                <div className="flex">
+                                    <button className="btn btn-invite" > <FaUserCircle style={{ marginRight: "5px" }} /> Invite</button>
+                                    {(card.members && card.members.length > 0) &&
                                         <div>
-                                            <DatePicker
-                                                // selected={new Date(card.dueDate)}
-                                                selected={(card.dueDate) ? new Date(card.dueDate) : new Date()}
-                                                // onChange={selected => this.onSaveDuedate(selected)}
-                                                onChange={this.handleChange}
-                                                showTimeSelect
-                                                dateFormat="Pp"
-                                            />
-
-                                            <button onClick={this.onRemoveDuedate} className="btn">X</button>
+                                            <p className="small-header">Members</p>
+                                            <section className="avatar-members flex">
+                                                {card.assignedMembers &&
+                                                    <AvatarGroup max={3}>
+                                                        {card.assignedMembers.map(member => {
+                                                            return member.imgUrl ?
+                                                                <Avatar key={member._id} asrc={member.imgUrl}></Avatar>
+                                                                :
+                                                                <Avatar key={member._id} src={member.imgUrl}>{member.userName.substring(0, 1).toUpperCase()}{member.userName.substring(1, 2).toUpperCase()}</Avatar>
+                                                        }
+                                                        )}
+                                                    </AvatarGroup>
+                                                }
+                                            </section>
+                                        </div>}
+                                    {(card.labels && card.labels.length > 0) &&
+                                        <div>
+                                            <p className="small-header">Labels</p>
+                                            <div className="flex">
+                                                {card.labels.map(label => <div key={label} onClick={() => this.onRemoveLabel(label)} className="small-label" style={{ backgroundColor: label }} />)}
+                                            </div>
                                         </div>
                                     }
+                                </div>
+
+                                {(this.state.isTimeEdit || card.dueDate) &&
                                     <div>
-                                        <div className="edit-header flex">
-                                            <button className="btn" onClick={() => this.updateState('isDescriptionEdit', true)}><FaEdit/></button>
-                                            <p>Description:</p>
-                                        </div>
-                                        {this.state.isDescriptionEdit ?
-                                            <div >
-                                                <TextField 
-                                                    multiline
-                                                    rows={6}
-                                                    defaultValue={this.state.card.description}
-                                                    variant="outlined"
-                                                    className="edit-card-description"
-                                                    onChange={ev => this.updateLocalCard('description', ev.target.value)}
-                                                />
-                                                <button onClick={this.saveCard} className="btn">Save</button>
-                                            </div>
-                                            :
-                                            <div
-                                                className="not-edit-card-description"
-                                                onClick={() => this.updateState('isDescriptionEdit', true)}>{this.state.card.description ? this.state.card.description : "Add a more details description..."}
-                                            </div>
-                                        }
+                                        <DatePicker
+                                            // selected={new Date(card.dueDate)}
+                                            selected={(card.dueDate) ? new Date(card.dueDate) : new Date()}
+                                            // onChange={selected => this.onSaveDuedate(selected)}
+                                            onChange={this.handleChange}
+                                            showTimeSelect
+                                            dateFormat="Pp"
+                                        />
+
+                                        <button onClick={this.onRemoveDuedate} className="btn">X</button>
                                     </div>
-
-                                    {this.state.card.checklist && <Checklist removeChecklist={this.removeChecklist} saveChecklist={this.saveChecklist} checklist={this.state.card.checklist} />}
-                                    {this.state.isChecklistEdit && <ChecklistAdd addNewChecklist={this.addNewChecklist} />}
-
-
+                                }
+                                <div>
+                                    <div className="edit-header flex">
+                                        <button className="btn" onClick={() => this.updateState('isDescriptionEdit', true)}><FaEdit /></button>
+                                        <p>Description:</p>
+                                    </div>
+                                    {this.state.isDescriptionEdit ?
+                                        <div >
+                                            <TextField
+                                                multiline
+                                                rows={6}
+                                                defaultValue={this.state.card.description}
+                                                variant="outlined"
+                                                className="edit-card-description"
+                                                onChange={ev => this.updateLocalCard('description', ev.target.value)}
+                                            />
+                                            <button onClick={this.saveCard} className="btn">Save</button>
+                                        </div>
+                                        :
+                                        <div
+                                            className="not-edit-card-description"
+                                            onClick={() => this.updateState('isDescriptionEdit', true)}>{this.state.card.description ? this.state.card.description : "Add a more details description..."}
+                                        </div>
+                                    }
                                 </div>
-                                </Element >
-                                <div className="side-bar-details-right flex column">
-                                    <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{ marginRight: "3px" }} />Cover Image</button>
-                                    <button onClick={this.onHandleRemove} className="btn"> <FaTrashAlt style={{ marginRight: "5px" }} />Delete Card</button>
-                                    <button className="btn" onClick={() => this.openChecklistEditor()}><FaCheckCircle style={{ marginRight: "5px" }} />Checklist</button>
-                                    <button onClick={this.onOpenDuedate} className="btn">Due Date</button>
-                                    <button onClick={this.onOpenLabelModal} className="btn">Labels</button>
-                                    {this.state.isLabelesEdit &&
-                                        <ColorModal onSaveLabels={this.onSaveLabels} labels={card.labels} />}
-                                </div>
+
+                                {this.state.card.checklist && <Checklist removeChecklist={this.removeChecklist} saveChecklist={this.saveChecklist} checklist={this.state.card.checklist} />}
+                                {this.state.isChecklistEdit && <ChecklistAdd addNewChecklist={this.addNewChecklist} />}
 
 
-                        
+                            </div>
+                        </Element >
+                        <div className="side-bar-details-right flex column">
+                            <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{ marginRight: "3px" }} />Cover</button>
+                            <button onClick={this.onHandleRemove} className="btn"> <FaTrashAlt style={{ marginRight: "5px" }} />Card</button>
+                            <button className="btn" onClick={() => this.openChecklistEditor()}><FaCheckCircle style={{ marginRight: "5px" }} />Checklist</button>
+                            <button onClick={this.onOpenDuedate} className="btn">Due Date</button>
+                            <button onClick={this.onOpenLabelModal} className="btn">Labels</button>
+                            {this.state.isLabelesEdit &&
+                                <ColorModal onSaveLabels={this.onSaveLabels} labels={card.labels} />}
+                        </div>
+
+
+
                     </div>
-                        {this.state.isAddImgModalShown && <AddImg card={card} updateState={this.updateState} />}
+                    {this.state.isAddImgModalShown && <AddImg card={card} updateState={this.updateState} />}
                 </div >
-                </div >
+            </div >
         )
     }
 }
 
 const mapStateToProps = state => {
     return {
-                    board: state.boardReducer.currBoard
+        board: state.boardReducer.currBoard
     }
 }
 const mapDispatchToProps = {
-                    updateBoard
-                }
+    updateBoard
+}
 
 export const CardDetails = connect(mapStateToProps, mapDispatchToProps)(_CardDetails)
