@@ -208,7 +208,7 @@ export class _CardDetails extends Component {
                                             // selected={new Date(card.dueDate)}
                                             selected={(card.dueDate) ? new Date(card.dueDate) : new Date()}
                                             // onChange={selected => this.onSaveDuedate(selected)}
-                                            onChange={this.handleChange}
+                                            onChange={this.handleChangeDuedate}
                                             showTimeSelect
                                             dateFormat="Pp"
                                         />
