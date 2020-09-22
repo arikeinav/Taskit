@@ -12,18 +12,23 @@
     text-align: left;
     margin: auto;
     padding-inline-end: 70px;
+    grid-column: 1/2;
 }
 .BH2{
     margin: auto;
     margin-inline-end: 90%;
+    grid-column: 2/3;
+
 }
 .BH3{
     margin: auto;
     width: 90%;
     // margin-inline-start:20%;
+    grid-column: 3/4;
     
 }
 .BH4{
     margin: auto;
     width: 90%;
+    grid-column: 4/5;
 }
