@@ -125,6 +125,7 @@ export class _CardDetails extends Component {
         this.updateLocalCard('dueDate', data)
         this.saveCard()
     }
+    
     onSaveLabels = (val) => {
         this.setState({ isLabelesEdit: false })
         var labels = [val]
@@ -241,10 +242,8 @@ export class _CardDetails extends Component {
                                 {(this.state.isTimeEdit || card.dueDate) &&
                                     <div>
                                         <DatePicker
-                                            // selected={new Date(card.dueDate)}
                                             selected={(card.dueDate) ? new Date(card.dueDate) : new Date()}
-                                            // onChange={selected => this.onSaveDuedate(selected)}
-                                            onChange={this.handleChange}
+                                            onChange={this.handleChangeDuedate}
                                             showTimeSelect
                                             dateFormat="Pp"
                                         />
