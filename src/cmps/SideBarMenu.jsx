@@ -53,12 +53,12 @@ onChangeColor=(color) =>{
          <button className="btn" onClick={this.onChangeBoardColor}>change board color</button>
         <button className="btn" >delete</button>
         </div>
-        <div>
+       {activities&& <div>
         <ul className="side-menu-list">
         {activities.map(activitie =><li>
         <Avatar key={activitie.byMember._id} src={activitie.byMember.imgUrl}>{activitie.byMember.userName.substring(0, 1).toUpperCase()}
         {activitie.byMember.userName.substring(1, 2).toUpperCase()}</Avatar>{activitie.byMember.userName +' '}{activitie.txt}</li> )}
-        </ul></div>
+        </ul></div>}
         
         
         </div>}

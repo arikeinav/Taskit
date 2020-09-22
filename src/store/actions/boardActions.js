@@ -4,6 +4,7 @@ import socketService from "../../services/socketService";
 export function loadBoards() {
   return async (dispatch) => {
     const boards = await boardService.query()
+    console.log(boards)
   
     dispatch({ type: "SET_BOARDS", boards });
 

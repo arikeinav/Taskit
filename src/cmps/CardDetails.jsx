@@ -7,29 +7,16 @@ import { FaCheckCircle, FaUserCircle, FaFileImage, FaTrashAlt, FaEdit } from "re
 import { AlphaPicker, BlockPicker, ChromePicker, CirclePicker, CompactPicker, GithubPicker, HuePicker, MaterialPicker, PhotoshopPicker, SketchPicker, SliderPicker, SwatchesPicker, TwitterPicker, respectively } from 'react-color'
 
 import TextField from '@material-ui/core/TextField';
-
-// date picker
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
-// import Grid from '@material-ui/core/Grid';
-// import DateFnsUtils from '@date-io/date-fns';
-// import {
-//     MuiPickersUtilsProvider,
-//     KeyboardTimePicker,
-//     KeyboardDatePicker,
-// } from '@material-ui/pickers';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Scroll from 'react-scroll';
-
-
-
 import { ColorModal } from './ColorModal'
 import { boardService } from '../services/boardService'
 import { AddImg } from './AddImg'
 import { Checklist } from './Checklist'
 import ChecklistAdd from './ChecklistAdd';
 import { updateBoard } from '../store/actions/boardActions'
+
 var Element = Scroll.Element;
 
 export class _CardDetails extends Component {
