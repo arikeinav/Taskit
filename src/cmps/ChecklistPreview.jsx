@@ -19,14 +19,14 @@ export class _ChecklistPreview extends Component {
         this.setState({ checklist: this.props.checklist })
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        console.log(this.state.checklist);
+    // componentDidUpdate(prevProps, prevState) {
+    //     console.log(this.state.checklist);
    
-    }
+    // }
 
     onRemoveTodo = (todoId) => {
         const todos = this.state.checklist.todos
-        console.log(todos);
+        // console.log(todos);
         const todoIdx = todos.findIndex(todo => todo.id === todoId)
         todos.splice(todoIdx, 1)
         this.setState(prevState => ({

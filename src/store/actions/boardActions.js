@@ -1,4 +1,5 @@
 import { boardService } from "../../services/boardService";
+import socketService from "../../services/socketService";
 
 export function loadBoards() {
   return async (dispatch) => {
@@ -33,10 +34,18 @@ export function addBoard(txt, imgUrl) {
 }
 
 export function updateBoard(board) {
+  // socketService.broadcastEmit('update board', board);
+  socketService.emit('update board', board);
   return async (dispatch) => {
-    console.log("updateBoard1 -> board", board)
     board = await boardService.update(board)
-    console.log("updateBoard2 -> board", board)
+    dispatch({ type: "UPDATE_BOARD", board });
+  };
+}
+export function updateBoardFromSocket(board) {
+  // socketService.broadcastEmit('update board', board);
+  // socketService.emit('update board', board);
+  return async (dispatch) => {
+    board = await boardService.update(board)
     dispatch({ type: "UPDATE_BOARD", board });
   };
 }

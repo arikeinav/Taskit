@@ -10,7 +10,8 @@ export default {
   terminate,
   on,
   off,
-  emit
+  emit,
+  broadcastEmit
 };
 
 function setup() {
@@ -31,4 +32,8 @@ function off(eventName, cb) {
 
 function emit(eventName, data) {
   socket.emit(eventName, data);
+}
+
+function broadcastEmit(eventName, data) {
+  socket.broadcast.emit(eventName, data);
 }

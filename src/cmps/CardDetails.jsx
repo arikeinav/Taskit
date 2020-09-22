@@ -46,9 +46,9 @@ export class _CardDetails extends Component {
 
 
     }
-    componentDidUpdate(prevProps, prevState) {
-        console.log('on cardDetails update, card is now::', this.state.card);
-    }
+    // componentDidUpdate(prevProps, prevState) {
+    //     console.log('on cardDetails update, card is now::', this.state.card);
+    // }
 
     updateState = (key, val) => {
         this.setState({ [key]: val })

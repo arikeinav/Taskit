@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { loadBoard, updateBoard } from "../store/actions/boardActions";
+import StickyBox from "react-sticky-box";
+
+
+import { loadBoard, updateBoard, updateBoardFromSocket } from "../store/actions/boardActions";
 import { BoardHeader } from "../cmps/BoardHeader";
 import { CardList } from "../cmps/CardList";
 import { CardDetails } from "../cmps/CardDetails";
 import { DragDropContext } from "react-beautiful-dnd";
 import { AddText } from "../cmps/AddText";
 import { boardService } from "../services/boardService";
+import socketService from '../services/socketService';
 
 
-import StickyBox from "react-sticky-box";
 
 
 export class _BoardDetails extends Component {
@@ -22,12 +25,19 @@ export class _BoardDetails extends Component {
   componentDidMount() {
     const { boardId } = this.props.match.params;
     this.props.loadBoard(boardId);
+    socketService.setup();
+    socketService.emit('connect to board', boardId);
+    // socketService.on('send updated board', this.test);
+    socketService.on('send updated board', this.props.updateBoardFromSocket);
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    // console.log('ondidUpdate:',this.props.board);
+  test = board =>{
+    console.log("board", board)
   }
 
+  componentWillUnmount() {
+    socketService.terminate();
+  }
   updateState = (key, val) => {
     this.setState({ [key]: val });
   };
@@ -57,8 +67,6 @@ export class _BoardDetails extends Component {
   onEditGroup = () => {
     this.setState({ isAddGroup: true })
   }
-
-
   onDragEnd = result => {
     const { destination, source, draggableId } = result;
     const columns = this.props.board.groups// groups are called columns in this func
@@ -153,9 +161,9 @@ export class _BoardDetails extends Component {
     const { board } = this.props
     if (board === null) return <div>Loading...</div>
     return (
-      <div className="board-details " style={{backgroundImage: `url(${(board.style && board.style.bgImg) ? board.style.bgImg:''})`,backgroundSize:"cover",backgroundRepeat: "no-repeat",minHeight: "90vh"}} >
+      <div className="board-details " style={{ backgroundImage: `url(${(board.style && board.style.bgImg) ? board.style.bgImg : ''})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", minHeight: "90vh" }} >
         <BoardHeader board={board} />
-        
+
 
         <DragDropContext onDragEnd={this.onDragEnd}>
           <StickyBox className="groups-container flex">
@@ -198,6 +206,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   loadBoard,
   updateBoard,
+  updateBoardFromSocket
 };
 export const BoardDetails = connect(
   mapStateToProps,

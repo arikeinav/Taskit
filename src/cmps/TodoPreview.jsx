@@ -17,7 +17,7 @@ export default class TodoPreview extends Component {
     
     onInputChange =(ev)=>{
         ev.preventDefault()
-        console.log(ev);
+        // console.log(ev);
     }
 
     render() {
