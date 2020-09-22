@@ -4,14 +4,20 @@
     left: 0;
     width: 100vw;
     z-index: 9;
-
+.card-header{
+    height: 30%;
+}
+body{
+    height: 80%;
+    width: 100%;
+}
     .details-modal{
         flex-direction: column;
         background-color: #F4F5F7;
         display: flex;
-        margin: 50px auto 0;
-        width: 40%;
-        min-height: 500px;
+        margin: 10vh auto 30px;
+        width: 45%;
+        min-height: 85vh;
         z-index: 11;
         padding: 20px;
         .btn-card-remove{
@@ -20,14 +26,14 @@
         }
         .card-img{
             object-fit:cover;
-            width: 40%;
-            height: 40%;
+            width: 60%;
+            height: 100%;
         }
         .modal-details-left{
-            width:100%;
+            width:80%;
         }
         .side-bar-details-right{
-            width: 222px;
+            width: 20%;
         }
         .not-edit-card-description{
             background-color: #F4F5F7;

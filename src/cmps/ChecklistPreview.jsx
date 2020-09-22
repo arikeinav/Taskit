@@ -80,12 +80,18 @@ export class _ChecklistPreview extends Component {
         this.props.onUpdateChecklists(checklist)//final stage of updating the checklist, sending it to parent-cmp
     }
 
+
+
     render() {
         const { checklist } = this.props
         return (
-            <div>
-                <h2>Your Todos:</h2>
-                {checklist.todos.map(todo => <TodoPreview key={todo.id} todo={todo} onRemoveTodo={this.onRemoveTodo} />)}
+            <div className="checklist-preview-div flex">
+                <div className="checklist-prev-header">
+                <h3 style={{textDecoration: 'underline'}}>{checklist.title}</h3>
+                <button className="btn" onClick={()=>this.props.removeChecklist()}>Delete Checklist</button>
+                </div>
+                <h4>Your Todos:</h4>
+                {checklist.todos && checklist.todos.map(todo => <TodoPreview key={todo.id} todo={todo} onRemoveTodo={this.onRemoveTodo} />)}
                 <button onClick={() => { this.setState({ isTodoEditShown: true }) }} className="btn">Add Todo</button>
                 {this.state.isTodoEditShown &&
                     <div>

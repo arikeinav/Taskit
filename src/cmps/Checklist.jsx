@@ -1,34 +1,40 @@
 import React, { Component } from 'react'
+// import { connect } from 'react-redux'
 import { ChecklistPreview } from './ChecklistPreview'
+
 
 
 export class Checklist extends Component {
     state = {
-        checklists: []
+        checklist: {},
+        
+       
     }
 
     componentDidMount() {
-        const checklists = this.props.checklists
-        this.setState({ checklists })
-        console.log('CHECKLISTS before SPLICING!',this.state.checklists);
+        const checklist = this.props.checklist
+        this.setState({ checklist })
     }
 
-    onUpdateChecklists = (checklist) => {
-        console.log('checklist:',checklist);//add the updated checklist from child to this.state.checklists array and then send it to parent cmp via this.props.saveChecklists(checklists)
-        console.log('checklists:',this.state.checklists);
-        const checklists = this.state.checklists
-        const idx = checklists.findIndex(entity => entity.id === checklist.id)
-        checklists.splice(idx,1,checklist)
-        console.log('THESE ARE THE SPLICED CHECKLISTS!',checklists);
-        this.props.saveChecklist(checklists)
+    componentDidUpdate(prevProps, prevState) {
+        // console.log('onUpdate checklist:', this.state.checklist);
+
     }
+
+    onUpdateChecklist = (checklist) => {
+        // console.log('checklist:', checklist);//add the updated checklist from child to this.state.checklists array and then send it to 
+
+        this.props.saveChecklist(checklist)
+    }
+  
 
     render() {
 
-        const { checklists } = this.props
+        const { checklist } = this.props
+        console.log('checklist', checklist)
         return (
             <div>
-                {checklists.map((checklist) => <ChecklistPreview onUpdateChecklists={this.onUpdateChecklists} checklist={checklist} key={checklist.id} />)}
+                { this.props.checklist.title && <ChecklistPreview removeChecklist={this.props.removeChecklist} onUpdateChecklists={this.onUpdateChecklist} checklist={checklist} key={checklist.id} />}
             </div>
         )
     }
