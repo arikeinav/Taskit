@@ -111,7 +111,7 @@ export class _CardDetails extends Component {
     }
 
     addNewChecklist = (checklist) => {
-        console.log("New Checklist!:", checklist)
+        // console.log("New Checklist!:", checklist)
         this.saveChecklist(checklist)
     }
 

@@ -41,7 +41,7 @@ class _Login extends Component {
     const user = await this.props.login(userCreds)
       if (!user) this.setState({ msg: "Username or password not exist" })
       else{
-        console.log(user)
+        // console.log(user)
     this.props.onCloseModal()
     this.setState({ loginCred: { username: "", password: "" } });
     }

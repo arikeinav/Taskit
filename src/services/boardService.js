@@ -15,7 +15,7 @@ export const boardService = {
 };
 
 function query(filterBy) {
-  console.log('object')
+  // console.log('object')
   return httpService.get(`board`);
 }
 function loadBoard(boardId) {
