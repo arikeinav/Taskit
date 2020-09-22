@@ -21,12 +21,6 @@ export class CardList extends React.Component {
         isDeleteGroup:false
     }
     
-    componentDidMount() {
-        // const height = document.getElementById('card-container').clientHeight;
-        // console.log("CardList -> componentDidMount -> height", height)
-    }
-    
-
     updateState = (key, val) => {
         this.setState({ [key]: val })
     }
@@ -44,7 +38,6 @@ export class CardList extends React.Component {
                 <header className="card-header flex space-between">
                     <p className="group-title">{group.title}</p>
                   <SimpleMenu isDeleteGroup={this.state.isDeleteGroup} onAddCard={this.updateState} onShowDeleteTogglle={this.onShowDeleteTogglle}   onRemove={this.onRemoveGroup} onAddCard={this.updateState} group={group} />
-                  {/* <button className="btn" onClick={() => this.props.onRemoveGroup(group.id)}>X</button> */}
                 </header>
                 <Element style={{
                     height: 'auto',
