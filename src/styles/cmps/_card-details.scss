@@ -4,7 +4,13 @@
     left: 0;
     width: 100vw;
     z-index: 9;
-
+.card-header{
+    height: 30%;
+}
+body{
+    height: 80%;
+    width: 100%;
+}
     .details-modal{
         flex-direction: column;
         background-color: #F4F5F7;
@@ -20,8 +26,8 @@
         }
         .card-img{
             object-fit:cover;
-            width: 40%;
-            height: 40%;
+            width: 60%;
+            height: 100%;
         }
         .modal-details-left{
             width:80%;
