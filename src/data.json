@@ -36,7 +36,7 @@
             "title": "Project name",
             "description": "Find a good name for the app",
            
-            "checklists": [
+            "checklist": 
               {
                 "id": "t101",
                 "title": "Checklist",
@@ -48,7 +48,7 @@
                   }
                 ]
               }
-            ],
+            ,
             "assignedMembers": [
               {
                 "_id": "u102",
@@ -140,7 +140,7 @@
             "id": "c1043f",
             "title": "Design Trello",
             "description": "Write an amazing Trello app and make it work!!!!",
-            "checklists": [
+            "checklist": 
               {
                 "id": "YEhmF",
                 "title": "Checklist",
@@ -152,7 +152,7 @@
                   }
                 ]
               }
-            ],
+            ,
             "assignedMembers": [
               {
                 "_id": "u102",
@@ -235,7 +235,7 @@
             "title": "Finish progressive App!!",
             "description": "description...",
            
-            "checklists": [
+            "checklist": 
               {
                 "id": "t101",
                 "title": "Checklist",
@@ -247,7 +247,7 @@
                   }
                 ]
               }
-            ],
+            ,
             "assignedMembers": [
               {
                 "_id": "u102",
@@ -285,7 +285,7 @@
             "title": " Card img",
             "description": "Add img adding for each card",
             "imgUrl":"https://res.cloudinary.com/cloudinary-img/image/upload/v1600352460/Taskit/daniel-chen-cNaEqXSsZ0k-unsplash_acw6rx.jpg",
-            "checklists": [
+            "checklist": 
               {
                 "id": "YEhmF",
                 "title": "Checklist",
@@ -297,7 +297,7 @@
                   }
                 ]
               }
-            ],
+           ,
             "assignedMembers": [
               {
                 "_id": "u102",
@@ -328,7 +328,7 @@
             "id": "c1041",
             "title": "Finish the sprint",
             "description": "Write an amazing Trello app and make it work!!!!",
-            "checklists": [
+            "checklist": 
               {
                 "id": "YEhmF",
                 "title": "Checklist",
@@ -340,7 +340,7 @@
                   }
                 ]
               }
-            ],
+          ,
             "assignedMembers": [
               {
                 "_id": "u102",
@@ -419,7 +419,7 @@
             "title": "Finish progressive App!!",
             "description": "description...",
            
-            "checklists": [
+            "checklist": 
               {
                 "id": "t101",
                 "title": "Checklist",
@@ -431,7 +431,7 @@
                   }
                 ]
               }
-            ],
+            ,
             "assignedMembers": [
               {
                 "_id": "u102",
@@ -472,7 +472,7 @@
             "id": "c104",
             "title": "Finish the fucking sprint",
             "description": "Write an amazing Trello app and make it work!!!!",
-            "checklists": [
+            "checklist": 
               {
                 "id": "YEhmF",
                 "title": "Checklist",
@@ -484,7 +484,7 @@
                   }
                 ]
               }
-            ],
+            ,
             "assignedMembers": [
               {
                 "_id": "u102",
@@ -561,7 +561,7 @@
             "title": "Finish progressive App",
             "description": "description...",
            
-            "checklists": [
+            "checklist": 
               {
                 "id": "t101",
                 "title": "Checklist",
@@ -573,7 +573,7 @@
                   }
                 ]
               }
-            ],
+            ,
             "assignedMembers": [
               {
                 "_id": "u102",
@@ -614,7 +614,7 @@
             "id": "c104",
             "title": "Finish the fucking sprint",
             "description": "Write an amazing Trello app and make it work!!!!",
-            "checklists": [
+            "checklist": 
               {
                 "id": "YEhmF",
                 "title": "Checklist",
@@ -626,7 +626,7 @@
                   }
                 ]
               }
-            ],
+            ,
             "assignedMembers": [
               {
                 "_id": "u102",
