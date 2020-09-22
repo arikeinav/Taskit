@@ -20,11 +20,9 @@ export default function BoardPreview({ board }) {
                 }
           }
           className="board-preview grid"
-        ><div className="board-preview-title-div">
-        <h3>{board.title}</h3><div className="board-preview-fake-div">
-            
-            </div>
-      </div>
+        >
+        <h3>{board.title}</h3>
+      
           
         </div>
       </Link>

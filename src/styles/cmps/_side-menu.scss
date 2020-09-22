@@ -4,12 +4,26 @@
     align-items: flex-end;
     position: fixed;
     top: 0;
-    right: -400px;
+    right: -350px;
     height: 100vh;
     margin-top: 8vh;
-    width: 400px;
+    width: 350px;
     background-color: #8a8b8b;
     z-index: 2;
     transform: translateX(-100%);
     transition: transform .8s;;
+}
+.side-menu-list{
+    font-size: 1rem;
+    padding: 0;
+
+
+}
+
+.side-menu-list li{
+    align-items: center;
+    margin-left: 3px;
+    display: flex;
+    justify-content:flex-start;
+    list-style: none;
 }

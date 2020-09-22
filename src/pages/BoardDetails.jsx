@@ -153,7 +153,8 @@ export class _BoardDetails extends Component {
     const { board } = this.props
     if (board === null) return <div>Loading...</div>
     return (
-      <div className="board-details " style={{backgroundImage: `url(${board.style.bgImg?board.style.bgImg:''})`,backgroundSize:"cover",backgroundRepeat: "no-repeat",minHeight: "90vh"}} >
+      <div className="board-details " style={{backgroundImage: `url(${board.style.bgImg?board.style.bgImg:''})`,backgroundSize:"cover",backgroundRepeat: "no-repeat",minHeight: "90vh",backgroundColor:`${board.style.bgColor?board.style.bgColor:''}`}} >
+      
         <BoardHeader board={board} />
         
 
