@@ -26,13 +26,13 @@ export class AddText extends React.Component {
         return (
             <div>
                 <form onSubmit={this.onSubmit}>
-                    <input placeholder="Group name"
+                    <input placeholder={this.props.type === 'Card' ? "Card name" : "List name"}
                         type="text"
                         onChange={this.handleValueChange}
                         value={this.state.text}
                     />
                     <div className="flex">
-                        <button className="btn" onClick={this.onSubmit}>{this.props.type === 'Card' ? "Add Card" : "Add Group"}</button>
+                        <button className="btn" onClick={this.onSubmit}>{this.props.type === 'Card' ? "Add Card" : "Add List"}</button>
                         <button className="btn" onClick={this.onRemoveTextEditor}>X</button>
                     </div>
                 </form>

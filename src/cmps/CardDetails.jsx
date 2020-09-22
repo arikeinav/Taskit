@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
-import { FaCheckCircle, FaUserCircle, FaFileImage, FaTrashAlt, FaEdit, FaFileImage } from "react-icons/fa";
+import { FaCheckCircle, FaUserCircle, FaFileImage, FaTrashAlt, FaEdit } from "react-icons/fa";
 
 import TextField from '@material-ui/core/TextField';
 
