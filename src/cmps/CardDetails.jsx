@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
-import { FaCheckCircle, FaUserCircle, FaFileImage, FaTrashAlt } from "react-icons/fa";
+import { FaCheckCircle, FaUserCircle, FaFileImage, FaTrashAlt, FaEdit } from "react-icons/fa";
 
 import TextField from '@material-ui/core/TextField';
 
@@ -18,7 +18,7 @@ import TextField from '@material-ui/core/TextField';
 // } from '@material-ui/pickers';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import Scroll from 'react-scroll';
 
 
 
@@ -28,6 +28,7 @@ import { AddImg } from './AddImg'
 import { Checklist } from './Checklist'
 import ChecklistAdd from './ChecklistAdd';
 import { updateBoard } from '../store/actions/boardActions'
+var Element = Scroll.Element;
 
 export class _CardDetails extends Component {
 
@@ -187,23 +188,28 @@ export class _CardDetails extends Component {
 
                 <div className="details-modal flex column" >
 
-                    <header className="card-header flex space-between align-center">
-                        <button className="btn btn-card-remove" onClick={this.onRmoveModal}>X</button>
+                    <header className="card-header flex column align-center">
+                        {/* <button className="btn btn-card-remove" onClick={this.onRmoveModal}>X</button> */}
                         {card.imgUrl &&
-                            <div>
-                                <img className="card-img" src={card.imgUrl} alt="Loading" />
-                                <button onClick={this.onRemoveImg} className="btn"><FaTrashAlt style={{ marginRight: "5px" }} /> Remove Image</button>
-                            </div>
+
+                            <img className="card-img" src={card.imgUrl} alt="Loading" />
                         }
+                        {card.imgUrl && <button onClick={this.onRemoveImg} className="btn"><FaTrashAlt style={{ marginRight: "5px" }} /> Remove Image</button>}
                     </header>
-                    <body>
+                    <div className="body-div flex">
 
 
-                        <div className="flex space-between">
+
+                        <Element style={{
+                            height: '400px',
+                            width: '100%',
+                            overflow: 'scroll',
+                            overflowX: 'hidden',
+                        }}>
                             <div className="modal-details-left">
+                                <h3 className="card-title">{card.title}</h3>
 
                                 <div className="flex">
-                                    <h3>{card.title}</h3>
                                     <button className="btn btn-invite" > <FaUserCircle style={{ marginRight: "5px" }} /> Invite</button>
                                     {(card.members && card.members.length > 0) &&
                                         <div>
@@ -232,60 +238,92 @@ export class _CardDetails extends Component {
                                     }
                                 </div>
 
-                                <div>
-                                    <DatePicker
-                                        selected={(card.dueDate) ? new Date(card.dueDate) : new Date()}
-                                        onChange={this.handleChangeDuedate}
-                                        showTimeSelect
-                                        dateFormat="Pp"
+                                {(this.state.isTimeEdit || card.dueDate) &&
+                                    <div>
+                                        <DatePicker
+                                            // selected={new Date(card.dueDate)}
+                                            selected={(card.dueDate) ? new Date(card.dueDate) : new Date()}
+                                            // onChange={selected => this.onSaveDuedate(selected)}
+                                            onChange={this.handleChange}
+                                            showTimeSelect
+                                            dateFormat="Pp"
+                                        />
+
+                                        <button onClick={this.onRemoveDuedate} className="btn">X</button>
+                                    </div>
+                                }
+                            </div>
+
+
+
+
+
+
+                            {this.state.isDescriptionEdit ?
+                                <div >
+                                    <TextField
+                                        multiline
+                                        rows={5}
+                                        defaultValue={this.state.card.description}
+                                        variant="outlined"
+                                        className="edit-card-description"
+                                        onChange={ev => this.updateLocalCard('description', ev.target.value)}
                                     />
+                                    <button onClick={this.saveCard} className="btn">Save</button>
+                                </div>
+                                :
+                                <div
+                                    className="not-edit-card-description"
+                                    onClick={() => this.updateState('isDescriptionEdit', true)}>{this.state.card.description ? this.state.card.description : "Add a more details description..."}
+                                    <div>
+                                        <div className="edit-header flex">
 
-                                    <button onClick={this.onRemoveDuedate} className="btn">X</button>
-                                </div>
-                            
-                            <div>
-                                <div className="edit-header flex">
-                                    <p>Description:</p>
-                                    <button className="btn" onClick={() => this.updateState('isDescriptionEdit', true)}>Edit</button>
-                                </div>
-                                    {this.state.isDescriptionEdit ?
-                                        <div >
-                                            <TextField
-                                                multiline
-                                                rows={5}
-                                                defaultValue={this.state.card.description}
-                                                variant="outlined"
-                                                className="edit-card-description"
-                                                onChange={ev => this.updateLocalCard('description', ev.target.value)}
-                                            />
-                                            <button onClick={this.saveCard} className="btn">Save</button>
+                                            <button className="btn" onClick={() => this.updateState('isDescriptionEdit', true)}><FaEdit /></button>
+
+                                            <p>Description:</p>
+
                                         </div>
-                                        :
-                                        <div
-                                            className="not-edit-card-description"
-                                            onClick={() => this.updateState('isDescriptionEdit', true)}>{this.state.card.description ? this.state.card.description : "Add a more details description..."}
-                                        </div>
-                                    }
+                                        {this.state.isDescriptionEdit ?
+                                            <div >
+                                                <TextField
+                                                    multiline
+                                                    rows={6}
+                                                    defaultValue={this.state.card.description}
+                                                    variant="outlined"
+                                                    className="edit-card-description"
+                                                    onChange={ev => this.updateLocalCard('description', ev.target.value)}
+                                                />
+                                                <button onClick={this.saveCard} className="btn">Save</button>
+                                            </div>
+                                            :
+                                            <div
+                                                className="not-edit-card-description"
+                                                onClick={() => this.updateState('isDescriptionEdit', true)}>{this.state.card.description ? this.state.card.description : "Add a more details description..."}
+                                            </div>
+                                        }
+                                    </div>
+
+
+                                    {this.state.card.checklist && <Checklist removeChecklist={this.removeChecklist} saveChecklist={this.saveChecklist} checklist={this.state.card.checklist} />}
+                                    {this.state.isChecklistEdit && <ChecklistAdd addNewChecklist={this.addNewChecklist} />}
+
+
                                 </div>
-
-                                {this.state.card.checklist && <Checklist removeChecklist={this.removeChecklist} saveChecklist={this.saveChecklist} checklist={this.state.card.checklist} />}
-                                {this.state.isChecklistEdit && <ChecklistAdd addNewChecklist={this.addNewChecklist} />}
-
-                            </div>
-
-                            <div className="side-bar-details-right flex column">
-                                <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{ marginRight: "3px" }} />Cover Image</button>
-                                <button onClick={this.onHandleRemove} className="btn"> <FaTrashAlt style={{ marginRight: "5px" }} />Delete Card</button>
-                                <button className="btn" onClick={() => this.openChecklistEditor()}><FaCheckCircle style={{ marginRight: "5px" }} />Checklist</button>
-                                <button onClick={this.onOpenDuedate} className="btn">Due Date</button>
-                                <button onClick={this.onOpenLabelModal} className="btn">Labels</button>
-                                {this.state.isLabelesEdit &&
-                                    <ColorModal onSaveLabels={this.onSaveLabels} labels={card.labels} />}
-                            </div>
-
-
+                            }
+                        </Element >
+                        <div className="side-bar-details-right flex column">
+                            <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{ marginRight: "3px" }} />Cover Image</button>
+                            <button onClick={this.onHandleRemove} className="btn"> <FaTrashAlt style={{ marginRight: "5px" }} />Delete Card</button>
+                            <button className="btn" onClick={() => this.openChecklistEditor()}><FaCheckCircle style={{ marginRight: "5px" }} />Checklist</button>
+                            <button onClick={this.onOpenDuedate} className="btn">Due Date</button>
+                            <button onClick={this.onOpenLabelModal} className="btn">Labels</button>
+                            {this.state.isLabelesEdit &&
+                                <ColorModal onSaveLabels={this.onSaveLabels} labels={card.labels} />}
                         </div>
-                    </body>
+
+
+
+                    </div >
                     {this.state.isAddImgModalShown && <AddImg card={card} updateState={this.updateState} />}
                 </div >
             </div >
