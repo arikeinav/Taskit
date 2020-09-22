@@ -4,7 +4,7 @@ import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
 import { FaCheckCircle, FaUserCircle, FaFileImage, FaTrashAlt, FaEdit } from "react-icons/fa";
 
-import { AlphaPicker, BlockPicker, ChromePicker, CirclePicker, CompactPicker, GithubPicker, HuePicker, MaterialPicker, PhotoshopPicker, SketchPicker, SliderPicker, SwatchesPicker, TwitterPicker, respectively } from 'react-color'
+import { TwitterPicker} from 'react-color'
 
 import TextField from '@material-ui/core/TextField';
 import DatePicker from "react-datepicker";
@@ -135,6 +135,13 @@ export class _CardDetails extends Component {
         this.setState({ isChecklistEdit: (this.state.isChecklistEdit ? false : true) })
 
     }
+    handleChangeBGColor = (color) => {
+        this.updateLocalCard('bgColor', color.hex)
+    }
+    saveBGColor = () => {
+        this.updateState('isAddColorModalShown', false)
+        this.saveCard()
+    }
 
     render() {
         if (!this.state.card) return <div>Loading...</div>
@@ -148,19 +155,19 @@ export class _CardDetails extends Component {
 
                 <div className="details-modal flex column" >
 
-                    <header className="card-header flex column align-center">
+                    <header className="card-header flex column align-center" style={{ backgroundColor: card.bgColor }}>
                         {card.imgUrl &&
 
                             <img className="card-img" src={card.imgUrl} alt="Loading" />
                         }
                         {card.imgUrl && <button onClick={this.onRemoveImg} className="btn"><FaTrashAlt style={{ marginRight: "5px" }} /> Remove Image</button>}
 
-                        {/* {this.state.isAddColorModalShown &&
+                        {this.state.isAddColorModalShown &&
                             <div>
-                                <TwitterPicker />
-                                <button onClick={() => this.updateState('isAddColorModalShown', false)}>Save</button>
+                                <TwitterPicker onChange={this.handleChangeBGColor} colors={['#8ED1FC', '#0693E3', '#ABB8C3', '#EB144C', '#F78DA7', '#9900EF']} triangle="hide" />
+                                <button onClick={this.saveBGColor}>Save</button>
                             </div>
-                        } */}
+                        }
                     </header>
                     <div className="body-div flex">
 
