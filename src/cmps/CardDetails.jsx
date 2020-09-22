@@ -3,31 +3,17 @@ import { connect } from 'react-redux'
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
 import { FaCheckCircle, FaUserCircle, FaFileImage, FaTrashAlt, FaEdit } from "react-icons/fa";
-
 import TextField from '@material-ui/core/TextField';
-
-// date picker
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
-// import Grid from '@material-ui/core/Grid';
-// import DateFnsUtils from '@date-io/date-fns';
-// import {
-//     MuiPickersUtilsProvider,
-//     KeyboardTimePicker,
-//     KeyboardDatePicker,
-// } from '@material-ui/pickers';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Scroll from 'react-scroll';
-
-
-
 import { ColorModal } from './ColorModal'
 import { boardService } from '../services/boardService'
 import { AddImg } from './AddImg'
 import { Checklist } from './Checklist'
 import ChecklistAdd from './ChecklistAdd';
 import { updateBoard } from '../store/actions/boardActions'
+
 var Element = Scroll.Element;
 
 export class _CardDetails extends Component {
@@ -97,29 +83,7 @@ export class _CardDetails extends Component {
         this.setState({ card })
         this.saveCard()
     }
-    // convert = (str) => {
-    //     var date = new Date(str),
-    //         mnth = ("0" + (date.getMonth() + 1)).slice(-2),
-    //         day = ("0" + date.getDate()).slice(-2);
-    //     return [date.getFullYear(), mnth, day].join("-");
-    // }
-    //     onSaveDuedate=(selected) => {
-
-    // 
-    //         console.log("111111111111", selectedDate)
-
-    //         selectedDate = this.convert(selectedDate)
-
-    //         console.log("222222222222", selectedDate)
-
-    //         selectedDate = new Date(selectedDate).getTime() / 1000
-
-    //         console.log("333333333", selectedDate)
-
-    //         this.updateState('isTimeEdit', false)
-    //         this.updateLocalCard('dueDate', selectedDate)
-    //         this.saveCard()
-    //     }
+    
     handleChangeDuedate = (data) => {
         this.updateState('isTimeEdit', false)
         this.updateLocalCard('dueDate', data)
