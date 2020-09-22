@@ -1,0 +1,15 @@
+.side-menu {
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    align-items: flex-end;
+    position: fixed;
+    top: 0;
+    right: -400px;
+    height: 100vh;
+    margin-top: 8vh;
+    width: 400px;
+    background-color: #8a8b8b;
+    z-index: 2;
+    transform: translateX(-100%);
+    transition: transform .8s;;
+}
