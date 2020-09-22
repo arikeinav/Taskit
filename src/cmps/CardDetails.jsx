@@ -232,18 +232,6 @@ export class _CardDetails extends Component {
                                     }
                                 </div>
 
-                                {/* {(this.state.isTimeEdit || card.dueDate) &&
-                                    <div>
-                                        <DatePicker
-                                            selected={(card.dueDate) ? new Date(card.dueDate) : new Date()}
-                                            onChange={this.handleChange}
-                                            showTimeSelect
-                                            dateFormat="Pp"
-                                        />
-
-                                        <button onClick={this.onRemoveDuedate} className="btn">X</button>
-                                    </div>
-                                } */}
                                 <div>
                                     <DatePicker
                                         selected={(card.dueDate) ? new Date(card.dueDate) : new Date()}
