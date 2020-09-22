@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
-import { FaCheckCircle, FaUserCircle, FaFileImage, FaTrashAlt, FaEdit } from "react-icons/fa";
+import { FaCheckCircle, FaUserCircle, FaFileImage, FaTrashAlt, FaEdit, FaFileImage } from "react-icons/fa";
 
 import TextField from '@material-ui/core/TextField';
 
@@ -312,7 +312,7 @@ export class _CardDetails extends Component {
                             }
                         </Element >
                         <div className="side-bar-details-right flex column">
-                            <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{ marginRight: "3px" }} />Cover Image</button>
+                            <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{ marginRight: "3px" }} /><FaFileImage/> Cover</button>
                             <button onClick={this.onHandleRemove} className="btn"> <FaTrashAlt style={{ marginRight: "5px" }} />Delete Card</button>
                             <button className="btn" onClick={() => this.openChecklistEditor()}><FaCheckCircle style={{ marginRight: "5px" }} />Checklist</button>
                             <button onClick={this.onOpenDuedate} className="btn">Due Date</button>
