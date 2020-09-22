@@ -3,10 +3,17 @@ import { FaUserCircle } from "react-icons/fa";
 import {Avatar} from '@material-ui/core';
 import {AvatarGroup} from '@material-ui/lab';
 import { AiOutlineMenu } from "react-icons/ai";
+import {SideMenu}from './SideBarMenu'
 export class BoardHeader extends Component {
 
     state = {
-        filterBy: ''
+        filterBy: '',
+        isMenuShow:false
+    }
+
+    toggleMenu=()=>{
+        let menuState = !this.state.isMenuShow
+        this.setState({isMenuShow:menuState})
     }
 
     async componentDidMount() {
@@ -34,7 +41,9 @@ export class BoardHeader extends Component {
 
                 
                     <button className="BH3 btn"><FaUserCircle style={{marginRight:"5px"}}/>Invite</button>
-                    <button className="BH4 btn"><AiOutlineMenu style={{marginRight:"5px"}}/> Menu</button>
+                    <button className="BH4 btn" ><AiOutlineMenu style={{marginRight:"5px"}} onClick={this.toggleMenu}/>Menu</button>
+                    {this.state.isMenuShow &&<SideMenu onToggleMenu={this.toggleMenu}/>}
+                  
                 
             </div>
         )
