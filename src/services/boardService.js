@@ -1,5 +1,5 @@
 
-// import httpService from './httpService';
+import httpService from './httpService';
 import storageService from './asyncStorageService'
 // const boards = require('../data.json').board
 // const users = require('../data.json').user
@@ -8,63 +8,50 @@ export const boardService = {
   query,
   loadBoard,
   removeBoard,
-  save,
+  update,
   getCardById,
+  create,
   makeId
 };
 
-function loadBoard(boardId) {
- 
-  return storageService.get('board', boardId)
-  //   return httpService.get(`board/${boardId}`)
-  
+function query(filterBy) {
+  return httpService.get(`board`);
 }
-
-async function save(board) {
- 
-   if (board._id)  {
-      return storageService.put('board', board)
+function loadBoard(boardId) {
+  return httpService.get(`board/${boardId}`)
+}
+function update(board) {
+  return httpService.put(`board/${board._id}`, board);
+}
+function removeBoard(boardId) {
+  return httpService.delete(`board/${boardId}`);
+}
+function create(txt, imgUrl) {
+  const board = _createBoard(txt, imgUrl)
+  return httpService.post(`board`, board);
+}
+function _createBoard(txt, imgUrl) {
+  return {
+    title: txt,
+    style: { bgImg: imgUrl },
+    groups: [{
+      id: 'g' + makeId(),
+      title: "New List",
+      cards: [
+        {
+          id: 'c' + makeId(),
+          title: "New Card",
+          description: "Add your description...",
+        }
+      ]
     }
-    // return httpService.put(`board/${board._id}`, board);
-  
-  else {
-    
-    
-    const addedBoard = storageService.post('board', board);
-    return addedBoard
-    //   const addedBoard = httpService.post(`board`, board);
-    // return addedBoard
+    ]
   }
 }
-  
-  
- 
-  
-
-function query(filterBy) {
-  // localStorage.setItem('board', JSON.stringify(boards))
-  // localStorage.setItem('user', JSON.stringify(users))
-
- 
-  
-
-  return storageService.query('board')
-  // var queryStr =''
-  // if (filterBy)  queryStr = `?name=${filterBy.name}&type=${filterBy.type}&inStock=${filterBy.inStock}`;
-  // return httpService.get(`board${queryStr|| ''}`);
-}
-
-function removeBoard(boardId) {
-  return storageService.remove('board', boardId)
-
-  // return httpService.delete(`board/${boardId}`);
-}
-
 function getCardById(board, groupId, cardId) {
   const group = board.groups.find(group => group.id === groupId)
   return group.cards.find(card => card.id === cardId)
 }
-
 function makeId(length = 5) {
   var txt = '';
   var possible = '0123456789abcdefgABCDEFG';

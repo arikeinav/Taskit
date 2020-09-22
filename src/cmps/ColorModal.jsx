@@ -29,10 +29,8 @@ export class ColorModal extends React.Component {
         ]
         return (
             <div className="color-container flex column">
-
-                {colors.map(color => <span onClick={(ev) => this.onClickColor(color, ev)} style={{ backgroundColor: color }} />)}
+                {colors.map(color => <span key={color} onClick={(ev) => this.onClickColor(color, ev)} style={{ backgroundColor: color }} />)}
             </div>
-
         )
     }
 }

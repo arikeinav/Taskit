@@ -1,6 +1,5 @@
 {
   "board": [{
-    "_id": "b101",
     "title": "Example project",
     "createdAt": 1589983468418,
     "createdBy": {
@@ -384,7 +383,6 @@
       }
     ]
   },{
-    "_id": "b102",
     "title": "Trello project",
     "createdAt": 1589983468418,
     "createdBy": {
@@ -527,7 +525,6 @@
       }
     ]
   },{
-    "_id": "b103",
     "title": "Stam project",
     "createdAt": 1589983468418,
     "createdBy": {

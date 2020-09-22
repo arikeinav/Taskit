@@ -64,6 +64,7 @@ export class _CardDetails extends Component {
         this.setState({ card })
     }
     saveCard = () => {
+
         this.updateState('isDescriptionEdit', false)
         var cardId = this.state.card.id;
         const newBoard = { ...this.props.board }
@@ -77,7 +78,6 @@ export class _CardDetails extends Component {
         this.saveCard()
     }
     updateLocalCard = (key, val) => {
-        console.log("updateLocalCard -> val", val)
         this.setState(prevState => ({
             card: {
                 ...prevState.card,
@@ -85,7 +85,6 @@ export class _CardDetails extends Component {
             }
 
         }))
-        console.log(this.state.card)
     }
     onRemoveDuedate = () => {
         this.updateState('isTimeEdit', false)
@@ -117,13 +116,11 @@ export class _CardDetails extends Component {
     //         this.updateLocalCard('dueDate', selectedDate)
     //         this.saveCard()
     //     }
-    handleChange = (data) => {
+    handleChangeDuedate = (data) => {
         this.updateState('isTimeEdit', false)
         this.updateLocalCard('dueDate', data)
         this.saveCard()
     }
-
-
     onSaveLabels = (val) => {
         this.setState({ isLabelesEdit: false })
         var labels = [val]
@@ -143,8 +140,6 @@ export class _CardDetails extends Component {
         this.updateLocalCard('dueDate', new Date())
         this.setState({ isTimeEdit: true })
     }
-
-
     saveChecklist = (checklists) => {
         this.updateLocalCard('checklists', checklists)
         this.saveCard()
@@ -218,10 +213,8 @@ export class _CardDetails extends Component {
                             {(this.state.isTimeEdit || card.dueDate) &&
                                 <div>
                                     <DatePicker
-                                        // selected={new Date(card.dueDate)}
                                         selected={(card.dueDate) ? new Date(card.dueDate) : new Date()}
-                                        // onChange={selected => this.onSaveDuedate(selected)}
-                                        onChange={this.handleChange}
+                                        onChange={this.handleChangeDuedate}
                                         showTimeSelect
                                         dateFormat="Pp"
                                     />

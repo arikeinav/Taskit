@@ -7,9 +7,9 @@ export default function BoardPreview({ board }) {
       <Link to={`/board/${board._id}`}>
         <div
           style={
-            board.style.bgImg
+            (board.style && board.style.bgImg)
               ? {
-                  backgroundImage: `url(${board.style.bgImg})`,
+                  backgroundImage: `url(${board.style && board.style.bgImg})`,
                   backgroundSize: "cover",
                   backgroundRepeat: "no-repeat",
                 }

@@ -24,20 +24,20 @@ export function removeBoard(id) {
   };
 }
 
-export function addBoard(board) {
+export function addBoard(txt, imgUrl) {
   return async (dispatch) => {
-    await boardService.save(board)
+    const board = await boardService.create(txt, imgUrl)
     dispatch({ type: "ADD_BOARD", board });
 
   };
 }
 
 export function updateBoard(board) {
- 
   return async (dispatch) => {
-    board = await boardService.save(board)
+    console.log("updateBoard1 -> board", board)
+    board = await boardService.update(board)
+    console.log("updateBoard2 -> board", board)
     dispatch({ type: "UPDATE_BOARD", board });
-
   };
 }
 
