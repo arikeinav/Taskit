@@ -380,6 +380,20 @@
           "id": "c10122",
           "title": "Replace Logo"
         }
+      },
+      {
+        "id": "a1022",
+        "txt": "Changed logo",
+        "createdAt": 154514,
+        "byMember": {
+          "_id": "u103",
+          "userName": "Shlomi Koplianski",
+          "imgUrl": ""
+        },
+        "card": {
+          "id": "c10122",
+          "title": "Replace Logo"
+        }
       }
     ]
   },{
