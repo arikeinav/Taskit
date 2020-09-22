@@ -252,68 +252,40 @@ export class _CardDetails extends Component {
                                         <button onClick={this.onRemoveDuedate} className="btn">X</button>
                                     </div>
                                 }
-                            </div>
-
-
-
-
-
-
-                            {this.state.isDescriptionEdit ?
-                                <div >
-                                    <TextField
-                                        multiline
-                                        rows={5}
-                                        defaultValue={this.state.card.description}
-                                        variant="outlined"
-                                        className="edit-card-description"
-                                        onChange={ev => this.updateLocalCard('description', ev.target.value)}
-                                    />
-                                    <button onClick={this.saveCard} className="btn">Save</button>
-                                </div>
-                                :
-                                <div
-                                    className="not-edit-card-description"
-                                    onClick={() => this.updateState('isDescriptionEdit', true)}>{this.state.card.description ? this.state.card.description : "Add a more details description..."}
-                                    <div>
-                                        <div className="edit-header flex">
-
-                                            <button className="btn" onClick={() => this.updateState('isDescriptionEdit', true)}><FaEdit /></button>
-
-                                            <p>Description:</p>
-
-                                        </div>
-                                        {this.state.isDescriptionEdit ?
-                                            <div >
-                                                <TextField
-                                                    multiline
-                                                    rows={6}
-                                                    defaultValue={this.state.card.description}
-                                                    variant="outlined"
-                                                    className="edit-card-description"
-                                                    onChange={ev => this.updateLocalCard('description', ev.target.value)}
-                                                />
-                                                <button onClick={this.saveCard} className="btn">Save</button>
-                                            </div>
-                                            :
-                                            <div
-                                                className="not-edit-card-description"
-                                                onClick={() => this.updateState('isDescriptionEdit', true)}>{this.state.card.description ? this.state.card.description : "Add a more details description..."}
-                                            </div>
-                                        }
+                                <div>
+                                    <div className="edit-header flex">
+                                        <button className="btn" onClick={() => this.updateState('isDescriptionEdit', true)}><FaEdit /></button>
+                                        <p>Description:</p>
                                     </div>
-
-
-                                    {this.state.card.checklist && <Checklist removeChecklist={this.removeChecklist} saveChecklist={this.saveChecklist} checklist={this.state.card.checklist} />}
-                                    {this.state.isChecklistEdit && <ChecklistAdd addNewChecklist={this.addNewChecklist} />}
-
-
+                                    {this.state.isDescriptionEdit ?
+                                        <div >
+                                            <TextField
+                                                multiline
+                                                rows={6}
+                                                defaultValue={this.state.card.description}
+                                                variant="outlined"
+                                                className="edit-card-description"
+                                                onChange={ev => this.updateLocalCard('description', ev.target.value)}
+                                            />
+                                            <button onClick={this.saveCard} className="btn">Save</button>
+                                        </div>
+                                        :
+                                        <div
+                                            className="not-edit-card-description"
+                                            onClick={() => this.updateState('isDescriptionEdit', true)}>{this.state.card.description ? this.state.card.description : "Add a more details description..."}
+                                        </div>
+                                    }
                                 </div>
-                            }
+
+                                {this.state.card.checklist && <Checklist removeChecklist={this.removeChecklist} saveChecklist={this.saveChecklist} checklist={this.state.card.checklist} />}
+                                {this.state.isChecklistEdit && <ChecklistAdd addNewChecklist={this.addNewChecklist} />}
+
+
+                            </div>
                         </Element >
                         <div className="side-bar-details-right flex column">
-                            <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{ marginRight: "3px" }} /><FaFileImage/> Cover</button>
-                            <button onClick={this.onHandleRemove} className="btn"> <FaTrashAlt style={{ marginRight: "5px" }} />Delete Card</button>
+                            <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{ marginRight: "3px" }} />Cover</button>
+                            <button onClick={this.onHandleRemove} className="btn"> <FaTrashAlt style={{ marginRight: "5px" }} />Card</button>
                             <button className="btn" onClick={() => this.openChecklistEditor()}><FaCheckCircle style={{ marginRight: "5px" }} />Checklist</button>
                             <button onClick={this.onOpenDuedate} className="btn">Due Date</button>
                             <button onClick={this.onOpenLabelModal} className="btn">Labels</button>
