@@ -12,7 +12,8 @@ export class _ChecklistPreview extends Component {
             title: '',
             id: '',
             isDone: false
-        }
+        },
+        // progressbar:this.calculateProgress()
     }
 
     componentDidMount() {
@@ -25,6 +26,7 @@ export class _ChecklistPreview extends Component {
     }
 
     onRemoveTodo = (todoId) => {
+        // this.calculateProgress()
         const todos = this.state.checklist.todos
         // console.log(todos);
         const todoIdx = todos.findIndex(todo => todo.id === todoId)
@@ -80,7 +82,16 @@ export class _ChecklistPreview extends Component {
         this.props.onUpdateChecklists(checklist)//final stage of updating the checklist, sending it to parent-cmp
     }
 
-
+    // calculateProgress() {
+    //     if(!this.state.checklist)return 0
+    //     const todos = this.state.checklist.todos
+    //     const totalTodos = todos.length
+    //     const isDones = (todos.filter((todo) =>todo.isDone===false)).length
+    //     const res = (isDones/totalTodos)*100
+    //     console.log("calculateProgress -> res", res)
+    //     this.setState({progressbar:res})
+    //     return res
+    // }
 
     render() {
         const { checklist } = this.props
@@ -90,9 +101,12 @@ export class _ChecklistPreview extends Component {
                     <h3 style={{ textDecoration: 'underline' }}>{checklist.title}</h3>
                     <button className="btn" onClick={() => this.props.removeChecklist()}>Delete Checklist</button>
                 </div>
+
                 <h4>Your Todos:</h4>
+                {/* <label for="progress-bar">Todos progress:</label>
+                <progress id="progress-bar" value={this.state.progressbar} max="100"></progress> */}
                 {checklist.todos && checklist.todos.map(todo => <TodoPreview key={todo.id} todo={todo} onRemoveTodo={this.onRemoveTodo} />)}
-                <button onClick={() => { this.setState({ isTodoEditShown: true }) }} className="btn">Add Todo</button>
+                <button onClick={() => { this.setState({ isTodoEditShown: true })}} className="btn add-todo-btn">Add Todo</button>
                 {this.state.isTodoEditShown &&
                     <div>
                         <form onSubmit={this.onSubmit} action="">

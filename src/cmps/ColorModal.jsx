@@ -2,21 +2,21 @@ import React from "react";
 
 export class ColorModal extends React.Component {
 
-    // onClickColor = (color, ev) => {
-    //     const labels = this.props.labels
-    //     ev.stopPropagation();
-    //     if (labels && labels.length > 0) {
-    //         const isColorInLabels = labels.filter(label => label === color)
+    onClickColor = (color, ev) => {
+        const labels = this.props.labels
+        ev.stopPropagation();
+        if (labels && labels.length > 0) {
+            const isColorInLabels = labels.filter(label => label === color)
 
-    //         if (isColorInLabels.length > 0) {
-    //             return
-    //         } else {
-    //             this.props.onSaveLabels(color);
-    //         }
-    //     } else {
-    //         this.props.onSaveLabels(color);
-    //     }
-    // }
+            if (isColorInLabels.length > 0) {
+                return
+            } else {
+                this.props.onSaveLabels(color);
+            }
+        } else {
+            this.props.onSaveLabels(color);
+        }
+    }
 
     render() {
         const colors = [
