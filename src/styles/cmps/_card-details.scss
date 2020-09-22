@@ -9,9 +9,9 @@
         flex-direction: column;
         background-color: #F4F5F7;
         display: flex;
-        margin: 50px auto 0;
-        width: 40%;
-        min-height: 500px;
+        margin: 10vh auto 30px;
+        width: 45%;
+        min-height: 85vh;
         z-index: 11;
         padding: 20px;
         .btn-card-remove{
@@ -24,10 +24,10 @@
             height: 40%;
         }
         .modal-details-left{
-            width:100%;
+            width:80%;
         }
         .side-bar-details-right{
-            width: 222px;
+            width: 20%;
         }
         .not-edit-card-description{
             background-color: #F4F5F7;

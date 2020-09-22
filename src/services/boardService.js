@@ -1,7 +1,7 @@
 
 // import httpService from './httpService';
 import storageService from './asyncStorageService'
-// const boards = require('../data.json').board
+const boards = require('../data.json').board
 // const users = require('../data.json').user
 
 export const boardService = {

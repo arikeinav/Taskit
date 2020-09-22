@@ -47,9 +47,9 @@ export class _CardDetails extends Component {
 
     }
     componentDidUpdate(prevProps, prevState) {
-        console.log('on cardDetails update, checklists:',this.state.card.checklists);
+        console.log('on cardDetails update, card is now::', this.state.card);
     }
-    
+
     updateState = (key, val) => {
         this.setState({ [key]: val })
     }
@@ -81,7 +81,7 @@ export class _CardDetails extends Component {
         this.saveCard()
     }
     updateLocalCard = (key, val) => {
-        console.log("updateLocalCard -> val", val)
+        // console.log("updateLocalCard -> val", val)
         this.setState(prevState => ({
             card: {
                 ...prevState.card,
@@ -89,7 +89,7 @@ export class _CardDetails extends Component {
             }
 
         }))
-        console.log(this.state.card)
+        // console.log('updating local card:',this.state.card)
     }
     onRemoveDuedate = () => {
         this.updateState('isTimeEdit', false)
@@ -149,20 +149,18 @@ export class _CardDetails extends Component {
     }
 
 
-    saveChecklist = (checklists) => {
-        this.updateLocalCard('checklists', checklists)
+    saveChecklist = (checklist) => {
+        this.updateLocalCard('checklist', checklist)
         this.saveCard()
     }
 
     addNewChecklist = (checklist) => {
         console.log("New Checklist!:", checklist)
-        if (this.state.card.checklists) {
-            const checklists = Array.from(this.state.card.checklists)
-            checklists.push(checklist)
-            this.saveChecklist(checklists)
-            console.log("!New Checklists!:", checklists)
-        } else { this.saveChecklist([checklist]) }
+        this.saveChecklist(checklist)
+    }
 
+    removeChecklist = () => {
+        this.saveChecklist({})
     }
     onOpenLabelModal = () => {
         if (this.state.isLabelesEdit) {
@@ -178,7 +176,7 @@ export class _CardDetails extends Component {
         }
     }
     openChecklistEditor = () => {
-        this.setState({ isChecklistEdit: true })
+        this.setState({ isChecklistEdit: (this.state.isChecklistEdit? false:true) })
 
     }
 
@@ -246,7 +244,7 @@ export class _CardDetails extends Component {
                             }
                             <div>
                                 <div className="edit-header flex">
-                                    <p>description</p>
+                                    <p>Description:</p>
                                     <button className="btn" onClick={() => this.updateState('isDescriptionEdit', true)}>Edit</button>
                                 </div>
                                 {this.state.isDescriptionEdit ?
@@ -269,7 +267,7 @@ export class _CardDetails extends Component {
                                 }
                             </div>
 
-                            {this.state.card.checklists && <Checklist saveChecklist={this.saveChecklist} checklists={this.state.card.checklists} />}
+                            {this.state.card.checklist && <Checklist removeChecklist={this.removeChecklist} saveChecklist={this.saveChecklist} checklist={this.state.card.checklist} />}
                             {this.state.isChecklistEdit && <ChecklistAdd addNewChecklist={this.addNewChecklist} />}
 
                             {card.imgUrl &&
