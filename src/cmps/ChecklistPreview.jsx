@@ -21,7 +21,7 @@ export class _ChecklistPreview extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         console.log(this.state.checklist);
-   
+
     }
 
     onRemoveTodo = (todoId) => {
@@ -49,7 +49,7 @@ export class _ChecklistPreview extends Component {
     }
 
     onSubmit = () => {
-        
+
         const id = boardService.makeId()
         const isDone = false;
         this.setState(prevState => ({
@@ -58,7 +58,7 @@ export class _ChecklistPreview extends Component {
                 id,
                 isDone
             }
-        }),()=> {this.updateLocalChecklist()})
+        }), () => { this.updateLocalChecklist() })
 
     }
     updateLocalChecklist = () => {
@@ -85,10 +85,10 @@ export class _ChecklistPreview extends Component {
     render() {
         const { checklist } = this.props
         return (
-            <div className="checklist-preview-div flex">
-                <div className="checklist-prev-header">
-                <h3 style={{textDecoration: 'underline'}}>{checklist.title}</h3>
-                <button className="btn" onClick={()=>this.props.removeChecklist()}>Delete Checklist</button>
+            <div className="checklist-preview-div flex column">
+                <div className="checklist-prev-header flex space-between">
+                    <h3 style={{ textDecoration: 'underline' }}>{checklist.title}</h3>
+                    <button className="btn" onClick={() => this.props.removeChecklist()}>Delete Checklist</button>
                 </div>
                 <h4>Your Todos:</h4>
                 {checklist.todos && checklist.todos.map(todo => <TodoPreview key={todo.id} todo={todo} onRemoveTodo={this.onRemoveTodo} />)}
