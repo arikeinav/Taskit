@@ -37,11 +37,9 @@ class _BoardApp extends Component {
         const { boards } = this.props
         return (
             <div className="board-app flex">
-                <div className="ba-sidebar flex column align-center justify-center ninetyVh twentyPw">
-
-                </div>
+               
                 <div className="ba-boards flex column ninetyVh eightyPw">
-                    <h1>Most popular templates</h1>
+                    <h1>Your Boards</h1>
                     <BoardList boards={boards} onAddBoard={this.onShowModal} />
                 </div>
                 {this.state.isAddBoardShown && <Modal onClose={this.onCloseModal}

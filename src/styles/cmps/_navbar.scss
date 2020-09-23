@@ -4,10 +4,11 @@
     background-color: #077b91d1;
     color: white;
     grid-template-columns: 1fr 1fr 1fr 6fr 1fr 1fr 1fr;
+    
 }
 .nav-bar a{
     color: white;
-    font-family: hand-write;
+    //  font-family: vidaloka;
 }
 .logo{
     margin:auto;
@@ -15,22 +16,23 @@
     font-size: 2.5rem;
     grid-column:4/5;
 }
-// .logo-i{
-//     color:#c5c907 ;
-// }
+
 .navdiv-s{
-    font-family: hand-write;
-    font-size: 1.4rem;  
-    margin: auto; 
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    margin: auto;
+    font-weight: bold;
 }
 .navdiv-s:hover,.nav-bar a:hover{
     color:#3d185c ;  
 }
 .signup{
     grid-column:6/7;
+    cursor: pointer;
 }
 .login{
     grid-column:7/8;
+    cursor: pointer;
 }
 .hide {
     display: none;
