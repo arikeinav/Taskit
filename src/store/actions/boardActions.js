@@ -3,40 +3,57 @@ import socketService from "../../services/socketService";
 
 export function loadBoards() {
   return async (dispatch) => {
-    const boards = await boardService.query()
-    dispatch({ type: "SET_BOARDS", boards });
-
+    try {
+      const boards = await boardService.query()
+      dispatch({ type: "SET_BOARDS", boards });
+    } catch (err) {
+      console.log(`ERROR: while loading boards`)
+    }
   };
 }
 export function loadBoard(boardId) {
   return async (dispatch) => {
-    const board = await boardService.loadBoard(boardId)
-    dispatch({ type: "SET_BOARD", board });
+    try {
+      const board = await boardService.loadBoard(boardId)
+      dispatch({ type: "SET_BOARD", board });
+    } catch (err) {
+      console.log(`ERROR: while loadding board`)
+    }
   };
 }
 export function removeBoard(id) {
   return async (dispatch) => {
-    await boardService.removeBoard(id)
-    dispatch({ type: "REMOVE_BOARD", id });
+    try {
+      await boardService.removeBoard(id)
+      dispatch({ type: "REMOVE_BOARD", id });
+    } catch (err) {
+      console.log(`ERROR: while remove board`)
+    }
   };
 }
 export function addBoard(txt, imgUrl) {
   return async (dispatch) => {
-    const board = await boardService.create(txt, imgUrl)
-    dispatch({ type: "ADD_BOARD", board });
+    try {
+      const board = await boardService.create(txt, imgUrl)
+      dispatch({ type: "ADD_BOARD", board });
+    } catch (err) {
+      console.log(`ERROR: while adding board`)
+    }
   };
 }
-export function updateBoard(board) {
-  socketService.emit('update board', board);
+export function updateBoard(board) { //I'm updating the board
   return async (dispatch) => {
-    board = await boardService.update(board) //make the app slower
     dispatch({ type: "UPDATE_BOARD", board });
+    try {
+      await boardService.update(board)
+      socketService.emit('update board', board);
+    } catch (err) {
+      console.log(`ERROR: while update board`)
+    }
   };
 }
-export function updateBoardFromSocket(board) {
-  // socketService.broadcastEmit('update board', board); ???
-  return async (dispatch) => {
-    board = await boardService.update(board)
+export function updateBoardFromSocket(board) { //Someone else updated the board
+  return (dispatch) => {
     dispatch({ type: "UPDATE_BOARD", board });
   };
 }
