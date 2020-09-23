@@ -16,7 +16,7 @@ export function Home() {
             <div className="home-details-comtainer">
                 <h1>THE POWER OF TASKIT</h1>
                 <section className="home-details flex">
-                    <img src="https://res.cloudinary.com/cloudinary-img/image/upload/v1600352679/Taskit/tony-yeung-Exq6e9gH4Ag-unsplash_e7ltjx.jpg" />
+                    <img src="https://res.cloudinary.com/cloudinary-img/image/upload/v1600856698/Taskit/marvin-meyer-SYTO3xs06fU-unsplash_rsc7gd.jpg" />
                     <div className="text-in-home-details">
                         <h3>Web Sockets</h3>
                         <p>With the power of web sockets, you and your team can enjoy a workspace that updates in real-time, keeping everyone synced and up to date.</p>
