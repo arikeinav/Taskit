@@ -14,7 +14,10 @@ export function Home() {
                 <Link to="/board"><p>Start</p></Link>
             </div>
             <div className="home-details-comtainer">
-
+                <h1>THE POWER OF TASKIT</h1>
+                <section>
+                    
+                </section>
             </div>
         </div>
     )
