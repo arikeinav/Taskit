@@ -47,10 +47,10 @@ export class CardList extends React.Component {
                     paddingLeft: '5px'
                 }}>
 
-                    <Droppable droppableId={group.id}>
+                    <Droppable  droppableId={group.id}>
                         {(provided, snapshot) => (
 
-                            <Container ref={provided.innerRef}
+                            <Container style={{backgroundColor:'inherit'}} ref={provided.innerRef}
                                 {...provided.droppableProps}
                                 isDraggingOver={snapshot.isDraggingOver}>
                                 {group.cards.map((card, index) => <CardPreview index={index} card={card} key={card.id} updateState={this.props.updateState} groupId={group.id} />)}
