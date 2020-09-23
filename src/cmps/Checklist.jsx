@@ -27,7 +27,7 @@ export class Checklist extends Component {
         const { checklist } = this.props
         return (
             <div>
-                { this.props.checklist.title && <ChecklistPreview updateProgress={this.props.updateProgress} removeChecklist={this.props.removeChecklist} onUpdateChecklists={this.onUpdateChecklist} checklist={checklist} key={checklist.id} />}
+                { this.props.checklist.title && <ChecklistPreview removeChecklist={this.props.removeChecklist} onUpdateChecklists={this.onUpdateChecklist} checklist={checklist} key={checklist.id} />}
             </div>
         )
     }

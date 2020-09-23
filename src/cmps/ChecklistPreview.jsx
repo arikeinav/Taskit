@@ -97,24 +97,19 @@ export class _ChecklistPreview extends Component {
 
     calculateProgress() {
 
-        if (!this.state.checklist) {
-            this.setState({ progressbar: 0 })
-            return this.props.updateProgress(0, 0)
-        }
+        if (!this.state.checklist) return this.setState({ progressbar: 0 })
         const todos = this.state.checklist.todos
         if (todos && todos.length > 0) {
             console.log('todos > 0:', todos);
             const totalTodos = todos.length
             const isDones = (todos.filter((todo) => todo.isDone === true)).length
             const res = (isDones / totalTodos) * 100
-            this.setState({ progressbar: res.toFixed(2) })
-            return this.props.updateProgress(isDones, totalTodos)
+            return this.setState({ progressbar: res.toFixed(2) })
         }
-        this.props.updateProgress(0, 0)
         return this.setState({ progressbar: 0 })
-
     }
 
+    
     render() {
         const { checklist } = this.props
         return (

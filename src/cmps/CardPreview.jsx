@@ -10,25 +10,7 @@ background-color: ${props => (props.isDragging ? '#B5B5B5' : 'rgba(255, 255, 255
 export function CardPreview({ card, updateState, groupId, index }) {
 
 
-
-
-    // function getValidDate() {
-    //     var a = card.dueDate
-    //     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    //     var year = a.getFullYear();
-    //     var month = months[a.getMonth()];
-    //     var date = a.getDate();
-    //     var hour = a.getHours();
-    //     var min = a.getMinutes();
-    //     var sec = a.getSeconds();
-    //     var dueDate = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
-    //     console.log("getValidDate -> dueDate", dueDate)
-
-
-    //     return dueDate
-    // }
-
-
+    console.log('card!',card)
 
     const openCardDetails = (cardId) => {
         updateState('isDetailsShown', { cardId, groupId })
