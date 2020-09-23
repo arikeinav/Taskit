@@ -263,7 +263,7 @@ export class _CardDetails extends Component {
                             <button onClick={this.onOpenDuedate} className="btn">Due Date</button>
                             <button onClick={this.onOpenLabelModal} className="btn">Labels</button>
                             {this.state.isLabelesEdit &&
-                                <ColorModal onSaveLabels={this.onSaveLabels} labels={card.labels} />}
+                                <ColorModal className="color-modal" onSaveLabels={this.onSaveLabels} labels={card.labels} />}
                             <button onClick={this.onHandleRemove} className="btn"> <FaTrashAlt style={{ marginRight: "5px" }} />Card</button>
                         </div>
 
