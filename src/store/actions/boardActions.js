@@ -29,7 +29,7 @@ export function addBoard(txt, imgUrl) {
 export function updateBoard(board) {
   socketService.emit('update board', board);
   return async (dispatch) => {
-    board = await boardService.update(board)
+    board = await boardService.update(board) //make the app slower
     dispatch({ type: "UPDATE_BOARD", board });
   };
 }

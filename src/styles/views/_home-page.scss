@@ -56,6 +56,33 @@ font-family: hand-write;
 }
 
 .home-details-comtainer{
-  max-width: 1060px;
-  background-color: red
+  max-width: 1200px;
+  text-align: center;
+  margin: 0 auto;
+  color:#15466b;
+  font-family: montserrat-medium;
+
+  h1{
+    margin: 90px;
+  }
+
+  .home-details{
+    margin-top: 70px;
+    
+    img{
+      width:52%;
+    }
+    .info{
+      margin: auto 30px;
+
+      h2{
+        font-size: 1.875rem;
+        font-family: montserrat-medium;
+      }
+      p{
+        font-family: montserrat-regular;
+        font-size: 1.3rem;
+      }
+    }
+  }
 }
