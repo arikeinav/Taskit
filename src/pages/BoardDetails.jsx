@@ -153,7 +153,12 @@ export class _BoardDetails extends Component {
     const { board } = this.props
     if (board === null) return <div>Loading...</div>
     return (
-      <div className="board-details " style={{ backgroundImage: `url(${board.style.bgImg ? board.style.bgImg : ''})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", minHeight: "90vh", backgroundColor: `${board.style.bgColor ? board.style.bgColor : ''}` }} >
+      <div className="board-details"
+        style={{
+          backgroundImage: `url(${board.style.bgImg ? board.style.bgImg : ''})`,
+          backgroundSize: "cover", backgroundRepeat: "no-repeat", minHeight: "90vh",
+          backgroundColor: `${board.style.bgColor ? board.style.bgColor : ''}`
+        }} >
 
         <BoardHeader board={board} />
 
@@ -161,7 +166,7 @@ export class _BoardDetails extends Component {
         <DragDropContext onDragEnd={this.onDragEnd}>
           <StickyBox className="groups-container flex">
 
-            <div
+            {/* <div
               style={{
                 display: "flex",
                 flexDirection: "row",
@@ -170,17 +175,16 @@ export class _BoardDetails extends Component {
                 listStyleType: "none",
                 paddingRight: "20px",
                 flexWrap: "nowrap",
-                height: "86vh",
+                height: "calc(100vh - 88px)",
                 justifyItems: "center"
               }}
-            >
-              {board.groups.map(group => <CardList onAdd={this.onAdd} group={group} key={group.id} updateState={this.updateState} onRemoveGroup={this.onRemoveGroup} />)}
-              {this.state.isAddGroup ?
-                <AddText onAdd={this.onAdd} type="Group" groupId={null} />
-                :
-                <button className="add-group btn" onClick={() => this.onEditGroup()}>Add List</button>
-              }
-            </div>
+            > */}
+            {board.groups.map(group => <CardList onAdd={this.onAdd} group={group} key={group.id} updateState={this.updateState} onRemoveGroup={this.onRemoveGroup} />)}
+            {this.state.isAddGroup ?
+              <AddText onAdd={this.onAdd} type="Group" groupId={null} />
+              :
+              <button className="add-group btn" onClick={() => this.onEditGroup()}>Add List</button>
+            }
           </StickyBox>
         </DragDropContext>
 

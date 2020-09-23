@@ -1,34 +1,51 @@
 .board-header{
+    width: 100%;
     background-color: #2d636dc7;
-    ;
     height: 38px;
     font-weight: 400;
     font-size: 1.3rem;
     color:white; 
-    grid-template-columns: 1.5fr 3fr 0.5fr 0.5fr;
     font-family: roboto;
+
+    .board-name{
+        margin: 4px 10px;
+    }
+    .avatar-members{
+        margin: 0 70px;
+
+        .MuiAvatar-root{
+            height: 35px;
+            width: 35px;
+        }
+    }
+
+    .board-header-btn{
+        padding: 6px 12px;
+        margin: 3px;
+    }
+
 }
 
-.BH1{
-    text-align: left;
-    margin: auto;
-    padding-inline-end: 70px;
-    grid-column: 1/2;
-}
-.BH2{
-    margin: auto;
-    margin-inline-end: 90%;
-    grid-column: 2/3;
+// .BH1{
+//     text-align: left;
+//     margin: auto;
+//     padding-inline-end: 70px;
+//     grid-column: 1/2;
+// }
+// .BH2{
+//     margin: auto;
+//     margin-inline-end: 90%;
+//     grid-column: 2/3;
 
-}
-.BH3{
-    margin: auto;
-    width: 90%;
-    grid-column: 3/4;
+// }
+// .BH3{
+//     margin: auto;
+//     width: 90%;
+//     grid-column: 3/4;
     
-}
-.BH4{
-    margin: auto;
-    width: 90%;
-    grid-column: 4/5;
-}
+// }
+// .BH4{
+//     margin: auto;
+//     width: 90%;
+//     grid-column: 4/5;
+// }
