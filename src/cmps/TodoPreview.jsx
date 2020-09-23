@@ -11,22 +11,22 @@ export default class TodoPreview extends Component {
             id:''
         }
     }
-    
+
     componentDidMount() {
-       this.setState({todo:this.props.todo}) 
+        this.setState({ todo: this.props.todo })
     }
-    
-    onInputChange =(ev)=>{
+
+    onInputChange = (ev) => {
         ev.preventDefault()
     }
 
-    onCheckboxChange =()=>{
-        const bool = (this.state.todo.isDone)? false:true;
+    onCheckboxChange = () => {
+        const bool = (this.state.todo.isDone) ? false : true;
         this.setState(prevState => ({
             todo: {
                 ...prevState.todo,
-                isDone:bool
-               
+                isDone: bool
+
             }
         }), () => {this.props.updateCheckbox(this.state.todo)})
     }
@@ -36,15 +36,15 @@ export default class TodoPreview extends Component {
             <div className="flex">
 
                 <form className="flex align-center space-between hundredPw" action="">
-                    
+
                     <div className="flex align-center">
-                        <button className="btn todo-btn-trash" onClick={()=>{this.props.onRemoveTodo(todo.id)}}><FaTrashAlt/></button>
-        
+                        <button className="btn todo-btn-trash" onClick={() => { this.props.onRemoveTodo(todo.id) }}><FaTrashAlt /></button>
+
 
                         {/* <span className="checkbox-span" onClick={()=>this.onCheckboxChange()}><input type="checkbox" className="checkbox-mu" defaultChecked={(this.state.todo.isDone)?true:false}/> </span> */}
-                        <p className={`todo-title ${this.state.todo.isDone===true ? "line-through":"text-dec-none"}`}  onClick={()=>this.onCheckboxChange()}>{todo.title}</p>
+                        <p className={`todo-title ${this.state.todo.isDone === true ? "line-through" : "text-dec-none"}`} onClick={() => this.onCheckboxChange()}>{todo.title}</p>
                     </div>
-                   
+
                 </form>
             </div>
         )

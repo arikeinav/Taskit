@@ -26,12 +26,9 @@ class _BoardApp extends Component {
     }
 
     onSaveBoard = (txt, imgUrl) => {
-        // const board = { title: txt, style: { imgUrl: imgUrl } }
         this.props.addBoard(txt, imgUrl)
         this.onCloseModal()
     }
-
-
 
     render() {
         const { boards } = this.props

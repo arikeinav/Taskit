@@ -3,7 +3,7 @@ import React from "react";
 export class MenuColorModal extends React.Component {
     onSelectColor = (color, ev) => {
         ev.stopPropagation()
-                this.props.onAddColor(color)
+        this.props.onAddColor(color)
 
     }
 

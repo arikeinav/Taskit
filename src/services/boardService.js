@@ -1,8 +1,5 @@
 
 import httpService from './httpService';
-// import storageService from './asyncStorageService'
-// const boards = require('../data.json').board
-// const users = require('../data.json').user
 
 export const boardService = {
   query,
@@ -15,7 +12,6 @@ export const boardService = {
 };
 
 function query(filterBy) {
-  // console.log('object')
   return httpService.get(`board`);
 }
 function loadBoard(boardId) {

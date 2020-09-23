@@ -4,7 +4,7 @@ import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
 import { FaCheckCircle, FaUserCircle, FaFileImage, FaTrashAlt, FaEdit } from "react-icons/fa";
 
-import { TwitterPicker} from 'react-color'
+import { TwitterPicker } from 'react-color'
 
 import TextField from '@material-ui/core/TextField';
 import DatePicker from "react-datepicker";
@@ -111,7 +111,6 @@ export class _CardDetails extends Component {
     }
 
     addNewChecklist = (checklist) => {
-        // console.log("New Checklist!:", checklist)
         this.saveChecklist(checklist)
     }
 

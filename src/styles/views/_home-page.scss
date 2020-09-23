@@ -35,12 +35,10 @@ font-family: hand-write;
       transform: scale(0.95);
       color:rgb(163, 161, 16);
     }
-  
     70% {
       transform: scale(1);
       color: black;
     }
-  
     100% {
       transform: scale(0.95);
       color:rgb(163, 161, 16);
@@ -54,7 +52,10 @@ font-family: hand-write;
   animation-play-state: paused;
 }
 .home p:hover{
-  
   color:black;
 }
 
+.home-details-comtainer{
+  max-width: 1060px;
+  background-color: red
+}

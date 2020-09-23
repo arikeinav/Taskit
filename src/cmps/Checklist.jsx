@@ -7,8 +7,8 @@ import { ChecklistPreview } from './ChecklistPreview'
 export class Checklist extends Component {
     state = {
         checklist: {},
-        
-       
+
+
     }
 
     componentDidMount() {
@@ -16,11 +16,10 @@ export class Checklist extends Component {
         this.setState({ checklist })
     }
 
-
     onUpdateChecklist = (checklist) => {
         this.props.saveChecklist(checklist)
     }
-  
+
 
     render() {
 
