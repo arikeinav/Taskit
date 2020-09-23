@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
-import { FaCheckCircle, FaUserCircle, FaFileImage, FaTrashAlt, FaEdit } from "react-icons/fa";
+import { FaCheckCircle, FaUserCircle, FaFileImage, FaTrashAlt, FaEdit, FaCalendarAlt } from "react-icons/fa";
+import { MdColorLens,MdInvertColors } from "react-icons/md";
 
 import { TwitterPicker } from 'react-color'
 
@@ -256,12 +257,12 @@ export class _CardDetails extends Component {
                             </div>
                         </Element >
                         <div className="side-bar-details-right flex column">
-                            <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{ marginRight: "3px" }} />Cover</button>
-                            <button className="btn" onClick={() => this.updateState('isAddColorModalShown', true)}>Color</button>
+                            <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{ marginRight: "5px" }} />Cover</button>
+                            <button className="btn" onClick={() => this.updateState('isAddColorModalShown', true)}><MdColorLens style={{ marginRight: "5px" , height:'12px', width:'12px'}}/> Color</button>
 
                             <button className="btn" onClick={() => this.openChecklistEditor()}><FaCheckCircle style={{ marginRight: "5px" }} />Checklist</button>
-                            <button onClick={this.onOpenDuedate} className="btn">Due Date</button>
-                            <button onClick={this.onOpenLabelModal} className="btn">Labels</button>
+                            <button onClick={this.onOpenDuedate} className="btn"><FaCalendarAlt style={{ marginRight: "5px" }} /> Due Date</button>
+                            <button onClick={this.onOpenLabelModal} className="btn"><MdInvertColors style={{ marginRight: "5px", height:'12px', width:'12px' }}/>Labels</button>
                             {this.state.isLabelesEdit &&
                                 <ColorModal className="color-modal" onSaveLabels={this.onSaveLabels} labels={card.labels} />}
                             <button onClick={this.onHandleRemove} className="btn"> <FaTrashAlt style={{ marginRight: "5px" }} />Card</button>
