@@ -7,8 +7,8 @@ import { ChecklistPreview } from './ChecklistPreview'
 export class Checklist extends Component {
     state = {
         checklist: {},
-        
-       
+
+
     }
 
     componentDidMount() {
@@ -16,17 +16,10 @@ export class Checklist extends Component {
         this.setState({ checklist })
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        // console.log('onUpdate checklist:', this.state.checklist);
-
-    }
-
     onUpdateChecklist = (checklist) => {
-        // console.log('checklist:', checklist);//add the updated checklist from child to this.state.checklists array and then send it to 
-
         this.props.saveChecklist(checklist)
     }
-  
+
 
     render() {
 

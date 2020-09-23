@@ -9,21 +9,20 @@ export default function BoardPreview({ board }) {
           style={
             (board.style && board.style.bgImg)
               ? {
-                  backgroundImage: `url(${board.style && board.style.bgImg})`,
-                  backgroundSize: "cover",
-                  backgroundRepeat: "no-repeat",
-                }
+                backgroundImage: `url(${board.style && board.style.bgImg})`,
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+              }
               : {
-                  backgroundColor: `${
-                    board.style.bgColor ? board.style.bgColor : "green"
+                backgroundColor: `${board.style.bgColor ? board.style.bgColor : "green"
                   }`,
-                }
+              }
           }
           className="board-preview grid"
         >
-        <h3>{board.title}</h3>
-      
-          
+          <h3>{board.title}</h3>
+
+
         </div>
       </Link>
     </div>

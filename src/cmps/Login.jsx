@@ -1,22 +1,22 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { login} from "../store/actions/userActions";
+import { login } from "../store/actions/userActions";
 import TextField from "@material-ui/core/TextField"
 
 class _Login extends Component {
   _isMounted = false
   state = {
-    
+
     msg: "",
     loginCred: {
       username: "",
       password: "",
     },
   };
-  componentDidMount(){
+  componentDidMount() {
     this._isMounted = true;
   }
-  componentWillUnmount(){
+  componentWillUnmount() {
     this._isMounted = false;
   }
 
@@ -39,21 +39,20 @@ class _Login extends Component {
 
     const userCreds = { username, password };
     const user = await this.props.login(userCreds)
-      if (!user) this.setState({ msg: "Username or password not exist" })
-      else{
-        // console.log(user)
-    this.props.onCloseModal()
-    this.setState({ loginCred: { username: "", password: "" } });
+    if (!user) this.setState({ msg: "Username or password not exist" })
+    else {
+      this.props.onCloseModal()
+      this.setState({ loginCred: { username: "", password: "" } });
     }
   };
 
   render() {
     return (
       <div className="test">
-        
+
         <form onSubmit={this.doLogin}>
-          
-              <TextField
+
+          <TextField
             id="outlined-basic"
             type="text"
             name="username"
@@ -78,7 +77,7 @@ class _Login extends Component {
             variant="outlined"
           />
           <br />
-          <h2 style={{color: "red" }}>{this.state.msg}</h2>
+          <h2 style={{ color: "red" }}>{this.state.msg}</h2>
           <button className="btn">Login</button>
         </form>
       </div>
@@ -92,7 +91,7 @@ const mapStateToProps = (state) => {
   };
 };
 const mapDispatchToProps = {
-    
+
   login,
 };
 

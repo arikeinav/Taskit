@@ -11,7 +11,7 @@ export class AddText extends React.Component {
     }
     onSubmit = (ev) => {
         ev.preventDefault();
-        if(!this.state.text) return;
+        if (!this.state.text) return;
         (this.props.type === 'Card') && this.props.updateState('isAddCard', false)
 
         this.props.onAdd(this.props.type, this.state.text, this.props.groupId)

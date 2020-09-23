@@ -13,22 +13,15 @@ export class _ChecklistPreview extends Component {
             id: '',
             isDone: false
         },
-        // progressbar:this.calculateProgress()
     }
 
     componentDidMount() {
         this.setState({ checklist: this.props.checklist })
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        console.log(this.state.checklist);
-
-    }
-
     onRemoveTodo = (todoId) => {
         // this.calculateProgress()
         const todos = this.state.checklist.todos
-        // console.log(todos);
         const todoIdx = todos.findIndex(todo => todo.id === todoId)
         todos.splice(todoIdx, 1)
         this.setState(prevState => ({
@@ -79,7 +72,7 @@ export class _ChecklistPreview extends Component {
 
     onUpdateChecklists = () => {
         const checklist = this.state.checklist
-        this.props.onUpdateChecklists(checklist)//final stage of updating the checklist, sending it to parent-cmp
+        this.props.onUpdateChecklists(checklist)
     }
 
     // calculateProgress() {
@@ -106,7 +99,7 @@ export class _ChecklistPreview extends Component {
                 {/* <label for="progress-bar">Todos progress:</label>
                 <progress id="progress-bar" value={this.state.progressbar} max="100"></progress> */}
                 {checklist.todos && checklist.todos.map(todo => <TodoPreview key={todo.id} todo={todo} onRemoveTodo={this.onRemoveTodo} />)}
-                <button onClick={() => { this.setState({ isTodoEditShown: true })}} className="btn add-todo-btn">Add Todo</button>
+                <button onClick={() => { this.setState({ isTodoEditShown: true }) }} className="btn add-todo-btn">Add Todo</button>
                 {this.state.isTodoEditShown &&
                     <div>
                         <form onSubmit={this.onSubmit} action="">

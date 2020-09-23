@@ -1,4 +1,4 @@
-// // Setup
+// Setup
 @import "setup/variables.scss";
 @import "./setup/typography";
 
@@ -7,7 +7,7 @@
 @import "basics/base.scss";
 @import "./basics/buttons";
 
-// // Components
+// Components
 @import "./cmps/_navbar.scss";
 @import "./cmps/_modal.scss";
 @import "cmps/board-preview";
@@ -22,9 +22,9 @@
 @import "cmps/side-menu";
 @import "cmps/_checklistPreview.scss";
 @import "cmps/_TodoPreview.scss";
-
 @import "cmps/menu-color-modal";
-//views/
+
+//views
 @import "./views/home-page";
 @import "./views/board-details";
 @import "./views/board-app";

@@ -97,8 +97,6 @@ export class _BoardDetails extends Component {
         ...this.props.board,
         groups: newGroups
       }
-      // console.log('currBoard at gState is:', this.props.board);
-      // console.log('newState is:', newState);
       this.props.updateBoard(newState)//smth here is passed wrong, and causes an @@Object Object@@
       return;
     }
@@ -157,8 +155,8 @@ export class _BoardDetails extends Component {
     const { board } = this.props
     if (board === null) return <div>Loading...</div>
     return (
-      <div className="board-details " style={{backgroundImage: `url(${board.style.bgImg?board.style.bgImg:''})`,backgroundSize:"cover",backgroundRepeat: "no-repeat",minHeight: "90vh",backgroundColor:`${board.style.bgColor?board.style.bgColor:''}`}} >
-      
+      <div className="board-details " style={{ backgroundImage: `url(${board.style.bgImg ? board.style.bgImg : ''})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", minHeight: "90vh", backgroundColor: `${board.style.bgColor ? board.style.bgColor : ''}` }} >
+
         <BoardHeader board={board} />
 
 

@@ -10,11 +10,6 @@ export default class ChecklistAdd extends Component {
             todos: []
         }
     }
-// componentDidUpdate(prevProps, prevState) {
-//     console.log('YOUR STATE:', this.state.checklist);
-// }
-
-
     handleChange = (ev) => {
 
         const title = ev.target.value
@@ -25,7 +20,6 @@ export default class ChecklistAdd extends Component {
             }
         }))
     }
-
     onSubmit = (ev) => {
         ev.preventDefault()
 
@@ -36,16 +30,14 @@ export default class ChecklistAdd extends Component {
                 id,
             }
         }), () => { this.props.addNewChecklist(this.state.checklist) })
-      
     }
-  
-    
+
     render() {
         return (
             <div>
                 <form onSubmit={this.onSubmit} action="">
                     <label htmlFor="">New Checklist Title:</label>
-                    <input  onChange={this.handleChange} type="text" />
+                    <input onChange={this.handleChange} type="text" />
                     <button className="btn">Add</button>
                 </form>
             </div>
