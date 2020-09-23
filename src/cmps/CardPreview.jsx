@@ -7,10 +7,9 @@ const Container = styled.div`
 background-color: ${props => (props.isDragging ? '#B5B5B5' : 'rgba(255, 255, 255, 0.822)')};
 `;
 
-export function CardPreview({ card, updateState, groupId, index }) {
+export function CardPreview({ card, updateState, groupId, index, calcProgress }) {
 
-
-  
+ 
 
     const openCardDetails = (cardId) => {
         updateState('isDetailsShown', { cardId, groupId })
@@ -35,7 +34,7 @@ export function CardPreview({ card, updateState, groupId, index }) {
                                 {/* <div className="due-date-card-preview">{getValidDate()}</div> */}
                                 {card.imgUrl && <img className="img-card-preview" src={card.imgUrl} alt="Loading" />}
                             </div>
-                                    <div className="footer-div-card-prev"></div>
+                            <div className="footer-div-card-prev">{calcProgress(card.id)}</div>
                         </Container >
                     )}
                 </NaturalDragAnimation>

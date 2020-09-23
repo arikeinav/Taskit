@@ -32,6 +32,23 @@ export class CardList extends React.Component {
         let isDelete = !this.state.isDeleteGroup
         this.setState({ isDeleteGroup: isDelete })
     }
+
+
+
+    calcProgress = (cardId) => {
+        
+        const cards = this.props.group.cards
+        const card = cards.find(card => card.id === cardId)
+
+        if (card.checklist && card.checklist.todos) {
+            const tasks = card.checklist.todos.length
+            const doneTasks = (card.checklist.todos.filter(task => task.isDone === true)).length
+            console.log('doneTasks:', doneTasks, 'tasks:', tasks);
+            return (`${doneTasks}/${tasks}`)
+        } return ''
+
+    }
+
     render() {
         const group = this.props.group
         return (
@@ -48,13 +65,13 @@ export class CardList extends React.Component {
                     paddingLeft: '5px'
                 }}>
 
-                    <Droppable  droppableId={group.id}>
+                    <Droppable droppableId={group.id}>
                         {(provided, snapshot) => (
 
-                            <Container  ref={provided.innerRef}
+                            <Container ref={provided.innerRef}
                                 {...provided.droppableProps}
                                 isDraggingOver={snapshot.isDraggingOver}>
-                                {group.cards.map((card, index) => <CardPreview index={index} card={card} key={card.id} updateState={this.props.updateState} groupId={group.id} />)}
+                                {group.cards.map((card, index) => <CardPreview calcProgress={this.calcProgress} index={index} card={card} key={card.id} updateState={this.props.updateState} groupId={group.id} />)}
                                 {provided.placeholder}
                             </Container>
                         )}</Droppable>
