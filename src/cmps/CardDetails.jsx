@@ -229,12 +229,13 @@ export class _CardDetails extends Component {
                                         <p>Description:</p>
                                     </div>
                                     {this.state.isDescriptionEdit ?
-                                        <div >
-                                            <TextField
+                                        <div className="edit-desc flex column align-center" >
+                                           <TextField
+                                                border="none"
                                                 multiline
                                                 rows={6}
                                                 defaultValue={this.state.card.description}
-                                                variant="outlined"
+                                                // variant="outlined"
                                                 className="edit-card-description"
                                                 onChange={ev => this.updateLocalCard('description', ev.target.value)}
                                             />
