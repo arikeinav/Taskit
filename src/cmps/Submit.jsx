@@ -14,7 +14,7 @@ class _Submit extends Component {
 
   signupHandleChange = (ev) => {
     const { name, value } = ev.target;
-    this.setState((prevState) => ({
+    this.setState((prevState) => ({msg:"",
       signupCred: {
         ...prevState.signupCred,
         [name]: value,
@@ -30,14 +30,15 @@ class _Submit extends Component {
     }
     const signupCreds = { username, password };
     this.props.signup(signupCreds);
-    this.props.onClose();
+    this.props.onCloseModal();
     this.setState({ signupCred: { username: "", password: "" } });
   };
 
   render() {
     return (
-      <div className="test">
-        <form onSubmit={this.doSignup}>
+      <div >
+        <h3>Sign in to Taskit</h3>
+        <form className="login-page" onSubmit={this.doSignup}>
 
           <TextField
             id="outlined-basic"
@@ -49,8 +50,6 @@ class _Submit extends Component {
             variant="outlined"
           />
 
-          <br />
-          <br />
           <br />
 
           <TextField
@@ -64,9 +63,12 @@ class _Submit extends Component {
             variant="outlined"
           />
           <br />
-          <h2 style={{ color: "red" }}>{this.state.msg}</h2>
-          <button className="btn">Signup</button>
+          {this.state.msg &&<div className="error-msg"> <h5>{this.state.msg}</h5></div>} 
+     <br/>
+     <br/>
+          <button className="btn login-btn">Signin</button>
         </form>
+        
       </div>
     );
   }

@@ -1,6 +1,27 @@
+.login-page{
+display: flex;
+flex-direction: column;
+text-align: center;
+justify-content: space-between;
 
+
+}
+
+
+
+ h3{
+color: #1b0f07;
+}
 
 
 .error-msg{
-    background-color: red;
+    background-color: rgba(255, 4, 4, 0.897);
+    height: 20px;
+    border-radius: 2px;
+    text-align: center;
+    
+}
+.error-msg h5{
+    color:rgb(245, 241, 241);
+    margin: 0;
 }

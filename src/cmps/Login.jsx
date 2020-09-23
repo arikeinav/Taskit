@@ -17,7 +17,7 @@ class _Login extends Component {
 
   loginHandleChange = (ev) => {
     const { name, value } = ev.target;
-    this.setState((prevState) => ({
+    this.setState((prevState) => ({msg:"",
       loginCred: {
         ...prevState.loginCred,
         [name]: value,
@@ -43,12 +43,11 @@ class _Login extends Component {
 
   render() {
     return (
-      <div className="login">
-        
-        <form onSubmit={this.doLogin}>
+      <div >
+        <h3>Login to Taskit</h3>
+        <form className="login-page" onSubmit={this.doLogin}>
           
-     <div className="error-msg"> <h5>{this.state.msg}</h5></div> 
-      <h3>Login to Taskit</h3>
+      
               <TextField
             id="outlined-basic"
             type="text"
@@ -60,9 +59,6 @@ class _Login extends Component {
           />
 
           <br />
-          <br />
-          <br />
-
           <TextField
             id="outlined-password-input"
             label="Password"
@@ -73,7 +69,11 @@ class _Login extends Component {
             autoComplete="current-password"
             variant="outlined"
           />
-          <br />
+          <br/>
+          
+     {this.state.msg &&<div className="error-msg"> <h5>{this.state.msg}</h5></div>} 
+     <br/>
+     <br/>
           <button className="btn login-btn">Login</button>
         </form>
       </div>

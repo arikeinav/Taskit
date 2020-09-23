@@ -7,6 +7,7 @@ const Container = styled.div`
 background-color: ${props => (props.isDragging ? '#B5B5B5' : 'rgba(255, 255, 255, 0.822)')};
 `;
 
+
 export function CardPreview({ card, updateState, groupId, index }) {
 
 
@@ -24,7 +25,7 @@ export function CardPreview({ card, updateState, groupId, index }) {
                     snapshot={snapshot}
                 >
                     {style => (
-                        <Container isDragging={snapshot.isDragging} className="card-preview flex column justify-center" onClick={() => openCardDetails(card.id)} {...provided.draggableProps} {...provided.dragHandleProps} style={style} ref={provided.innerRef}>
+                        <Container   isDragging={snapshot.isDragging} className="card-preview flex column justify-center" onClick={() => openCardDetails(card.id)} {...provided.draggableProps} {...provided.dragHandleProps} style={style} ref={provided.innerRef}>
                             <div style={{ backgroundColor: card.bgColor }}>
                                 <div className="flex">
                                     {(card.labels && card.labels.length > 0) &&
