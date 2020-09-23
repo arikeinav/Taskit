@@ -27,13 +27,9 @@ export class _BoardDetails extends Component {
     this.props.loadBoard(boardId);
     socketService.setup();
     socketService.emit('connect to board', boardId);
-    // socketService.on('send updated board', this.test);
     socketService.on('send updated board', this.props.updateBoardFromSocket);
   }
 
-  test = board =>{
-    console.log("board", board)
-  }
 
   componentWillUnmount() {
     socketService.terminate();
@@ -101,8 +97,8 @@ export class _BoardDetails extends Component {
         ...this.props.board,
         groups: newGroups
       }
-      console.log('currBoard at gState is:', this.props.board);
-      console.log('newState is:', newState);
+      // console.log('currBoard at gState is:', this.props.board);
+      // console.log('newState is:', newState);
       this.props.updateBoard(newState)//smth here is passed wrong, and causes an @@Object Object@@
       return;
     }
@@ -135,7 +131,7 @@ export class _BoardDetails extends Component {
       ...this.props.board,
       groups: newGroups
     }
-    console.log('newstate after INTER-GROUPS movement is:', newState);
+    // console.log('newstate after INTER-GROUPS movement is:', newState);
     this.props.updateBoard(newState)//smth here is passed wrong, and causes an @@Object Object@@
     return;
   }

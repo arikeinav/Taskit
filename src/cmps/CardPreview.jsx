@@ -43,14 +43,17 @@ export function CardPreview({ card, updateState, groupId, index }) {
                 >
                     {style => (
                         <Container isDragging={snapshot.isDragging} className="card-preview flex column justify-center" onClick={() => openCardDetails(card.id)} {...provided.draggableProps} {...provided.dragHandleProps} style={style} ref={provided.innerRef}>
-                            <div className="flex">
-                                {(card.labels && card.labels.length > 0) &&
-                                    card.labels.map(label => <div key={label} className="small-small-label" style={{ backgroundColor: label }} />)
-                                }
+                            <div style={{ backgroundColor: card.bgColor }}>
+                                <div className="flex">
+                                    {(card.labels && card.labels.length > 0) &&
+                                        card.labels.map(label => <div key={label} className="small-small-label" style={{ backgroundColor: label }} />)
+                                    }
+                                </div>
+                                <p className="p-card-preview">{card.title}</p>
+                                {/* <div className="due-date-card-preview">{getValidDate()}</div> */}
+                                {card.imgUrl && <img className="img-card-preview" src={card.imgUrl} alt="Loading" />}
                             </div>
-                            <p className="p-card-preview">{card.title}</p>
-                            {/* <div className="due-date-card-preview">{getValidDate()}</div> */}
-                            {card.imgUrl && <img className="img-card-preview" src={card.imgUrl} alt="Loading" />}
+
                         </Container >
                     )}
                 </NaturalDragAnimation>

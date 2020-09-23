@@ -4,6 +4,11 @@ import { MenuColorModal } from './MenuColorModal'
 import { connect } from "react-redux";
 import { updateBoard } from "../store/actions/boardActions";
 import {Avatar} from '@material-ui/core';
+import { VscChromeClose } from "react-icons/vsc";
+import { IoIosArrowBack } from "react-icons/io";
+import { FaFileImage } from "react-icons/fa";
+import { MdColorLens } from "react-icons/md";
+import { BsListNested } from "react-icons/bs";
 
 export class _SideMenu extends Component {
 
@@ -43,22 +48,26 @@ onChangeColor=(color) =>{
         const {activities}=this.props.board
     return (
         <div className="side-menu" >
-        <button className="btn" onClick={this.props.onToggleMenu}>X</button>
-        <button className="btn" onClick={this.onBackToMenu}>back</button>
+        <div className="menu-header flex space-between"> <IoIosArrowBack  onClick={this.onBackToMenu}/>
+       <span style={{color:'black'}}>Menu</span> <VscChromeClose  onClick={this.props.onToggleMenu}/></div>
+       
+        <hr/>
          {this.state.isChooseImg && <AddImg isForBoard={true} onAddimg={this.onChangeImg}/>}
          {this.state.isChooseColor && <MenuColorModal onAddColor={this.onChangeColor}/>}
         {!this.state.isChooseImg&&!this.state.isChooseColor&& <div>
-        <div className="flex column">
-         <button className="btn" onClick={this.onChangeBoardImg}>change board Img</button>
-         <button className="btn" onClick={this.onChangeBoardColor}>change board color</button>
-        <button className="btn" >delete</button>
+        <div className="menu-actions flex column">
+         <div className="menu-action flex" onClick={this.onChangeBoardImg}><FaFileImage/><span>Change board Img</span></div>
+         <div className="menu-action flex" onClick={this.onChangeBoardColor}><MdColorLens/><span>Change board color</span></div>
+        {/* <button className="btn" >delete</button> */}
         </div>
-        <div>
+        <hr/>
+        <div className="activity-log flex align-center"><BsListNested/><span> Activity</span></div>
+       {activities&& <div>
         <ul className="side-menu-list">
-        {activities.map(activitie =><li>
-        <Avatar key={activitie.byMember._id} src={activitie.byMember.imgUrl}>{activitie.byMember.userName.substring(0, 1).toUpperCase()}
-        {activitie.byMember.userName.substring(1, 2).toUpperCase()}</Avatar>{activitie.byMember.userName +' '}{activitie.txt}</li> )}
-        </ul></div>
+        {activities.map(activity =><li>
+        <Avatar key={activity.byMember._id} src={activity.byMember.imgUrl}>{activity.byMember.userName.substring(0, 1).toUpperCase()}
+        {activity.byMember.userName.substring(1, 2).toUpperCase()}</Avatar>{activity.byMember.userName +' '}{activity.txt}</li> )}
+        </ul></div>}
         
         
         </div>}

@@ -4,30 +4,19 @@ import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
 import { FaCheckCircle, FaUserCircle, FaFileImage, FaTrashAlt, FaEdit } from "react-icons/fa";
 
-import TextField from '@material-ui/core/TextField';
+import { TwitterPicker} from 'react-color'
 
-// date picker
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
-// import Grid from '@material-ui/core/Grid';
-// import DateFnsUtils from '@date-io/date-fns';
-// import {
-//     MuiPickersUtilsProvider,
-//     KeyboardTimePicker,
-//     KeyboardDatePicker,
-// } from '@material-ui/pickers';
+import TextField from '@material-ui/core/TextField';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Scroll from 'react-scroll';
-
-
-
 import { ColorModal } from './ColorModal'
 import { boardService } from '../services/boardService'
 import { AddImg } from './AddImg'
 import { Checklist } from './Checklist'
 import ChecklistAdd from './ChecklistAdd';
 import { updateBoard } from '../store/actions/boardActions'
+
 var Element = Scroll.Element;
 
 export class _CardDetails extends Component {
@@ -38,18 +27,14 @@ export class _CardDetails extends Component {
         isDescriptionEdit: false,
         isTimeEdit: false,
         isLabelesEdit: false,
-        isChecklistEdit: false
+        isChecklistEdit: false,
+        isAddColorModalShown: false
     }
     componentDidMount() {
         const card = boardService.getCardById(this.props.board, this.props.groupId, this.props.cardId)
         this.setState({ card })
-        // this.updateLocalCard('dueDate', new Date())
-
 
     }
-    // componentDidUpdate(prevProps, prevState) {
-    //     console.log('on cardDetails update, card is now::', this.state.card);
-    // }
 
     updateState = (key, val) => {
         this.setState({ [key]: val })
@@ -62,14 +47,12 @@ export class _CardDetails extends Component {
         this.props.updateState('isDetailsShown', false)
         this.props.onRemoveCard(this.state.card.id)
     }
-
     onRemoveImg = () => {
         const card = this.state.card
         delete card.imgUrl
         this.setState({ card })
     }
     saveCard = () => {
-
         this.updateState('isDescriptionEdit', false)
         var cardId = this.state.card.id;
         const newBoard = { ...this.props.board }
@@ -97,29 +80,6 @@ export class _CardDetails extends Component {
         this.setState({ card })
         this.saveCard()
     }
-    // convert = (str) => {
-    //     var date = new Date(str),
-    //         mnth = ("0" + (date.getMonth() + 1)).slice(-2),
-    //         day = ("0" + date.getDate()).slice(-2);
-    //     return [date.getFullYear(), mnth, day].join("-");
-    // }
-    //     onSaveDuedate=(selected) => {
-
-    // 
-    //         console.log("111111111111", selectedDate)
-
-    //         selectedDate = this.convert(selectedDate)
-
-    //         console.log("222222222222", selectedDate)
-
-    //         selectedDate = new Date(selectedDate).getTime() / 1000
-
-    //         console.log("333333333", selectedDate)
-
-    //         this.updateState('isTimeEdit', false)
-    //         this.updateLocalCard('dueDate', selectedDate)
-    //         this.saveCard()
-    //     }
     handleChangeDuedate = (data) => {
         this.updateState('isTimeEdit', false)
         this.updateLocalCard('dueDate', data)
@@ -151,7 +111,7 @@ export class _CardDetails extends Component {
     }
 
     addNewChecklist = (checklist) => {
-        console.log("New Checklist!:", checklist)
+        // console.log("New Checklist!:", checklist)
         this.saveChecklist(checklist)
     }
 
@@ -175,6 +135,13 @@ export class _CardDetails extends Component {
         this.setState({ isChecklistEdit: (this.state.isChecklistEdit ? false : true) })
 
     }
+    handleChangeBGColor = (color) => {
+        this.updateLocalCard('bgColor', color.hex)
+    }
+    saveBGColor = () => {
+        this.updateState('isAddColorModalShown', false)
+        this.saveCard()
+    }
 
     render() {
         if (!this.state.card) return <div>Loading...</div>
@@ -188,13 +155,19 @@ export class _CardDetails extends Component {
 
                 <div className="details-modal flex column" >
 
-                    <header className="card-header flex column align-center">
-                        {/* <button className="btn btn-card-remove" onClick={this.onRmoveModal}>X</button> */}
+                    <header className="card-header flex column align-center" style={{ backgroundColor: card.bgColor }}>
                         {card.imgUrl &&
 
                             <img className="card-img" src={card.imgUrl} alt="Loading" />
                         }
                         {card.imgUrl && <button onClick={this.onRemoveImg} className="btn"><FaTrashAlt style={{ marginRight: "5px" }} /> Remove Image</button>}
+
+                        {this.state.isAddColorModalShown &&
+                            <div>
+                                <TwitterPicker onChange={this.handleChangeBGColor} colors={['#8ED1FC', '#0693E3', '#ABB8C3', '#EB144C', '#F78DA7', '#9900EF']} triangle="hide" />
+                                <button onClick={this.saveBGColor}>Save</button>
+                            </div>
+                        }
                     </header>
                     <div className="body-div flex">
 
@@ -241,10 +214,8 @@ export class _CardDetails extends Component {
                                 {(this.state.isTimeEdit || card.dueDate) &&
                                     <div>
                                         <DatePicker
-                                            // selected={new Date(card.dueDate)}
                                             selected={(card.dueDate) ? new Date(card.dueDate) : new Date()}
-                                            // onChange={selected => this.onSaveDuedate(selected)}
-                                            onChange={this.handleChange}
+                                            onChange={this.handleChangeDuedate}
                                             showTimeSelect
                                             dateFormat="Pp"
                                         />
@@ -285,12 +256,14 @@ export class _CardDetails extends Component {
                         </Element >
                         <div className="side-bar-details-right flex column">
                             <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{ marginRight: "3px" }} />Cover</button>
-                            <button onClick={this.onHandleRemove} className="btn"> <FaTrashAlt style={{ marginRight: "5px" }} />Card</button>
+                            <button className="btn" onClick={() => this.updateState('isAddColorModalShown', true)}>Color</button>
+
                             <button className="btn" onClick={() => this.openChecklistEditor()}><FaCheckCircle style={{ marginRight: "5px" }} />Checklist</button>
                             <button onClick={this.onOpenDuedate} className="btn">Due Date</button>
                             <button onClick={this.onOpenLabelModal} className="btn">Labels</button>
                             {this.state.isLabelesEdit &&
                                 <ColorModal onSaveLabels={this.onSaveLabels} labels={card.labels} />}
+                            <button onClick={this.onHandleRemove} className="btn"> <FaTrashAlt style={{ marginRight: "5px" }} />Card</button>
                         </div>
 
 
