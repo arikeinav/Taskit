@@ -17,8 +17,8 @@ export class _ChecklistPreview extends Component {
     }
 
     componentDidMount() {
-        this.setState({ checklist: this.props.checklist })
-        this.calculateProgress()
+        this.setState({ checklist: this.props.checklist },this.calculateProgress())
+        
     }
 
     onRemoveTodo = (todoId) => {
@@ -33,6 +33,7 @@ export class _ChecklistPreview extends Component {
             }
         }))
         this.props.onUpdateChecklists(this.state.checklist)
+        this.calculateProgress()
     }
 
     onHandleInput = (ev) => {
@@ -60,7 +61,6 @@ export class _ChecklistPreview extends Component {
     }
     updateLocalChecklist = (updTodo) => {
         if (updTodo) {
-            console.log("updateLocalChecklist -> updTodo", updTodo)
             const todos = this.state.checklist.todos
 
             const idx = todos.findIndex(todo => todo.id === updTodo.id)
@@ -92,27 +92,23 @@ export class _ChecklistPreview extends Component {
     onUpdateChecklists = () => {
         const checklist = this.state.checklist
         this.props.onUpdateChecklists(checklist)
+        this.calculateProgress()
     }
 
     calculateProgress() {
 
-        if (!this.state.checklist) {
-            this.setState({ progressbar: 0 })
-            return this.props.updateProgress(0, 0)
-        }
-        const todos = this.state.checklist.todos
-        if (todos && todos.length > 0) {
-            console.log('todos > 0:', todos);
+        if (!this.props.checklist) return this.setState({ progressbar: 0 })
+        const todos = this.props.checklist.todos
+        console.log("calculateProgress -> todos", todos)
+        if (todos) {
             const totalTodos = todos.length
             const isDones = (todos.filter((todo) => todo.isDone === true)).length
             const res = (isDones / totalTodos) * 100
-            this.setState({ progressbar: res.toFixed(2) })
-            return this.props.updateProgress(isDones, totalTodos)
+            return this.setState({ progressbar: res.toFixed(2) })
         }
-        this.props.updateProgress(0, 0)
-        return this.setState({ progressbar: 0 })
-
+        
     }
+
 
     render() {
         const { checklist } = this.props
@@ -126,6 +122,7 @@ export class _ChecklistPreview extends Component {
                 <h4>Your Todos:</h4>
                 <label htmlFor="progress-bar">Todos progress: {this.state.progressbar}%</label>
                 <progress id="progress-bar" value={`${this.state.progressbar}`} max="100"></progress>
+
                 {checklist.todos && checklist.todos.map(todo => <TodoPreview key={todo.id} todo={todo} updateCheckbox={this.updateLocalChecklist} onRemoveTodo={this.onRemoveTodo} />)}
                 <button onClick={() => { this.setState({ isTodoEditShown: true }) }} className="btn add-todo-btn">Add Todo</button>
                 {this.state.isTodoEditShown &&
