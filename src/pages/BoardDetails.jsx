@@ -180,7 +180,7 @@ export class _BoardDetails extends Component {
             > */}
             {board.groups.map(group => <CardList onAdd={this.onAdd} group={group} key={group.id} updateState={this.updateState} onRemoveGroup={this.onRemoveGroup} />)}
             {this.state.isAddGroup ?
-              <AddText onAdd={this.onAdd} type="Group" groupId={null} />
+              <AddText updateState={this.updateState} onAdd={this.onAdd} type="Group" groupId={null} />
               :
               <button className="add-group btn" onClick={() => this.onEditGroup()}>Add List</button>
             }
