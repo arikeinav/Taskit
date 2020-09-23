@@ -23,7 +23,7 @@ export function CardPreview({ card, updateState, groupId, index, calcProgress })
                     snapshot={snapshot}
                 >
                     {style => (
-                        <Container isDragging={snapshot.isDragging} className="card-preview flex column justify-center" onClick={() => openCardDetails(card.id)} {...provided.draggableProps} {...provided.dragHandleProps} style={style} ref={provided.innerRef}>
+                        <Container   isDragging={snapshot.isDragging} className="card-preview flex column justify-center" onClick={() => openCardDetails(card.id)} {...provided.draggableProps} {...provided.dragHandleProps} style={style} ref={provided.innerRef}>
                             <div style={{ backgroundColor: card.bgColor }}>
                                 <div className="flex">
                                     {(card.labels && card.labels.length > 0) &&

@@ -36,6 +36,10 @@ class _NavBar extends React.Component {
   onClose = () => {
     this.setState({ isSignIn: false, isModalShow: false, isLogged: false })
   }
+  onLoginHere=()=>{
+    this.setState({ isSignIn: false, isLogged: true })
+  }
+  
 
   onLogOut = () => {
     this.setState({ isIn: false })
@@ -54,15 +58,15 @@ class _NavBar extends React.Component {
            
     {this.state.isLogged &&  <Modal
               
-              
+              isForLog={true}
               onClose={this.onClose}
               children={<Login onCloseModal={this.onCloseModal} />}
             />}
     {this.state.isSignIn &&  <Modal
-              
-              
+              onLoginHere={this.onLoginHere}
+              isForLog={true}
               onClose={this.onClose}
-              children={<Submit onCloseModal={this.onCloseModal} />}
+              children={<Submit  onCloseModal={this.onCloseModal} />}
             />}
         </nav>
     )

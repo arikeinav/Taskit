@@ -20,3 +20,23 @@
     border-radius: 10px;
     position: relative;
 }
+.login-modal{
+    justify-content: space-around;
+    background: white;
+    max-width: 35%;
+    min-width: 25%;
+    height: 500px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    position: relative;
+}
+.login-modal p{
+    color: #1b0f07;
+    margin-bottom: 10px;
+    
+}
+.login-modal span{
+    color: blue;
+    
+    
+}
