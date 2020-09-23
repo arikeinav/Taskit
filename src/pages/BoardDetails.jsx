@@ -30,10 +30,10 @@ export class _BoardDetails extends Component {
     socketService.on('send updated board', this.props.updateBoardFromSocket);
   }
 
-
   componentWillUnmount() {
     socketService.terminate();
   }
+
   updateState = (key, val) => {
     this.setState({ [key]: val });
   };
@@ -55,7 +55,6 @@ export class _BoardDetails extends Component {
       this.props.updateBoard(newboard);
     }
   };
-
 
   updateState = (key, val) => {
     this.setState({ [key]: val })
@@ -149,7 +148,6 @@ export class _BoardDetails extends Component {
     newboard.groups[groupIdx].cards = newCards;
     this.props.updateBoard(newboard);
   };
-
 
   render() {
     const { board } = this.props
