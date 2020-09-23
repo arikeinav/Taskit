@@ -248,7 +248,7 @@ export class _CardDetails extends Component {
                                     }
                                 </div>
 
-                                {this.state.card.checklist && <Checklist updateProgress={this.updateProgress} removeChecklist={this.removeChecklist} saveChecklist={this.saveChecklist} checklist={this.state.card.checklist} />}
+                                {this.state.card.checklist && <Checklist removeChecklist={this.removeChecklist} saveChecklist={this.saveChecklist} checklist={this.state.card.checklist} />}
                                 {this.state.isChecklistEdit && <ChecklistAdd addNewChecklist={this.addNewChecklist} />}
 
 
