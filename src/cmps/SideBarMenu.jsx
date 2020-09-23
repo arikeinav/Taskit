@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { AddImg } from './AddImg';
+import { Graph } from './Graph';
 import { MenuColorModal } from './MenuColorModal'
 import { connect } from "react-redux";
 import { updateBoard } from "../store/actions/boardActions";
@@ -15,8 +16,7 @@ export class _SideMenu extends Component {
     state = {
         isChooseImg: false,
         isChooseBgc: false,
-
-
+        idGraphShown: false,
     }
 
     onChangeBoardImg = () => {
@@ -40,16 +40,21 @@ export class _SideMenu extends Component {
         board.style.bgColor = color
         board.style.bgImg = ''
         this.props.updateBoard(board)
-
+    }
+    onOpenGraph = () => {
+        console.log('hey');
+        this.setState({idGraphShown: true})
     }
 
 
     render() {
         const { activities } = this.props.board
+        const { board } = this.props
         return (
             <div className="side-menu" >
                 <div className="menu-header flex space-between"> <IoIosArrowBack onClick={this.onBackToMenu} />
-                    <span style={{ color: 'black' }}>Menu</span> <VscChromeClose onClick={this.props.onToggleMenu} /></div>
+                    <span style={{ color: 'black' }}>Menu</span> <VscChromeClose onClick={this.props.onToggleMenu} />
+                </div>
 
                 <hr />
                 {this.state.isChooseImg && <AddImg isForBoard={true} onAddimg={this.onChangeImg} />}
@@ -60,6 +65,15 @@ export class _SideMenu extends Component {
                         <div className="menu-action flex" onClick={this.onChangeBoardColor}><MdColorLens /><span>Change board color</span></div>
                         {/* <button className="btn" >delete</button> */}
                     </div>
+                    <hr />
+                    <div className="menu-action flex" onClick={this.onOpenGraph}>Graph</div>
+                    {this.state.idGraphShown && 
+                        <Graph />
+                    }
+
+
+
+
                     <hr />
                     <div className="activity-log flex align-center"><BsListNested /><span> Activity</span></div>
                     {activities && <div>

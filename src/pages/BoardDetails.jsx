@@ -28,14 +28,12 @@ export class _BoardDetails extends Component {
     socketService.setup();
     socketService.emit('connect to board', boardId);
     socketService.on('send updated board', this.props.updateBoardFromSocket);
-    // this.setState({board:this.props.board})
   }
 
   componentWillUnmount() {
     socketService.terminate();
   }
  
-
   updateState = (key, val) => {
     this.setState({ [key]: val });
   };
@@ -130,8 +128,6 @@ export class _BoardDetails extends Component {
       ...this.props.board,
       groups: newGroups
     }
-    // console.log('newstate after INTER-GROUPS movement is:', newState);
-    // this.setState({board:newState})
     this.props.updateBoard(newState)//smth here is passed wrong, and causes an @@Object Object@@
     return;
   }
