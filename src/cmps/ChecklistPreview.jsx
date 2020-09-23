@@ -24,7 +24,6 @@ export class _ChecklistPreview extends Component {
     onRemoveTodo = (todoId) => {
         this.calculateProgress()
         const todos = this.state.checklist.todos
-        // console.log(todos);
         const todoIdx = todos.findIndex(todo => todo.id === todoId)
         todos.splice(todoIdx, 1)
         this.setState(prevState => ({
@@ -92,7 +91,7 @@ export class _ChecklistPreview extends Component {
 
     onUpdateChecklists = () => {
         const checklist = this.state.checklist
-        this.props.onUpdateChecklists(checklist)//final stage of updating the checklist, sending it to parent-cmp
+        this.props.onUpdateChecklists(checklist)
     }
 
     calculateProgress() {

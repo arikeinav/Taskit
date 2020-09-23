@@ -30,10 +30,10 @@ export class _BoardDetails extends Component {
     socketService.on('send updated board', this.props.updateBoardFromSocket);
   }
 
-
   componentWillUnmount() {
     socketService.terminate();
   }
+
   updateState = (key, val) => {
     this.setState({ [key]: val });
   };
@@ -55,7 +55,6 @@ export class _BoardDetails extends Component {
       this.props.updateBoard(newboard);
     }
   };
-
 
   updateState = (key, val) => {
     this.setState({ [key]: val })
@@ -97,8 +96,6 @@ export class _BoardDetails extends Component {
         ...this.props.board,
         groups: newGroups
       }
-      // console.log('currBoard at gState is:', this.props.board);
-      // console.log('newState is:', newState);
       this.props.updateBoard(newState)//smth here is passed wrong, and causes an @@Object Object@@
       return;
     }
@@ -152,13 +149,12 @@ export class _BoardDetails extends Component {
     this.props.updateBoard(newboard);
   };
 
-
   render() {
     const { board } = this.props
     if (board === null) return <div>Loading...</div>
     return (
-      <div className="board-details " style={{backgroundImage: `url(${board.style.bgImg?board.style.bgImg:''})`,backgroundSize:"cover",backgroundRepeat: "no-repeat",minHeight: "90vh",backgroundColor:`${board.style.bgColor?board.style.bgColor:''}`}} >
-      
+      <div className="board-details " style={{ backgroundImage: `url(${board.style.bgImg ? board.style.bgImg : ''})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", minHeight: "90vh", backgroundColor: `${board.style.bgColor ? board.style.bgColor : ''}` }} >
+
         <BoardHeader board={board} />
 
 

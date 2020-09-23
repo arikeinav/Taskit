@@ -3,10 +3,6 @@ import { BoardApp } from './pages/BoardApp.jsx'
 import { BoardDetails } from './pages/BoardDetails.jsx'
 
 export default [
-    // {
-    //     path: '/board/:id',
-    //     component: BoardDetails
-    // },
     {
         path: '/board/:boardId',
         component: BoardDetails

@@ -3,7 +3,7 @@ import { Droppable } from 'react-beautiful-dnd'
 import { CardPreview } from './CardPreview'
 import { AddText } from './AddText'
 import styled from 'styled-components'
-import {SimpleMenu} from './CardListMenu'
+import { SimpleMenu } from './CardListMenu'
 
 
 import Scroll from 'react-scroll';
@@ -18,18 +18,18 @@ export class CardList extends React.Component {
 
     state = {
         isAddCard: false,
-        isDeleteGroup:false
+        isDeleteGroup: false
     }
-    
+
     updateState = (key, val) => {
         this.setState({ [key]: val })
     }
-    onRemoveGroup=(groupId)=>{
+    onRemoveGroup = (groupId) => {
         this.props.onRemoveGroup(groupId)
     }
-    onShowDeleteTogglle=()=>{
-        let isDelete =!this.state.isDeleteGroup
-        this.setState({isDeleteGroup:isDelete})
+    onShowDeleteTogglle = () => {
+        let isDelete = !this.state.isDeleteGroup
+        this.setState({ isDeleteGroup: isDelete })
     }
     render() {
         const group = this.props.group
@@ -37,7 +37,7 @@ export class CardList extends React.Component {
             <div className="card-list flex column" id="card-container">
                 <header className="card-header flex space-between">
                     <p className="group-title">{group.title}</p>
-                  <SimpleMenu isDeleteGroup={this.state.isDeleteGroup} onAddCard={this.updateState} onShowDeleteTogglle={this.onShowDeleteTogglle}   onRemove={this.onRemoveGroup} onAddCard={this.updateState} group={group} />
+                    <SimpleMenu isDeleteGroup={this.state.isDeleteGroup} onAddCard={this.updateState} onShowDeleteTogglle={this.onShowDeleteTogglle} onRemove={this.onRemoveGroup} onAddCard={this.updateState} group={group} />
                 </header>
                 <Element style={{
                     height: 'auto',
@@ -59,11 +59,11 @@ export class CardList extends React.Component {
                         )}</Droppable>
 
                 </Element>
-                    {this.state.isAddCard ?
-                        <AddText onAdd={this.props.onAdd} type="Card" groupId={group.id} updateState={this.updateState} />
-                        :
-                        <button className="btn add-card-btn" onClick={() => this.updateState('isAddCard', true)}>+ Add card</button>
-                    }
+                {this.state.isAddCard ?
+                    <AddText onAdd={this.props.onAdd} type="Card" groupId={group.id} updateState={this.updateState} />
+                    :
+                    <button className="btn add-card-btn" onClick={() => this.updateState('isAddCard', true)}>+ Add card</button>
+                }
             </div>
         )
     }
