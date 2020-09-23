@@ -33,6 +33,7 @@ export class _CardDetails extends Component {
     componentDidMount() {
         const card = boardService.getCardById(this.props.board, this.props.groupId, this.props.cardId)
         this.setState({ card })
+        console.log('card',this.state.card);
 
     }
 

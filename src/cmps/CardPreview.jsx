@@ -10,7 +10,7 @@ background-color: ${props => (props.isDragging ? '#B5B5B5' : 'rgba(255, 255, 255
 export function CardPreview({ card, updateState, groupId, index }) {
 
 
-   
+  
 
     const openCardDetails = (cardId) => {
         updateState('isDetailsShown', { cardId, groupId })

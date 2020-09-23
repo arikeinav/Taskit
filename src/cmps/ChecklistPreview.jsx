@@ -17,8 +17,8 @@ export class _ChecklistPreview extends Component {
     }
 
     componentDidMount() {
-        this.setState({ checklist: this.props.checklist })
-        this.calculateProgress()
+        this.setState({ checklist: this.props.checklist },this.calculateProgress())
+        
     }
 
     onRemoveTodo = (todoId) => {
@@ -60,7 +60,6 @@ export class _ChecklistPreview extends Component {
     }
     updateLocalChecklist = (updTodo) => {
         if (updTodo) {
-            console.log("updateLocalChecklist -> updTodo", updTodo)
             const todos = this.state.checklist.todos
 
             const idx = todos.findIndex(todo => todo.id === updTodo.id)
@@ -99,7 +98,6 @@ export class _ChecklistPreview extends Component {
         if (!this.state.checklist) return this.setState({ progressbar: 0 })
         const todos = this.state.checklist.todos
         if (todos && todos.length > 0) {
-            console.log('todos > 0:', todos);
             const totalTodos = todos.length
             const isDones = (todos.filter((todo) => todo.isDone === true)).length
             const res = (isDones / totalTodos) * 100
@@ -108,7 +106,7 @@ export class _ChecklistPreview extends Component {
         return this.setState({ progressbar: 0 })
     }
 
-    
+
     render() {
         const { checklist } = this.props
         return (
