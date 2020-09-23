@@ -43,7 +43,6 @@ export class CardList extends React.Component {
         if (card.checklist && card.checklist.todos) {
             const tasks = card.checklist.todos.length
             const doneTasks = (card.checklist.todos.filter(task => task.isDone === true)).length
-            console.log('doneTasks:', doneTasks, 'tasks:', tasks);
             return (`${doneTasks}/${tasks}`)
         } return ''
 
