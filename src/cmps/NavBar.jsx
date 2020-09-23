@@ -48,7 +48,6 @@ class _NavBar extends React.Component {
            <div className="navdiv-s"><NavLink  to="/board">Boards</NavLink></div>
            <div className="logo"><NavLink  to="/">Task<span className="logo-i">i</span>t</NavLink></div>
            
-           <div className={`navdiv-s   ${(!this.state.isIn) ? '' : 'hide'}`}> <NavLink to="/board/b101">Test Board</NavLink></div>
             <div className={`navdiv-s signup ${(!this.state.isIn) ? '' : 'hide'}`} onClick={this.onIsSubmit}>Sign Up</div>
             <div className={`navdiv-s login  ${(!this.state.isIn) ? '' : 'hide'}`} onClick={this.onIsLogged}>Login</div>
             <div className={`navdiv-s login  ${(!this.state.isIn) ? 'hide' : ''}`} onClick={this.onLogOut}>LogOut</div>
