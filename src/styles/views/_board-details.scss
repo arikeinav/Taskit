@@ -1,8 +1,21 @@
+.board-details{
+    height: calc(100vh - 50px);
+
+
 .groups-container{
-// padding:0 15px;
+    display: flex;
+    flex-direction: row;
+    overflow-y: hidden;
+    white-space: nowrap;
+    list-style-type: none;
+    padding-right: 20px;
+    flex-wrap: nowrap;
+    height: calc(100vh - 88px);
+    justify-items: center;
 }
 .add-group{
     height: 30px;
     margin-top: 10px
 }
 
+}
