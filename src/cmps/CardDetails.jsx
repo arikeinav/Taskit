@@ -33,6 +33,7 @@ export class _CardDetails extends Component {
     componentDidMount() {
         const card = boardService.getCardById(this.props.board, this.props.groupId, this.props.cardId)
         this.setState({ card })
+        console.log('card',this.state.card);
 
     }
 
@@ -247,7 +248,7 @@ export class _CardDetails extends Component {
                                     }
                                 </div>
 
-                                {this.state.card.checklist && <Checklist updateProgress={this.updateProgress} removeChecklist={this.removeChecklist} saveChecklist={this.saveChecklist} checklist={this.state.card.checklist} />}
+                                {this.state.card.checklist && <Checklist removeChecklist={this.removeChecklist} saveChecklist={this.saveChecklist} checklist={this.state.card.checklist} />}
                                 {this.state.isChecklistEdit && <ChecklistAdd addNewChecklist={this.addNewChecklist} />}
 
 

@@ -11,7 +11,8 @@ var Element = Scroll.Element;
 
 const Container = styled.div`
 transition: background-color 0.2s ease;
-background-color: ${props => (props.isDraggingOver ? '#3493A5' : '#EBECF0')}
+background-color: ${props => (props.isDraggingOver ? '#3493A5' : 'inherit')};
+min-height:40px;
 `
 
 export class CardList extends React.Component {
@@ -47,10 +48,10 @@ export class CardList extends React.Component {
                     paddingLeft: '5px'
                 }}>
 
-                    <Droppable droppableId={group.id}>
+                    <Droppable  droppableId={group.id}>
                         {(provided, snapshot) => (
 
-                            <Container ref={provided.innerRef}
+                            <Container  ref={provided.innerRef}
                                 {...provided.droppableProps}
                                 isDraggingOver={snapshot.isDraggingOver}>
                                 {group.cards.map((card, index) => <CardPreview index={index} card={card} key={card.id} updateState={this.props.updateState} groupId={group.id} />)}

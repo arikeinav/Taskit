@@ -12,6 +12,9 @@
     margin:auto;
     height:20px;
     font-weight: 600;
+    margin-left:10px;
+    align-self: center;
+    
 }
 .add-card-btn{
     height: 35px;
@@ -19,9 +22,12 @@
 }
 .card-header{
     height: 40px;
+    
 }
 
+
 ::-webkit-scrollbar {
+    margin: 0 2px;
     width: 5px;
     background-color: rgba(0, 0, 0, 0);
     border-radius: 100px;

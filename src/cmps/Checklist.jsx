@@ -4,30 +4,13 @@ import { ChecklistPreview } from './ChecklistPreview'
 
 
 
-export class Checklist extends Component {
-    state = {
-        checklist: {},
-
-
-    }
-
-    componentDidMount() {
-        const checklist = this.props.checklist
-        this.setState({ checklist })
-    }
-
-    onUpdateChecklist = (checklist) => {
-        this.props.saveChecklist(checklist)
-    }
-
-
-    render() {
-
-        const { checklist } = this.props
+export function Checklist({checklist,removeChecklist, saveChecklist }) {
+  
+     
         return (
             <div>
-                { this.props.checklist.title && <ChecklistPreview updateProgress={this.props.updateProgress} removeChecklist={this.props.removeChecklist} onUpdateChecklists={this.onUpdateChecklist} checklist={checklist} key={checklist.id} />}
+                { checklist.title && <ChecklistPreview  removeChecklist={removeChecklist} onUpdateChecklists={saveChecklist} checklist={checklist} key={checklist.id} />}
             </div>
         )
     }
-}
+
