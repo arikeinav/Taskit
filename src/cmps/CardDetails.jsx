@@ -182,8 +182,8 @@ export class _CardDetails extends Component {
                             <div className="modal-details-left">
                                 <h3 className="card-title">{card.title}</h3>
 
-                                <div className="flex">
-                                    <button className="btn btn-invite" > <FaUserCircle style={{ marginRight: "5px" }} /> Invite</button>
+                                <div className="flex column justify-center">
+                                    <button className="btn btn-invite self-start" > <FaUserCircle style={{ marginRight: "5px" }} /> Invite</button>
                                     {(card.members && card.members.length > 0) &&
                                         <div>
                                             <p className="small-header">Members</p>
@@ -202,7 +202,7 @@ export class _CardDetails extends Component {
                                             </section>
                                         </div>}
                                     {(card.labels && card.labels.length > 0) &&
-                                        <div>
+                                        <div className="flex column">
                                             <p className="small-header">Labels</p>
                                             <div className="flex">
                                                 {card.labels.map(label => <div key={label} onClick={() => this.onRemoveLabel(label)} className="small-label" style={{ backgroundColor: label }} />)}

@@ -124,7 +124,7 @@ export class _ChecklistPreview extends Component {
                 <h4>Your Todos:</h4>
 
                 {checklist.todos && checklist.todos.map(todo => <TodoPreview key={todo.id} todo={todo} updateCheckbox={this.updateLocalChecklist} onRemoveTodo={this.onRemoveTodo} />)}
-                <button onClick={() => { this.setState({ isTodoEditShown: true }) }} className="btn add-todo-btn">Add Todo</button>
+                <button style={{display: (this.state.isTodoEditShown)?"none":"block" }} onClick={() => { this.setState({ isTodoEditShown: true }) }} className="btn add-todo-btn">Add Todo</button>
                 {this.state.isTodoEditShown &&
                     <div>
                         <form onSubmit={this.onSubmit} action="">
