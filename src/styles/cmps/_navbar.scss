@@ -9,7 +9,7 @@
 }
 .nav-bar a{
     color: white;
-    font-family: hand-write;
+    //  font-family: vidaloka;
 }
 .logo{
     margin:auto;
@@ -18,18 +18,21 @@
     grid-column:4/5;
 }
 .navdiv-s{
-    font-family: hand-write;
-    font-size: 1.4rem;  
-    margin: auto; 
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    margin: auto;
+    font-weight: bold;
 }
 .navdiv-s:hover,.nav-bar a:hover{
     color:#3d185c ;  
 }
 .signup{
     grid-column:6/7;
+    cursor: pointer;
 }
 .login{
     grid-column:7/8;
+    cursor: pointer;
 }
 .hide {
     display: none;
