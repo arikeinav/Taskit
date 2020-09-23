@@ -7,7 +7,8 @@ export default class TodoPreview extends Component {
     state={
         todo:{
             title:'',
-            isDone:''
+            isDone:'',
+            id:''
         }
     }
     
@@ -17,7 +18,6 @@ export default class TodoPreview extends Component {
     
     onInputChange =(ev)=>{
         ev.preventDefault()
-        // console.log(ev);
     }
 
     onCheckboxChange =()=>{
@@ -28,7 +28,7 @@ export default class TodoPreview extends Component {
                 isDone:bool
                
             }
-        }), console.log(this.state))
+        }), () => {this.props.updateCheckbox(this.state.todo)})
     }
     render() {
         const { todo } = this.props

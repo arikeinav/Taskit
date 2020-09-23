@@ -16,14 +16,8 @@ export class Checklist extends Component {
         this.setState({ checklist })
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        // console.log('onUpdate checklist:', this.state.checklist);
-
-    }
 
     onUpdateChecklist = (checklist) => {
-        // console.log('checklist:', checklist);//add the updated checklist from child to this.state.checklists array and then send it to 
-
         this.props.saveChecklist(checklist)
     }
   
@@ -33,7 +27,7 @@ export class Checklist extends Component {
         const { checklist } = this.props
         return (
             <div>
-                { this.props.checklist.title && <ChecklistPreview removeChecklist={this.props.removeChecklist} onUpdateChecklists={this.onUpdateChecklist} checklist={checklist} key={checklist.id} />}
+                { this.props.checklist.title && <ChecklistPreview updateProgress={this.props.updateProgress} removeChecklist={this.props.removeChecklist} onUpdateChecklists={this.onUpdateChecklist} checklist={checklist} key={checklist.id} />}
             </div>
         )
     }
