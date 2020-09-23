@@ -34,7 +34,7 @@ export function Home() {
                 <section className="home-details flex">
                     <img src="https://res.cloudinary.com/cloudinary-img/image/upload/v1600352679/Taskit/tony-yeung-Exq6e9gH4Ag-unsplash_e7ltjx.jpg" alt="img"/>
                     <div className="info">
-                        <h2>Make it yours.</h2>
+                        <h2>Make it yours</h2>
                         <p>Make it feel like home for you and your team. Customize the board's appearance, Organize your lists to fit the team's flow.</p>
                     </div>
                 </section>
