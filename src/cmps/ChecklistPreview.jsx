@@ -46,8 +46,8 @@ export class _ChecklistPreview extends Component {
         }))
     }
 
-    onSubmit = () => {
-
+    onSubmit = (ev) => {
+        ev.preventDefault()
         const id = boardService.makeId()
         const isDone = false;
         this.setState(prevState => ({
