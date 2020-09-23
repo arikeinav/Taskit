@@ -34,7 +34,6 @@ export class _CardDetails extends Component {
         const card = boardService.getCardById(this.props.board, this.props.groupId, this.props.cardId)
         this.setState({ card })
         console.log('card',this.state.card);
-
     }
 
     updateState = (key, val) => {
@@ -46,6 +45,7 @@ export class _CardDetails extends Component {
     }
     onHandleRemove = () => {
         this.props.updateState('isDetailsShown', false)
+        boardService.addActivity(this.props.board, 'Remove card', this.state.card)
         this.props.onRemoveCard(this.state.card.id)
     }
     onRemoveImg = () => {
@@ -94,6 +94,7 @@ export class _CardDetails extends Component {
             labels.push(val)
         }
         this.updateLocalCard('labels', labels)
+        boardService.addActivity(this.props.board, 'Add label at', this.state.card)
     }
     onRemoveLabel = (label) => {
         const labels = this.state.card.labels
@@ -267,8 +268,6 @@ export class _CardDetails extends Component {
                             <button onClick={this.onHandleRemove} className="btn"> <FaTrashAlt style={{ marginRight: "5px" }} />Card</button>
                         </div>
 
-
-
                     </div >
                     {this.state.isAddImgModalShown && <AddImg card={card} updateState={this.updateState} />}
                 </div >
@@ -283,7 +282,7 @@ const mapStateToProps = state => {
     }
 }
 const mapDispatchToProps = {
-    updateBoard
+    updateBoard,
 }
 
 export const CardDetails = connect(mapStateToProps, mapDispatchToProps)(_CardDetails)

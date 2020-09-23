@@ -8,7 +8,8 @@ export const boardService = {
   update,
   getCardById,
   create,
-  makeId
+  makeId,
+  addActivity
 };
 
 function query(filterBy) {
@@ -48,6 +49,19 @@ function _createBoard(txt, imgUrl) {
 function getCardById(board, groupId, cardId) {
   const group = board.groups.find(group => group.id === groupId)
   return group.cards.find(card => card.id === cardId)
+}
+function addActivity(board, ActivityType, changeIn) {
+  if (!board.activities) {
+    board.activities = []
+  }
+  const activities = board.activities
+  activities.push({
+    id: 'a' + makeId(),
+    title: ActivityType,
+    createdAt: new Date(),
+    propertyTitle: changeIn.title
+  })
+  return board
 }
 function makeId(length = 5) {
   var txt = '';

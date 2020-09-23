@@ -11,6 +11,9 @@ import { FaFileImage } from "react-icons/fa";
 import { MdColorLens } from "react-icons/md";
 import { BsListNested } from "react-icons/bs";
 
+import Scroll from 'react-scroll';
+var Element = Scroll.Element;
+
 export class _SideMenu extends Component {
 
     state = {
@@ -43,7 +46,7 @@ export class _SideMenu extends Component {
     }
     onOpenGraph = () => {
         console.log('hey');
-        this.setState({idGraphShown: true})
+        this.setState({ idGraphShown: true })
     }
 
 
@@ -52,39 +55,53 @@ export class _SideMenu extends Component {
         const { board } = this.props
         return (
             <div className="side-menu" >
-                <div className="menu-header flex space-between"> <IoIosArrowBack onClick={this.onBackToMenu} />
-                    <span style={{ color: 'black' }}>Menu</span> <VscChromeClose onClick={this.props.onToggleMenu} />
-                </div>
-
-                <hr />
-                {this.state.isChooseImg && <AddImg isForBoard={true} onAddimg={this.onChangeImg} />}
-                {this.state.isChooseColor && <MenuColorModal onAddColor={this.onChangeColor} />}
-                {!this.state.isChooseImg && !this.state.isChooseColor && <div>
-                    <div className="menu-actions flex column">
-                        <div className="menu-action flex" onClick={this.onChangeBoardImg}><FaFileImage /><span>Change board Img</span></div>
-                        <div className="menu-action flex" onClick={this.onChangeBoardColor}><MdColorLens /><span>Change board color</span></div>
-                        {/* <button className="btn" >delete</button> */}
+                <Element style={{
+                    height: 'calc(100vh - 50px)',
+                    width: '100%',
+                    overflow: 'scroll',
+                    overflowX: 'hidden',
+                    paddingLeft: '5px'
+                }}>
+                    <div className="menu-header flex space-between"> <IoIosArrowBack onClick={this.onBackToMenu} />
+                        <span style={{ color: 'black' }}>Menu</span> <VscChromeClose onClick={this.props.onToggleMenu} />
                     </div>
-                    <hr />
-                    <div className="menu-action flex" onClick={this.onOpenGraph}>Graph</div>
-                    {this.state.idGraphShown && 
-                        <Graph />
-                    }
-
-
-
 
                     <hr />
-                    <div className="activity-log flex align-center"><BsListNested /><span> Activity</span></div>
-                    {activities && <div>
-                        <ul className="side-menu-list">
-                            {activities.map(activity => <li>
-                                <Avatar key={activity.byMember._id} src={activity.byMember.imgUrl}>{activity.byMember.userName.substring(0, 1).toUpperCase()}
-                                    {activity.byMember.userName.substring(1, 2).toUpperCase()}</Avatar>{activity.byMember.userName + ' '}{activity.txt}</li>)}
-                        </ul></div>}
+                    {this.state.isChooseImg && <AddImg isForBoard={true} onAddimg={this.onChangeImg} />}
+                    {this.state.isChooseColor && <MenuColorModal onAddColor={this.onChangeColor} />}
+                    {!this.state.isChooseImg && !this.state.isChooseColor && <div>
+                        <div className="menu-actions flex column">
+                            <div className="menu-action flex" onClick={this.onChangeBoardImg}><FaFileImage /><span>Change board Img</span></div>
+                            <div className="menu-action flex" onClick={this.onChangeBoardColor}><MdColorLens /><span>Change board color</span></div>
+                            {/* <button className="btn" >delete</button> */}
+                        </div>
+                        <hr />
+                        <div className="menu-action flex" onClick={this.onOpenGraph}>Graph</div>
+                        {this.state.idGraphShown &&
+                            <Graph />
+                        }
+                        <hr />
 
 
-                </div>}
+                        <div className="activity-log flex align-center"><BsListNested /><span> Activity</span></div>
+                        {activities && <div>
+                            <ul className="side-menu-list">
+                                {activities.map(activity =>
+                                    <li key={activity.id}>
+                                        <div className="one-activity">
+                                            <p>{activity.title}</p>
+                                            <p>{activity.propertyTitle}</p>
+
+                                        </div>
+                                        {/* <Avatar key={activity.byMember._id} src={activity.byMember.imgUrl}>{activity.byMember.userName.substring(0, 1).toUpperCase()}
+                                        {activity.byMember.userName.substring(1, 2).toUpperCase()}</Avatar>{activity.byMember.userName + ' '}{activity.txt} */}
+                                    </li>)}
+                            </ul>
+                        </div>}
+
+
+                    </div>}
+                </Element>
             </div>
         )
 
