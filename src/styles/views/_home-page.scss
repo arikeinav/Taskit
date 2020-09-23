@@ -59,15 +59,27 @@ font-family: hand-write;
   max-width: 1060px;
   text-align: center;
   margin: 0 auto;
+  color:#15466b;
+
+  h1{
+    margin: 60px;
+  }
 
   .home-details{
-    
+    margin-top: 10px;
     
     img{
       width:50%;
     }
-    .text-in-home-details{
-      padding: auto 0;
+    .info{
+      margin: auto 30px;
+
+      h2{
+        font-size: 1.875rem;
+      }
+      p{
+        font-size: 1.3rem;
+      }
     }
   }
 }
