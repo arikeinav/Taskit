@@ -28,11 +28,11 @@ export function Home() {
                         <h2>Drag n Drop</h2>
                         <p>Try our Drag n Drop technology to easily move & update your tasks with your mouse or finger.</p>
                     </div>
-                    <img src="https://res.cloudinary.com/cloudinary-img/image/upload/v1600352679/Taskit/tony-yeung-Exq6e9gH4Ag-unsplash_e7ltjx.jpg" alt="img"/>
+                    <img src="https://res.cloudinary.com/cloudinary-img/image/upload/v1600866147/Taskit/erda-estremera-sxNt9g77PE0-unsplash_nilaae.jpg" alt="img"/>
                 </section>
 
                 <section className="home-details flex">
-                    <img src="https://res.cloudinary.com/cloudinary-img/image/upload/v1600352679/Taskit/tony-yeung-Exq6e9gH4Ag-unsplash_e7ltjx.jpg" alt="img"/>
+                    <img src="https://res.cloudinary.com/cloudinary-img/image/upload/v1600866319/Taskit/nathan-fertig-FBXuXp57eM0-unsplash_doprwu.jpg" alt="img"/>
                     <div className="info">
                         <h2>Make it yours</h2>
                         <p>Make it feel like home for you and your team. Customize the board's appearance, organize your lists to fit the team's flow.</p>
