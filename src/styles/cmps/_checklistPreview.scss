@@ -3,9 +3,19 @@
     h3{margin:5px;}
     h4{margin:5px;}
     width: 100%;
-    background-color: rgba(218, 216, 216, 0.623);
+    background-color: rgba(235, 231, 231, 0.527);
     
 }
 .add-todo-btn{
     width:80px;
+}
+.delete-checklist{
+    border: none;
+    box-shadow: none;
+    border-radius: none;
+    background-color:#F4F5F7;
+}
+.checklist-prev-header{
+    height: 35px;
+    padding: 0 0 0 5px;
 }

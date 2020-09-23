@@ -8,10 +8,12 @@
     font-size: small;
     .btn{
         font-size: 10px;
+        border-radius: 0;
+        border: none;
     }
     .card-header{
-    height: 20%;
-    margin-bottom: 10px;
+    height: 160px;
+    margin-bottom: 5px;
 }
     .body-div{
     height: 80%;
@@ -19,14 +21,15 @@
 }
     .card-title{
         margin-bottom: 15px;
+        margin-top: 0;
     }
     .details-modal{
         flex-direction: column;
         background-color: #F4F5F7;
         display: flex;
         margin: 10vh auto 30px;
-        width: 45%;
-        min-height: 85vh;
+        width: 40%;
+        min-height: 84vh;
         z-index: 11;
         padding: 20px;
         .btn-card-remove{
@@ -35,16 +38,21 @@
         }
         .card-img{
             object-fit:cover;
-            width: 50%;
-            height: 70%;
+            width: auto;
+            height: auto;
+            max-height: 130px;
             border-radius: 6px;
         }
         .modal-details-left{
             width:100%;
-            padding:10px;
+            padding:0 10px 10px;
         }
         .side-bar-details-right{
             width: 20%;
+        }
+        .edit-desc{
+            background-color: rgba(235, 231, 231, 0.527);
+            margin-bottom: 20px;
         }
         .not-edit-card-description{
             background-color: #F4F5F7;
@@ -55,9 +63,10 @@
             margin:10px 0;
         }
         .edit-card-description{
-            background-color: white;
             width: 100%;
-            margin:10px 0;
+            margin:10px 0 0;
+            outline:none;
+            border:none;
         }
         .edit-header{
             margin-top:10px;

@@ -34,7 +34,7 @@ export function CardPreview({ card, updateState, groupId, index, calcProgress })
                                 {/* <div className="due-date-card-preview">{getValidDate()}</div> */}
                                 {card.imgUrl && <img className="img-card-preview" src={card.imgUrl} alt="Loading" />}
                             </div>
-                            <div className="footer-div-card-prev">{calcProgress(card.id)}</div>
+                            {card.checklist && <div className="footer-div-card-prev">{calcProgress(card.id)}</div>}
                         </Container >
                     )}
                 </NaturalDragAnimation>

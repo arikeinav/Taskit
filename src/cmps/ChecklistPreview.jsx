@@ -115,13 +115,13 @@ export class _ChecklistPreview extends Component {
         return (
             <div className="checklist-preview-div flex column">
                 <div className="checklist-prev-header flex space-between">
-                    <h3 style={{ textDecoration: 'underline' }}>{checklist.title}</h3>
-                    <button className="btn" onClick={() => this.props.removeChecklist()}>Delete Checklist</button>
+                    <h3 style={{ textDecoration: 'underline'}}>{checklist.title}</h3>
+                    <button className="btn delete-checklist" onClick={() => this.props.removeChecklist()}>Delete</button>
                 </div>
 
-                <h4>Your Todos:</h4>
                 <label htmlFor="progress-bar">Todos progress: {this.state.progressbar}%</label>
                 <progress id="progress-bar" value={`${this.state.progressbar}`} max="100"></progress>
+                <h4>Your Todos:</h4>
 
                 {checklist.todos && checklist.todos.map(todo => <TodoPreview key={todo.id} todo={todo} updateCheckbox={this.updateLocalChecklist} onRemoveTodo={this.onRemoveTodo} />)}
                 <button onClick={() => { this.setState({ isTodoEditShown: true }) }} className="btn add-todo-btn">Add Todo</button>

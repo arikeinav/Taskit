@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { FaTrashAlt } from "react-icons/fa";
-import Checkbox from '@material-ui/core/Checkbox';
 
 
 export default class TodoPreview extends Component {
