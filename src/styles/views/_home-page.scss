@@ -58,4 +58,16 @@ font-family: hand-write;
 .home-details-comtainer{
   max-width: 1060px;
   text-align: center;
+  margin: 0 auto;
+
+  .home-details{
+    
+    
+    img{
+      width:50%;
+    }
+    .text-in-home-details{
+      padding: auto 0;
+    }
+  }
 }
