@@ -1,5 +1,5 @@
 import React from 'react'
-
+import TextField from "@material-ui/core/TextField";
 export class AddText extends React.Component {
 
     state = {
@@ -18,15 +18,18 @@ export class AddText extends React.Component {
         this.setState({ text: '' })
     }
     onRemoveTextEditor = () => {
-        this.props.updateState('isAddCard', false)
+        let isAddType = (this.props.type==='Card')?'isAddCard':'isAddGroup'
+        this.props.updateState (isAddType, false)
         this.setState({ text: '' })
     }
 
     render() {
         return (
-            <div>
+            <div className="adding-div flex column">
                 <form onSubmit={this.onSubmit}>
-                    <input placeholder={this.props.type === 'Card' ? "Card name" : "List name"}
+                    
+                    {/* <TextField  className="title-input" value={this.state.text} onChange={this.handleValueChange} type="text" id="outlined-basic" label="Outlined" variant="outlined" placeholder={this.props.type === 'Card' ? "Card name" : "List name"} /> */}
+                    <input className="title-input" placeholder={this.props.type === 'Card' ? "Card name" : "List name"}
                         type="text"
                         onChange={this.handleValueChange}
                         value={this.state.text}
@@ -35,6 +38,8 @@ export class AddText extends React.Component {
                         <button className="btn" onClick={this.onSubmit}>{this.props.type === 'Card' ? "Add Card" : "Add List"}</button>
                         <button className="btn" onClick={this.onRemoveTextEditor}>X</button>
                     </div>
+                    
+               
                 </form>
 
             </div>

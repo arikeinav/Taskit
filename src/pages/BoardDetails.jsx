@@ -157,7 +157,7 @@ export class _BoardDetails extends Component {
 
         <DragDropContext onDragEnd={this.onDragEnd}>
           <StickyBox className="groups-container flex">
-
+{/* 
             <div
               style={{
                 display: "flex",
@@ -170,14 +170,13 @@ export class _BoardDetails extends Component {
                 height: "86vh",
                 justifyItems: "center"
               }}
-            >
-              {board.groups.map(group => <CardList onAdd={this.onAdd} group={group} key={group.id} updateState={this.updateState} onRemoveGroup={this.onRemoveGroup} />)}
-              {this.state.isAddGroup ?
-                <AddText onAdd={this.onAdd} type="Group" groupId={null} />
-                :
-                <button className="add-group btn" onClick={() => this.onEditGroup()}>Add List</button>
-              }
-            </div>
+            >  */}
+            {board.groups.map(group => <CardList onAdd={this.onAdd} group={group} key={group.id} updateState={this.updateState} onRemoveGroup={this.onRemoveGroup} />)}
+            {this.state.isAddGroup ?
+              <AddText updateState={this.updateState} onAdd={this.onAdd} type="Group" groupId={null} />
+              :
+              <button className="add-group btn" onClick={() => this.onEditGroup()}>Add List</button>
+            }
           </StickyBox>
         </DragDropContext>
 
