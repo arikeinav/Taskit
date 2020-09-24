@@ -29,7 +29,7 @@
         background-color: #F4F5F7;
         display: flex;
         margin: 10vh auto 30px;
-        width: 40%;
+        width: 85vh;
         min-height: 84vh;
         z-index: 11;
         padding: 20px;
@@ -88,3 +88,17 @@
         }
     }
 }
+
+@media (max-width:650px){
+    .card-modal{
+    .details-modal{
+        width: 80%;
+    }}
+}
+@media (max-width:420px){
+    .card-modal{
+    .details-modal{
+        width: 100%;
+    }}
+}
+
