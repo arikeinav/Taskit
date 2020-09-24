@@ -10,6 +10,8 @@ import { IoIosArrowBack } from "react-icons/io";
 import { FaFileImage } from "react-icons/fa";
 import { MdColorLens } from "react-icons/md";
 import { BsListNested } from "react-icons/bs";
+import { boardService } from '../services/boardService'
+
 
 import Scroll from 'react-scroll';
 var Element = Scroll.Element;
@@ -45,14 +47,20 @@ export class _SideMenu extends Component {
         this.props.updateBoard(board)
     }
     onOpenGraph = () => {
-        console.log('hey');
         this.setState({ idGraphShown: true })
     }
+    
+    removeAllActivity = () => {
+        console.log('hey');
+        const board = boardService.removeActivities(this.props.board)
+        this.props.updateBoard(board)
+    }
+
 
 
     render() {
         const { activities } = this.props.board
-        const { board } = this.props
+        const { currUser } = this.props
         return (
             <div className="side-menu" >
                 <Element style={{
@@ -81,20 +89,24 @@ export class _SideMenu extends Component {
                             <Graph />
                         }
                         <hr />
-
-
-                        <div className="activity-log flex align-center"><BsListNested /><span> Activity</span></div>
+                        <div className="activity-log flex align-center space-between">
+                            <div>
+                                <BsListNested />
+                                <span>Activity</span>
+                            </div>
+                            <p className="delete-activities" onClick={this.removeAllActivity}>Delete all</p>
+                        </div>
                         {activities && <div>
                             <ul className="side-menu-list">
                                 {activities.map(activity =>
                                     <li key={activity.id}>
                                         <div className="one-activity">
                                             <p>{activity.title}</p>
-                                            <p>{activity.propertyTitle}</p>
+                                            <p>Card name: {activity.propertyTitle}</p>
 
                                         </div>
                                         {/* <Avatar key={activity.byMember._id} src={activity.byMember.imgUrl}>{activity.byMember.userName.substring(0, 1).toUpperCase()}
-                                        {activity.byMember.userName.substring(1, 2).toUpperCase()}</Avatar>{activity.byMember.userName + ' '}{activity.txt} */}
+                                            {activity.byMember.userName.substring(1, 2).toUpperCase()}</Avatar>{activity.byMember.userName + ' '}{activity.txt} */}
                                     </li>)}
                             </ul>
                         </div>}
@@ -111,6 +123,7 @@ export class _SideMenu extends Component {
 const mapStateToProps = (state) => {
     return {
         board: state.boardReducer.currBoard,
+        // currUser: state.userReducer.localLoggedinUser
     };
 };
 const mapDispatchToProps = {

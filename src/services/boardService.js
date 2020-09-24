@@ -9,7 +9,8 @@ export const boardService = {
   getCardById,
   create,
   makeId,
-  addActivity
+  addActivity,
+  removeActivities
 };
 
 function query(filterBy) {
@@ -55,12 +56,16 @@ function addActivity(board, ActivityType, changeIn) {
     board.activities = []
   }
   const activities = board.activities
-  activities.push({
+  activities.unshift({
     id: 'a' + makeId(),
     title: ActivityType,
     createdAt: new Date(),
     propertyTitle: changeIn.title
   })
+  return board
+}
+function removeActivities(board) {
+  board.activities = []
   return board
 }
 function makeId(length = 5) {

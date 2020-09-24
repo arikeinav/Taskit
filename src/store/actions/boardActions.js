@@ -59,11 +59,3 @@ export function updateBoardFromSocket(board) { //Someone else updated the board
     dispatch({ type: "UPDATE_BOARD", board });
   };
 }
-
-
-// export function addActivity(board, ActivityType, changeIn) {
-//   console.log('add activity');
-//   board = boardService.addActivity(board, ActivityType, changeIn)
-//   // updateBoard(board)
-
-// }
