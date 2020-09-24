@@ -54,7 +54,7 @@ export class CardList extends React.Component {
             <div className="card-list flex column" id="card-container">
                 <header className="card-header flex space-between">
                     <p className="group-title">{group.title}</p>
-                    <SimpleMenu isDeleteGroup={this.state.isDeleteGroup} onAddCard={this.updateState} onShowDeleteTogglle={this.onShowDeleteTogglle} onRemove={this.onRemoveGroup} onAddCard={this.updateState} group={group} />
+                    <SimpleMenu isDeleteGroup={this.state.isDeleteGroup} onAddCard={this.updateState} onShowDeleteTogglle={this.onShowDeleteTogglle} onRemove={this.onRemoveGroup}  group={group} />
                 </header>
                 <Element style={{
                     height: 'auto',

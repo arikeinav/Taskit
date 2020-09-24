@@ -4,7 +4,7 @@ import { Graph } from './Graph';
 import { MenuColorModal } from './MenuColorModal'
 import { connect } from "react-redux";
 import { updateBoard } from "../store/actions/boardActions";
-import { Avatar } from '@material-ui/core';
+// import { Avatar } from '@material-ui/core';
 import { VscChromeClose } from "react-icons/vsc";
 import { IoIosArrowBack } from "react-icons/io";
 import { FaFileImage,FaTrashAlt } from "react-icons/fa";
@@ -52,7 +52,7 @@ export class _SideMenu extends Component {
 
     render() {
         const { activities } = this.props.board
-        const { board } = this.props
+        // const { board } = this.props
         return (
             <div className="side-menu" >
                 <Element style={{
