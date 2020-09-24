@@ -3,14 +3,29 @@
     .add-img-modal{
         background-color: #F4F5F7;
         position: fixed;
-        display: block;
+        display: grid;
+        grid-template-columns:1fr 1fr 1fr;
+        grid-template-rows:1fr 1fr 1fr;
         // right: 0;
         top: 10vh;
         height: 60vh;
-        width: 30vw;
+        width: 545px;
         z-index: 11;
     
     }
+ @media (max-width:600px){
+    .add-img-modal{
+        width:400px;
+        grid-template-columns:150px  150px;
+        grid-template-rows:auto;
+        gap: 30px;
+    // width: 70%;
+    height: auto;
+        // display:flex;
+
+  }
+ }
+
     .img-preview{
         width: 130px;
         height: 100px;

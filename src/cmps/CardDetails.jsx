@@ -257,16 +257,16 @@ export class _CardDetails extends Component {
 
                             </div>
                         </Element >
-                        <div className="side-bar-details-right flex column">
-                            <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{ marginRight: "5px" }} />Cover</button>
-                            <button className="btn" onClick={() => this.updateState('isAddColorModalShown', true)}><MdColorLens style={{ marginRight: "5px" , height:'12px', width:'12px'}}/> Color</button>
+                        <div className="side-bar-details-right flex column justify-start">
+                            <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{ marginRight: "7px" }} />Cover</button>
+                            <button className="btn" onClick={() => this.updateState('isAddColorModalShown', true)}><MdColorLens style={{ marginRight: "3px" , height:'12px', width:'12px'}}/> Color</button>
 
-                            <button className="btn" onClick={() => this.openChecklistEditor()}><FaCheckCircle style={{ marginRight: "5px" }} />Checklist</button>
+                            <button className="btn" onClick={() => this.openChecklistEditor()}><FaCheckCircle style={{ marginRight: "6px" }} />Checklist</button>
                             <button onClick={this.onOpenDuedate} className="btn"><FaCalendarAlt style={{ marginRight: "5px" }} /> Due Date</button>
-                            <button onClick={this.onOpenLabelModal} className="btn"><MdInvertColors style={{ marginRight: "5px", height:'12px', width:'12px' }}/>Labels</button>
+                            <button onClick={this.onOpenLabelModal} className="btn"><MdInvertColors style={{ marginRight: "6px", height:'12px', width:'12px' }}/>Labels</button>
                             {this.state.isLabelesEdit &&
                                 <ColorModal className="color-modal" onSaveLabels={this.onSaveLabels} labels={card.labels} />}
-                            <button onClick={this.onHandleRemove} className="btn"> <FaTrashAlt style={{ marginRight: "5px" }} />Card</button>
+                            <button onClick={this.onHandleRemove} className="btn"> <FaTrashAlt style={{ marginRight: "6px" }} />Card</button>
                         </div>
 
                     </div >
