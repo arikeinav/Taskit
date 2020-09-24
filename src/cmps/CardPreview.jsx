@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import NaturalDragAnimation from 'natural-drag-animation-rbdnd';
 
 const Container = styled.div`
-background-color: ${props => (props.isDragging ? '#B5B5B5' : 'rgba(255, 255, 255, 0.822)')};
+background-color: ${props => (props.isDragging ? '#B5B5B5' : '#fff')};
 `;
 
 
