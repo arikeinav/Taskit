@@ -61,7 +61,9 @@ export class CardList extends React.Component {
                     width: '100%',
                     overflow: 'scroll',
                     overflowX: 'hidden',
-                    paddingLeft: '5px'
+                    paddingLeft: '9px',
+                    
+    paddingRight: '4px'
                 }}>
 
                     <Droppable droppableId={group.id}>
@@ -79,7 +81,7 @@ export class CardList extends React.Component {
                 {this.state.isAddCard ?
                     <AddText onAdd={this.props.onAdd} type="Card" groupId={group.id} updateState={this.updateState} />
                     :
-                    <button className="btn add-card-btn" onClick={() => this.updateState('isAddCard', true)}>+ Add card</button>
+                    <button className=" add-card-btn" onClick={() => this.updateState('isAddCard', true)}>+ Add card</button>
                 }
             </div>
         )
