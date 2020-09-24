@@ -40,7 +40,6 @@ export class AddImg extends Component {
                     {imgUrls.map((imgUrl, index) => <img onClick={() => this.onSelectImg(imgUrl)} className="img-preview" key={index} src={imgUrl} alt="Loading" />)}
 
                     <div className="add-private-img">
-                        <label> Add your image </label>
                         <input onChange={this.onAddImg} type="file" />
                     </div>
                 </div>

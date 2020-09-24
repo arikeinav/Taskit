@@ -85,6 +85,7 @@
 }
 .line-through{
     text-decoration: line-through ;
+    text-decoration-thickness: 10px;  //not working!!
 }
 .text-dec-none{
     text-decoration:none;
