@@ -3,6 +3,8 @@ import React from "react";
 export class ColorModal extends React.Component {
 
     onClickColor = (color, ev) => {
+        console.log('onClickColor');
+
         const labels = this.props.labels
         ev.stopPropagation();
         if (labels && labels.length > 0) {
@@ -11,10 +13,10 @@ export class ColorModal extends React.Component {
             if (isColorInLabels.length > 0) {
                 return
             } else {
-                this.props.onSaveLabels(color);
+                this.props.onSaveLabels(color, ev);
             }
         } else {
-            this.props.onSaveLabels(color);
+            this.props.onSaveLabels(color, ev);
         }
     }
 

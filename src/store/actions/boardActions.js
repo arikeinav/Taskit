@@ -42,7 +42,6 @@ export function addBoard(txt, imgUrl) {
   };
 }
 export function updateBoard(board) { //I'm updating the board
-  console.log('board update');
   return async (dispatch) => {
     dispatch({ type: "UPDATE_BOARD", board });
     try {

@@ -87,8 +87,9 @@ export class _CardDetails extends Component {
         this.updateLocalCard('dueDate', data)
         this.saveCard()
     }
-    onSaveLabels = (val) => {
-        this.setState({ isLabelesEdit: false })
+    onSaveLabels = (val, ev) => {
+        console.log('hey!');
+        // ev.stopPropagation();
         var labels = [val]
         if (this.state.card.labels) {
             labels = this.state.card.labels
@@ -107,20 +108,18 @@ export class _CardDetails extends Component {
         this.updateLocalCard('dueDate', new Date())
         this.setState({ isTimeEdit: true })
     }
-
     saveChecklist = (checklist) => {
         this.updateLocalCard('checklist', checklist)
         this.saveCard()
     }
-
     addNewChecklist = (checklist) => {
         this.saveChecklist(checklist)
     }
-
     removeChecklist = () => {
         this.saveChecklist({})
     }
-    onOpenLabelModal = () => {
+    onOpenLabelModal = (ev) => {
+        ev.stopPropagation()
         if (this.state.isLabelesEdit) {
             this.setState({ isLabelesEdit: false })
             return
@@ -137,11 +136,19 @@ export class _CardDetails extends Component {
         this.setState({ isChecklistEdit: (this.state.isChecklistEdit ? false : true) })
 
     }
-    handleChangeBGColor = (color) => {
+    handleChangeBGColor = (color, ev) => {
+        ev.stopPropagation();
         this.updateLocalCard('bgColor', color.hex)
     }
-    saveBGColor = () => {
-        this.updateState('isAddColorModalShown', false)
+    onOpenColorModal = (ev) => {
+        ev.stopPropagation();
+        this.setState({isAddColorModalShown: true})
+        this.saveCard()
+    }
+    onModalClick = () => {
+        console.log("onModalClick")
+        this.setState({isAddColorModalShown: false})
+        this.setState({ isLabelesEdit: false })
         this.saveCard()
     }
 
@@ -155,7 +162,7 @@ export class _CardDetails extends Component {
 
                 <div className="empty-modal" onClick={this.onRmoveModal}></div>
 
-                <div className="details-modal flex column" >
+                <div className="details-modal flex column" onClick={this.onModalClick}>
 
                     <header className="card-header flex column align-center" style={{ backgroundColor: card.bgColor }}>
                         {card.imgUrl &&
@@ -167,7 +174,6 @@ export class _CardDetails extends Component {
                         {this.state.isAddColorModalShown &&
                             <div>
                                 <TwitterPicker onChange={this.handleChangeBGColor} colors={['#8ED1FC', '#0693E3', '#ABB8C3', '#EB144C', '#F78DA7', '#9900EF']} triangle="hide" />
-                                <button onClick={this.saveBGColor}>Save</button>
                             </div>
                         }
                     </header>
@@ -259,7 +265,8 @@ export class _CardDetails extends Component {
                         </Element >
                         <div className="side-bar-details-right flex column justify-start">
                             <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{ marginRight: "7px" }} />Cover</button>
-                            <button className="btn" onClick={() => this.updateState('isAddColorModalShown', true)}><MdColorLens style={{ marginRight: "3px" , height:'12px', width:'12px'}}/> Color</button>
+
+                            <button className="btn" onClick={this.onOpenColorModal}><MdColorLens style={{ marginRight: "3px" , height:'12px', width:'12px'}}/>Color</button>
 
                             <button className="btn" onClick={() => this.openChecklistEditor()}><FaCheckCircle style={{ marginRight: "6px" }} />Checklist</button>
                             <button onClick={this.onOpenDuedate} className="btn"><FaCalendarAlt style={{ marginRight: "5px" }} /> Due Date</button>
