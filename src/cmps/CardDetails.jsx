@@ -89,7 +89,7 @@ export class _CardDetails extends Component {
     }
     onSaveLabels = (val, ev) => {
         console.log('hey!');
-        // ev.stopPropagation();
+        ev.stopPropagation();
         var labels = [val]
         if (this.state.card.labels) {
             labels = this.state.card.labels
@@ -146,10 +146,8 @@ export class _CardDetails extends Component {
         this.saveCard()
     }
     onModalClick = () => {
-        console.log("onModalClick")
         this.setState({isAddColorModalShown: false})
         this.setState({ isLabelesEdit: false })
-        this.saveCard()
     }
 
     render() {

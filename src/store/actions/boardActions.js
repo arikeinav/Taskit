@@ -42,6 +42,7 @@ export function addBoard(txt, imgUrl) {
   };
 }
 export function updateBoard(board) { //I'm updating the board
+  console.log("updateBoard -> board", board)
   return async (dispatch) => {
     dispatch({ type: "UPDATE_BOARD", board });
     try {
@@ -53,6 +54,7 @@ export function updateBoard(board) { //I'm updating the board
   };
 }
 export function updateBoardFromSocket(board) { //Someone else updated the board
+  console.log('updateBoardFromSocket');
   return (dispatch) => {
     dispatch({ type: "UPDATE_BOARD", board });
   };
