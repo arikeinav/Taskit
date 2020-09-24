@@ -4,14 +4,14 @@ import { Graph } from './Graph';
 import { MenuColorModal } from './MenuColorModal'
 import { connect } from "react-redux";
 import { updateBoard } from "../store/actions/boardActions";
-import { Avatar } from '@material-ui/core';
+// import { Avatar } from '@material-ui/core';
 import { VscChromeClose } from "react-icons/vsc";
 import { IoIosArrowBack } from "react-icons/io";
-import { FaFileImage } from "react-icons/fa";
+import { FaFileImage,FaTrashAlt } from "react-icons/fa";
 import { MdColorLens } from "react-icons/md";
-import { BsListNested } from "react-icons/bs";
 import { boardService } from '../services/boardService'
 
+import { BsListNested,BsCardHeading } from "react-icons/bs";
 
 import Scroll from 'react-scroll';
 var Element = Scroll.Element;
@@ -60,7 +60,7 @@ export class _SideMenu extends Component {
 
     render() {
         const { activities } = this.props.board
-        const { currUser } = this.props
+        // const { currUser } = this.props
         return (
             <div className="side-menu" >
                 <Element style={{
@@ -79,9 +79,11 @@ export class _SideMenu extends Component {
                     {this.state.isChooseColor && <MenuColorModal onAddColor={this.onChangeColor} />}
                     {!this.state.isChooseImg && !this.state.isChooseColor && <div>
                         <div className="menu-actions flex column">
+                            <div className="menu-action flex" ><BsCardHeading /><span>Change Name</span></div>
                             <div className="menu-action flex" onClick={this.onChangeBoardImg}><FaFileImage /><span>Change board Img</span></div>
                             <div className="menu-action flex" onClick={this.onChangeBoardColor}><MdColorLens /><span>Change board color</span></div>
-                            {/* <button className="btn" >delete</button> */}
+                            <div className="menu-action flex" ><FaTrashAlt/><span>Delete</span></div>
+                            
                         </div>
                         <hr />
                         <div className="menu-action flex" onClick={this.onOpenGraph}>Graph</div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import TextField from "@material-ui/core/TextField";
+
 export class AddText extends React.Component {
 
     state = {
@@ -36,7 +36,7 @@ export class AddText extends React.Component {
                     />
                     <div className="flex">
                         <button className="btn" onClick={this.onSubmit}>{this.props.type === 'Card' ? "Add Card" : "Add List"}</button>
-                        <button className="btn" onClick={this.onRemoveTextEditor}>X</button>
+                        <button className="btn cancel-add" onClick={this.onRemoveTextEditor}>X</button>
                     </div>
                     
                

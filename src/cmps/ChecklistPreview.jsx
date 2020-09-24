@@ -99,14 +99,12 @@ export class _ChecklistPreview extends Component {
 
         if (!this.props.checklist) return this.setState({ progressbar: 0 })
         const todos = this.props.checklist.todos
-        console.log("calculateProgress -> todos", todos)
         if (todos.length>0) {
             const totalTodos = todos.length
             const isDones = (todos.filter((todo) => todo.isDone === true)).length
             const res = (isDones / totalTodos) * 100
             return this.setState({ progressbar: res.toFixed(2) })
         } return this.setState({ progressbar: 0 })
-        
     }
 
 
@@ -120,7 +118,7 @@ export class _ChecklistPreview extends Component {
                 </div>
 
                 <label htmlFor="progress-bar">Todos progress: {this.state.progressbar}%</label>
-                <progress id="progress-bar" value={`${this.state.progressbar}`} max="100"></progress>
+                <progress style={{width: '70%'}} id="progress-bar" value={`${this.state.progressbar}`} max="100"></progress>
                 <h4>Your Todos:</h4>
 
                 {checklist.todos && checklist.todos.map(todo => <TodoPreview key={todo.id} todo={todo} updateCheckbox={this.updateLocalChecklist} onRemoveTodo={this.onRemoveTodo} />)}
