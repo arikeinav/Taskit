@@ -169,7 +169,7 @@ export class _CardDetails extends Component {
 
                             <img className="card-img" src={card.imgUrl} alt="Loading" />
                         }
-                        {card.imgUrl && <button onClick={this.onRemoveImg} className="btn"><FaTrashAlt style={{ marginRight: "5px" }} /> Remove Image</button>}
+                        {card.imgUrl && <button onClick={this.onRemoveImg} className="btn" style={{paddingLeft:"10px", paddingRight:"6px" }}><FaTrashAlt style={{ marginRight: "5px"}} /></button>}
 
                         {this.state.isAddColorModalShown &&
                             <div>
