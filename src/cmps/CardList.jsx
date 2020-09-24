@@ -53,14 +53,16 @@ export class CardList extends React.Component {
             <div className="card-list flex column" id="card-container">
                 <header className="card-header flex space-between">
                     <p className="group-title">{group.title}</p>
-                    <SimpleMenu isDeleteGroup={this.state.isDeleteGroup} onAddCard={this.updateState} onShowDeleteTogglle={this.onShowDeleteTogglle} onRemove={this.onRemoveGroup} onAddCard={this.updateState} group={group} />
+                    <SimpleMenu isDeleteGroup={this.state.isDeleteGroup} onAddCard={this.updateState} onShowDeleteTogglle={this.onShowDeleteTogglle} onRemove={this.onRemoveGroup}  group={group} />
                 </header>
                 <Element style={{
                     height: 'auto',
                     width: '100%',
                     overflow: 'scroll',
                     overflowX: 'hidden',
-                    paddingLeft: '5px'
+                    paddingLeft: '8px',
+                    
+    paddingRight: '4px'
                 }}>
 
                     <Droppable droppableId={group.id}>
@@ -78,7 +80,7 @@ export class CardList extends React.Component {
                 {this.state.isAddCard ?
                     <AddText onAdd={this.props.onAdd} type="Card" groupId={group.id} updateState={this.updateState} />
                     :
-                    <button className="btn add-card-btn" onClick={() => this.updateState('isAddCard', true)}>+ Add card</button>
+                    <button className=" add-card-btn" onClick={() => this.updateState('isAddCard', true)}>+ Add card</button>
                 }
             </div>
         )

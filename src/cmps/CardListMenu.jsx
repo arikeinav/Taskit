@@ -37,8 +37,8 @@ export function SimpleMenu({ onRemove, group, isDeleteGroup, onShowDeleteTogglle
 
   return (
     <div>
-      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-        ...
+      <Button style={{fontWeight:'900'}} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+          . . .
       </Button>
       <Menu
         id="simple-menu"
@@ -47,8 +47,9 @@ export function SimpleMenu({ onRemove, group, isDeleteGroup, onShowDeleteTogglle
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
+        <MenuItem >Change list name</MenuItem>
+        <MenuItem >Backgroun color</MenuItem>
         <MenuItem onClick={handleAdd}>Add card</MenuItem>
-        {/* <MenuItem onClick={handleAdd}>Change list name</MenuItem> */}
         <MenuItem onClick={handledelete}>Delete list</MenuItem>
         {isDeleteGroup && <MenuItem ><button className="btn" style={{ color: 'red', marginRight: '2px' }} onClick={onDelete}>Delete</button> <button style={{ marginLeft: '2px' }} className="btn" onClick={handleClose}>Cancel</button></MenuItem>}
 
