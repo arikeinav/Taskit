@@ -1,5 +1,6 @@
 .card-list{
-    background-color: #ebecf0a6;
+    // background-color: #dcdee4a6;
+    background-color: #ebecf0;
     min-width: 260px;
     max-width: 260px;
     margin: 10px 5px;
@@ -11,14 +12,19 @@
 .group-title{
     margin:auto;
     height:20px;
-    font-weight: 600;
+    font-weight: 500;
     margin-left:10px;
     align-self: center;
+    color:#3f3f3f
     
 }
 .add-card-btn{
     height: 35px;
     border-radius: 0px 0px 6px 6px;
+    background-color: #ebecf0;
+    border: none;
+    cursor: pointer;
+    
 }
 .card-header{
     height: 40px;
@@ -45,17 +51,23 @@
     height: 40px;
     padding: 5px;
     width: 100%;
-    // margin: 6px;
+    margin-bottom: 3px;
+   
     border-radius: 3px;
     align-self: center;
+}
+.cancel-add{
+    margin-left: 2px;
 }
 
 
 ::-webkit-scrollbar {
     margin: 0 2px;
-    width: 5px;
+    width:5px;
+    margin-right: 4px;
     background-color: rgba(0, 0, 0, 0);
     border-radius: 100px;
+   
 }
 ::-webkit-scrollbar:hover {
     background-color: rgba(0, 0, 0, 0.09);
@@ -63,9 +75,12 @@
 ::-webkit-scrollbar-thumb:vertical {
     background: rgba(0, 0, 0, 0.5);
     border-radius: 100px;
+    
+   
 }
 ::-webkit-scrollbar-thumb:vertical:active {
    border-radius: 100px;
+   
 }
 ::-webkit-scrollbar-thumb:horizontal {
     background: rgba(0, 0, 0, 0.5);
@@ -74,3 +89,6 @@
 ::-webkit-scrollbar-thumb:horizontal:active {
     border-radius: 100px;
 }
+
+ 
+
