@@ -39,7 +39,6 @@ export class CardList extends React.Component {
         
         const cards = this.props.group.cards
         const card = cards.find(card => card.id === cardId)
-
         if (card.checklist && card.checklist.todos) {
             const tasks = card.checklist.todos.length
             const doneTasks = (card.checklist.todos.filter(task => task.isDone === true)).length
