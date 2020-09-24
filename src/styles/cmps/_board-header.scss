@@ -14,8 +14,9 @@
         margin: 0 70px;
 
         .MuiAvatar-root{
-            height: 35px;
-            width: 35px;
+            height: 31px;
+            width: 31px;
+            margin-top: 4px;
         }
     }
 
@@ -23,7 +24,10 @@
         padding: 6px 12px;
         margin: 3px;
     }
-
+    
+    .menu{
+        margin-right: 17px;
+    }
 }
 
 // .BH1{

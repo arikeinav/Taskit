@@ -23,6 +23,13 @@
 .side-menu-list{
     font-size: 1rem;
     
+    .one-activity{
+        margin:1px;
+
+        .avatar{
+            margin-left: -55px;
+        }
+    }
 
 }
 .side-menu *{
@@ -64,12 +71,12 @@ cursor: pointer;
     margin-left: 5px;
  }
  .one-activity{
-    background-color: #66666630;
+    background-color: #cccccc1c;
     width: 100%;
     color: #1f1f1f;
     font-size: 0.9rem;
     padding-left: 12px;
-    margin: 2px 0;
+    margin: 40px 40px;
  }
  .delete-activities{
     padding: 13px;

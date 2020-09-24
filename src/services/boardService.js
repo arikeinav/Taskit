@@ -51,7 +51,7 @@ function getCardById(board, groupId, cardId) {
   const group = board.groups.find(group => group.id === groupId)
   return group.cards.find(card => card.id === cardId)
 }
-function addActivity(board, ActivityType, changeIn) {
+function addActivity(board, ActivityType, changeIn, user) {
   if (!board.activities) {
     board.activities = []
   }
@@ -60,7 +60,8 @@ function addActivity(board, ActivityType, changeIn) {
     id: 'a' + makeId(),
     title: ActivityType,
     createdAt: new Date(),
-    propertyTitle: changeIn.title
+    propertyTitle: changeIn.title,
+    byMember: user
   })
   return board
 }
