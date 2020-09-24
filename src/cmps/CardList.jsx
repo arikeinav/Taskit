@@ -61,7 +61,7 @@ export class CardList extends React.Component {
                     width: '100%',
                     overflow: 'scroll',
                     overflowX: 'hidden',
-                    paddingLeft: '9px',
+                    paddingLeft: '8px',
                     
     paddingRight: '4px'
                 }}>
