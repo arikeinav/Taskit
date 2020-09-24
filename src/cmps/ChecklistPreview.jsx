@@ -120,7 +120,7 @@ export class _ChecklistPreview extends Component {
                 </div>
 
                 <label htmlFor="progress-bar">Todos progress: {this.state.progressbar}%</label>
-                <progress id="progress-bar" value={`${this.state.progressbar}`} max="100"></progress>
+                <progress style={{width: '70%'}} id="progress-bar" value={`${this.state.progressbar}`} max="100"></progress>
                 <h4>Your Todos:</h4>
 
                 {checklist.todos && checklist.todos.map(todo => <TodoPreview key={todo.id} todo={todo} updateCheckbox={this.updateLocalChecklist} onRemoveTodo={this.onRemoveTodo} />)}
