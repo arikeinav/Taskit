@@ -88,6 +88,7 @@ export class _CardDetails extends Component {
     }
     onSaveLabels = (val, ev) => {
         ev.stopPropagation();
+        if(this.state.card.labels && this.state.card.labels.length > 4) return;
         var labels = [val]
         if (this.state.card.labels) {
             labels = this.state.card.labels

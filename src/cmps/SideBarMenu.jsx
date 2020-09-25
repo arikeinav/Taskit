@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
-import { AddImg } from './AddImg';
-import { Graph } from './Graph';
-import { MenuColorModal } from './MenuColorModal'
-import { connect } from "react-redux";
-import { updateBoard } from "../store/actions/boardActions";
+import Swal from 'sweetalert2'
+import { BsListNested, BsCardHeading } from "react-icons/bs";
 import { Avatar } from '@material-ui/core';
 import { VscChromeClose } from "react-icons/vsc";
 import { IoIosArrowBack } from "react-icons/io";
-import { FaFileImage, FaTrashAlt } from "react-icons/fa";
+import { connect } from "react-redux";
 import { MdColorLens } from "react-icons/md";
-import { boardService } from '../services/boardService'
 
-import { BsListNested, BsCardHeading } from "react-icons/bs";
+import { AddImg } from './AddImg';
+import { Graph } from './Graph';
+import { MenuColorModal } from './MenuColorModal'
+import { updateBoard } from "../store/actions/boardActions";
+import { FaFileImage, FaTrashAlt } from "react-icons/fa";
+import { boardService } from '../services/boardService'
 
 import Scroll from 'react-scroll';
 var Element = Scroll.Element;
@@ -49,10 +50,21 @@ export class _SideMenu extends Component {
     onOpenGraph = () => {
         this.setState({ idGraphShown: true })
     }
-
     removeAllActivity = () => {
-        const board = boardService.removeActivities(this.props.board)
-        this.props.updateBoard(board)
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert the activities",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: 'rgb(221 51 51 / 78%)',
+            cancelButtonColor: 'rgb(48 133 214 / 83%)',
+            confirmButtonText: 'Yes, delete all'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const board = boardService.removeActivities(this.props.board)
+                this.props.updateBoard(board)
+            }
+        })
     }
     getAvatar(activity) {
         const member = activity.byMember
@@ -63,6 +75,23 @@ export class _SideMenu extends Component {
             return <Avatar key={member._id} className="avatar">{member.userName.substring(0, 1).toUpperCase()}{member.userName.substring(1, 2).toUpperCase()}</Avatar>
         }
         return <Avatar className="avatar" />
+    }
+    onRemoveBoard = () => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert the board",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: 'rgb(221 51 51 / 78%)',
+            cancelButtonColor: 'rgb(48 133 214 / 83%)',
+            confirmButtonText: 'Yes, delete Board'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                console.log('hey');
+                // delete board from services
+                // change path
+            }
+        })
     }
 
     render() {
@@ -79,7 +108,7 @@ export class _SideMenu extends Component {
                     <div className="menu-header flex space-between">
                         <IoIosArrowBack onClick={this.onBackToMenu} />
                         <span style={{ color: 'black' }}>Menu</span>
-                        <VscChromeClose onClick={this.props.onToggleMenu} className="close-modal-btn"/>
+                        <VscChromeClose onClick={this.props.onToggleMenu} className="close-modal-btn" />
                     </div>
 
                     <hr />
@@ -90,7 +119,7 @@ export class _SideMenu extends Component {
                             <div className="menu-action flex" ><BsCardHeading /><span>Change Name</span></div>
                             <div className="menu-action flex" onClick={this.onChangeBoardImg}><FaFileImage /><span>Change board Img</span></div>
                             <div className="menu-action flex" onClick={this.onChangeBoardColor}><MdColorLens /><span>Change board color</span></div>
-                            <div className="menu-action flex" ><FaTrashAlt /><span>Delete</span></div>
+                            <div className="menu-action flex" onClick={this.onRemoveBoard}><FaTrashAlt /><span>Delete Board</span></div>
 
                         </div>
                         <hr />
