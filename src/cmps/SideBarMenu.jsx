@@ -7,6 +7,9 @@ import { IoIosArrowBack } from "react-icons/io";
 import { connect } from "react-redux";
 import { MdColorLens } from "react-icons/md";
 
+// import { createBrowserHistory } from 'history';
+import { withRouter } from "react-router";
+
 import { AddImg } from './AddImg';
 import { Graph } from './Graph';
 import { MenuColorModal } from './MenuColorModal'
@@ -33,10 +36,10 @@ export class _SideMenu extends Component {
     }
     onBackToMenu = () => {
 
-        if(!this.state.isChooseImg && !this.state.isChooseColor) {
+        if (!this.state.isChooseImg && !this.state.isChooseColor) {
             this.props.onToggleMenu()
-        return
-    }
+            return
+        }
         this.setState({ isChooseImg: false, isChooseColor: false })
     }
     onChangeImg = (imgUrl) => {
@@ -81,22 +84,20 @@ export class _SideMenu extends Component {
         }
         return <Avatar className="avatar" />
     }
-    onRemoveBoard = () => {
-        Swal.fire({
+    onRemoveBoard = async () => {
+        const answer = await Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert the board",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: 'rgb(221 51 51 / 78%)',
             cancelButtonColor: 'rgb(48 133 214 / 83%)',
-            confirmButtonText: 'Yes, delete Board'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                console.log('hey');
-                // delete board from services
-                // change path
-            }
+            confirmButtonText: 'Yes, delete the Board'
         })
+        if (answer.isConfirmed) {
+            await boardService.removeBoard(this.props.board._id)
+            this.props.history.push('/board')
+        }
     }
 
     render() {
@@ -172,10 +173,12 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     updateBoard
 };
+
+const SideMenuWithRouter = withRouter(_SideMenu)
+
 export const SideMenu = connect(
     mapStateToProps,
     mapDispatchToProps
-)(_SideMenu);
-
+)(SideMenuWithRouter);
 
 

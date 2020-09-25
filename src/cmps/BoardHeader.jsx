@@ -42,13 +42,13 @@ export class BoardHeader extends Component {
                         </section>}
                 </div>
                 <div className="flex">
-                    <button className="BH3 btn board-header-btn flex"><FaUserCircle style={{ marginRight: "5px" }} />Invite</button>
-                    <button className="BH4 btn board-header-btn menu flex" onClick={this.toggleMenu}><AiOutlineMenu style={{ marginRight: "5px" }}/>Menu</button>
+                    <button className="BH3 btn board-header-btn flex"><FaUserCircle style={{ margin: "0px 5px -2px" }} />Invite</button>
+                    <button className="BH4 btn board-header-btn menu flex" onClick={this.toggleMenu}><AiOutlineMenu style={{ margin: "0px 5px -2px" }}/>Menu</button>
 
                     <button className="BH3 btn board-header-btn-small-screen"><FaUserCircle style={{ marginRight: "5px" }} /></button>
                     <button className="BH4 btn board-header-btn-small-screen menu" onClick={this.toggleMenu}><AiOutlineMenu style={{ marginRight: "5px" }}/></button>
                 </div>
-                {this.state.isMenuShow && <SideMenu onToggleMenu={this.toggleMenu} />}
+                {this.state.isMenuShow && <SideMenu onToggleMenu={this.toggleMenu}/>}
 
 
             </div>
