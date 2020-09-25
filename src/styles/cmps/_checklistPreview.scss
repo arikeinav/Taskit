@@ -7,7 +7,7 @@
     
 }
 .add-todo-btn{
-    width:60px;
+    max-width:60px;
 }
 .delete-checklist{
     border: none;
@@ -19,6 +19,6 @@
     height: 35px;
     padding: 0 0 0 5px;
 }
-#progress-ber{
+#progress-bar{
     width: 300px;
 }
