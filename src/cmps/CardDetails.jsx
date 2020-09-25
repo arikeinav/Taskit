@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
 import { FaCheckCircle, FaUserCircle, FaFileImage, FaTrashAlt, FaEdit, FaCalendarAlt } from "react-icons/fa";
-import { MdColorLens,MdInvertColors } from "react-icons/md";
+import { MdColorLens, MdInvertColors } from "react-icons/md";
 
 import { TwitterPicker } from 'react-color'
 
@@ -88,6 +88,7 @@ export class _CardDetails extends Component {
     }
     onSaveLabels = (val, ev) => {
         ev.stopPropagation();
+        if(this.state.card.labels && this.state.card.labels.length > 4) return;
         var labels = [val]
         if (this.state.card.labels) {
             labels = this.state.card.labels
@@ -144,11 +145,11 @@ export class _CardDetails extends Component {
     onOpenColorModal = (ev) => {
         ev.stopPropagation();
         boardService.addActivity(this.props.board, 'Add BG Color', this.state.card, this.props.currUser)
-        this.setState({isAddColorModalShown: true})
+        this.setState({ isAddColorModalShown: true })
         this.saveCard()
     }
     onModalClick = () => {
-        this.setState({isAddColorModalShown: false})
+        this.setState({ isAddColorModalShown: false })
         this.setState({ isLabelesEdit: false })
     }
 
@@ -168,16 +169,11 @@ export class _CardDetails extends Component {
 
                             <img className="card-img" src={card.imgUrl} alt="Loading" />
                         }
-                        {card.imgUrl && <button onClick={this.onRemoveImg} className="btn delete-img-btn" style={{paddingLeft:"10px", paddingRight:"6px" }}><FaTrashAlt style={{ marginRight: "5px"}} /></button>}
+                        {card.imgUrl && <button onClick={this.onRemoveImg} className="btn delete-img-btn" style={{ paddingLeft: "10px", paddingRight: "6px" }}><FaTrashAlt style={{ marginRight: "5px" }} /></button>}
 
                         {this.state.isAddColorModalShown &&
                             <div>
-                                <TwitterPicker onChange={this.handleChangeBGColor} colors={['#5784BA', '#218B82','#ccf6c8', '#F7CE76', '#d789d7', '#f9c0c0']}
-            
-            
-            
-            
-             triangle="hide" />
+                                <TwitterPicker onChange={this.handleChangeBGColor} colors={['#64958f', '#99f3bd', '#99f3bd', '#7ea04d', '#f0a500', '#de4463', '#fccbcb', '#70adb5', '#625261', '#89beb3', '#efbbcf', '#8ED1FC', '#ABB8C3', '#F78DA7']} triangle="hide" />
                             </div>
                         }
                     </header>
@@ -236,13 +232,13 @@ export class _CardDetails extends Component {
                                     </div>
                                 }
                                 <div>
-                                    <div className="edit-header flex">
-                                        <button className="btn" onClick={() => this.updateState('isDescriptionEdit', true)}><FaEdit /></button>
-                                        <p>Description:</p>
+                                    <div className="edit-header flex align-center">
+                                        <button className="btn btn-edit-cd" onClick={() => this.updateState('isDescriptionEdit', true)}><FaEdit className=" icon-edit-cd"/></button>
+                                        <p className=" p-edit-cd">Description:</p>
                                     </div>
                                     {this.state.isDescriptionEdit ?
                                         <div className="edit-desc flex column align-center" >
-                                           <TextField
+                                            <TextField
                                                 border="none"
                                                 multiline
                                                 rows={6}
@@ -270,11 +266,11 @@ export class _CardDetails extends Component {
                         <div className="side-bar-details-right flex column justify-start">
                             <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{ marginRight: "7px" }} />Cover</button>
 
-                            <button className="btn" onClick={this.onOpenColorModal}><MdColorLens style={{ marginRight: "3px" , height:'12px', width:'12px'}}/>Color</button>
+                            <button className="btn" onClick={this.onOpenColorModal}><MdColorLens style={{ marginRight: "3px", height: '12px', width: '12px' }} />Color</button>
 
                             <button className="btn" onClick={() => this.openChecklistEditor()}><FaCheckCircle style={{ marginRight: "6px" }} />Checklist</button>
                             <button onClick={this.onOpenDuedate} className="btn"><FaCalendarAlt style={{ marginRight: "5px" }} /> Due Date</button>
-                            <button onClick={this.onOpenLabelModal} className="btn"><MdInvertColors style={{ marginRight: "6px", height:'12px', width:'12px' }}/>Labels</button>
+                            <button onClick={this.onOpenLabelModal} className="btn"><MdInvertColors style={{ marginRight: "6px", height: '12px', width: '12px' }} />Labels</button>
                             {this.state.isLabelesEdit &&
                                 <ColorModal className="color-modal" onSaveLabels={this.onSaveLabels} labels={card.labels} />}
                             <button onClick={this.onHandleRemove} className="btn"> <FaTrashAlt style={{ marginRight: "6px" }} />Card</button>

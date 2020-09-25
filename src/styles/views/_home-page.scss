@@ -95,4 +95,44 @@ font-family: hand-write;
       }
     }
   }
+  .home-details:not(:first-child){
+    margin-top: 30px;
+  }
+
+
+  @media (max-width: $small-screen){
+    width: 100%;
+
+    h1{
+      margin: 90px 0 0;
+    }
+
+    
+
+    .home-details{
+      margin-top: 70px;
+      flex-direction: column-reverse;
+
+      
+      
+      img{
+        width:100%;
+      }
+      .info{
+        margin: auto 30px;
+  
+        h2{
+          font-size: 1.875rem;
+          font-family: montserrat-medium;
+        }
+        p{
+          font-family: montserrat-regular;
+          font-size: 1.3rem;
+        }
+      }
+  }
+  .switch-text-img{
+    flex-direction: column;
+  }
+}
 }

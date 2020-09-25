@@ -23,7 +23,8 @@ export function Home() {
                     </div>
                 </section>
 
-                <section className="home-details second flex">
+                
+                <section className="home-details second switch-text-img flex">
                     <div className="info">
                         <h2>Use any device</h2>
                         <p>You can use Taskit on any size of the screen. Its interface is much more different from other services. Taskit looks like an App, not a site.</p>

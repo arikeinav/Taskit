@@ -6,21 +6,41 @@
     font-size: 1.3rem;
     color:white; 
     font-family: roboto;
-    .p-div{
-    display: flex;
-    align-items: center;
-    }   
+
+    .board-header-btn-small-screen{
+        display: none;
+        @media (max-width: $small-screen){
+            display: block;
+            font-size: 1.5rem;
+            padding: 3px 8px 6px 13px;
+            margin: 4px 2px;
+            color: white;
+            border: none;
+        }
+    }
+
     .board-name{
-        margin: 4px 10px;
-        font-size: large;
+        margin: 5px 10px 0;
+        @media (max-width: $small-screen){
+            font-size: 1.1rem;
+            margin-top: 8px;
+        }
     }
     .avatar-members{
         margin: 0 70px;
-
         .MuiAvatar-root{
             height: 31px;
             width: 31px;
             margin-top: 4px;
+
+            @media (max-width: $small-screen){
+                height: 28px;
+                width: 28px;
+                margin: 5px -3px 0;
+            }
+        }
+        @media (max-width: $small-screen){
+            margin: 0;
         }
     }
 
@@ -32,36 +52,22 @@
         text-shadow: none;
         border-radius: 3px;
         border-color:rgba(9, 30, 66, 0.04);
-    }
-    .board-header-btn:hover{
-        border-color:rgba(171, 176, 184, 0.466);
+
+        @media (max-width: $small-screen){
+            display: none;
+        }
+
+        &:hover{
+            border-color:rgba(171, 176, 184, 0.466);
+        display: block;
+        }
     }
     
     .menu{
         margin-right: 17px;
+        @media (max-width: $small-screen){
+            padding: 4px 10px 6px 9px;
+            margin-right: 5px;
+        }
     }
 }
-
-// .BH1{
-//     text-align: left;
-//     margin: auto;
-//     padding-inline-end: 70px;
-//     grid-column: 1/2;
-// }
-// .BH2{
-//     margin: auto;
-//     margin-inline-end: 90%;
-//     grid-column: 2/3;
-
-// }
-// .BH3{
-//     margin: auto;
-//     width: 90%;
-//     grid-column: 3/4;
-    
-// }
-// .BH4{
-//     margin: auto;
-//     width: 90%;
-//     grid-column: 4/5;
-// }

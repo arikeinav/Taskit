@@ -36,7 +36,7 @@ export class CardList extends React.Component {
 
 
     calcProgress = (cardId) => {
-        
+
         const cards = this.props.group.cards
         const card = cards.find(card => card.id === cardId)
         if (card.checklist && card.checklist.todos) {
@@ -53,7 +53,7 @@ export class CardList extends React.Component {
             <div style={{backgroundColor:(group.bgColor)?group.bgColor:'#ebecf0'}} className="card-list flex column" id="card-container">
                 <header className="card-header flex space-between">
                     <p className="group-title">{group.title}</p>
-                    <SimpleMenu isDeleteGroup={this.state.isDeleteGroup} onAddCard={this.updateState} onShowDeleteTogglle={this.onShowDeleteTogglle} onRemove={this.onRemoveGroup}  group={group} />
+                    <SimpleMenu isDeleteGroup={this.state.isDeleteGroup} onAddCard={this.updateState} onShowDeleteTogglle={this.onShowDeleteTogglle} onRemove={this.onRemoveGroup} group={group} />
                 </header>
                 <Element style={{
                     height: 'auto',
@@ -61,8 +61,7 @@ export class CardList extends React.Component {
                     overflow: 'scroll',
                     overflowX: 'hidden',
                     paddingLeft: '8px',
-                    
-    paddingRight: '4px'
+                    paddingRight: '4px'
                 }}>
 
                     <Droppable droppableId={group.id}>
