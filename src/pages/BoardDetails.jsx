@@ -87,14 +87,13 @@ export class _BoardDetails extends Component {
 
       const groupIdx = columns.findIndex(group => group.id === newColumn.id)
 
-      //ok so now i have to repeat the same procedure as in line 69-70 
       newGroups.splice(groupIdx, 1, newColumn)
 
       const newState = {
         ...this.props.board,
         groups: newGroups
       }
-      this.props.updateBoard(newState)//smth here is passed wrong, and causes an @@Object Object@@
+      this.props.updateBoard(newState)
       return;
     }
     // inter-groups-movement of cards:
@@ -126,7 +125,7 @@ export class _BoardDetails extends Component {
       ...this.props.board,
       groups: newGroups
     }
-    this.props.updateBoard(newState)//smth here is passed wrong, and causes an @@Object Object@@
+    this.props.updateBoard(newState)
     return;
   }
   onRemoveGroup = (groupId) => {
