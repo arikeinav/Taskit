@@ -6,9 +6,13 @@
     font-size: 1.3rem;
     color:white; 
     font-family: roboto;
-
+    .p-div{
+    display: flex;
+    align-items: center;
+    }   
     .board-name{
         margin: 4px 10px;
+        font-size: large;
     }
     .avatar-members{
         margin: 0 70px;
@@ -22,10 +26,15 @@
 
     .board-header-btn{
         padding: 6px 12px;
-        margin: 3px;
+        margin: 4px;
+    
         color: white;
         text-shadow: none;
         border-radius: 3px;
+        border-color:rgba(9, 30, 66, 0.04);
+    }
+    .board-header-btn:hover{
+        border-color:rgba(171, 176, 184, 0.466);
     }
     
     .menu{

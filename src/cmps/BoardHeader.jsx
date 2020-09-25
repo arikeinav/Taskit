@@ -27,7 +27,7 @@ export class BoardHeader extends Component {
         return (
             <div className="board-header flex space-between">
                 <div className="flex">
-                    <p className="board-name BH1">{board.title}</p>
+                   <div className="p-div"><p className="board-name BH1">{board.title}</p></div> 
 
                     {board.members &&
                         <section className="BH2 avatar-members flex">
