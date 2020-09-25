@@ -3,7 +3,6 @@ import React from "react";
 export class ColorModal extends React.Component {
 
     onClickColor = (color, ev) => {
-        console.log('onClickColor');
 
         const labels = this.props.labels
         ev.stopPropagation();

@@ -1,11 +1,16 @@
 .card-list{
     min-width: 260px;
     max-width: 260px;
-    margin: 10px 5px;
+    margin: 6px 5px;
     border-radius: 4px;
-    max-height: 76vh;
+    max-height: calc(100vh - 112px);
     height: auto;
     align-self: flex-start;
+
+    @media (max-width: 500px){
+        min-width: 95vw;
+        max-width: 95vw;
+    }
 }
 .group-title{
     margin:auto;

@@ -23,11 +23,19 @@
 .side-menu-list{
     font-size: 1rem;
     
+    .one-activity{
+        margin:1px;
+
+        .avatar{
+            margin-left: -55px;
+        }
+    }
 
 }
 .side-menu *{
     color:#666666;
     font-size: 1rem;
+    margin: 3px 0px;
 }
 
 .side-menu-list li{
@@ -40,15 +48,12 @@
 .menu-header{
     height: 40px;
     align-items: center;
-    
-   
 }
 .menu-header *{
 cursor: pointer;
 }
 .menu-actions{
     justify-content: space-evenly;
-    
 }
 .menu-action{
    align-items: center;
@@ -65,12 +70,19 @@ cursor: pointer;
  .activity-log span{
     margin-left: 5px;
  }
-
  .one-activity{
-    background-color: #66666630;
+    background-color: #cccccc1c;
     width: 100%;
     color: #1f1f1f;
     font-size: 0.9rem;
     padding-left: 12px;
-    margin: 2px 0;
+    margin: 40px 40px;
+ }
+ .delete-activities{
+    padding: 13px;
+    cursor: pointer;
+ }
+ .delete-activities:hover{
+    background-color: #dde0e6;
+    padding: 13px;
  }

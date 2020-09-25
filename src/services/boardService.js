@@ -9,7 +9,8 @@ export const boardService = {
   getCardById,
   create,
   makeId,
-  addActivity
+  addActivity,
+  removeActivities
 };
 
 function query(filterBy) {
@@ -50,17 +51,22 @@ function getCardById(board, groupId, cardId) {
   const group = board.groups.find(group => group.id === groupId)
   return group.cards.find(card => card.id === cardId)
 }
-function addActivity(board, ActivityType, changeIn) {
+function addActivity(board, ActivityType, changeIn, user) {
   if (!board.activities) {
     board.activities = []
   }
   const activities = board.activities
-  activities.push({
+  activities.unshift({
     id: 'a' + makeId(),
     title: ActivityType,
     createdAt: new Date(),
-    propertyTitle: changeIn.title
+    propertyTitle: changeIn.title,
+    byMember: user
   })
+  return board
+}
+function removeActivities(board) {
+  board.activities = []
   return board
 }
 function makeId(length = 5) {

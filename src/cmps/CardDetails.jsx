@@ -34,7 +34,6 @@ export class _CardDetails extends Component {
     componentDidMount() {
         const card = boardService.getCardById(this.props.board, this.props.groupId, this.props.cardId)
         this.setState({ card })
-        console.log('card',this.state.card);
     }
 
     updateState = (key, val) => {
@@ -46,7 +45,7 @@ export class _CardDetails extends Component {
     }
     onHandleRemove = () => {
         this.props.updateState('isDetailsShown', false)
-        boardService.addActivity(this.props.board, 'Remove card', this.state.card)
+        boardService.addActivity(this.props.board, 'Remove card', this.state.card, this.props.currUser)
         this.props.onRemoveCard(this.state.card.id)
     }
     onRemoveImg = () => {
@@ -88,7 +87,6 @@ export class _CardDetails extends Component {
         this.saveCard()
     }
     onSaveLabels = (val, ev) => {
-        console.log('hey!');
         ev.stopPropagation();
         var labels = [val]
         if (this.state.card.labels) {
@@ -96,7 +94,7 @@ export class _CardDetails extends Component {
             labels.push(val)
         }
         this.updateLocalCard('labels', labels)
-        boardService.addActivity(this.props.board, 'Add label at', this.state.card)
+        boardService.addActivity(this.props.board, 'Add label', this.state.card, this.props.currUser)
     }
     onRemoveLabel = (label) => {
         const labels = this.state.card.labels
@@ -107,6 +105,8 @@ export class _CardDetails extends Component {
     onOpenDuedate = () => {
         this.updateLocalCard('dueDate', new Date())
         this.setState({ isTimeEdit: true })
+        boardService.addActivity(this.props.board, 'Add dueDate', this.state.card, this.props.currUser)
+
     }
     saveChecklist = (checklist) => {
         this.updateLocalCard('checklist', checklist)
@@ -134,6 +134,7 @@ export class _CardDetails extends Component {
     }
     openChecklistEditor = () => {
         this.setState({ isChecklistEdit: (this.state.isChecklistEdit ? false : true) })
+        boardService.addActivity(this.props.board, 'Add Checklist', this.state.card, this.props.currUser)
 
     }
     handleChangeBGColor = (color, ev) => {
@@ -142,6 +143,7 @@ export class _CardDetails extends Component {
     }
     onOpenColorModal = (ev) => {
         ev.stopPropagation();
+        boardService.addActivity(this.props.board, 'Add BG Color', this.state.card, this.props.currUser)
         this.setState({isAddColorModalShown: true})
         this.saveCard()
     }
@@ -153,7 +155,6 @@ export class _CardDetails extends Component {
     render() {
         if (!this.state.card) return <div>Loading...</div>
         const { card } = this.state
-
 
         return (
             <div className="card-modal flex align-center">
@@ -167,7 +168,7 @@ export class _CardDetails extends Component {
 
                             <img className="card-img" src={card.imgUrl} alt="Loading" />
                         }
-                        {card.imgUrl && <button onClick={this.onRemoveImg} className="btn" style={{paddingLeft:"10px", paddingRight:"6px" }}><FaTrashAlt style={{ marginRight: "5px"}} /></button>}
+                        {card.imgUrl && <button onClick={this.onRemoveImg} className="btn delete-img-btn" style={{paddingLeft:"10px", paddingRight:"6px" }}><FaTrashAlt style={{ marginRight: "5px"}} /></button>}
 
                         {this.state.isAddColorModalShown &&
                             <div>
@@ -289,7 +290,8 @@ export class _CardDetails extends Component {
 
 const mapStateToProps = state => {
     return {
-        board: state.boardReducer.currBoard
+        board: state.boardReducer.currBoard,
+        currUser: state.userReducer.loggedInUser
     }
 }
 const mapDispatchToProps = {

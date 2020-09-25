@@ -105,7 +105,6 @@ export class _ChecklistPreview extends Component {
             const res = (isDones / totalTodos) * 100
             return this.setState({ progressbar: res.toFixed(2) })
         } return this.setState({ progressbar: 0 })
-        
     }
 
 

@@ -4,12 +4,14 @@ import { Graph } from './Graph';
 import { MenuColorModal } from './MenuColorModal'
 import { connect } from "react-redux";
 import { updateBoard } from "../store/actions/boardActions";
-// import { Avatar } from '@material-ui/core';
+import { Avatar } from '@material-ui/core';
 import { VscChromeClose } from "react-icons/vsc";
 import { IoIosArrowBack } from "react-icons/io";
-import { FaFileImage,FaTrashAlt } from "react-icons/fa";
+import { FaFileImage, FaTrashAlt } from "react-icons/fa";
 import { MdColorLens } from "react-icons/md";
-import { BsListNested,BsCardHeading } from "react-icons/bs";
+import { boardService } from '../services/boardService'
+
+import { BsListNested, BsCardHeading } from "react-icons/bs";
 
 import Scroll from 'react-scroll';
 var Element = Scroll.Element;
@@ -50,14 +52,26 @@ export class _SideMenu extends Component {
         this.props.updateBoard(board)
     }
     onOpenGraph = () => {
-        console.log('hey');
         this.setState({ idGraphShown: true })
     }
 
+    removeAllActivity = () => {
+        const board = boardService.removeActivities(this.props.board)
+        this.props.updateBoard(board)
+    }
+    getAvatar(activity) {
+        const member = activity.byMember
+        if (member && member.imgUrl) {
+            return <Avatar key={member._id} src={member.imgUrl} className="avatar"/>
+        }
+        if (member) {
+            return <Avatar key={member._id} className="avatar">{member.userName.substring(0, 1).toUpperCase()}{member.userName.substring(1, 2).toUpperCase()}</Avatar>
+        }
+        return <Avatar className="avatar"/>
+    }
 
     render() {
         const { activities } = this.props.board
-        // const { board } = this.props
         return (
             <div className="side-menu" >
                 <Element style={{
@@ -79,8 +93,8 @@ export class _SideMenu extends Component {
                             <div className="menu-action flex" ><BsCardHeading /><span>Change Name</span></div>
                             <div className="menu-action flex" onClick={this.onChangeBoardImg}><FaFileImage /><span>Change board Img</span></div>
                             <div className="menu-action flex" onClick={this.onChangeBoardColor}><MdColorLens /><span>Change board color</span></div>
-                            <div className="menu-action flex" ><FaTrashAlt/><span>Delete</span></div>
-                            
+                            <div className="menu-action flex" ><FaTrashAlt /><span>Delete</span></div>
+
                         </div>
                         <hr />
                         <div className="menu-action flex" onClick={this.onOpenGraph}>Graph</div>
@@ -88,30 +102,34 @@ export class _SideMenu extends Component {
                             <Graph />
                         }
                         <hr />
-
-
-                        <div className="activity-log flex align-center"><BsListNested /><span> Activity</span></div>
+                        <div className="activity-log flex align-center space-between">
+                            <div>
+                                <BsListNested />
+                                <span>Activity</span>
+                            </div>
+                            <p className="delete-activities" onClick={this.removeAllActivity}>Delete all</p>
+                        </div>
                         {activities && <div>
                             <ul className="side-menu-list">
                                 {activities.map(activity =>
-                                    <li key={activity.id}>
+                                    <li key={activity.id} className="one-activity flex">
+
+                                        {this.getAvatar(activity)}
+
                                         <div className="one-activity">
                                             <p>{activity.title}</p>
-                                            <p>{activity.propertyTitle}</p>
+                                            <p>Card name: {activity.propertyTitle}</p>
 
                                         </div>
-                                        {/* <Avatar key={activity.byMember._id} src={activity.byMember.imgUrl}>{activity.byMember.userName.substring(0, 1).toUpperCase()}
-                                        {activity.byMember.userName.substring(1, 2).toUpperCase()}</Avatar>{activity.byMember.userName + ' '}{activity.txt} */}
-                                    </li>)}
+                                    </li>
+                                )}
                             </ul>
-                        </div>}
-
-
+                        </div>
+                        }
                     </div>}
                 </Element>
             </div>
         )
-
     }
 }
 

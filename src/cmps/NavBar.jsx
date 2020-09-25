@@ -17,6 +17,7 @@ class _NavBar extends React.Component {
 
   componentDidMount() {
     this._isMounted = true;
+    // if(!this.props.loggedInUser) this.setState({isIn: true});
   }
   componentWillUnmount() {
     this._isMounted = false;
