@@ -8,9 +8,21 @@
     font-size: small;
     .btn{
         font-size: 10px;
-        border-radius: 0;
+        margin-bottom: 5px;
+        padding: 6px 12px;
+        height: 32px;
+        margin-top: 8px;
+        border-radius: 3px;
         border: none;
         text-align: left;
+        transition-property: background-color,border-color,box-shadow;
+        transition-duration: 85ms;
+        transition-timing-function: ease;
+    }
+    .delete-img-btn{
+        align-self: flex-end;
+        align-self: flex-end;
+        transform: translate(0, -32px);
     }
     .card-header{
     height: 160px;
@@ -20,6 +32,7 @@
     .body-div{
     height: 80%;
     width: 100%;
+    margin-top: 10px;
 }
     .card-title{
         margin-bottom: 15px;
@@ -37,14 +50,16 @@
         .btn-card-remove{
             padding:0;
             width: 30px;
+           
         }
         .card-img{
             object-fit:cover;
             width: auto;
             height: auto;
-            max-height: 130px;
+            max-height: 100%;
             border-radius: 6px;
         }
+
         .modal-details-left{
             width:100%;
             padding:0 10px 10px;
