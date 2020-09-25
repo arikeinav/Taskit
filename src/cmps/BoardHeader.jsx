@@ -45,7 +45,7 @@ export class BoardHeader extends Component {
                     <button className="BH3 btn board-header-btn"><FaUserCircle style={{ marginRight: "5px" }} />Invite</button>
                     <button className="BH4 btn board-header-btn menu" onClick={this.toggleMenu}><AiOutlineMenu style={{ marginRight: "5px" }}/>Menu</button>
                 </div>
-                {this.state.isMenuShow && <SideMenu onToggleMenu={this.toggleMenu} />}
+                {this.state.isMenuShow && <SideMenu  onToggleMenu={this.toggleMenu} />}
 
 
             </div>
