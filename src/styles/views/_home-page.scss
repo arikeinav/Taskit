@@ -16,7 +16,8 @@ h1{
   margin:90px 0 105px;
   margin-inline-end: 12%;
   font-size: 5.5rem;
-  
+
+}
 }
 pre{
   margin:10px 0;
@@ -24,31 +25,33 @@ margin-inline-end: 32%;
 font-family: hand-write;
 }
 
-}
 .home a{
     color:white;
-    margin-top: 50px; 
+    margin-top: 50px;
     font-size: 3.5rem;
     font-weight: 600;
     transform: scale(1);
   animation: pulse 2s infinite;
   font-family: vidaloka;
-  
-  
-  @keyframes pulse {
-    0% {
-      transform: scale(0.95);
-      color:rgb(163, 161, 16);
-    }
-    70% {
-      transform: scale(1);
-      color: black;
-    }
-    100% {
-      transform: scale(0.95);
-      color:rgb(163, 161, 16);
-    }
 }
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    color:rgb(163, 161, 16);
+  }
+  70% {
+    transform: scale(1);
+    color: black;
+  }
+  100% {
+    transform: scale(0.95);
+    color:rgb(163, 161, 16);
+  }
+}
+.second{
+  background-color: #FFEEDC;
+
 }
 .home p{
   margin: 0;
@@ -61,27 +64,55 @@ font-family: hand-write;
 }
 
 .home-details-comtainer{
+  display: flex;
+  flex-direction: column;
   text-align: center;
   margin: 0;
   color:#15466b;
   font-family: montserrat-medium;
   background-color: #fff;
-  h1{
-    margin: 90px;
-  }
-  .second{
-    background-color: #FFEEDC;
+}
+// h1 {
+//   margin: 90px;
+// }
+
+.home-details {
   
+
+  img {
+    width: 40%;
+    height: 400px;
+    
+  }
+  .info {
+    margin: auto 0;
+
+    h2 {
+      font-size: 1.875rem;
+      font-family: montserrat-medium;
+    }
+    p {
+      font-family: montserrat-regular;
+      font-size: 1.3rem;
+    }
+  }
 }
 
+@media (max-width: $small-screen){
+  .home{
+    width: 100%;
+  }
+  h1{
+    margin: 90px 0 0;
+  }
+
   .home-details{
-    
-    flex-grow: 1fr;
-    
+    margin-top: 70px;
+    flex-direction: column-reverse;
+
     img{
-      width:40%;
-     
-    }  
+      width:100%;
+    }
     .info{
       margin: auto 30px;
 
@@ -95,44 +126,4 @@ font-family: hand-write;
       }
     }
   }
-  .home-details:not(:first-child){
-    margin-top: 30px;
-  }
-
-
-  @media (max-width: $small-screen){
-    width: 100%;
-
-    h1{
-      margin: 90px 0 0;
-    }
-
-    
-
-    .home-details{
-      margin-top: 70px;
-      flex-direction: column-reverse;
-
-      
-      
-      img{
-        width:100%;
-      }
-      .info{
-        margin: auto 30px;
-  
-        h2{
-          font-size: 1.875rem;
-          font-family: montserrat-medium;
-        }
-        p{
-          font-family: montserrat-regular;
-          font-size: 1.3rem;
-        }
-      }
-  }
-  .switch-text-img{
-    flex-direction: column;
-  }
-}
 }
