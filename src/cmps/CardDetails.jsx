@@ -232,9 +232,9 @@ export class _CardDetails extends Component {
                                     </div>
                                 }
                                 <div>
-                                    <div className="edit-header flex">
-                                        <button className="btn" onClick={() => this.updateState('isDescriptionEdit', true)}><FaEdit /></button>
-                                        <p>Description:</p>
+                                    <div className="edit-header flex align-center">
+                                        <button className="btn btn-edit-cd" onClick={() => this.updateState('isDescriptionEdit', true)}><FaEdit className=" icon-edit-cd"/></button>
+                                        <p className=" p-edit-cd">Description:</p>
                                     </div>
                                     {this.state.isDescriptionEdit ?
                                         <div className="edit-desc flex column align-center" >
