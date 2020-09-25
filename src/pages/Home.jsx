@@ -23,7 +23,7 @@ export function Home() {
                     </div>
                 </section>
 
-                <section className="home-details flex">
+                <section className="home-details switch-text-img flex">
                     <div className="info">
                         <h2>Drag n Drop</h2>
                         <p>Try our Drag n Drop technology to easily move & update your tasks with your mouse or finger.</p>

@@ -1,15 +1,15 @@
 .card-list{
     min-width: 260px;
     max-width: 260px;
-    margin: 6px 5px;
+    margin: 6px 5px 0;
     border-radius: 4px;
     max-height: calc(100vh - 112px);
     height: auto;
     align-self: flex-start;
 
-    @media (max-width: 500px){
-        min-width: 95vw;
-        max-width: 95vw;
+    @media (max-width: $small-screen){
+        min-width: 90vw;
+        max-width: 90vw;
     }
 }
 .group-title{

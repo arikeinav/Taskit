@@ -41,9 +41,12 @@ export class BoardHeader extends Component {
                             </AvatarGroup>
                         </section>}
                 </div>
-                <div>
-                    <button className="BH3 btn board-header-btn"><FaUserCircle style={{ marginRight: "5px" }} />Invite</button>
-                    <button className="BH4 btn board-header-btn menu" onClick={this.toggleMenu}><AiOutlineMenu style={{ marginRight: "5px" }}/>Menu</button>
+                <div className="flex">
+                    <button className="BH3 btn board-header-btn flex"><FaUserCircle style={{ marginRight: "5px" }} />Invite</button>
+                    <button className="BH4 btn board-header-btn menu flex" onClick={this.toggleMenu}><AiOutlineMenu style={{ marginRight: "5px" }}/>Menu</button>
+
+                    <button className="BH3 btn board-header-btn-small-screen"><FaUserCircle style={{ marginRight: "5px" }} /></button>
+                    <button className="BH4 btn board-header-btn-small-screen menu" onClick={this.toggleMenu}><AiOutlineMenu style={{ marginRight: "5px" }}/></button>
                 </div>
                 {this.state.isMenuShow && <SideMenu onToggleMenu={this.toggleMenu} />}
 
