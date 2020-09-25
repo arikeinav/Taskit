@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FaTrashAlt } from "react-icons/fa";
+import { FiDelete } from "react-icons/fi";
 
 
 export default class TodoPreview extends Component {
@@ -36,13 +36,11 @@ export default class TodoPreview extends Component {
 
                 <form className="flex align-center space-between hundredPw" action="">
 
-                    <div className="flex align-center">
-                        <button className="btn todo-btn-trash" onClick={() => { this.props.onRemoveTodo(todo.id) }}><FaTrashAlt /></button>
 
-
-                        {/* <span className="checkbox-span" onClick={()=>this.onCheckboxChange()}><input type="checkbox" className="checkbox-mu" defaultChecked={(this.state.todo.isDone)?true:false}/> </span> */}
                         <p className={`todo-title ${this.state.todo.isDone === true ? "line-through" : "text-dec-none"}`} onClick={() => this.onCheckboxChange()}>{todo.title}</p>
-                    </div>
+                    {/* <div className="flex align-center space-between"> */}
+                       < FiDelete className="todo-btn-delete" onClick={() => { this.props.onRemoveTodo(todo.id) }} />
+                    {/* </div> */}
 
                 </form>
             </div>

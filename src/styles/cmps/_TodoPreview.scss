@@ -3,6 +3,12 @@
     cursor: pointer;
     padding: 0 10px;
 }
-.todo-btn-trash{
+.todo-btn-delete{
     border: none;
+margin-right: 10px;
+color: #666666;
+
+&:hover{
+    color: rgba(112, 116, 124, 0.651);
+}
 }
