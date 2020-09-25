@@ -75,8 +75,7 @@ export class _CardList extends Component {
             <div style={{ backgroundColor: (group.bgColor) ? group.bgColor : '#ebecf0' }} className="card-list flex column" id="card-container">
                 <header className="card-header flex space-between align-center">
                   
-                        <EditableLabel text={group.title} onFocus={this.onFocus} onFocusOut={this.handleFocusOut}
-                            isEditing={this.state.isEditing,''}
+                        <EditableLabel text={group.title}  onFocusOut={this.handleFocusOut}
                             inputWidth='200px'
                             inputHeight='34px'
                             cursor='pointer'
