@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 export default function BoardPreview({ board }) {
   return (
     <div>
+      <div className="note">
       <Link to={`/board/${board._id}`}>
         <div
           style={
@@ -25,6 +26,7 @@ export default function BoardPreview({ board }) {
 
         </div>
       </Link>
+      </div>
     </div>
   );
 }

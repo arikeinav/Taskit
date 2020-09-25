@@ -1,13 +1,50 @@
 .board-list{
-    padding-top: 30px;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 10px;
+    padding: 70px 150px 0 150px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 30px;
+   
+    
+}
+.note{
+    padding: 20px;
+    background-color:#fff97eee;
+}
+.boards-note{
+    padding: 20px;
+    background-color: #7afdffdc;
+    font-family: hand-write;
+    font-size: 1.7rem;
+}
+.add-note{
+    font-size: 1.7rem;
+    background-color: #ff8fc1de;
+    font-family: hand-write;
+
+}
+.add-note h3{
+    margin: auto;
 }
 .ba-boards{
-    margin: auto;
+    width: 100%;
+    height: 100vh;
+    background-image: url("../imgs/board.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  
     
 }
 .board-app{
-    background-color: #F4F5F7;
-}
+   
+    // background-image: url("../imgs/board.jpg");
+    // background-size: cover;
+    // background-repeat: no-repeat;
+    // background-position: center;
+    // height: 100%;
 
+}
+// .board-app img{
+//     height: 100%;
+//     width: 100%;
+// }
