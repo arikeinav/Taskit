@@ -57,12 +57,12 @@ export class _SideMenu extends Component {
     getAvatar(activity) {
         const member = activity.byMember
         if (member && member.imgUrl) {
-            return <Avatar key={member._id} src={member.imgUrl} className="avatar"/>
+            return <Avatar key={member._id} src={member.imgUrl} className="avatar" />
         }
         if (member) {
             return <Avatar key={member._id} className="avatar">{member.userName.substring(0, 1).toUpperCase()}{member.userName.substring(1, 2).toUpperCase()}</Avatar>
         }
-        return <Avatar className="avatar"/>
+        return <Avatar className="avatar" />
     }
 
     render() {
@@ -76,8 +76,10 @@ export class _SideMenu extends Component {
                     overflowX: 'hidden',
                     paddingLeft: '5px'
                 }}>
-                    <div className="menu-header flex space-between"> <IoIosArrowBack onClick={this.onBackToMenu} />
-                        <span style={{ color: 'black' }}>Menu</span> <VscChromeClose onClick={this.props.onToggleMenu} />
+                    <div className="menu-header flex space-between">
+                        <IoIosArrowBack onClick={this.onBackToMenu} />
+                        <span style={{ color: 'black' }}>Menu</span>
+                        <VscChromeClose onClick={this.props.onToggleMenu} className="close-modal-btn"/>
                     </div>
 
                     <hr />
