@@ -6,6 +6,7 @@ import { FaCheckCircle, FaUserCircle, FaFileImage, FaTrashAlt, FaEdit, FaCalenda
 import { MdColorLens, MdInvertColors } from "react-icons/md";
 
 import { TwitterPicker } from 'react-color'
+import EditableLabel from 'react-inline-editing'
 
 import TextField from '@material-ui/core/TextField';
 import DatePicker from "react-datepicker";
@@ -73,6 +74,9 @@ export class _CardDetails extends Component {
                 [key]: val
             }
         }))
+    }
+    handleFocusOut=(title)=>{
+        this.updateLocalCard('title', title)
     }
     onRemoveDuedate = () => {
         this.updateState('isTimeEdit', false)
@@ -188,7 +192,17 @@ export class _CardDetails extends Component {
                             overflowX: 'hidden',
                         }}>
                             <div className="modal-details-left">
-                                <h3 className="card-title">{card.title}</h3>
+                            <EditableLabel text={card.title} 
+                            
+                            onFocusOut={this.handleFocusOut}
+                            inputWidth='200px'
+                            inputHeight='34px'
+                            cursor='pointer'
+                            // inputMaxLength='50'
+                            labelFontWeight='bold'
+                            inputFontWeight='400' />
+
+                                <h3 className="card-title"></h3>
 
                                 <div className="flex column justify-center">
                                     <button className="btn btn-invite self-start" > <FaUserCircle style={{ marginRight: "5px" }} /> Invite</button>
