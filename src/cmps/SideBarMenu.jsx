@@ -29,6 +29,11 @@ export class _SideMenu extends Component {
         this.setState({ isChooseColor: true })
     }
     onBackToMenu = () => {
+
+        if(!this.state.isChooseImg && !this.state.isChooseColor) {
+            this.props.onToggleMenu()
+        return
+    }
         this.setState({ isChooseImg: false, isChooseColor: false })
     }
     onChangeImg = (imgUrl) => {

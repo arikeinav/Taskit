@@ -32,8 +32,16 @@
         z-index: 12;
         margin: 10px;
         cursor: pointer;
+        border-radius: 3px;
+         
     }
     .add-private-img{
         text-align: center;
     }
+    .img-preview:hover{
+        -moz-box-shadow: 0 0 10px rgb(158, 158, 158);
+        -webkit-box-shadow: 0 0 10px rgb(158, 158, 158);
+        box-shadow: 0 0 10px rgb(158, 158, 158);
+    }
 }
+
