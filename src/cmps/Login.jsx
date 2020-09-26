@@ -9,7 +9,7 @@ class _Login extends Component {
 
     msg: "",
     loginCred: {
-      username: "",
+      userName: "",
       password: "",
     },
   };
@@ -27,17 +27,17 @@ class _Login extends Component {
 
   doLogin = async (ev) => {
     ev.preventDefault();
-    const { username, password } = this.state.loginCred;
-    if (!username || !password) {
+    const { userName, password } = this.state.loginCred;
+    if (!userName || !password) {
       return this.setState({ msg: "Please enter user/password" });
     }
 
-    const userCreds = { username, password };
+    const userCreds = { userName, password };
     const user = await this.props.login(userCreds)
       if (!user) this.setState({ msg: "There isn't an account for this user" })
       else{
     this.props.onCloseModal()
-    this.setState({ loginCred: { username: "", password: "" } });
+    this.setState({ loginCred: { userName: "", password: "" } });
     }
   }
 
@@ -51,8 +51,8 @@ class _Login extends Component {
               <TextField
             id="outlined-basic"
             type="text"
-            name="username"
-            value={this.state.loginCred.username}
+            name="userName"
+            value={this.state.loginCred.userName}
             onChange={this.loginHandleChange}
             label="Username"
             variant="outlined"
