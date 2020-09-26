@@ -5,7 +5,8 @@
     left: 0;
     width: 100vw;
     z-index: 9;
-    font-size: small;
+    font-size: 0.8rem;
+    font-weight: 300;
     .btn{
         font-size: 10px;
         margin-bottom: 5px;
@@ -26,27 +27,28 @@
     }
     .card-header{
     height: 160px;
-    margin-bottom: 5px;
+    margin:0;
 }
 
     .body-div{
     height: 80%;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 5px;
 }
-    .card-title{
-        margin-bottom: 15px;
-        margin-top: 0;
-    }
+    // .card-title{
+    //     margin-bottom: 15px;
+    //     margin-top: 0;
+    // }
     .details-modal{
         flex-direction: column;
         background-color: #F4F5F7;
         display: flex;
         margin: 10vh auto 30px;
-        width: 85vh;
-        min-height: 84vh;
+        width: 70%;
+        height: 85vh;
         z-index: 11;
         padding: 20px;
+        transform: translate(0, -15px);
         .btn-card-remove{
             padding:0;
             width: 30px;
@@ -78,7 +80,7 @@
             resize: none;
             width: 100%;
             border-style: none;
-            margin:10px 0;
+            margin:0 0 25px ;
         }
         .edit-card-description{
             width: 100%;
@@ -87,15 +89,15 @@
             border:none;
         }
         .edit-header{
-            // margin-top:10px;
+            margin-top:15px;
             height: 32px;
             p{
                 margin:5px;
             }
         }
         .small-label{
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
             margin: 0 1.5px;
             border-radius:6px;
 
@@ -118,4 +120,7 @@
         width: 100%;
     }}
 }
-
+.cd-subt{
+    font-size: 1.1rem;
+    font-weight: 600;
+}
