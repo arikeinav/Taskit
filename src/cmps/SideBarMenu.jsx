@@ -149,8 +149,9 @@ export class _SideMenu extends Component {
                                         {this.getAvatar(activity)}
 
                                         <div className="one-activity">
-                                            <p>{activity.title}</p>
-                                            <p>Card name: {activity.propertyTitle}</p>
+                                            
+                                <p>{activity.byMember +' '}{activity.title}</p>
+                                            <p>In Card: {activity.propertyTitle}</p>
 
                                         </div>
                                     </li>

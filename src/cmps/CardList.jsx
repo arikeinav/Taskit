@@ -84,7 +84,11 @@ export class _CardList extends Component {
         } return ''
 
     }
-
+     longTxt (text) {
+        const textToShow =(text.length <= 20)? text : text.substr(0,20).trim() + '...';    
+            return textToShow
+                   
+     }
 
 
     render() {
@@ -93,7 +97,7 @@ export class _CardList extends Component {
             <div style={{ backgroundColor: (group.bgColor) ? (group.bgColor) : '#ebecf0' }} className="card-list flex column" id="card-container">
                 <header className="card-header flex space-between align-center">
                   
-                        <EditableLabel text={group.title}  onFocusOut={this.handleFocusOut}
+                        <EditableLabel text={this.longTxt(group.title)}  onFocusOut={this.handleFocusOut}
                             inputWidth='200px'
                             inputHeight='34px'
                             cursor='pointer'

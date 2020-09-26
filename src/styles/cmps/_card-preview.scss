@@ -18,6 +18,8 @@
     }
 }
 .card{
+    display: flex;
+    flex-direction: column;
     border-radius: 3px;
     justify-content: space-between;
 }
