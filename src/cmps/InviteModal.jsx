@@ -5,7 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { FaUserCircle } from "react-icons/fa";
 import { Avatar } from '@material-ui/core';
 
-import {userService} from '../services/userService'
+import { userService } from '../services/userService'
 
 
 
@@ -49,14 +49,24 @@ export function InviteModal({ board, updateBoard }) {
     const onSelectMember = async (userId) => {
         setAnchorEl(null);
 
-        if(board.members){
-            const memberInBoard = board.members.filter(member => member.id === userId)
-            if(memberInBoard.length > 0) return
+        if (board.members) {
+            const memberInBoard = board.members.filter(member => {
+                
+                console.log("onSelectMember -> member.id", member.id)
+                console.log("onSelectMember -> userId", userId)
+                return member._id === userId
+            })
+            if (memberInBoard.length > 0) return
+            const user = await userService.getById(userId)
+            board.members.push(user)
+            updateBoard(board)
+            console.log("onSelectMember -> user", user)
+        } else {
+            const user = await userService.getById(userId)
+            board.members = [user]
+            updateBoard(board)
+            console.log("onSelectMember -> user", user)
         }
-        const user = await userService.getById(userId)
-        console.log("onSelectMember -> user", user)
-        board.members = [user]
-        updateBoard(board)
     }
 
 
