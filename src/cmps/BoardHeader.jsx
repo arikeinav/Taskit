@@ -3,12 +3,16 @@ import { FaUserCircle } from "react-icons/fa";
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
 import { AiOutlineMenu } from "react-icons/ai";
+
 import { SideMenu } from './SideBarMenu'
+import {InviteModal} from './InviteModal'
+
 export class BoardHeader extends Component {
 
     state = {
         filterBy: '',
-        isMenuShow: false
+        isMenuShow: false,
+        isInviteMembersShown: false
     }
 
     toggleMenu = () => {
@@ -16,8 +20,8 @@ export class BoardHeader extends Component {
         this.setState({ isMenuShow: menuState })
     }
 
-    async componentDidMount() {
-
+    onToggleInviteModal = (val) => {
+        this.setState({ isInviteMembersShown: val })
     }
 
     render() {
@@ -42,7 +46,12 @@ export class BoardHeader extends Component {
                         </section>}
                 </div>
                 <div className="flex">
-                    <button className="BH3 btn board-header-btn flex"><FaUserCircle style={{ margin: "0px 5px -2px" }} />Invite</button>
+
+                    
+                    {/* <button className="BH3 btn board-header-btn flex" onClick={() => this.onToggleInviteModal(true)}><FaUserCircle style={{ margin: "0px 5px -2px" }} />Invite</button> */}
+                     <InviteModal members={board.members}/>
+
+
                     <button className="BH4 btn board-header-btn menu flex" onClick={this.toggleMenu}><AiOutlineMenu style={{ margin: "0px 5px -2px" }}/>Menu</button>
 
                     <button className="BH3 btn board-header-btn-small-screen"><FaUserCircle style={{ marginRight: "5px" }} /></button>
