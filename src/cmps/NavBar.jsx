@@ -45,6 +45,8 @@ class _NavBar extends React.Component {
   }
 
   render() {
+    const { loggedInUser } = this.props
+
     return (
       <nav className="nav-bar grid align-center">
         <div className="navdiv-s"><NavLink to="/board">Boards</NavLink></div>
