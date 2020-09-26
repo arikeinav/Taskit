@@ -1,20 +1,20 @@
 .board-app{
     height:92.5vh;
+    padding-top: 20px;
 }
 
 .board-app h1{
     padding-top: 20px;
     font-weight: 800;
     color:#06748a ;
-    margin: 40px 0 0 160px;
+ 
     font-family: hand-write;
     font-size: 3.5rem;
 
 }
 .ba-boards{
-    width: 100%;
-    padding:0 80px;
-    // height: 30vh;
+ 
+    // padding:0 40px;
 
     @media (max-width:820px){
         padding:0 20px;
@@ -27,8 +27,15 @@
 .ba-templates{
     margin-top:40px;
     height: 30vh;
+    // padding:0 40px;
+  .h1{
+      margin:0;
+  }
+
 
 }
+
+
 .add-board-form{
 justify-content: center;
 align-items: center;
@@ -37,7 +44,7 @@ text-align: center;
     margin-bottom: 10px;
     width: 200px;
     height: 40px;
-    border: px solid black;
+    border: 0 solid black;
     border-radius: 3px;
 }
 

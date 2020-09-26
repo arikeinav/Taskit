@@ -36,12 +36,12 @@ class _BoardApp extends Component {
             <div className="board-app flex column">
 
 
-                <div className="ba-boards flex align-center fiftyPh hundredPw">
-                    <h1 className="self-start">Your Boards:</h1>
+                <div className="ba-boards flex align-center fiftyPh hundredPw space-evenly">
+                    <div className="seventyPw flex justify-center"><h1>Your Boards:</h1></div>
                     <BoardList boards={boards} onAddBoard={this.onShowModal} />
                 </div>
-                <div className="ba-templates flex align-center fiftyPh hundredPw">
-                    <h1 className="self-start">Template Boards:</h1>
+                <div className="ba-templates flex align-center fiftyPh hundredPw space-evenly">
+                    <div className="thirdyPw flex justify-center"><h1 style={{margin:'0', padding:'o'}}>Template Boards:</h1></div>
                     <BoardList boards={boards} onAddBoard={this.onShowModal} />
                 </div>
                 {this.state.isAddBoardShown && <Modal onClose={this.onCloseModal}
