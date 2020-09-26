@@ -33,24 +33,28 @@ class _BoardApp extends Component {
     render() {
         const { boards } = this.props
         return (
-            <div className="board-app flex">
-                <div className="fake-board-app">
-              
-                <div className="ba-boards ">
-                
+            <div className="board-app flex column">
+
+
+                <div className="ba-boards flex align-center fiftyPh hundredPw">
+                    <h1 className="self-start">Your Boards:</h1>
+                    <BoardList boards={boards} onAddBoard={this.onShowModal} />
+                </div>
+                <div className="ba-templates flex align-center fiftyPh hundredPw">
+                    <h1 className="self-start">Template Boards:</h1>
                     <BoardList boards={boards} onAddBoard={this.onShowModal} />
                 </div>
                 {this.state.isAddBoardShown && <Modal onClose={this.onCloseModal}
                     children={<AddBoard isForBoard={this.state.isImgForBoard} saveBoard={this.onSaveBoard} onClose={this.onCloseModal} />} />}
-            </div></div>
+            </div>
         )
 
     }
 }
 
 const mapStateToProps = (state) => {
-    return { 
-        boards: state.boardReducer.boards, 
+    return {
+        boards: state.boardReducer.boards,
     }
 }
 

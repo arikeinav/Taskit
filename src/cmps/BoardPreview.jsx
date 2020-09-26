@@ -19,9 +19,10 @@ export default function BoardPreview({ board }) {
                   }`,
               }
           }
-          className="board-preview grid"
+          className="board-preview flex align-center"
         >
-          <h3>{board.title}</h3>
+          <h3 style={{backgroundColor: 'rgb(1 139 152 / 15%)',
+    height: '25px', width: '100%'}}>{board.title}</h3>
 
 
         </div>

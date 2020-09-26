@@ -2,8 +2,9 @@
 .board-preview {
   color: #fff;
   position: relative;
-  min-height: 150px;
-  padding: 10px;
+  height: 110px;
+  width: 160px;
+//  padding-top: 10px;
   text-align: center;
   border-radius: 5px;
 }
@@ -32,13 +33,13 @@ a{
 
 .board-preview h3{
   color:white;
-  position: relative
+  position: relative;
 }
 
 .img-board-preview{
   object-fit:contain;
-            width: 100px;
-            height: 100px;     
+            width: 80px;
+            height: 80px;     
 }
 
 

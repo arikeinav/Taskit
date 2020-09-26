@@ -1,23 +1,25 @@
 .board-list{
-    grid-template-columns: repeat(auto-fill, minmax(160px, 200px));
+    grid-template-columns: repeat(4,1fr);
     gap: 15px;
-    margin: 30px 200px;
-  
+    margin: 30px 50px;
+  @media (max-width: 1100px){
+    margin: 30px 80px;
+
+  }
+  @media (max-width: 900px){
+    margin: 30px;
+
+  }
 }
 .board-app{
-    background-image: url("../imgs/kanban5.jpg");
+    background-image: url("../imgs/seaa.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
-    h1{
-        margin: 30px 200px;
-        color:white;
-       }
-    
+    background-position: center;   
 }
 .fake-board-app{
-    background-color:#085868e1;
-    // background-color:#919191b6;
+    // background-color:#085868e1;
+    // background-color:#5a5a5a27;
     width: 100vw;
     height: 100vh;
     z-index: 8;  
@@ -25,9 +27,6 @@
 .add-note h3{
     margin: auto;
 }
-.ba-boards{
-    width: 100%;
-    height: 100vh;
-}
+
 
 
