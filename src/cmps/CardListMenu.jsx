@@ -19,15 +19,20 @@ export function SimpleMenu({ onRemove, group,isGroupColor,onShowColorTogglle, is
     handleClose()
   };
   const handledelete = () => {
+    if (isGroupColor){ 
+      onShowColorTogglle()
+    }
     onShowDeleteTogglle()
 
   };
   const handleClose = () => {
     if (isDeleteGroup) {
-      onShowDeleteTogglle()
-      setAnchorEl(null);
-    }
-
+       onShowDeleteTogglle()
+       setAnchorEl(null);
+      } else if (isGroupColor){ 
+        onShowColorTogglle()
+        setAnchorEl(null);
+      }else
     setAnchorEl(null);
   };
   const onDelete = () => {
@@ -38,6 +43,12 @@ export function SimpleMenu({ onRemove, group,isGroupColor,onShowColorTogglle, is
     ev.stopPropagation();
     onGroupColorChange(color.hex)
 
+  }
+  const onColorTogglle=()=>{
+    if (isDeleteGroup) {
+      onShowDeleteTogglle()
+    }
+    onShowColorTogglle()
   }
 
 
@@ -54,7 +65,7 @@ export function SimpleMenu({ onRemove, group,isGroupColor,onShowColorTogglle, is
         onClose={handleClose}
       >
         <MenuItem >Change list name</MenuItem>
-        <MenuItem onClick={onShowColorTogglle} >Background color</MenuItem>
+        <MenuItem onClick={onColorTogglle} >Background color</MenuItem>
         {isGroupColor &&<TwitterPicker onChange={handlecolor}  colors={['#218B82', '#9AD9DB', '#E5DBD9', '#98D4BB', '#EB96AA', '#ebecf0']} triangle="hide" />}
         <MenuItem onClick={handleAdd}>Add card</MenuItem>
         <MenuItem onClick={handledelete}>Delete list</MenuItem>
