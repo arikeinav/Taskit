@@ -686,20 +686,20 @@
       "_id": "u102",
       "userName": "Shahar Sadof",
       "password": "1234",
-      "imgUrl": "https://www.google.com"
+      "imgUrl": "https://res.cloudinary.com/cloudinary-img/image/upload/v1600864700/Taskit/shahar_wyjntk.png"
     },
     {
       "_id": "u101",
       "userName": "Arik Einav",
       "password": "1234",
-      "imgUrl": "http://some-img"
+      "imgUrl": "https://res.cloudinary.com/cloudinary-img/image/upload/v1600864700/Taskit/erik_lnajh5.png"
 
     },
     {
       "_id": "u103",
       "userName": "Shlomi Koplianski",
       "password": "1234",
-      "imgUrl": "http://some-img"
+      "imgUrl": "https://res.cloudinary.com/cloudinary-img/image/upload/v1600864700/Taskit/shlomi_rujmqc.png"
     },
      {
       "_id": "u104",

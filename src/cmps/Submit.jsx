@@ -8,7 +8,7 @@ class _Submit extends Component {
     msg: "",
     signupCred: {
       password: "",
-      username: "",
+      userName: "",
     },
   };
 
@@ -24,14 +24,14 @@ class _Submit extends Component {
 
   doSignup = async (ev) => {
     ev.preventDefault();
-    const { username, password } = this.state.signupCred;
-    if (!username || !password) {
+    const { userName, password } = this.state.signupCred;
+    if (!userName || !password) {
       return this.setState({ msg: "All inputs are required!" });
     }
-    const signupCreds = { username, password };
+    const signupCreds = { userName, password };
     this.props.signup(signupCreds);
     this.props.onCloseModal();
-    this.setState({ signupCred: { username: "", password: "" } });
+    this.setState({ signupCred: { userName: "", password: "" } });
   };
 
   render() {
@@ -43,8 +43,8 @@ class _Submit extends Component {
           <TextField
             id="outlined-basic"
             type="text"
-            name="username"
-            value={this.state.signupCred.username}
+            name="userName"
+            value={this.state.signupCred.userName}
             onChange={this.signupHandleChange}
             label="Username"
             variant="outlined"
