@@ -64,7 +64,8 @@ export function SimpleMenu({ onRemove, group,isGroupColor,onShowColorTogglle, is
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem >Change list name</MenuItem>
+        <div style={{color:"#666666",textAlign:"center"}} >List menu </div>
+        <hr style={{margin:"3px 7px"}}/>
         <MenuItem onClick={onColorTogglle} >Background color</MenuItem>
         {isGroupColor &&<TwitterPicker onChange={handlecolor}  colors={['#218B82', '#9AD9DB', '#E5DBD9', '#98D4BB', '#EB96AA', '#ebecf0']} triangle="hide" />}
         <MenuItem onClick={handleAdd}>Add card</MenuItem>

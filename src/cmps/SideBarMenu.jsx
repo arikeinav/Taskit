@@ -122,7 +122,7 @@ export class _SideMenu extends Component {
                     {this.state.isChooseColor && <MenuColorModal onAddColor={this.onChangeColor} />}
                     {!this.state.isChooseImg && !this.state.isChooseColor && <div>
                         <div className="menu-actions flex column">
-                            <div className="menu-action flex" ><BsCardHeading /><span>Change Name</span></div>
+                            {/* <div className="menu-action flex" ><BsCardHeading /><span>Change Name</span></div> */}
                             <div className="menu-action flex" onClick={this.onChangeBoardImg}><FaFileImage /><span>Change board Img</span></div>
                             <div className="menu-action flex" onClick={this.onChangeBoardColor}><MdColorLens /><span>Change board color</span></div>
                             <div className="menu-action flex" onClick={this.onRemoveBoard}><FaTrashAlt /><span>Delete Board</span></div>
