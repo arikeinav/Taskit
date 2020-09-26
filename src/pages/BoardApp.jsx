@@ -37,13 +37,21 @@ class _BoardApp extends Component {
 
 
                 <div className="ba-boards flex align-center fiftyPh hundredPw space-evenly">
-                    <div className="seventyPw flex justify-center"><h1>Your Boards:</h1></div>
-                    <BoardList boards={boards} onAddBoard={this.onShowModal} />
+                    <div  className=" h1-div thirdyPw flex hundredPh"><h1>Your Boards:</h1></div>
+
+                    <div className="seventyPw flex justify-center"><BoardList boards={boards} onAddBoard={this.onShowModal} />
+                    </div>
                 </div>
+
+
                 <div className="ba-templates flex align-center fiftyPh hundredPw space-evenly">
-                    <div className="thirdyPw flex justify-center"><h1 style={{margin:'0', padding:'o'}}>Template Boards:</h1></div>
-                    <BoardList boards={boards} onAddBoard={this.onShowModal} />
+                <div  className=" h1-div thirdyPw flex hundredPh"><h1>Template Boards:</h1></div>
+
+                    <div className="seventyPw flex justify-center">
+                        <BoardList boards={boards} onAddBoard={this.onShowModal} />
+                    </div>
                 </div>
+
                 {this.state.isAddBoardShown && <Modal onClose={this.onCloseModal}
                     children={<AddBoard isForBoard={this.state.isImgForBoard} saveBoard={this.onSaveBoard} onClose={this.onCloseModal} />} />}
             </div>
