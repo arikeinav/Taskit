@@ -7,11 +7,11 @@ export function Home() {
     return (
         <div>
             <div className="home  ">
-                {/* <h1>Welcome To Task<span className="logo-i">i</span>t</h1>
-                <pre>Organizing your</pre><pre>daily tasks</pre> */}
+            {/* <Link to="/board"><p>Start</p></Link> */}
+<img src="https://res.cloudinary.com/dsfnyykw9/image/upload/v1601112428/kanban5_fll98a.jpg" alt="img"/>
+              
 
-
-                <Link to="/board"><p>Start</p></Link>
+                
             </div>
             <div className="home-details-comtainer">
                

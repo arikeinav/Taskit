@@ -36,3 +36,27 @@
 .hide {
     display: none;
 }
+@media (max-width: $medium-screen){
+    .navdiv-s{
+        font-size: 1.1rem;
+       
+    }
+    .signup{
+        grid-column:5/7;
+           
+    }
+
+}
+
+@media (max-width: $small-screen){
+
+    .navdiv-s{
+        font-size: 0.8rem;
+        margin: 0;
+    }
+    .signup{
+        margin-right: 4px;
+        
+    }
+
+}
