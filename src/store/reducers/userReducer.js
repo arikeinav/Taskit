@@ -1,8 +1,8 @@
-let localLoggedinUser = null;
-if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user);
+// let localLoggedinUser = null;
+// if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user);
 
 const initialState = {
-  loggedInUser: localLoggedinUser,
+  loggedInUser: null,
 };
 
 export function userReducer (state = initialState, action = {}) {

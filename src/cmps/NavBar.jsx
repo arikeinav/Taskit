@@ -16,8 +16,7 @@ class _NavBar extends React.Component {
   }
 
   componentDidMount() {
-    this._isMounted = true;
-    // if(!this.props.loggedInUser) this.setState({isIn: true});
+    if (this.props.loggedInUser) this.setState({ isIn: true });
   }
   componentWillUnmount() {
     this._isMounted = false;
@@ -37,11 +36,9 @@ class _NavBar extends React.Component {
   onClose = () => {
     this.setState({ isSignIn: false, isModalShow: false, isLogged: false })
   }
-  onLoginHere=()=>{
+  onLoginHere = () => {
     this.setState({ isSignIn: false, isLogged: true })
   }
-  
-
   onLogOut = () => {
     this.setState({ isIn: false })
     this.props.logout()
@@ -49,27 +46,26 @@ class _NavBar extends React.Component {
 
   render() {
     return (
-        <nav className="nav-bar grid align-center">
-           <div className="navdiv-s"><NavLink  to="/board">Boards</NavLink></div>
-           <div className="logo"><NavLink  to="/">Task<span className="logo-i">i</span>t</NavLink></div>
-           
-            <div className={`navdiv-s signup ${(!this.state.isIn) ? '' : 'hide'}`} onClick={this.onIsSubmit}>Sign Up</div>
-            <div className={`navdiv-s login  ${(!this.state.isIn) ? '' : 'hide'}`} onClick={this.onIsLogged}>Login</div>
-            <div className={`navdiv-s login  ${(!this.state.isIn) ? 'hide' : ''}`} onClick={this.onLogOut}>LogOut</div>
-           
-    {this.state.isLogged &&  <Modal
-              
-              isForLog={true}
-              onClose={this.onClose}
-              children={<Login onCloseModal={this.onCloseModal} />}
-            />}
-    {this.state.isSignIn &&  <Modal
-              onLoginHere={this.onLoginHere}
-              isForLog={true}
-              onClose={this.onClose}
-              children={<Submit  onCloseModal={this.onCloseModal} />}
-            />}
-        </nav>
+      <nav className="nav-bar grid align-center">
+        <div className="navdiv-s"><NavLink to="/board">Boards</NavLink></div>
+        <div className="logo"><NavLink to="/">Task<span className="logo-i">i</span>t</NavLink></div>
+
+        <div className={`navdiv-s signup ${(!this.state.isIn) ? '' : 'hide'}`} onClick={this.onIsSubmit}>Sign Up</div>
+        <div className={`navdiv-s login  ${(!this.state.isIn) ? '' : 'hide'}`} onClick={this.onIsLogged}>Login</div>
+        <div className={`navdiv-s login  ${(!this.state.isIn) ? 'hide' : ''}`} onClick={this.onLogOut}>LogOut</div>
+
+        {this.state.isLogged && <Modal
+          isForLog={true}
+          onClose={this.onClose}
+          children={<Login onCloseModal={this.onCloseModal} />}
+        />}
+        {this.state.isSignIn && <Modal
+          onLoginHere={this.onLoginHere}
+          isForLog={true}
+          onClose={this.onClose}
+          children={<Submit onCloseModal={this.onCloseModal} />}
+        />}
+      </nav>
     )
   }
 }

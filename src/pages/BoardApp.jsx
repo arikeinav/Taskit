@@ -49,8 +49,9 @@ class _BoardApp extends Component {
 }
 
 const mapStateToProps = (state) => {
-
-    return { boards: state.boardReducer.boards }
+    return { 
+        boards: state.boardReducer.boards, 
+    }
 }
 
 const mapDispatchToProps = {
