@@ -4,6 +4,7 @@ import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
 import { AiOutlineMenu } from "react-icons/ai";
 import { SideMenu } from './SideBarMenu'
+import EditableLabel from 'react-inline-editing'
 export class BoardHeader extends Component {
 
     state = {
@@ -14,6 +15,12 @@ export class BoardHeader extends Component {
     toggleMenu = () => {
         let menuState = !this.state.isMenuShow
         this.setState({ isMenuShow: menuState })
+    }
+    handleFocusOut = (title) => {
+        const board = this.props.board
+       board.title = title
+        this.props.updateBoard(board)
+
     }
 
     async componentDidMount() {
@@ -27,8 +34,13 @@ export class BoardHeader extends Component {
         return (
             <div className="board-header flex space-between">
                 <div className="flex">
-                   <div className="p-div"><p className="board-name BH1">{board.title}</p></div> 
-
+                   
+                  <div style={{marginLeft:"10px", alignSelf:"center"}}>  <EditableLabel text={board.title}  onFocusOut={this.handleFocusOut}
+                            inputWidth='200px'
+                            inputHeight='34px'
+                            cursor='pointer'
+                            inputFontWeight='400' />
+</div>
                     {board.members &&
                         <section className="BH2 avatar-members flex">
                             <AvatarGroup max={3}>
