@@ -9,7 +9,14 @@ export class BoardHeader extends Component {
 
     state = {
         filterBy: '',
-        isMenuShow: false
+        isMenuShow: false,
+        
+    }
+     componentDidMount() {
+
+    }
+    componentWillUnmount(){
+        
     }
 
     toggleMenu = () => {
@@ -23,13 +30,11 @@ export class BoardHeader extends Component {
 
     }
 
-    async componentDidMount() {
-
-    }
+   
 
     render() {
         const { board } = this.props
-       
+        if (board === null) return <div>Loading...</div>
 
         return (
             <div className="board-header flex space-between">
