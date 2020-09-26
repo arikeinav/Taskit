@@ -99,7 +99,8 @@ export class _CardList extends Component {
                             cursor='pointer'
                             // inputMaxLength='50'
                             labelFontWeight='bold'
-                            inputFontWeight='400' />
+                            inputFontWeight='400'
+                            labelClassName='my-label-class' />
                    
                    <SimpleMenu onShowColorTogglle={this.onShowColorTogglle} onGroupColorChange={this.onGroupColorChange} isGroupColor={this.state.isGroupColor} isDeleteGroup={this.state.isDeleteGroup} onAddCard={this.updateState} onShowDeleteTogglle={this.onShowDeleteTogglle} onRemove={this.onRemoveGroup} group={group} />
                 </header>

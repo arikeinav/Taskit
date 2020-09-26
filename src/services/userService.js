@@ -28,23 +28,23 @@ function _handleLogin(user) {
   // sessionStorage.setItem('user', JSON.stringify(user))
   return user;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 function getById(userId) {
-  // return httpService.get(`user/${userId}`);
-  return storageService.get('user', userId)
+  return httpService.get(`user/${userId}`);
+  // return storageService.get('user', userId)
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function update(user) {

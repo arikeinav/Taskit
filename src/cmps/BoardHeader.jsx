@@ -1,22 +1,19 @@
 import React, { Component } from 'react'
-import { FaUserCircle } from "react-icons/fa";
+// import { FaUserCircle } from "react-icons/fa";
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
 import { AiOutlineMenu } from "react-icons/ai";
+
 import { SideMenu } from './SideBarMenu'
 import EditableLabel from 'react-inline-editing'
+import { InviteModal } from './InviteModal'
+
 export class BoardHeader extends Component {
 
     state = {
         filterBy: '',
         isMenuShow: false,
-        
-    }
-     componentDidMount() {
-
-    }
-    componentWillUnmount(){
-        
+        isInviteMembersShown: false
     }
 
     toggleMenu = () => {
@@ -25,27 +22,31 @@ export class BoardHeader extends Component {
     }
     handleFocusOut = (title) => {
         const board = this.props.board
-       board.title = title
+        board.title = title
         this.props.updateBoard(board)
 
     }
 
-   
+    onToggleInviteModal = (val) => {
+        this.setState({ isInviteMembersShown: val })
+    }
 
     render() {
         const { board } = this.props
-        if (board === null) return <div>Loading...</div>
+
+
 
         return (
             <div className="board-header flex space-between">
                 <div className="flex">
-                   
-                  <div style={{marginLeft:"10px", alignSelf:"center"}}>  <EditableLabel text={board.title}  onFocusOut={this.handleFocusOut}
-                            inputWidth='200px'
-                            inputHeight='34px'
-                            cursor='pointer'
-                            inputFontWeight='400' />
-</div>
+
+                    <div style={{ marginLeft: "10px", alignSelf: "center" }}>  <EditableLabel text={board.title} onFocusOut={this.handleFocusOut}
+                        inputWidth='200px'
+                        inputHeight='34px'
+                        cursor='pointer'
+                        inputFontWeight='400' />
+                    </div>
+
                     {board.members &&
                         <section className="BH2 avatar-members flex">
                             <AvatarGroup max={3}>
@@ -59,13 +60,18 @@ export class BoardHeader extends Component {
                         </section>}
                 </div>
                 <div className="flex">
-                    <button className="BH3 btn board-header-btn flex"><FaUserCircle style={{ margin: "0px 5px -2px" }} />Invite</button>
-                    <button className="BH4 btn board-header-btn menu flex" onClick={this.toggleMenu}><AiOutlineMenu style={{ margin: "0px 5px -2px" }}/>Menu</button>
 
-                    <button className="BH3 btn board-header-btn-small-screen"><FaUserCircle style={{ marginRight: "5px" }} /></button>
-                    <button className="BH4 btn board-header-btn-small-screen menu" onClick={this.toggleMenu}><AiOutlineMenu style={{ marginRight: "5px" }}/></button>
+
+                    {/* <button className="BH3 btn board-header-btn flex" onClick={() => this.onToggleInviteModal(true)}><FaUserCircle style={{ margin: "0px 5px -2px" }} />Invite</button> */}
+                    <InviteModal board={board} updateBoard={this.props.updateBoard} />
+
+
+                    <button className="BH4 btn board-header-btn menu flex" onClick={this.toggleMenu}><AiOutlineMenu style={{ margin: "0px 5px -2px" }} />Menu</button>
+
+                    {/* <button className="BH3 btn board-header-btn-small-screen"><FaUserCircle style={{ marginRight: "5px" }} /></button> */}
+                    <button className="BH4 btn board-header-btn-small-screen menu" onClick={this.toggleMenu}><AiOutlineMenu style={{ marginRight: "5px" }} /></button>
                 </div>
-                {this.state.isMenuShow && <SideMenu onToggleMenu={this.toggleMenu}/>}
+                {this.state.isMenuShow && <SideMenu onToggleMenu={this.toggleMenu} />}
 
 
             </div>
