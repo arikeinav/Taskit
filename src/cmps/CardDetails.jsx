@@ -2,11 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
-import { FaCheckCircle, FaUserCircle, FaFileImage, FaTrashAlt, FaEdit, FaCalendarAlt } from "react-icons/fa";
+import { FaCheckCircle, FaUserCircle, FaFileImage, FaTrashAlt, FaCalendarAlt } from "react-icons/fa";
+import { BiMenu, } from "react-icons/bi";
 import { MdColorLens, MdInvertColors } from "react-icons/md";
 
 import { TwitterPicker } from 'react-color'
-import EditableLabel from 'react-inline-editing'
+
+import EditableLabel from 'react-inline-editing';
+
 
 import TextField from '@material-ui/core/TextField';
 import DatePicker from "react-datepicker";
@@ -68,6 +71,7 @@ export class _CardDetails extends Component {
         this.saveCard()
     }
     updateLocalCard = (key, val) => {
+
         this.setState(prevState => ({
             card: {
                 ...prevState.card,
@@ -75,8 +79,9 @@ export class _CardDetails extends Component {
             }
         }))
     }
-    handleFocusOut=(title)=>{
+    handleFocusOut = (title) => {
         this.updateLocalCard('title', title)
+       
     }
     onRemoveDuedate = () => {
         this.updateState('isTimeEdit', false)
@@ -92,7 +97,7 @@ export class _CardDetails extends Component {
     }
     onSaveLabels = (val, ev) => {
         ev.stopPropagation();
-        if(this.state.card.labels && this.state.card.labels.length > 4) return;
+        if (this.state.card.labels && this.state.card.labels.length > 4) return;
         var labels = [val]
         if (this.state.card.labels) {
             labels = this.state.card.labels
@@ -192,64 +197,31 @@ export class _CardDetails extends Component {
                             overflowX: 'hidden',
                         }}>
                             <div className="modal-details-left">
-                            <EditableLabel text={card.title} 
-                            
-                            onFocusOut={this.handleFocusOut}
-                            inputWidth='200px'
-                            inputHeight='34px'
-                            cursor='pointer'
-                            // inputMaxLength='50'
-                            labelFontWeight='bold'
-                            inputFontWeight='400' />
 
-                                <h3 className="card-title"></h3>
 
-                                <div className="flex column justify-center">
-                                    <button className="btn btn-invite self-start" > <FaUserCircle style={{ marginRight: "5px" }} /> Invite</button>
-                                    {(card.members && card.members.length > 0) &&
-                                        <div>
-                                            <p className="small-header">Members</p>
-                                            <section className="avatar-members flex">
-                                                {card.assignedMembers &&
-                                                    <AvatarGroup max={3}>
-                                                        {card.assignedMembers.map(member => {
-                                                            return member.imgUrl ?
-                                                                <Avatar key={member._id} asrc={member.imgUrl}></Avatar>
-                                                                :
-                                                                <Avatar key={member._id} src={member.imgUrl}>{member.userName.substring(0, 1).toUpperCase()}{member.userName.substring(1, 2).toUpperCase()}</Avatar>
-                                                        }
-                                                        )}
-                                                    </AvatarGroup>
-                                                }
-                                            </section>
-                                        </div>}
-                                    {(card.labels && card.labels.length > 0) &&
-                                        <div className="flex column">
-                                            <p className="small-header">Labels</p>
-                                            <div className="flex">
+                                <EditableLabel text={card.title}
+
+                                    onFocusOut={this.handleFocusOut}
+                                    inputWidth='200px'
+                                    inputHeight='34px'
+                                    cursor='pointer'
+                                    labelFontSize='1.5rem'
+                                    inputFontWeight='400' 
+                                    labelFontWeight='700' />
+                                <div>
+                                {(card.labels && card.labels.length > 0) &&
+                                        <div style={{ margin: '15px 0', height: '40px'}} className="flex">
+                                            <div className="flex align-center">
+                                            <p  style={{ marginRight: '10px' }} className="cd-subt">Labels: </p>
                                                 {card.labels.map(label => <div key={label} onClick={() => this.onRemoveLabel(label)} className="small-label" style={{ backgroundColor: label }} />)}
                                             </div>
                                         </div>
                                     }
-                                </div>
+                                    <div className="flex align-center"><BiMenu style={{
+                                        marginRight: '5px', width: '18px',
+                                        height: '18px'
+                                    }} /><p onClick={() => this.updateState('isDescriptionEdit', true)} className="cd-subt"> Description:</p></div>
 
-                                {(this.state.isTimeEdit || card.dueDate) &&
-                                    <div>
-                                        <DatePicker
-                                            selected={(card.dueDate) ? new Date(card.dueDate) : new Date()}
-                                            onChange={this.handleChangeDuedate}
-                                            showTimeSelect
-                                            dateFormat="Pp"
-                                        />
-
-                                        <button onClick={this.onRemoveDuedate} className="btn">X</button>
-                                    </div>
-                                }
-                                <div>
-                                    <div className="edit-header flex align-center">
-                                        <button className="btn btn-edit-cd" onClick={() => this.updateState('isDescriptionEdit', true)}><FaEdit className=" icon-edit-cd"/></button>
-                                        <p className=" p-edit-cd">Description:</p>
-                                    </div>
                                     {this.state.isDescriptionEdit ?
                                         <div className="edit-desc flex column align-center" >
                                             <TextField
@@ -270,6 +242,42 @@ export class _CardDetails extends Component {
                                         </div>
                                     }
                                 </div>
+
+                                <div className="flex column justify-center">
+                                    <button className="btn btn-invite self-start" > <FaUserCircle style={{ marginRight: "5px" }} /> Invite</button>
+                                    {(card.members && card.members.length > 0) &&
+                                        <div>
+                                            <p className="small-header">Members</p>
+                                            <section className="avatar-members flex">
+                                                {card.assignedMembers &&
+                                                    <AvatarGroup max={3}>
+                                                        {card.assignedMembers.map(member => {
+                                                            return member.imgUrl ?
+                                                                <Avatar key={member._id} asrc={member.imgUrl}></Avatar>
+                                                                :
+                                                                <Avatar key={member._id} src={member.imgUrl}>{member.userName.substring(0, 1).toUpperCase()}{member.userName.substring(1, 2).toUpperCase()}</Avatar>
+                                                        }
+                                                        )}
+                                                    </AvatarGroup>
+                                                }
+                                            </section>
+                                        </div>}
+                                   
+                                </div>
+
+                                {(this.state.isTimeEdit || card.dueDate) &&
+                                    <div>
+                                        <DatePicker
+                                            selected={(card.dueDate) ? new Date(card.dueDate) : new Date()}
+                                            onChange={this.handleChangeDuedate}
+                                            showTimeSelect
+                                            dateFormat="Pp"
+                                        />
+
+                                        <button onClick={this.onRemoveDuedate} className="btn">X</button>
+                                    </div>
+                                }
+
 
                                 {this.state.card.checklist && <Checklist removeChecklist={this.removeChecklist} saveChecklist={this.saveChecklist} checklist={this.state.card.checklist} />}
                                 {this.state.isChecklistEdit && <ChecklistAdd addNewChecklist={this.addNewChecklist} />}
