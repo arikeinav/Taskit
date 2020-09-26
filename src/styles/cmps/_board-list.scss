@@ -4,10 +4,14 @@
     margin: 30px 50px;
   @media (max-width: 1100px){
     margin: 30px 80px;
+    grid-template-columns: repeat(3,1fr);
+
 
   }
-  @media (max-width: 900px){
+  @media (max-width: 500px){
     margin: 30px;
+    margin-top: 60px;
+    grid-template-columns: repeat(2,1fr);
 
   }
 }
@@ -15,7 +19,11 @@
     background-image: url("../imgs/seaa.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;   
+    background-position: center; 
+    // @media (max-width:820px){
+    // background-size: cover;
+
+    // }  
 }
 .fake-board-app{
     // background-color:#085868e1;
