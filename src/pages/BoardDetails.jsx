@@ -151,7 +151,7 @@ export class _BoardDetails extends Component {
     return (
       <div className="board-details " style={{ backgroundImage: `url(${board.style.bgImg ? board.style.bgImg : ''})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", minHeight: "90vh", backgroundColor: `${board.style.bgColor ? board.style.bgColor : ''}` }} >
 
-        <BoardHeader board={board} />
+        <BoardHeader board={board} updateBoard={this.props.updateBoard}/>
 
 
         <DragDropContext onDragEnd={this.onDragEnd}>

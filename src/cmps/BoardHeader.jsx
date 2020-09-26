@@ -5,7 +5,7 @@ import { AvatarGroup } from '@material-ui/lab';
 import { AiOutlineMenu } from "react-icons/ai";
 
 import { SideMenu } from './SideBarMenu'
-import {InviteModal} from './InviteModal'
+import { InviteModal } from './InviteModal'
 
 export class BoardHeader extends Component {
 
@@ -26,12 +26,13 @@ export class BoardHeader extends Component {
 
     render() {
         const { board } = this.props
-       
+        
+
 
         return (
             <div className="board-header flex space-between">
                 <div className="flex">
-                   <div className="p-div"><p className="board-name BH1">{board.title}</p></div> 
+                    <div className="p-div"><p className="board-name BH1">{board.title}</p></div>
 
                     {board.members &&
                         <section className="BH2 avatar-members flex">
@@ -47,17 +48,17 @@ export class BoardHeader extends Component {
                 </div>
                 <div className="flex">
 
-                    
+
                     {/* <button className="BH3 btn board-header-btn flex" onClick={() => this.onToggleInviteModal(true)}><FaUserCircle style={{ margin: "0px 5px -2px" }} />Invite</button> */}
-                     <InviteModal members={board.members}/>
+                    <InviteModal board={board} updateBoard={this.props.updateBoard}/>
 
 
-                    <button className="BH4 btn board-header-btn menu flex" onClick={this.toggleMenu}><AiOutlineMenu style={{ margin: "0px 5px -2px" }}/>Menu</button>
+                    <button className="BH4 btn board-header-btn menu flex" onClick={this.toggleMenu}><AiOutlineMenu style={{ margin: "0px 5px -2px" }} />Menu</button>
 
-                    <button className="BH3 btn board-header-btn-small-screen"><FaUserCircle style={{ marginRight: "5px" }} /></button>
-                    <button className="BH4 btn board-header-btn-small-screen menu" onClick={this.toggleMenu}><AiOutlineMenu style={{ marginRight: "5px" }}/></button>
+                    {/* <button className="BH3 btn board-header-btn-small-screen"><FaUserCircle style={{ marginRight: "5px" }} /></button> */}
+                    <button className="BH4 btn board-header-btn-small-screen menu" onClick={this.toggleMenu}><AiOutlineMenu style={{ marginRight: "5px" }} /></button>
                 </div>
-                {this.state.isMenuShow && <SideMenu onToggleMenu={this.toggleMenu}/>}
+                {this.state.isMenuShow && <SideMenu onToggleMenu={this.toggleMenu} />}
 
 
             </div>

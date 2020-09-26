@@ -1,0 +1,48 @@
+
+    .MuiAvatar-root{
+        height: 33px;
+        width: 33px;
+    }
+    .MuiMenuItem-root{
+        height: 50px;
+        padding: 11px;
+    }
+    .MuiListItem-gutters{
+        padding: 0px 6px 0px 6px;
+    }
+
+    .user-name{
+        margin: 7px 0 21px 12px;
+    }
+    .members{
+        height: 30px;
+        margin-left: -7px;
+    }
+    .invite-btn{
+        padding: 6px 12px;
+        margin: -5px;
+        color: white;
+        text-shadow: none;
+        border-radius: 3px;
+        border-color:rgba(9, 30, 66, 0.04);
+
+        @media (max-width: $small-screen){
+            display: none;
+        }
+
+        &:hover{
+            border-color:rgba(171, 176, 184, 0.466);
+            display: block;
+        }
+    }
+    .invite-btn-small-screen{
+        display: none;
+        @media (max-width: $small-screen){
+        display: block;
+        font-size: 1.5rem;
+        padding: 3px 8px 6px 13px;
+        margin: -1px 2px;
+        color: white;
+        border: none;
+    }
+}

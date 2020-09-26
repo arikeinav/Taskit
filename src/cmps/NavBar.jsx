@@ -46,6 +46,7 @@ class _NavBar extends React.Component {
 
   render() {
     const { loggedInUser } = this.props
+    console.log("render -> loggedInUser", loggedInUser)
 
     return (
       <nav className="nav-bar grid align-center">
