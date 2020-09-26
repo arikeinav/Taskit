@@ -25,8 +25,8 @@ export class AddBoard extends React.Component {
 
         return (
             <div>
-                <form onSubmit={this.onSubmit}>
-                    <input placeholder="Board name"
+                <form className="add-board-form flex column" onSubmit={this.onSubmit}>
+                    <input className="board-name-input" placeholder="Board name"
                         type="text"
                         onChange={this.handleValueChange}
                         value={this.state.text}

@@ -13,28 +13,34 @@
         z-index: 11;
     
     }
- @media (max-width:600px){
-    .add-img-modal{
-        width:400px;
-        grid-template-columns:150px  150px;
-        grid-template-rows:auto;
-        gap: 30px;
-    // width: 70%;
-    height: auto;
-        // display:flex;
-
-  }
- }
-
     .img-preview{
-        width: 130px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
         z-index: 12;
         margin: 10px;
         cursor: pointer;
         border-radius: 3px;
          
     }
+ @media (max-width:620px){
+    .add-img-modal{
+        width:400px;
+        grid-template-columns:150px  150px;
+        grid-template-rows:auto;
+        gap: 30px;
+    height: auto;
+    
+       
+         
+    }
+    .img-preview{
+        width: 50px;
+        height: 50px;
+
+  }
+ }
+
+  
     .add-private-img{
         text-align: center;
     }

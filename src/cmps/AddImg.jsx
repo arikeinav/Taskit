@@ -43,8 +43,8 @@ export class AddImg extends Component {
                 {!this.props.isForBoard && <div className="empty-modal" onClick={() => this.props.updateState('isAddImgModalShown', false)}></div>}
 
                 <div className={(this.props.isForBoard) ? '' : 'add-img-modal'}>
+                        <input onChange={this.onAddImg} style={ {width:'180px'}} type="file" />
                 <div className="add-private-img">
-                        <input onChange={this.onAddImg} type="file" />
                     {imgUrls.map((imgUrl, index) => <img onClick={() => this.onSelectImg(imgUrl)} className="img-preview" key={index} src={imgUrl} alt="Loading" />)}
 
                    
