@@ -2,9 +2,10 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import { TwitterPicker } from 'react-color'
 
 
-export function SimpleMenu({ onRemove, group, isDeleteGroup, onShowDeleteTogglle, onAddCard }) {
+export function SimpleMenu({ onRemove, group,isGroupColor,onShowColorTogglle, isDeleteGroup, onShowDeleteTogglle, onAddCard,onGroupColorChange }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
 
@@ -33,6 +34,11 @@ export function SimpleMenu({ onRemove, group, isDeleteGroup, onShowDeleteTogglle
     onRemove(group.id)
     handleClose()
   }
+  const handlecolor=(color, ev)=>{
+    ev.stopPropagation();
+    onGroupColorChange(color.hex)
+
+  }
 
 
   return (
@@ -48,7 +54,8 @@ export function SimpleMenu({ onRemove, group, isDeleteGroup, onShowDeleteTogglle
         onClose={handleClose}
       >
         <MenuItem >Change list name</MenuItem>
-        <MenuItem >Backgroun color</MenuItem>
+        <MenuItem onClick={onShowColorTogglle} >Background color</MenuItem>
+        {isGroupColor &&<TwitterPicker onChange={handlecolor}  colors={['#218B82', '#9AD9DB', '#E5DBD9', '#98D4BB', '#EB96AA', '#ebecf0']} triangle="hide" />}
         <MenuItem onClick={handleAdd}>Add card</MenuItem>
         <MenuItem onClick={handledelete}>Delete list</MenuItem>
         {isDeleteGroup && <MenuItem ><button className="btn" style={{ color: 'red', marginRight: '2px' }} onClick={onDelete}>Delete</button> <button style={{ marginLeft: '2px' }} className="btn" onClick={handleClose}>Cancel</button></MenuItem>}
