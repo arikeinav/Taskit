@@ -21,6 +21,7 @@ export class _CardList extends Component {
     state = {
         isAddCard: false,
         isDeleteGroup: false,
+        isGroupColor:false
 
     }
 
@@ -35,6 +36,10 @@ export class _CardList extends Component {
         let isDelete = !this.state.isDeleteGroup
         this.setState({ isDeleteGroup: isDelete })
     }
+    onShowColorTogglle = () => {
+        let isColor = !this.state.isGroupColor
+        this.setState({ isGroupColor: isColor })
+    }
 
 
 
@@ -45,6 +50,19 @@ export class _CardList extends Component {
         let group = this.props.group
         console.log("handleFocusOut -> group", group)
         group.title = groupTitle
+        groups.splice(idx, 1, group)
+        board.groups = groups
+        this.props.updateBoard(board)
+
+    }
+    onGroupColorChange = (color) => {
+        console.log(color)
+        const board = this.props.board
+        let groups = Array.from(board.groups)
+        const idx = groups.findIndex(group => group.id === this.props.group.id)
+        let group = this.props.group
+        group.bgColor = color
+        console.log(group)
         groups.splice(idx, 1, group)
         board.groups = groups
         this.props.updateBoard(board)
@@ -72,7 +90,7 @@ export class _CardList extends Component {
     render() {
         const group = this.props.group
         return (
-            <div style={{ backgroundColor: (group.bgColor) ? group.bgColor : '#ebecf0' }} className="card-list flex column" id="card-container">
+            <div style={{ backgroundColor: (group.bgColor) ? (group.bgColor) : '#ebecf0' }} className="card-list flex column" id="card-container">
                 <header className="card-header flex space-between align-center">
                   
                         <EditableLabel text={group.title}  onFocusOut={this.handleFocusOut}
@@ -83,7 +101,7 @@ export class _CardList extends Component {
                             labelFontWeight='bold'
                             inputFontWeight='400' />
                    
-                   <SimpleMenu isDeleteGroup={this.state.isDeleteGroup} onAddCard={this.updateState} onShowDeleteTogglle={this.onShowDeleteTogglle} onRemove={this.onRemoveGroup} group={group} />
+                   <SimpleMenu onShowColorTogglle={this.onShowColorTogglle} onGroupColorChange={this.onGroupColorChange} isGroupColor={this.state.isGroupColor} isDeleteGroup={this.state.isDeleteGroup} onAddCard={this.updateState} onShowDeleteTogglle={this.onShowDeleteTogglle} onRemove={this.onRemoveGroup} group={group} />
                 </header>
                 <Element style={{
                     height: 'auto',
