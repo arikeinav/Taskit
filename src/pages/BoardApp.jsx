@@ -34,14 +34,15 @@ class _BoardApp extends Component {
         const { boards } = this.props
         return (
             <div className="board-app flex">
-               
-                <div className="ba-boards  ">
-                    
+                <div className="fake-board-app">
+              
+                <div className="ba-boards ">
+                
                     <BoardList boards={boards} onAddBoard={this.onShowModal} />
                 </div>
                 {this.state.isAddBoardShown && <Modal onClose={this.onCloseModal}
                     children={<AddBoard isForBoard={this.state.isImgForBoard} saveBoard={this.onSaveBoard} onClose={this.onCloseModal} />} />}
-            </div>
+            </div></div>
         )
 
     }

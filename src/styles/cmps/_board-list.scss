@@ -1,37 +1,26 @@
 .board-list{
-    padding: 70px 150px 0 150px;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(160px, 200px));
     gap: 15px;
-    margin-top: 30px;
-   
+    margin: 30px 200px;
+  
 }
-
-
-.note{
-    padding: 20px;
-    background-color:#fff97eee;
-    box-shadow: 5px 5px 7px rgba(33,33,33,.7);
-    transform:rotate(-4deg);
+.board-app{
+    background-image: url("../imgs/kanban5.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    h1{
+        margin: 30px 200px;
+        color:white;
+       }
     
-   
-    
 }
-
-
-
-.boards-note{
-    padding: 20px;
-    background-color: #7afdffdc;
-    font-family: hand-write;
-    font-size: 1.7rem;
-}
-
-
-.add-note{
-    font-size: 1.7rem;
-    background-color: #ff8fc1de;
-    font-family: hand-write;
-
+.fake-board-app{
+    background-color:#085868e1;
+    // background-color:#919191b6;
+    width: 100vw;
+    height: 100vh;
+    z-index: 8;  
 }
 .add-note h3{
     margin: auto;
@@ -39,23 +28,6 @@
 .ba-boards{
     width: 100%;
     height: 100vh;
-    background-image: url("../imgs/board.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  
-    
 }
-.board-app{
-   
-    // background-image: url("../imgs/board.jpg");
-    // background-size: cover;
-    // background-repeat: no-repeat;
-    // background-position: center;
-    // height: 100%;
 
-}
-// .board-app img{
-//     height: 100%;
-//     width: 100%;
-// }
+
