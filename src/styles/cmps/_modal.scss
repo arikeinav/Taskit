@@ -12,10 +12,10 @@
     box-sizing: border-box
 }
 .modal-content {
+    padding: 15px;
     background: white;
-    max-width: 60%;
-    min-width: 50%;
-    height: 500px;
+    max-width: 65%;
+    max-height: 600px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
     border-radius: 10px;
     position: relative;
