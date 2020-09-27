@@ -145,14 +145,15 @@ export class _SideMenu extends Component {
                                 {activities.map(activity =>
                                     <li key={activity.id} className="one-activity flex">
 
-                                        {this.getAvatar(activity.byMember)}
+                                    <span className="user-avatar">{this.getAvatar(activity.byMember)}</span>
 
-                                        <div className="one-activity">
+                                        <div className="one-activity flex column">
 
-                                            {/* <p>{activity.title}</p> */}
-                                            <p>{activity.byMember ? activity.byMember.userName : 'Name'}:{activity.title}</p>
-                                            <p>In Card: {activity.propertyTitle}</p>
-
+                                            <p>
+                                                <span className="user-name">{activity.byMember ? activity.byMember.userName : 'Guest'}</span>
+                                                <span className="action-name">{' ' + activity.title}</span>
+                                            </p>
+                                            <p>Card: {activity.propertyTitle}</p>
                                         </div>
                                     </li>
                                 )}
