@@ -34,7 +34,7 @@
     .body-div{
     height: 80%;
     width: 100%;
-    margin-top: 5px;
+    margin-top: 15px;
 }
     // .card-title{
     //     margin-bottom: 15px;
@@ -45,11 +45,14 @@
         background-color: #F4F5F7;
         display: flex;
         margin: 10vh auto 30px;
-        width: 70%;
+        width: 50%;
         height: 85vh;
         z-index: 11;
         padding: 20px;
         transform: translate(0, -15px);
+        @media (max-width:1000px){
+            width: 70%;
+        }
         .btn-card-remove{
             padding:0;
             width: 30px;
@@ -118,7 +121,7 @@
 @media (max-width:420px){
     .card-modal{
     .details-modal{
-        width: 100%;
+        width: 95%;
     }}
 }
 .cd-subt{
