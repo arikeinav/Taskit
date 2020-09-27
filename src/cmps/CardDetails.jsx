@@ -2,25 +2,23 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
-import { FaCheckCircle, FaUserCircle, FaFileImage, FaTrashAlt, FaCalendarAlt } from "react-icons/fa";
+import { FaCheckCircle, FaFileImage, FaTrashAlt, FaCalendarAlt } from "react-icons/fa";
 import { BiMenu, } from "react-icons/bi";
 import { MdColorLens, MdInvertColors } from "react-icons/md";
-
-import { TwitterPicker } from 'react-color'
-
-import EditableLabel from 'react-inline-editing';
-
-
 import TextField from '@material-ui/core/TextField';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Scroll from 'react-scroll';
+import { TwitterPicker } from 'react-color'
+import EditableLabel from 'react-inline-editing';
+
 import { ColorModal } from './ColorModal'
 import { boardService } from '../services/boardService'
 import { AddImg } from './AddImg'
 import { Checklist } from './Checklist'
 import ChecklistAdd from './ChecklistAdd';
 import { updateBoard } from '../store/actions/boardActions'
+import { CardInvite } from './CardInvite'
 
 var Element = Scroll.Element;
 
@@ -81,7 +79,7 @@ export class _CardDetails extends Component {
     }
     handleFocusOut = (title) => {
         this.updateLocalCard('title', title)
-       
+
     }
     onRemoveDuedate = () => {
         this.updateState('isTimeEdit', false)
@@ -161,10 +159,22 @@ export class _CardDetails extends Component {
         this.setState({ isAddColorModalShown: false })
         this.setState({ isLabelesEdit: false })
     }
+    getAvatar(member) {
+        if (member && member.imgUrl) {
+            return <Avatar key={member._id} src={member.imgUrl} className="avatar" />
+        }
+        if (member) {
+            return <Avatar key={member._id} className="avatar">{member.userName.substring(0, 1).toUpperCase()}{member.userName.substring(1, 2).toUpperCase()}</Avatar>
+        }
+        return <Avatar className="avatar" />
+    }
 
     render() {
         if (!this.state.card) return <div>Loading...</div>
         const { card } = this.state
+        console.log("render -> card", card)
+        const { board } = this.props
+        console.log("render -> board", board)
 
         return (
             <div className="card-modal flex align-center">
@@ -187,9 +197,6 @@ export class _CardDetails extends Component {
                         }
                     </header>
                     <div className="body-div flex">
-
-
-
                         <Element style={{
                             height: '400px',
                             width: '100%',
@@ -197,8 +204,6 @@ export class _CardDetails extends Component {
                             overflowX: 'hidden',
                         }}>
                             <div className="modal-details-left">
-
-
                                 <EditableLabel text={card.title}
 
                                     onFocusOut={this.handleFocusOut}
@@ -206,13 +211,13 @@ export class _CardDetails extends Component {
                                     inputHeight='34px'
                                     cursor='pointer'
                                     labelFontSize='1.5rem'
-                                    inputFontWeight='400' 
+                                    inputFontWeight='400'
                                     labelFontWeight='700' />
                                 <div>
-                                {(card.labels && card.labels.length > 0) &&
-                                        <div style={{ margin: '15px 0', height: '40px'}} className="flex">
+                                    {(card.labels && card.labels.length > 0) &&
+                                        <div style={{ margin: '15px 0', height: '40px' }} className="flex">
                                             <div className="flex align-center">
-                                            <p  style={{ marginRight: '10px' }} className="cd-subt">Labels: </p>
+                                                <p style={{ marginRight: '10px' }} className="cd-subt">Labels: </p>
                                                 {card.labels.map(label => <div key={label} onClick={() => this.onRemoveLabel(label)} className="small-label" style={{ backgroundColor: label }} />)}
                                             </div>
                                         </div>
@@ -243,26 +248,23 @@ export class _CardDetails extends Component {
                                     }
                                 </div>
 
-                                <div className="flex column justify-center">
-                                    <button className="btn btn-invite self-start" > <FaUserCircle style={{ marginRight: "5px" }} /> Invite</button>
+                                <div className="members-container flex">
+
+                                    {/* <button className="btn btn-invite self-start" > <FaUserCircle style={{ marginRight: "5px" }} /> Invite</button> */}
+
+                                    <CardInvite board={board} card={card} updateBoard={this.props.updateBoard} />
+
                                     {(card.members && card.members.length > 0) &&
                                         <div>
-                                            <p className="small-header">Members</p>
                                             <section className="avatar-members flex">
-                                                {card.assignedMembers &&
-                                                    <AvatarGroup max={3}>
-                                                        {card.assignedMembers.map(member => {
-                                                            return member.imgUrl ?
-                                                                <Avatar key={member._id} asrc={member.imgUrl}></Avatar>
-                                                                :
-                                                                <Avatar key={member._id} src={member.imgUrl}>{member.userName.substring(0, 1).toUpperCase()}{member.userName.substring(1, 2).toUpperCase()}</Avatar>
-                                                        }
-                                                        )}
+                                                {card.members &&
+                                                    <AvatarGroup max={4}>
+                                                        {card.members.map(member => this.getAvatar(member))}
                                                     </AvatarGroup>
                                                 }
                                             </section>
-                                        </div>}
-                                   
+                                        </div>
+                                    }
                                 </div>
 
                                 {(this.state.isTimeEdit || card.dueDate) &&
