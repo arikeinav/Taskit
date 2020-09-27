@@ -139,7 +139,7 @@ export class _SideMenu extends Component {
                         <div className="activity-log flex align-center space-between">
                             <div className="flex align-center">
                                <AiOutlineMenu/>
-                                <span>Activity</span>
+                                <span> Activity</span>
                             </div>
                             <p className="delete-activities" onClick={this.removeAllActivity}>Delete all</p>
                         </div>
