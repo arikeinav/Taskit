@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import Swal from 'sweetalert2'
-import { BsListNested, BsCardHeading } from "react-icons/bs";
+// import { BsListNested, BsCardHeading } from "react-icons/bs";
 import { Avatar } from '@material-ui/core';
 import { VscChromeClose } from "react-icons/vsc";
 import { IoIosArrowBack } from "react-icons/io";
 import { connect } from "react-redux";
 import { MdColorLens } from "react-icons/md";
+import { AiOutlineMenu } from "react-icons/ai";
+
 
 // import { createBrowserHistory } from 'history';
 import { withRouter } from "react-router";
@@ -105,7 +107,7 @@ export class _SideMenu extends Component {
         return (
             <div className="side-menu" >
                 <Element style={{
-                    height: 'calc(100vh - 50px)',
+                    height: 'calc(100vh - 60px)',
                     width: '100%',
                     overflow: 'scroll',
                     overflowX: 'hidden',
@@ -135,8 +137,8 @@ export class _SideMenu extends Component {
                         }
                         <hr />
                         <div className="activity-log flex align-center space-between">
-                            <div>
-                                <BsListNested />
+                            <div className="flex align-center">
+                               <AiOutlineMenu/>
                                 <span>Activity</span>
                             </div>
                             <p className="delete-activities" onClick={this.removeAllActivity}>Delete all</p>

@@ -98,7 +98,7 @@ export class _CardList extends Component {
                             inputHeight='34px'
                             cursor='pointer'
                             // inputMaxLength='50'
-                            labelFontWeight='bold'
+                            // labelFontWeight='bold'
                             inputFontWeight='400'
                             labelClassName='my-label-class' />
                    
