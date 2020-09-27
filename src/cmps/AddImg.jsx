@@ -21,6 +21,7 @@ export class AddImg extends Component {
 
     }
     onAddImg = async (ev) => {
+        console.log(ev.target.files[0])
         const imgUrl = await cloudinaryService.uploadImg(ev)
         this.onSelectImg(imgUrl)
     }

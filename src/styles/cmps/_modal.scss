@@ -40,8 +40,16 @@
     
     
 }
+.canvas-modal-content{
+    padding: 10px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    position: relative;
+}
 @media (max-width:800px){
     .modal-content {
     max-width: 65%;
     }
+    
 }
