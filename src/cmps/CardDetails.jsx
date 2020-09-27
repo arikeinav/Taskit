@@ -172,9 +172,7 @@ export class _CardDetails extends Component {
     render() {
         if (!this.state.card) return <div>Loading...</div>
         const { card } = this.state
-        console.log("render -> card", card)
         const { board } = this.props
-        console.log("render -> board", board)
 
         return (
             <div className="card-modal flex align-center">

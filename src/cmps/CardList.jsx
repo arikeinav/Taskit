@@ -48,7 +48,6 @@ export class _CardList extends Component {
         let groups = Array.from(board.groups)
         const idx = groups.findIndex(group => group.id === this.props.group.id)
         let group = this.props.group
-        console.log("handleFocusOut -> group", group)
         group.title = groupTitle
         groups.splice(idx, 1, group)
         board.groups = groups
@@ -56,13 +55,11 @@ export class _CardList extends Component {
 
     }
     onGroupColorChange = (color) => {
-        console.log(color)
         const board = this.props.board
         let groups = Array.from(board.groups)
         const idx = groups.findIndex(group => group.id === this.props.group.id)
         let group = this.props.group
         group.bgColor = color
-        console.log(group)
         groups.splice(idx, 1, group)
         board.groups = groups
         this.props.updateBoard(board)
