@@ -76,8 +76,7 @@ export class _SideMenu extends Component {
             }
         })
     }
-    getAvatar(activity) {
-        const member = activity.byMember
+    getAvatar(member) {
         if (member && member.imgUrl) {
             return <Avatar key={member._id} src={member.imgUrl} className="avatar" />
         }
@@ -148,11 +147,12 @@ export class _SideMenu extends Component {
                                 {activities.map(activity =>
                                     <li key={activity.id} className="one-activity flex">
 
-                                        {this.getAvatar(activity)}
+                                        {this.getAvatar(activity.byMember)}
 
                                         <div className="one-activity">
-                                            
-                                <p>{activity.byMember +' '}{activity.title}</p>
+
+                                            {/* <p>{activity.title}</p> */}
+                                            <p>{activity.byMember ? activity.byMember.userName : 'Name'}:{activity.title}</p>
                                             <p>In Card: {activity.propertyTitle}</p>
 
                                         </div>

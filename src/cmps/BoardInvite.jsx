@@ -7,11 +7,7 @@ import { Avatar } from '@material-ui/core';
 
 import { userService } from '../services/userService'
 
-
-
-
-
-export function InviteModal({ board, updateBoard }) {
+export function BoardInvite({ board, updateBoard }) {
 
     const allMembers = [
         {
@@ -48,25 +44,16 @@ export function InviteModal({ board, updateBoard }) {
     }
     const onSelectMember = async (userId) => {
         setAnchorEl(null);
-
         if (board.members) {
-            const memberInBoard = board.members.filter(member => {
-                
-                console.log("onSelectMember -> member.id", member.id)
-                console.log("onSelectMember -> userId", userId)
-                return member._id === userId
-            })
+            const memberInBoard = board.members.filter(member => member._id === userId)
             if (memberInBoard.length > 0) return
             const user = await userService.getById(userId)
             board.members.push(user)
-            updateBoard(board)
-            console.log("onSelectMember -> user", user)
         } else {
             const user = await userService.getById(userId)
             board.members = [user]
-            updateBoard(board)
-            console.log("onSelectMember -> user", user)
         }
+        updateBoard(board)
     }
 
 
@@ -75,7 +62,7 @@ export function InviteModal({ board, updateBoard }) {
             <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} >
 
                 <p className="btn invite-btn"><FaUserCircle style={{ margin: "0px 5px -2px" }} />Invite</p>
-                <button className="btn invite-btn-small-screen"><FaUserCircle style={{ marginRight: "5px" }} /></button>
+                <p className="btn invite-btn-small-screen"><FaUserCircle style={{ marginRight: "5px" }} /></p>
 
             </Button>
             <Menu
