@@ -35,9 +35,24 @@
     
     .one-activity{
         margin:1px;
+        align-items: center;
+        margin-left: 7px;
+        display: flex;
+        justify-content:flex-start;
+        list-style: none;
+        align-items: flex-start;
+        font-weight: 100;
 
-        .avatar{
-            margin-left: -55px;
+        .user-avatar{
+            margin-left: -47px;
+        }
+        .user-name{
+            color: black;
+            font-weight: bold;
+            margin:0;
+        }
+        .action-name{
+            font-weight: 600;
         }
     }
 
@@ -48,13 +63,13 @@
     margin: 3px 0px;
 }
 
-.side-menu-list li{
-    align-items: center;
-    margin-left: 3px;
-    display: flex;
-    justify-content:flex-start;
-    list-style: none;
-}
+// .side-menu-list li{
+//     align-items: center;
+//     margin-left: 3px;
+//     display: flex;
+//     justify-content:flex-start;
+//     list-style: none;
+// }
 .menu-header{
     height: 40px;
     align-items: center;
@@ -86,14 +101,14 @@ cursor: pointer;
  .activity-log span{
     margin-left: 5px;
  }
- .one-activity{
-    background-color: #cccccc1c;
-    width: 100%;
-    color: #1f1f1f;
-    font-size: 0.9rem;
-    padding-left: 12px;
-    margin: 40px 40px;
- }
+//  .one-activity{
+//     background-color: #cccccc1c;
+//     width: 100%;
+//     color: #1f1f1f;
+//     font-size: 0.9rem;
+//     padding-left: 12px;
+//     margin: 40px 40px;
+//  }
  .delete-activities{
     padding: 13px;
     cursor: pointer;
