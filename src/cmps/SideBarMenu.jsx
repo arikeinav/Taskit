@@ -7,13 +7,13 @@ import { IoIosArrowBack } from "react-icons/io";
 import { connect } from "react-redux";
 import { MdColorLens } from "react-icons/md";
 import { AiOutlineMenu } from "react-icons/ai";
+import { GoGraph } from "react-icons/go";
 
 
 // import { createBrowserHistory } from 'history';
 import { withRouter } from "react-router";
 
 import { AddImg } from './AddImg';
-import { Graph } from './Graph';
 import { MenuColorModal } from './MenuColorModal'
 import { updateBoard } from "../store/actions/boardActions";
 import { FaFileImage, FaTrashAlt } from "react-icons/fa";
@@ -58,7 +58,8 @@ export class _SideMenu extends Component {
         this.props.updateBoard(board)
     }
     onOpenGraph = () => {
-        this.setState({ idGraphShown: true })
+        this.props.onToggleMenu()
+        this.props.history.push(`/graph/${this.props.board._id}`)
     }
     removeAllActivity = () => {
         Swal.fire({
@@ -130,14 +131,11 @@ export class _SideMenu extends Component {
 
                         </div>
                         <hr />
-                        <div className="menu-action flex" onClick={this.onOpenGraph}>Graph</div>
-                        {this.state.idGraphShown &&
-                            <Graph />
-                        }
+                        <div className="menu-action flex" onClick={this.onOpenGraph}><GoGraph /><span>Graph</span></div>
                         <hr />
                         <div className="activity-log flex align-center space-between">
                             <div className="flex align-center">
-                               <AiOutlineMenu/>
+                                <AiOutlineMenu />
                                 <span> Activity</span>
                             </div>
                             <p className="delete-activities" onClick={this.removeAllActivity}>Delete all</p>
@@ -147,7 +145,7 @@ export class _SideMenu extends Component {
                                 {activities.map(activity =>
                                     <li key={activity.id} className="one-activity flex">
 
-                                    <span className="user-avatar">{this.getAvatar(activity.byMember)}</span>
+                                        <span className="user-avatar">{this.getAvatar(activity.byMember)}</span>
 
                                         <div className="one-activity flex column">
 

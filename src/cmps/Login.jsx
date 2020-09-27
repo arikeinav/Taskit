@@ -46,8 +46,6 @@ class _Login extends Component {
       <div >
         <h3>Login to Taskit</h3>
         <form className="login-page" onSubmit={this.doLogin}>
-          
-      
               <TextField
             id="outlined-basic"
             type="text"

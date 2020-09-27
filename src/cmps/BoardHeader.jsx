@@ -39,7 +39,6 @@ export class BoardHeader extends Component {
         return (
             <div className="board-header flex space-between">
                 <div className="name-and-member flex">
-
                     <div style={{ marginLeft: "10px", alignSelf: "center" }}>  <EditableLabel text={board.title} onFocusOut={this.handleFocusOut}
                         inputWidth='200px'
                         inputHeight='34px'
@@ -48,7 +47,7 @@ export class BoardHeader extends Component {
                     </div>
 
                     {board.members &&
-                        <section className="BH2 avatar-members flex">
+                        <section className="avatar-members flex">
                             <AvatarGroup max={4}>
                                 {board.members.map(member =>
                                     member.imgUrl ?
@@ -61,19 +60,13 @@ export class BoardHeader extends Component {
                 </div>
                 <div className="flex">
 
-
-                    {/* <button className="BH3 btn board-header-btn flex" onClick={() => this.onToggleInviteModal(true)}><FaUserCircle style={{ margin: "0px 5px -2px" }} />Invite</button> */}
                     <BoardInvite board={board} updateBoard={this.props.updateBoard} />
 
+                    <button className="btn board-header-btn menu flex" onClick={this.toggleMenu}><AiOutlineMenu style={{ margin: "0px 5px -2px" }} />Menu</button>
 
-                    <button className="BH4 btn board-header-btn menu flex" onClick={this.toggleMenu}><AiOutlineMenu style={{ margin: "0px 5px -2px" }} />Menu</button>
-
-                    {/* <button className="BH3 btn board-header-btn-small-screen"><FaUserCircle style={{ marginRight: "5px" }} /></button> */}
-                    <button className="BH4 btn board-header-btn-small-screen menu" onClick={this.toggleMenu}><AiOutlineMenu style={{ marginRight: "5px" }} /></button>
+                    <button className="btn board-header-btn-small-screen menu" onClick={this.toggleMenu}><AiOutlineMenu style={{ marginRight: "5px" }} /></button>
                 </div>
                 {this.state.isMenuShow && <SideMenu onToggleMenu={this.toggleMenu} />}
-
-
             </div>
         )
     }
