@@ -36,12 +36,14 @@ export function CardInvite({ board, card, updateBoard }) {
 
     return (
         <div className="invite-modal">
-            <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} >
-
+            <div onClick={handleClick} className="board-header-invite-details">
+                <p className="invite-details-btn"><FaUserCircle style={{ margin: "0px 5px -2px" }} />Invite</p>
+                <p className="invite-details-btn-small-screen"><FaUserCircle /></p>
+            </div>
+            {/* <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} >
                 <p className="btn btn-invite"><FaUserCircle style={{ margin: "0px 5px -2px" }} />Invite</p>
                 <p className="btn invite-btn-small-screen"><FaUserCircle style={{ marginRight: "5px" }} /></p>
-
-            </Button>
+            </Button> */}
             <Menu
                 id="simple-menu"
                 anchorEl={anchorEl}
