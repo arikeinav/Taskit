@@ -41,7 +41,7 @@
         @media (max-width: $small-screen){
             display: block;
             font-size: 1.5rem;
-            padding: 3px 8px 4px 13px;
+            padding: 10px 15px 4px 13px;
             margin: -5px 5px;
             color: white;
             border: none;
@@ -49,5 +49,35 @@
             width: 20px;
             position: relative;
             top: -2px;
+    }
+}
+
+.board-header-invite-details{
+    padding: 10px 0;
+
+    .invite-details-btn{
+        display: block;
+        padding: 9px;
+        background-color: #E2E4E9;
+        margin: 7px 14px 6px 0;
+        height: 33px;
+        position: relative;
+        top: -3px;
+        cursor: pointer;
+
+        @media (max-width: $small-screen){
+            display: none;
+        }
+    }
+
+    .invite-details-btn-small-screen{
+        display: none;
+
+        @media (max-width: $small-screen){
+            display: block;
+            cursor: pointer;
+            font-size: 38px;
+            margin: 0px 0 0 -14px;
+        }
     }
 }

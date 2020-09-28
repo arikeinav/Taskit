@@ -59,12 +59,11 @@ export function BoardInvite({ board, updateBoard }) {
 
     return (
         <div className="invite-modal">
-            <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} >
-
+            <div onClick={handleClick} className="board-header-invite">
                 <p className="btn invite-btn"><FaUserCircle style={{ margin: "0px 5px -2px" }} />Invite</p>
-                <p className="btn invite-btn-small-screen"><FaUserCircle style={{ marginRight: "5px" }} /></p>
-
-            </Button>
+                <p className="btn invite-btn-small-screen"><FaUserCircle /></p>
+            </div>
+            
             <Menu
                 id="simple-menu"
                 anchorEl={anchorEl}
