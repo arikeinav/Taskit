@@ -131,7 +131,7 @@ export class _SideMenu extends Component {
 
                         </div>
                         <hr />
-                        <div className="menu-action flex" onClick={this.onOpenGraph}><GoGraph /><span>Graph</span></div>
+                        <div className="menu-action flex" style={{paddingLeft:'5px'}} onClick={this.onOpenGraph}><GoGraph /><span>Graph</span></div>
                         <hr />
                         <div className="activity-log flex align-center space-between">
                             <div className="flex align-center">
