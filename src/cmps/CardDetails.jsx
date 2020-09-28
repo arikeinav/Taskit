@@ -371,16 +371,12 @@ export class _CardDetails extends Component {
 
                             <button className="btn align-center" style={{display: 'flex'}} onClick={() => (this.setState({ isYoutubeShown: true }))}><FaYoutube style={{ marginRight: "6px", height: '12px', width: '12px' }}/> YouTube</button>
                             {this.state.isYoutubeShown && <div style={{border: "1px solid black"}}><EditableLabel 
-                                text={'Paste Url Here'}
-                                inputPlaceHolder='Enter Youtube Url Here'
-                                onFocusOut={this.youtubeFunc}
-                                inputWidth='110px'
-                                inputHeight='30px'
+                                initialValue={'Paste Url Here'}
+                                save={(url)=>this.youtubeFunc(url)}
+                         
+                                labelClassName='youtube-label'
                                 inputClassName='youtube-input'
-                                cursor='pointer'
-                                labelFontSize='0.8rem'
-                                inputFontWeight='400'
-                                labelFontWeight='400' /></div>
+                                /></div>
                             }
                             <button onClick={()=>this.setState({isCanvas:true})} className="btn"><FaPaintBrush style={{ marginRight: "6px" }}/>
 
