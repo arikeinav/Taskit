@@ -113,7 +113,6 @@ export class _ChecklistPreview extends Component {
     let updtTitle= this.props.checklist.title
     updtTitle=title
     checklist.title=updtTitle
-    console.log("handleFocusOut -> checklist", checklist)
     this.props.onUpdateChecklists(checklist)
     }
 

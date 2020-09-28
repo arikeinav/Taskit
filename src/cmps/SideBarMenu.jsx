@@ -7,13 +7,13 @@ import { IoIosArrowBack } from "react-icons/io";
 import { connect } from "react-redux";
 import { MdColorLens } from "react-icons/md";
 import { AiOutlineMenu } from "react-icons/ai";
+import { GoGraph } from "react-icons/go";
 
 
 // import { createBrowserHistory } from 'history';
 import { withRouter } from "react-router";
 
 import { AddImg } from './AddImg';
-import { Graph } from './Graph';
 import { MenuColorModal } from './MenuColorModal'
 import { updateBoard } from "../store/actions/boardActions";
 import { FaFileImage, FaTrashAlt } from "react-icons/fa";
@@ -58,7 +58,8 @@ export class _SideMenu extends Component {
         this.props.updateBoard(board)
     }
     onOpenGraph = () => {
-        this.setState({ idGraphShown: true })
+        this.props.onToggleMenu()
+        this.props.history.push(`/graph/${this.props.board._id}`)
     }
     removeAllActivity = () => {
         Swal.fire({
@@ -76,8 +77,7 @@ export class _SideMenu extends Component {
             }
         })
     }
-    getAvatar(activity) {
-        const member = activity.byMember
+    getAvatar(member) {
         if (member && member.imgUrl) {
             return <Avatar key={member._id} src={member.imgUrl} className="avatar" />
         }
@@ -131,14 +131,11 @@ export class _SideMenu extends Component {
 
                         </div>
                         <hr />
-                        <div className="menu-action flex" onClick={this.onOpenGraph}>Graph</div>
-                        {this.state.idGraphShown &&
-                            <Graph />
-                        }
+                        <div className="menu-action flex" onClick={this.onOpenGraph}><GoGraph /><span>Graph</span></div>
                         <hr />
                         <div className="activity-log flex align-center space-between">
                             <div className="flex align-center">
-                               <AiOutlineMenu/>
+                                <AiOutlineMenu />
                                 <span> Activity</span>
                             </div>
                             <p className="delete-activities" onClick={this.removeAllActivity}>Delete all</p>
@@ -148,13 +145,15 @@ export class _SideMenu extends Component {
                                 {activities.map(activity =>
                                     <li key={activity.id} className="one-activity flex">
 
-                                        {this.getAvatar(activity)}
+                                        <span className="user-avatar">{this.getAvatar(activity.byMember)}</span>
 
-                                        <div className="one-activity">
-                                            
-                                <p>{activity.byMember +' '}{activity.title}</p>
-                                            <p>In Card: {activity.propertyTitle}</p>
+                                        <div className="one-activity flex column">
 
+                                            <p>
+                                                <span className="user-name">{activity.byMember ? activity.byMember.userName : 'Guest'}</span>
+                                                <span className="action-name">{' ' + activity.title}</span>
+                                            </p>
+                                            <p>Card: {activity.propertyTitle}</p>
                                         </div>
                                     </li>
                                 )}
