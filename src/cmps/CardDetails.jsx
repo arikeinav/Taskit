@@ -2,16 +2,19 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
-import { FaCheckCircle, FaFileImage, FaTrashAlt, FaCalendarAlt } from "react-icons/fa";
+import { FaCheckCircle, FaFileImage, FaTrashAlt, FaCalendarAlt, FaYoutube } from "react-icons/fa";
 import { BiMenu, } from "react-icons/bi";
 import { MdColorLens, MdInvertColors } from "react-icons/md";
+
+import { TwitterPicker } from 'react-color'
+
+import EditableLabel from 'react-inline-editing';
+import ReactPlayer from 'react-player/youtube'
+
 import TextField from '@material-ui/core/TextField';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Scroll from 'react-scroll';
-import { TwitterPicker } from 'react-color'
-import EditableLabel from 'react-inline-editing';
-
 import { ColorModal } from './ColorModal'
 import { boardService } from '../services/boardService'
 import { AddImg } from './AddImg'
@@ -31,7 +34,9 @@ export class _CardDetails extends Component {
         isTimeEdit: false,
         isLabelesEdit: false,
         isChecklistEdit: false,
-        isAddColorModalShown: false
+        isAddColorModalShown: false,
+        isYoutubeShown: false,
+        // youTubeUrl:''
     }
     componentDidMount() {
         const card = boardService.getCardById(this.props.board, this.props.groupId, this.props.cardId)
@@ -40,6 +45,9 @@ export class _CardDetails extends Component {
 
     updateState = (key, val) => {
         this.setState({ [key]: val })
+        if(key==='isAddImgModalShown'){
+            this.onRemoveYoutube()
+        }
     }
     onRmoveModal = () => {
         this.saveCard()
@@ -53,6 +61,11 @@ export class _CardDetails extends Component {
     onRemoveImg = () => {
         const card = this.state.card
         delete card.imgUrl
+        this.setState({ card })
+    }
+    onRemoveYoutube = () => {
+        const card = this.state.card
+        delete card.youtube
         this.setState({ card })
     }
     saveCard = () => {
@@ -169,6 +182,13 @@ export class _CardDetails extends Component {
         return <Avatar className="avatar" />
     }
 
+    youtubeFunc = (url)=>{
+        this.setState({isYoutubeShown:false})
+        this.onRemoveImg()
+        this.updateLocalCard('youtube',url)
+        // this.saveCard()
+    }
+
     render() {
         if (!this.state.card) return <div>Loading...</div>
         const { card } = this.state
@@ -182,11 +202,14 @@ export class _CardDetails extends Component {
                 <div className="details-modal flex column" onClick={this.onModalClick}>
 
                     <header className="card-header flex column align-center" style={{ backgroundColor: card.bgColor }}>
-                        {card.imgUrl &&
 
+                        {card.youtube && <ReactPlayer width='50%' height='100%' url={card.youtube} />
+                        ||
+                        card.imgUrl &&
                             <img className="card-img" src={card.imgUrl} alt="Loading" />
                         }
                         {card.imgUrl && <button onClick={this.onRemoveImg} className="btn delete-img-btn" style={{ paddingLeft: "10px", paddingRight: "6px" }}><FaTrashAlt style={{ marginRight: "5px" }} /></button>}
+
 
                         {this.state.isAddColorModalShown &&
                             <div>
@@ -286,15 +309,29 @@ export class _CardDetails extends Component {
                             </div>
                         </Element >
                         <div className="side-bar-details-right flex column justify-start">
-                            <button className="btn" onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{ marginRight: "7px" }} />Cover</button>
+                            <button className="btn align-center" style={{display: 'flex'}} onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{ marginRight: "7px" }} />Cover</button>
 
-                            <button className="btn" onClick={this.onOpenColorModal}><MdColorLens style={{ marginRight: "3px", height: '12px', width: '12px' }} />Color</button>
+                            <button className="btn align-center" style={{display: 'flex'}} onClick={this.onOpenColorModal}><MdColorLens style={{ marginRight: "3px", height: '12px', width: '12px' }} />Color</button>
 
-                            <button className="btn" onClick={() => this.openChecklistEditor()}><FaCheckCircle style={{ marginRight: "6px" }} />Checklist</button>
-                            <button onClick={this.onOpenDuedate} className="btn"><FaCalendarAlt style={{ marginRight: "5px" }} /> Due Date</button>
-                            <button onClick={this.onOpenLabelModal} className="btn"><MdInvertColors style={{ marginRight: "6px", height: '12px', width: '12px' }} />Labels</button>
+                            <button className="btn align-center" style={{display: 'flex'}} onClick={() => this.openChecklistEditor()}><FaCheckCircle style={{ marginRight: "6px" }} />Checklist</button>
+                            <button onClick={this.onOpenDuedate} className="btn align-center"><FaCalendarAlt style={{ marginRight: "5px" }} /> Due Date</button>
+                            <button onClick={this.onOpenLabelModal} style={{display: 'flex'}} className="btn align-center"><MdInvertColors style={{ marginRight: "5px", height: '12px', width: '12px' }} />Labels</button>
                             {this.state.isLabelesEdit &&
                                 <ColorModal className="color-modal" onSaveLabels={this.onSaveLabels} labels={card.labels} />}
+
+                            <button className="btn align-center" style={{display: 'flex'}} onClick={() => (this.setState({ isYoutubeShown: true }))}><FaYoutube style={{ marginRight: "6px", height: '12px', width: '12px' }}/> YouTube</button>
+                            {this.state.isYoutubeShown && <div style={{border: "1px solid black"}}><EditableLabel 
+                                text={'Paste Url Here'}
+                                inputPlaceHolder='Enter Youtube Url Here'
+                                onFocusOut={this.youtubeFunc}
+                                inputWidth='110px'
+                                inputHeight='30px'
+                                inputClassName='youtube-input'
+                                cursor='pointer'
+                                labelFontSize='0.8rem'
+                                inputFontWeight='400'
+                                labelFontWeight='400' /></div>
+                            }
                             <button onClick={this.onHandleRemove} className="btn"> <FaTrashAlt style={{ marginRight: "6px" }} />Card</button>
                         </div>
 

@@ -6,12 +6,10 @@ import { Link } from 'react-router-dom'
 export function Home() {
     return (
         <div>
-            <div className="home  ">
-            {/* <Link to="/board"><p>Start</p></Link> */}
-<img src="https://res.cloudinary.com/dsfnyykw9/image/upload/v1601112428/kanban5_fll98a.jpg" alt="img"/>
-              
-
-                
+            <div className="home">
+            <Link className="enter" to="/board"><p>Enter</p></Link>
+    <img src="https://res.cloudinary.com/dsfnyykw9/image/upload/v1601112428/kanban5_fll98a.jpg" alt="img"/>
+            
             </div>
             <div className="home-details-comtainer">
                
