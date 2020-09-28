@@ -5,7 +5,7 @@ import { CardPreview } from './CardPreview'
 import { AddText } from './AddText'
 import styled from 'styled-components'
 import { SimpleMenu } from './CardListMenu'
-import EditableLabel from 'react-inline-editing'
+import EditableLabel from 'react-editable-label'
 import Scroll from 'react-scroll';
 import { updateBoard } from '../store/actions/boardActions'
 var Element = Scroll.Element;
@@ -82,7 +82,7 @@ export class _CardList extends Component {
 
     }
      longTxt (text) {
-        const textToShow =(text.length <= 20)? text : text.substr(0,20).trim() + '...';    
+        const textToShow =(text.length <= 20)? text : text.substring(0,20).trim() + '...';    
             return textToShow
                    
      }
@@ -93,16 +93,16 @@ export class _CardList extends Component {
         return (
             <div style={{ backgroundColor: (group.bgColor) ? (group.bgColor) : '#ebecf0' }} className="card-list flex column" id="card-container">
                 <header className="card-header flex space-between align-center">
+                
+                       
+                            <EditableLabel 
+                         initialValue={(group.title)}
+                         save={value => {this.handleFocusOut(value)}}
+                         inputClass='title-input'
+                         labelClass='my-label-class'
+                         
+                            />
                   
-                        <EditableLabel text={this.longTxt(group.title)}  onFocusOut={this.handleFocusOut}
-                            inputWidth='200px'
-                            inputHeight='34px'
-                            cursor='pointer'
-                            // inputMaxLength='50'
-                            // labelFontWeight='bold'
-                            inputFontWeight='400'
-                            labelClassName='my-label-class' />
-                   
                    <SimpleMenu onShowColorTogglle={this.onShowColorTogglle} onGroupColorChange={this.onGroupColorChange} isGroupColor={this.state.isGroupColor} isDeleteGroup={this.state.isDeleteGroup} onAddCard={this.updateState} onShowDeleteTogglle={this.onShowDeleteTogglle} onRemove={this.onRemoveGroup} group={group} />
                 </header>
                 <Element style={{

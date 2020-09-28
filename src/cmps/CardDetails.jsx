@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
-import { FaCheckCircle, FaFileImage, FaTrashAlt,FaUserCircle, FaCalendarAlt, FaYoutube } from "react-icons/fa";
+import { FaCheckCircle, FaFileImage, FaTrashAlt,FaUserCircle, FaCalendarAlt, FaYoutube ,FaPaintBrush} from "react-icons/fa";
 import { BiMenu, } from "react-icons/bi";
 import { MdColorLens, MdInvertColors } from "react-icons/md";
 import { TwitterPicker } from "react-color";
-import EditableLabel from 'react-inline-editing';
+import EditableLabel from 'react-editable-label'
 import ReactPlayer from 'react-player/youtube'
 import Canvas from "./Canvas";
 import TextField from '@material-ui/core/TextField';
@@ -251,9 +251,9 @@ export class _CardDetails extends Component {
 
                     <header className="card-header flex column align-center" style={{ backgroundColor: card.bgColor }}>
 
-                        {card.youtube && <ReactPlayer width='50%' height='100%' url={card.youtube} />
-                        ||
-                        card.imgUrl &&
+                        {card.youtube && <ReactPlayer width='50%' height='100%' url={card.youtube} />}
+                      
+                        {card.imgUrl &&
                             <img className="card-img" src={card.imgUrl} alt="Loading" />
                         }
                         {card.imgUrl && <button onClick={this.onRemoveImg} className="btn delete-img-btn" style={{ paddingLeft: "10px", paddingRight: "6px" }}><FaTrashAlt style={{ marginRight: "5px" }} /></button>}
@@ -273,15 +273,17 @@ export class _CardDetails extends Component {
                             overflowX: 'hidden',
                         }}>
                             <div className="modal-details-left">
-                                <EditableLabel text={card.title}
-
-                                    onFocusOut={this.handleFocusOut}
-                                    inputWidth='200px'
-                                    inputHeight='34px'
-                                    cursor='pointer'
-                                    labelFontSize='1.5rem'
-                                    inputFontWeight='400'
-                                    labelFontWeight='700' />
+                                
+                                    
+                                   
+                                    
+                                          <EditableLabel 
+                         initialValue={(card.title)}
+                         save={value => {this.handleFocusOut(value)}}
+                         inputClass='title-input'
+                         labelClass='my-label-class'
+                         
+                            />
                                 <div>
                                     {(card.labels && card.labels.length > 0) &&
                                         <div style={{ margin: '15px 0', height: '40px' }} className="flex">
@@ -380,7 +382,7 @@ export class _CardDetails extends Component {
                                 inputFontWeight='400'
                                 labelFontWeight='400' /></div>
                             }
-                            <button onClick={()=>this.setState({isCanvas:true})} className="btn">
+                            <button onClick={()=>this.setState({isCanvas:true})} className="btn"><FaPaintBrush style={{ marginRight: "6px" }}/>
 
                 
 Canvas
