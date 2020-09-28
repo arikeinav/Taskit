@@ -7,7 +7,7 @@ import React, { Component } from 'react'
 import { cloudinaryService } from '../services/cloudinaryService'
 
 export class AddImg extends Component {
-   
+
     onSelectImg = (imgUrl) => {
         if (this.props.card) {
             this.props.card.imgUrl = imgUrl
@@ -42,14 +42,13 @@ export class AddImg extends Component {
             <div className="add-img-page">
                 {!this.props.isForBoard && <div className="empty-modal" onClick={() => this.props.updateState('isAddImgModalShown', false)}></div>}
 
-                <div className={(this.props.isForBoard) ? '' : 'add-img-modal'}>
-                        <input onChange={this.onAddImg} style={ {width:'180px'}} type="file" />
-                <div className="add-private-img">
-                    {imgUrls.map((imgUrl, index) => <img onClick={() => this.onSelectImg(imgUrl)} className="img-preview" key={index} src={imgUrl} alt="Loading" />)}
+                <div className={(this.props.isForBoard) ? '' : 'add-img-modal flex column'}>
+                    <div className="add-private-img">
+                        {imgUrls.map((imgUrl, index) => <img onClick={() => this.onSelectImg(imgUrl)} className="img-preview" key={index} src={imgUrl} alt="Loading" />)}
+                        <input onChange={this.onAddImg} style={{ width: '180px' }} type="file" />
 
-                   
+                    </div>
                 </div>
-            </div>
             </div>
         )
     }

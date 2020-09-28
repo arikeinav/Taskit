@@ -2,6 +2,8 @@ import React from 'react'
 import { Draggable } from 'react-beautiful-dnd'
 import styled from 'styled-components'
 import NaturalDragAnimation from 'natural-drag-animation-rbdnd';
+import ReactPlayer from 'react-player/youtube'
+
 
 const Container = styled.div`
 background-color: ${props => (props.isDragging ? '#B5B5B5' : '#fff')};
@@ -33,7 +35,8 @@ export function CardPreview({ card, updateState, groupId, index, calcProgress })
                                     {card.checklist && <div className="footer-div-card-prev">{calcProgress(card.id)}</div>}
                                 </div>
                                 <p className="p-card-preview">{card.title}</p>
-                                {card.imgUrl && <img className="img-card-preview" src={card.imgUrl} alt="Loading" />}
+                                        {card.youtube && <ReactPlayer width='100%' height='100%' url={card.youtube} /> ||
+                                        card.imgUrl && <img className="img-card-preview" src={card.imgUrl} alt="Loading" />}
                             </div>
                             
                         </Container >
