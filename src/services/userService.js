@@ -29,23 +29,10 @@ function _handleLogin(user) {
   return user;
 }
 function getById(userId) {
+  console.log("getById -> userId", userId)
   return httpService.get(`user/${userId}`);
   // return storageService.get('user', userId)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function update(user) {
   return storageService.put('user', user)

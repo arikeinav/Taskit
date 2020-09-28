@@ -7,7 +7,7 @@ import { MembersChart } from '../cmps/MembersChart'
 
 const datasetsForLine = [
     {
-        label: 'Arik Einav',
+        label: '',
         fillColor: 'rgba(220,220,220,0.2)',
         strokeColor: 'rgba(220,220,220,1)',
         pointColor: 'rgba(220,220,220,1)',
@@ -17,7 +17,7 @@ const datasetsForLine = [
         data: [0, 3.5, 5, 4, 6, 7, 6, 8],
     },
     {
-        label: 'Shlomi Koplianski',
+        label: '',
         fillColor: 'rgba(151,187,205,0.2)',
         strokeColor: 'rgba(151,187,205,1)',
         pointColor: 'rgba(151,187,205,1)',
@@ -27,17 +27,17 @@ const datasetsForLine = [
         data: [0, 3, 4, 5, 7, 5, 7, 7.5],
     },
     {
-        label: 'Shahar Sadof',
+        label: '',
         fillColor: 'rgba(151,187,205,0.2)',
         strokeColor: 'rgba(151,187,205,1)',
         pointColor: 'rgba(151,187,205,1)',
         pointStrokeColor: '#fff',
         pointHighlightFill: '#fff',
         pointHighlightStroke: 'rgba(151,187,205,1)',
-        data: [0, 3.5, 4, 6, 5, 7, 6, 8],
+        data: [0, 3.5, 4, 6, 4.5, 7, 5.5, 7.5],
     },
     {
-        label: 'Meital Lazarovich',
+        label: '',
         fillColor: 'rgba(151,187,205,0.2)',
         strokeColor: 'rgba(151,187,205,1)',
         pointColor: 'rgba(151,187,205,1)',
@@ -47,7 +47,7 @@ const datasetsForLine = [
         data: [0, 1, 2, 1, 1, 3, 2.5, 2],
     },
     {
-        label: 'Yaron Biton',
+        label: '',
         fillColor: 'rgba(151,187,205,0.2)',
         strokeColor: 'rgba(151,187,205,1)',
         pointColor: 'rgba(151,187,205,1)',
@@ -107,7 +107,7 @@ function pieData() {
 }
 function doughnutData() {
     const labels = ['Shahar', 'Arik', 'Shlomi']
-    const data = [4, 5, 3]
+    const data = [12, 17, 20]
     return {
         labels,
         datasets: [{
@@ -132,7 +132,8 @@ class _GraphDetails extends Component {
         boardId: null,
         data1: null,
         data2: null,
-        data3: null
+        data3: null,
+        currUser: 'Arik Einav'
     }
     componentDidMount() {
         const { boardId } = this.props.match.params;
@@ -142,8 +143,9 @@ class _GraphDetails extends Component {
         this.setState({ data3: lineData(0) })
     }
     memberNumber = (userToShow) => {
-        console.log("GraphDetails -> memberNumber -> num", userToShow)
-        this.setState({ data3: lineData(userToShow) })
+        console.log("memberNumber -> userToShow", userToShow)
+        this.setState({ data3: lineData(userToShow.num) })
+        this.setState({ currUser: userToShow.userName })
     }
     backToBoard = () => {
         this.props.history.push(`/board/${this.state.boardId}`)
@@ -156,24 +158,33 @@ class _GraphDetails extends Component {
 
         return (
             <div>
-            <button className="back-board-btn" onClick={this.backToBoard}>Back</button>
+                <button className="back-board-btn" onClick={this.backToBoard}>Back</button>
 
                 <div className="flex">
-                    <div className="graph-container">
-                        <Doughnut data={this.state.data1} options={options}
-                            width={500} height={250} />
+                    <div className="doughnut-chart">
+                        <h3>All Tasks</h3>
+                        <div className="graph-container">
+                            <Doughnut data={this.state.data1} options={options}
+                                width={500} height={250} />
+                        </div>
                     </div>
-                    <div className="graph-container">
-                        <Pie data={this.state.data2} options={options}
-                            width={500} height={250} />
+                    <div className="pie-chart">
+                        <h3>Status per member</h3>
+                        <div className="graph-container">
+                            <Pie data={this.state.data2} options={options}
+                                width={500} height={250} />
+                        </div>
                     </div>
                 </div>
-
-                <MembersChart memberNumber={this.memberNumber}/>
-                <div style={styles.graphContainer}>
-                    <LineChartData data={this.state.data3}
-                        options={options}
-                        width={600} height={150} />
+                <div className="line-chart">
+                    <h4>Tasks per day of {`${this.state.currUser}`}</h4>
+                    <MembersChart memberNumber={this.memberNumber} />
+                    <p>Tasks</p>
+                    <div style={styles.graphContainer}>
+                        <LineChartData data={this.state.data3}
+                            options={options}
+                            width={600} height={150} />
+                    </div>
                 </div>
             </div>
         )

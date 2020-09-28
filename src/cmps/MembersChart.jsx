@@ -45,19 +45,19 @@ export function MembersChart({memberNumber}) {
         var userToShow;
         switch (userName) {
             case 'Arik Einav':
-                userToShow = 0
+                userToShow = {num: 0, userName: 'Arik Einav'}
                 break;
             case 'Shlomi Koplianski':
-                userToShow = 1
+                userToShow = {num: 1, userName: 'Shlomi Koplianski'}
                 break;
             case 'Shahar Sadof':
-                userToShow = 2
+                userToShow = {num: 2, userName: 'Shahar Sadof'}
                 break;
             case 'Meital Lazarovich':
-                userToShow = 3
+                userToShow = {num: 3, userName: 'Meital Lazarovich'}
                 break;
             case 'Yaron Biton':
-                userToShow = 4
+                userToShow = {num: 4, userName: 'Yaron Biton'}
                 break;
         
             default:

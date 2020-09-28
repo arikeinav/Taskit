@@ -18,10 +18,7 @@
     }
 }
 .card{
-    display: flex;
-    flex-direction: column;
     border-radius: 3px;
-    justify-content: space-between;
 }
 .img-card-preview{
     border-bottom-left-radius:3px;
@@ -37,5 +34,7 @@
 .footer-div-card-prev{
     padding:5px;
     font-family: montserrat-medium; 
-    font-size: small;   
+    font-size: x-small;
+    padding-bottom: 0;  
         }
+

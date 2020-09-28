@@ -20,14 +20,9 @@
     }
 
     .name-and-member{
-        width: 150px;
-    }
-
-    .board-name{
-        margin: 5px 10px 0;
+        font-size: 1.1rem;
         @media (max-width: $small-screen){
-            font-size: 1.1rem;
-            margin-top: 8px;
+            font-size: 0.8rem;
         }
     }
     .avatar-members{
