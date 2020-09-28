@@ -59,10 +59,10 @@ export function BoardInvite({ board, updateBoard }) {
 
     return (
         <div className="invite-modal">
-            <div onClick={handleClick} className="board-header-invite">
-                <p className="btn invite-btn"><FaUserCircle style={{ margin: "0px 5px -2px" }} />Invite</p>
-                <p className="btn invite-btn-small-screen"><FaUserCircle /></p>
-            </div>
+            {/* <div onClick={handleClick} className="board-header-invite"> */}
+                <button onClick={handleClick}  className="btn invite-btn"><FaUserCircle style={{ margin: "0px 5px -2px" }} />Invite</button>
+                <button onClick={handleClick} className="btn invite-btn-small-screen"><FaUserCircle /></button>
+            {/* </div> */}
             
             <Menu
                 id="simple-menu"
