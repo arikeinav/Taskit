@@ -219,7 +219,7 @@ export class _CardDetails extends Component {
                     </header>
                     <div className="body-div flex">
                         <Element style={{
-                            height: '400px',
+                            height: '380px',
                             width: '100%',
                             overflow: 'scroll',
                             overflowX: 'hidden',
