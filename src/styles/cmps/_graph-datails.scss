@@ -1,7 +1,6 @@
 .graph-container{
     width: 50vw;
-
-   
+    margin-top: 45px;
 }
 .choose-member-btn{
     background-color: #E5E5E5;
@@ -11,4 +10,13 @@
     height: 47px;
     cursor: pointer;
     color: #666666;
+}
+.back-board-btn{
+    width: 9vw;
+    position: absolute;
+    right: 4px;
+    top: 54px;
+    height: 40px;
+    background-color: #2d636dc7;
+    color: white;
 }
