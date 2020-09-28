@@ -127,7 +127,7 @@ export class _CardList extends Component {
 
                 </Element>
                 {this.state.isAddCard ?
-                    <AddText onAdd={this.props.onAdd} type="Card" groupId={group.id} updateState={this.updateState} />
+                    <AddText style={{margin:"0"}} onAdd={this.props.onAdd} type="Card" groupId={group.id} updateState={this.updateState} />
                     :
                     <button className=" add-card-btn" onClick={() => this.updateState('isAddCard', true)}>+ Add card</button>
                 }

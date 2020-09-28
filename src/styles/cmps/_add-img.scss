@@ -10,14 +10,19 @@
         z-index: 11;
     
     }
-    .img-preview{
-        width: 80px;
-        height: 80px;
-        z-index: 12;
-        margin: 10px;
+   
+    .bg-img-preview{
         cursor: pointer;
         border-radius: 3px;
-         
+        width: 130px;
+        height: 100px;
+        z-index: 12;
+        margin: 10px;
+        &:hover{
+            -moz-box-shadow: 0 0 10px rgb(158, 158, 158);
+            -webkit-box-shadow: 0 0 10px rgb(158, 158, 158);
+            box-shadow: 0 0 10px rgb(158, 158, 158);
+        }
     }
  @media (max-width:1100px){
     .add-img-modal{
@@ -47,6 +52,7 @@
 
   }
  }
+ 
 
   
     .add-private-img{
@@ -57,5 +63,14 @@
         -webkit-box-shadow: 0 0 10px rgb(158, 158, 158);
         box-shadow: 0 0 10px rgb(158, 158, 158);
     }
+}
+.img-preview{
+    width: 80px;
+    height: 80px;
+    z-index: 12;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 3px;
+     
 }
 

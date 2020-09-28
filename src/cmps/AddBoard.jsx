@@ -34,7 +34,7 @@ export class AddBoard extends React.Component {
                     <div><AddImg isForBoard={this.props.isForBoard} onAddimg={this.onAddimg} /></div>
                     <div className="flex">
                         <button className="btn" style={{marginTop:'10px'}} >Add Board</button>
-                        {this.state.imgUrl && <img className="img-board-preview" src={this.state.imgUrl} alt="Loading" />}
+                        {this.state.imgUrl && <img className="img-preview" src={this.state.imgUrl} alt="Loading" />}
                     </div>
 
                 </form>

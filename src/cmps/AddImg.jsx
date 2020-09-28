@@ -38,17 +38,20 @@ export class AddImg extends Component {
             'https://res.cloudinary.com/dsfnyykw9/image/upload/v1600670086/giusy-iordache-ZtqDLEkJPcc-unsplash_ywibhv.jpg',
             'https://res.cloudinary.com/dsfnyykw9/image/upload/v1600680300/irfan-simsar-wxWulfjN-G0-unsplash_xwffbk.jpg',
             'https://res.cloudinary.com/dsfnyykw9/image/upload/v1601031276/carousel-1684591_s4p4ih.png',
+            'https://res.cloudinary.com/dsfnyykw9/image/upload/v1601031276/carousel-1684591_s4p4ih.png',
+            'https://res.cloudinary.com/dsfnyykw9/image/upload/v1601031276/carousel-1684591_s4p4ih.png',
+           
         ]
         return (
             <div className="add-img-page">
                 {!this.props.isForBoard && <div className="empty-modal" onClick={() => this.props.updateState('isAddImgModalShown', false)}></div>}
 
                 <div className={(this.props.isForBoard) ? '' : 'add-img-modal flex column'}>
-                    <div className="add-private-img">
-                        {imgUrls.map((imgUrl, index) => <img onClick={() => this.onSelectImg(imgUrl)} className="img-preview" key={index} src={imgUrl} alt="Loading" />)}
+                    <div className='add-private-img'>
+                        {imgUrls.map((imgUrl, index) => <img onClick={() => this.onSelectImg(imgUrl)} className={(this.props.isForMenu) ? 'bg-img-preview' :'img-preview' } key={index} src={imgUrl} alt="Loading" />)}
 
                     </div>
-                        <input onChange={this.onAddImg} className="self-center" style={{ width: '180px' }} type="file" />
+                        <input onChange={this.onAddImg} className="self-center" style={{ width: '180px',marginBottom:'5px' }} type="file" />
                 </div>
             </div>
         )
