@@ -46,9 +46,9 @@ export class AddImg extends Component {
                 <div className={(this.props.isForBoard) ? '' : 'add-img-modal flex column'}>
                     <div className="add-private-img">
                         {imgUrls.map((imgUrl, index) => <img onClick={() => this.onSelectImg(imgUrl)} className="img-preview" key={index} src={imgUrl} alt="Loading" />)}
-                        <input onChange={this.onAddImg} style={{ width: '180px' }} type="file" />
 
                     </div>
+                        <input onChange={this.onAddImg} className="self-center" style={{ width: '180px' }} type="file" />
                 </div>
             </div>
         )

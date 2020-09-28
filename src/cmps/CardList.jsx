@@ -103,7 +103,7 @@ export class _CardList extends Component {
                          
                             />
                   
-                   <SimpleMenu onShowColorTogglle={this.onShowColorTogglle} onGroupColorChange={this.onGroupColorChange} isGroupColor={this.state.isGroupColor} isDeleteGroup={this.state.isDeleteGroup} onAddCard={this.updateState} onShowDeleteTogglle={this.onShowDeleteTogglle} onRemove={this.onRemoveGroup} group={group} />
+                 <SimpleMenu style={{widte:'52px'}} onShowColorTogglle={this.onShowColorTogglle} onGroupColorChange={this.onGroupColorChange} isGroupColor={this.state.isGroupColor} isDeleteGroup={this.state.isDeleteGroup} onAddCard={this.updateState} onShowDeleteTogglle={this.onShowDeleteTogglle} onRemove={this.onRemoveGroup} group={group} />
                 </header>
                 <Element style={{
                     height: 'auto',
