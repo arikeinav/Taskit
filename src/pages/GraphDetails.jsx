@@ -156,7 +156,8 @@ class _GraphDetails extends Component {
 
         return (
             <div>
-            <button className="btn back-board-btn" onClick={this.backToBoard}>Back</button>
+            <button className="back-board-btn" onClick={this.backToBoard}>Back</button>
+
                 <div className="flex">
                     <div className="graph-container">
                         <Doughnut data={this.state.data1} options={options}
