@@ -9,7 +9,7 @@ import { MdColorLens, MdInvertColors } from "react-icons/md";
 import { TwitterPicker } from 'react-color'
 
 import EditableLabel from 'react-inline-editing';
-
+import ReactPlayer from 'react-player/youtube'
 
 import TextField from '@material-ui/core/TextField';
 import DatePicker from "react-datepicker";
@@ -33,7 +33,9 @@ export class _CardDetails extends Component {
         isTimeEdit: false,
         isLabelesEdit: false,
         isChecklistEdit: false,
-        isAddColorModalShown: false
+        isAddColorModalShown: false,
+        isYoutubeShown: false,
+        youTubeUrl:''
     }
     componentDidMount() {
         const card = boardService.getCardById(this.props.board, this.props.groupId, this.props.cardId)
@@ -81,7 +83,7 @@ export class _CardDetails extends Component {
     }
     handleFocusOut = (title) => {
         this.updateLocalCard('title', title)
-       
+
     }
     onRemoveDuedate = () => {
         this.updateState('isTimeEdit', false)
@@ -162,6 +164,11 @@ export class _CardDetails extends Component {
         this.setState({ isLabelesEdit: false })
     }
 
+    youtubeFunc = (url)=>{
+        console.log("youtubeFunc -> url", url)
+        this.setState({isYoutubeShown:false, youTubeUrl:url})
+    }
+
     render() {
         if (!this.state.card) return <div>Loading...</div>
         const { card } = this.state
@@ -174,8 +181,9 @@ export class _CardDetails extends Component {
                 <div className="details-modal flex column" onClick={this.onModalClick}>
 
                     <header className="card-header flex column align-center" style={{ backgroundColor: card.bgColor }}>
-                        {card.imgUrl &&
+                        <ReactPlayer width='50%' height='100%' url={this.state.youTubeUrl} />
 
+                        {card.imgUrl &&
                             <img className="card-img" src={card.imgUrl} alt="Loading" />
                         }
                         {card.imgUrl && <button onClick={this.onRemoveImg} className="btn delete-img-btn" style={{ paddingLeft: "10px", paddingRight: "6px" }}><FaTrashAlt style={{ marginRight: "5px" }} /></button>}
@@ -206,13 +214,13 @@ export class _CardDetails extends Component {
                                     inputHeight='34px'
                                     cursor='pointer'
                                     labelFontSize='1.5rem'
-                                    inputFontWeight='400' 
+                                    inputFontWeight='400'
                                     labelFontWeight='700' />
                                 <div>
-                                {(card.labels && card.labels.length > 0) &&
-                                        <div style={{ margin: '15px 0', height: '40px'}} className="flex">
+                                    {(card.labels && card.labels.length > 0) &&
+                                        <div style={{ margin: '15px 0', height: '40px' }} className="flex">
                                             <div className="flex align-center">
-                                            <p  style={{ marginRight: '10px' }} className="cd-subt">Labels: </p>
+                                                <p style={{ marginRight: '10px' }} className="cd-subt">Labels: </p>
                                                 {card.labels.map(label => <div key={label} onClick={() => this.onRemoveLabel(label)} className="small-label" style={{ backgroundColor: label }} />)}
                                             </div>
                                         </div>
@@ -262,7 +270,7 @@ export class _CardDetails extends Component {
                                                 }
                                             </section>
                                         </div>}
-                                   
+
                                 </div>
 
                                 {(this.state.isTimeEdit || card.dueDate) &&
@@ -295,6 +303,17 @@ export class _CardDetails extends Component {
                             <button onClick={this.onOpenLabelModal} className="btn"><MdInvertColors style={{ marginRight: "6px", height: '12px', width: '12px' }} />Labels</button>
                             {this.state.isLabelesEdit &&
                                 <ColorModal className="color-modal" onSaveLabels={this.onSaveLabels} labels={card.labels} />}
+                            <button className="btn" onClick={() => (this.setState({ isYoutubeShown: true }))}>YouTube</button>
+                            {this.state.isYoutubeShown && <EditableLabel 
+                                text={'Enter'}
+                                onFocusOut={this.youtubeFunc}
+                                inputWidth='200px'
+                                inputHeight='34px'
+                                cursor='pointer'
+                                labelFontSize='1.5rem'
+                                inputFontWeight='400'
+                                labelFontWeight='700' />
+                            }
                             <button onClick={this.onHandleRemove} className="btn"> <FaTrashAlt style={{ marginRight: "6px" }} />Card</button>
                         </div>
 

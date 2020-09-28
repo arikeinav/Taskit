@@ -142,7 +142,7 @@ export class _ChecklistPreview extends Component {
                         <button className="btn delete-checklist" onClick={() => this.props.removeChecklist()}>Delete Checklist</button>
                 </div>
                 <label htmlFor="progress-bar">Todos progress: {this.state.progressbar}%</label>
-                <progress style={{ width: '70%' }} id="progress-bar" value={`${this.state.progressbar}`} max="100"></progress>
+                <progress style={{ width: '50%' }} id="progress-bar" value={`${this.state.progressbar}`} max="100"></progress>
                 <p className="cd-subt" style={{ fontSize: '0.95rem'}}>Your Todos:</p>
                 <div className="grey-zone">
                     {checklist.todos && checklist.todos.map(todo => <TodoPreview key={todo.id} todo={todo} updateCheckbox={this.updateLocalChecklist} onRemoveTodo={this.onRemoveTodo} />)}
