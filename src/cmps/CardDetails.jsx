@@ -2,15 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
-import { FaCheckCircle, FaFileImage, FaTrashAlt, FaCalendarAlt, FaYoutube } from "react-icons/fa";
+import { FaCheckCircle, FaFileImage, FaTrashAlt,FaUserCircle, FaCalendarAlt, FaYoutube } from "react-icons/fa";
 import { BiMenu, } from "react-icons/bi";
 import { MdColorLens, MdInvertColors } from "react-icons/md";
-
-import { TwitterPicker } from 'react-color'
-
+import { TwitterPicker } from "react-color";
 import EditableLabel from 'react-inline-editing';
 import ReactPlayer from 'react-player/youtube'
-
+import Canvas from "./Canvas";
 import TextField from '@material-ui/core/TextField';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -36,8 +34,9 @@ export class _CardDetails extends Component {
         isChecklistEdit: false,
         isAddColorModalShown: false,
         isYoutubeShown: false,
-        // youTubeUrl:''
+        isCanvas: false,
     }
+    
     componentDidMount() {
         const card = boardService.getCardById(this.props.board, this.props.groupId, this.props.cardId)
         this.setState({ card })
@@ -58,6 +57,8 @@ export class _CardDetails extends Component {
         boardService.addActivity(this.props.board, 'Remove card', this.state.card, this.props.currUser)
         this.props.onRemoveCard(this.state.card.id)
     }
+
+  
     onRemoveImg = () => {
         const card = this.state.card
         delete card.imgUrl
@@ -77,6 +78,7 @@ export class _CardDetails extends Component {
         group.cards.splice(cardIdx, 1, this.state.card)
         this.props.updateBoard(newBoard)
     }
+   
     doneEdit = () => {
         this.updateState('isDescriptionEdit', false)
         this.saveCard()
@@ -100,23 +102,68 @@ export class _CardDetails extends Component {
         delete card.dueDate
         this.setState({ card })
         this.saveCard()
+  
     }
-    handleChangeDuedate = (data) => {
-        this.updateState('isTimeEdit', false)
-        this.updateLocalCard('dueDate', data)
-        this.saveCard()
+  handleChangeDuedate = (data) => {
+    this.updateState("isTimeEdit", false);
+    this.updateLocalCard("dueDate", data);
+    this.saveCard();
+  };
+  onSaveLabels = (val, ev) => {
+    ev.stopPropagation();
+    if (this.state.card.labels && this.state.card.labels.length > 4) return;
+    var labels = [val];
+    if (this.state.card.labels) {
+      labels = this.state.card.labels;
+      labels.push(val);
     }
-    onSaveLabels = (val, ev) => {
-        ev.stopPropagation();
-        if (this.state.card.labels && this.state.card.labels.length > 4) return;
-        var labels = [val]
-        if (this.state.card.labels) {
-            labels = this.state.card.labels
-            labels.push(val)
-        }
-        this.updateLocalCard('labels', labels)
-        boardService.addActivity(this.props.board, 'Add label', this.state.card, this.props.currUser)
+    this.updateLocalCard("labels", labels);
+    boardService.addActivity(
+      this.props.board,
+      "Add label",
+      this.state.card,
+      this.props.currUser
+    );
+  };
+  onRemoveLabel = (label) => {
+    const labels = this.state.card.labels;
+    const labelIdx = labels.indexOf(label);
+    labelIdx > -1 && labels.splice(labelIdx, 1);
+    this.updateLocalCard("labels", labels);
+  };
+  onOpenDuedate = () => {
+    this.updateLocalCard("dueDate", new Date());
+    this.setState({ isTimeEdit: true });
+    boardService.addActivity(
+      this.props.board,
+      "Add dueDate",
+      this.state.card,
+      this.props.currUser
+    );
+  };
+  saveChecklist = (checklist) => {
+    this.updateLocalCard("checklist", checklist);
+    this.saveCard();
+  };
+  addNewChecklist = (checklist) => {
+    this.saveChecklist(checklist);
+  };
+  removeChecklist = () => {
+    this.saveChecklist({});
+  };
+  onOpenLabelModal = (ev) => {
+    ev.stopPropagation();
+    if (this.state.isLabelesEdit) {
+      this.setState({ isLabelesEdit: false });
+      return;
     }
+    if (this.state.card.labels) {
+      if (this.state.card.labels.length < 6) {
+        this.setState({ isLabelesEdit: true });
+      }
+    } else {
+      this.setState({ isLabelesEdit: true });
+    }}
     onRemoveLabel = (label) => {
         const labels = this.state.card.labels
         const labelIdx = labels.indexOf(label);
@@ -168,6 +215,7 @@ export class _CardDetails extends Component {
         this.setState({ isAddColorModalShown: true })
         this.saveCard()
     }
+   
     onModalClick = () => {
         this.setState({ isAddColorModalShown: false })
         this.setState({ isLabelesEdit: false })
@@ -181,7 +229,7 @@ export class _CardDetails extends Component {
         }
         return <Avatar className="avatar" />
     }
-
+  
     youtubeFunc = (url)=>{
         this.setState({isYoutubeShown:false})
         this.onRemoveImg()
@@ -337,20 +385,24 @@ export class _CardDetails extends Component {
 
                     </div >
                     {this.state.isAddImgModalShown && <AddImg card={card} updateState={this.updateState} />}
+                    {this.state.isCanvas && <Canvas updateLocalCard={this.updateLocalCard} updateState={this.updateState} card={this.state.card}/>}
                 </div >
             </div >
         )
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        board: state.boardReducer.currBoard,
-        currUser: state.userReducer.loggedInUser
-    }
-}
+const mapStateToProps = (state) => {
+  return {
+    board: state.boardReducer.currBoard,
+    currUser: state.userReducer.loggedInUser,
+  };
+};
 const mapDispatchToProps = {
-    updateBoard,
-}
+  updateBoard,
+};
 
-export const CardDetails = connect(mapStateToProps, mapDispatchToProps)(_CardDetails)
+export const CardDetails = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(_CardDetails);
