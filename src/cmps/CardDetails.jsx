@@ -380,6 +380,11 @@ export class _CardDetails extends Component {
                                 inputFontWeight='400'
                                 labelFontWeight='400' /></div>
                             }
+                            <button onClick={()=>this.setState({isCanvas:true})} className="btn">
+
+                
+Canvas
+</button>
                             <button onClick={this.onHandleRemove} className="btn"> <FaTrashAlt style={{ marginRight: "6px" }} />Card</button>
                         </div>
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Doughnut, Pie } from 'react-chartjs-2';
 import { Line as LineChartData } from 'react-chartjs-2';
+import { withRouter } from "react-router";
 
 import { MembersChart } from '../cmps/MembersChart'
 
@@ -13,7 +14,7 @@ const datasetsForLine = [
         pointStrokeColor: '#fff',
         pointHighlightFill: '#fff',
         pointHighlightStroke: 'rgba(220,220,220,1)',
-        data: [65, 59, 80, 81, 56, 55, 10],
+        data: [0, 3.5, 5, 4, 6, 7, 6, 8],
     },
     {
         label: 'Shlomi Koplianski',
@@ -23,7 +24,7 @@ const datasetsForLine = [
         pointStrokeColor: '#fff',
         pointHighlightFill: '#fff',
         pointHighlightStroke: 'rgba(151,187,205,1)',
-        data: [28, 48, 40, 19, 86, 27, 30],
+        data: [0, 3, 4, 5, 7, 5, 7, 7.5],
     },
     {
         label: 'Shahar Sadof',
@@ -33,7 +34,7 @@ const datasetsForLine = [
         pointStrokeColor: '#fff',
         pointHighlightFill: '#fff',
         pointHighlightStroke: 'rgba(151,187,205,1)',
-        data: [28, 48, 40, 19, 86, 27, 50],
+        data: [0, 3.5, 4, 6, 5, 7, 6, 8],
     },
     {
         label: 'Meital Lazarovich',
@@ -43,7 +44,7 @@ const datasetsForLine = [
         pointStrokeColor: '#fff',
         pointHighlightFill: '#fff',
         pointHighlightStroke: 'rgba(151,187,205,1)',
-        data: [28, 48, 40, 19, 86, 27, 60],
+        data: [0, 1, 2, 1, 1, 3, 2.5, 2],
     },
     {
         label: 'Yaron Biton',
@@ -53,12 +54,12 @@ const datasetsForLine = [
         pointStrokeColor: '#fff',
         pointHighlightFill: '#fff',
         pointHighlightStroke: 'rgba(151,187,205,1)',
-        data: [28, 48, 40, 19, 86, 27, 70],
+        data: [0, 0, 0, 0, 0, 0, 0, 0],
     }
 ]
 function lineData(userToShow) {
     return {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels: ['Day 0', 'Day 2', 'Day 4', 'Day 6', 'Day 8', 'Day 10', 'Day 12', 'Day 14'],
         datasets: [datasetsForLine[userToShow]]
     }
 }
@@ -81,11 +82,11 @@ const options = {
 }
 const styles = {
     graphContainer: {
-        padding: '0 15px'
+        padding: '0 15px 10px'
     }
 }
 function pieData() {
-    const labels = ['a', 'b', 'c']
+    const labels = ['Done', 'In progress', 'Task']
     const data = [5, 8, 12]
     return {
         labels,
@@ -105,8 +106,8 @@ function pieData() {
     }
 }
 function doughnutData() {
-    const labels = ['a', 'b', 'c']
-    const data = [5, 8, 12]
+    const labels = ['Shahar', 'Arik', 'Shlomi']
+    const data = [4, 5, 3]
     return {
         labels,
         datasets: [{
@@ -125,7 +126,7 @@ function doughnutData() {
     }
 }
 
-export class GraphDetails extends Component {
+class _GraphDetails extends Component {
 
     state = {
         boardId: null,
@@ -144,6 +145,9 @@ export class GraphDetails extends Component {
         console.log("GraphDetails -> memberNumber -> num", userToShow)
         this.setState({ data3: lineData(userToShow) })
     }
+    backToBoard = () => {
+        this.props.history.push(`/board/${this.state.boardId}`)
+    }
 
 
     render() {
@@ -152,6 +156,8 @@ export class GraphDetails extends Component {
 
         return (
             <div>
+            <button className="back-board-btn" onClick={this.backToBoard}>Back</button>
+
                 <div className="flex">
                     <div className="graph-container">
                         <Doughnut data={this.state.data1} options={options}
@@ -173,3 +179,5 @@ export class GraphDetails extends Component {
         )
     }
 }
+
+export const GraphDetails = withRouter(_GraphDetails)
