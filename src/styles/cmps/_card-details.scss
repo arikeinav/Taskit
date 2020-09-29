@@ -52,7 +52,7 @@
         padding: 20px;
         transform: translate(0, -15px);
         @media (max-width:1000px){
-            width: 70%;
+            width: 75%;
         }
         .btn-card-remove{
             padding:0;
@@ -134,16 +134,16 @@
     }
 }
 
-@media (max-width:650px){
+@media (max-width:700px){
     .card-modal{
     .details-modal{
-        width: 80%;
+        width: 90%;
     }}
 }
-@media (max-width:420px){
+@media (max-width:480px){
     .card-modal{
     .details-modal{
-        width: 95%;
+        width: 100%;
     }}
 }
 .cd-subt{
@@ -167,21 +167,4 @@
     font-weight: 400;
     width:80px;
     height:30px;
-}
-.details-btn{
-    background-color:#E2E4E9;
-	border-radius:6px;
-	border:1px solid #dcdcdc;
-	display:inline-block;
-	cursor:pointer;
-	color:#7a7979;
-	font-family: roboto;
-	font-size:14px;
-	font-weight:400;
-	padding:6px 8px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
-	height: 30px;
-    outline: none;
-    margin: 7px 0px;
 }
