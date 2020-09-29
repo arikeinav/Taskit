@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
-import { FaCheckCircle, FaFileImage, FaTrashAlt,FaUserCircle, FaCalendarAlt, FaYoutube ,FaPaintBrush} from "react-icons/fa";
+import { FaCheckCircle, FaFileImage, FaTrashAlt, FaUserCircle, FaCalendarAlt, FaYoutube, FaPaintBrush } from "react-icons/fa";
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { BiMenu, } from "react-icons/bi";
 import { MdColorLens, MdInvertColors } from "react-icons/md";
@@ -37,7 +37,7 @@ export class _CardDetails extends Component {
         isYoutubeShown: false,
         isCanvas: false,
     }
-    
+
     componentDidMount() {
         const card = boardService.getCardById(this.props.board, this.props.groupId, this.props.cardId)
         this.setState({ card })
@@ -45,7 +45,7 @@ export class _CardDetails extends Component {
 
     updateState = (key, val) => {
         this.setState({ [key]: val })
-        if(key==='isAddImgModalShown'){
+        if (key === 'isAddImgModalShown') {
             this.onRemoveYoutube()
         }
     }
@@ -59,7 +59,7 @@ export class _CardDetails extends Component {
         this.props.onRemoveCard(this.state.card.id)
     }
 
-  
+
     onRemoveImg = () => {
         const card = this.state.card
         delete card.imgUrl
@@ -79,7 +79,7 @@ export class _CardDetails extends Component {
         group.cards.splice(cardIdx, 1, this.state.card)
         this.props.updateBoard(newBoard)
     }
-   
+
     doneEdit = () => {
         this.updateState('isDescriptionEdit', false)
         this.saveCard()
@@ -103,68 +103,69 @@ export class _CardDetails extends Component {
         delete card.dueDate
         this.setState({ card })
         this.saveCard()
-  
+
     }
-  handleChangeDuedate = (data) => {
-    this.updateState("isTimeEdit", false);
-    this.updateLocalCard("dueDate", data);
-    this.saveCard();
-  };
-  onSaveLabels = (val, ev) => {
-    ev.stopPropagation();
-    if (this.state.card.labels && this.state.card.labels.length > 4) return;
-    var labels = [val];
-    if (this.state.card.labels) {
-      labels = this.state.card.labels;
-      labels.push(val);
+    handleChangeDuedate = (data) => {
+        this.updateState("isTimeEdit", false);
+        this.updateLocalCard("dueDate", data);
+        this.saveCard();
+    };
+    onSaveLabels = (val, ev) => {
+        ev.stopPropagation();
+        if (this.state.card.labels && this.state.card.labels.length > 4) return;
+        var labels = [val];
+        if (this.state.card.labels) {
+            labels = this.state.card.labels;
+            labels.push(val);
+        }
+        this.updateLocalCard("labels", labels);
+        boardService.addActivity(
+            this.props.board,
+            "Add label",
+            this.state.card,
+            this.props.currUser
+        );
+    };
+    onRemoveLabel = (label) => {
+        const labels = this.state.card.labels;
+        const labelIdx = labels.indexOf(label);
+        labelIdx > -1 && labels.splice(labelIdx, 1);
+        this.updateLocalCard("labels", labels);
+    };
+    onOpenDuedate = () => {
+        this.updateLocalCard("dueDate", new Date());
+        this.setState({ isTimeEdit: true });
+        boardService.addActivity(
+            this.props.board,
+            "Add dueDate",
+            this.state.card,
+            this.props.currUser
+        );
+    };
+    saveChecklist = (checklist) => {
+        this.updateLocalCard("checklist", checklist);
+        this.saveCard();
+    };
+    addNewChecklist = (checklist) => {
+        this.saveChecklist(checklist);
+    };
+    removeChecklist = () => {
+        this.saveChecklist({});
+    };
+    onOpenLabelModal = (ev) => {
+        ev.stopPropagation();
+        if (this.state.isLabelesEdit) {
+            this.setState({ isLabelesEdit: false });
+            return;
+        }
+        if (this.state.card.labels) {
+            if (this.state.card.labels.length < 6) {
+                this.setState({ isLabelesEdit: true });
+            }
+        } else {
+            this.setState({ isLabelesEdit: true });
+        }
     }
-    this.updateLocalCard("labels", labels);
-    boardService.addActivity(
-      this.props.board,
-      "Add label",
-      this.state.card,
-      this.props.currUser
-    );
-  };
-  onRemoveLabel = (label) => {
-    const labels = this.state.card.labels;
-    const labelIdx = labels.indexOf(label);
-    labelIdx > -1 && labels.splice(labelIdx, 1);
-    this.updateLocalCard("labels", labels);
-  };
-  onOpenDuedate = () => {
-    this.updateLocalCard("dueDate", new Date());
-    this.setState({ isTimeEdit: true });
-    boardService.addActivity(
-      this.props.board,
-      "Add dueDate",
-      this.state.card,
-      this.props.currUser
-    );
-  };
-  saveChecklist = (checklist) => {
-    this.updateLocalCard("checklist", checklist);
-    this.saveCard();
-  };
-  addNewChecklist = (checklist) => {
-    this.saveChecklist(checklist);
-  };
-  removeChecklist = () => {
-    this.saveChecklist({});
-  };
-  onOpenLabelModal = (ev) => {
-    ev.stopPropagation();
-    if (this.state.isLabelesEdit) {
-      this.setState({ isLabelesEdit: false });
-      return;
-    }
-    if (this.state.card.labels) {
-      if (this.state.card.labels.length < 6) {
-        this.setState({ isLabelesEdit: true });
-      }
-    } else {
-      this.setState({ isLabelesEdit: true });
-    }}
     onRemoveLabel = (label) => {
         const labels = this.state.card.labels
         const labelIdx = labels.indexOf(label);
@@ -216,7 +217,7 @@ export class _CardDetails extends Component {
         this.setState({ isAddColorModalShown: true })
         this.saveCard()
     }
-   
+
     onModalClick = () => {
         this.setState({ isAddColorModalShown: false })
         this.setState({ isLabelesEdit: false })
@@ -230,11 +231,11 @@ export class _CardDetails extends Component {
         }
         return <Avatar className="avatar" />
     }
-  
-    youtubeFunc = (url)=>{
-        this.setState({isYoutubeShown:false})
+
+    youtubeFunc = (url) => {
+        this.setState({ isYoutubeShown: false })
         this.onRemoveImg()
-        this.updateLocalCard('youtube',url)
+        this.updateLocalCard('youtube', url)
         // this.saveCard()
     }
 
@@ -253,7 +254,7 @@ export class _CardDetails extends Component {
                     <header className="card-header flex column align-center" style={{ backgroundColor: card.bgColor }}>
 
                         {card.youtube && <ReactPlayer width='50%' height='100%' url={card.youtube} />}
-                      
+
                         {card.imgUrl &&
                             <img className="card-img" src={card.imgUrl} alt="Loading" />
                         }
@@ -262,7 +263,7 @@ export class _CardDetails extends Component {
 
                         {this.state.isAddColorModalShown &&
                             <div>
-                                <TwitterPicker onChange={this.handleChangeBGColor} colors={['#99f3bd', '#332dbb', '#7ea04d', '#f0a500', '#de4463', '#fccbcb', '#70adb5', '#625261', '#89beb3', '#efbbcf', '#8ED1FC', '#008000', '#ff0000','#FFFFFF',]} triangle="hide" />
+                                <TwitterPicker onChange={this.handleChangeBGColor} colors={['#99f3bd', '#332dbb', '#7ea04d', '#f0a500', '#de4463', '#fccbcb', '#70adb5', '#625261', '#89beb3', '#efbbcf', '#8ED1FC', '#008000', '#ff0000', '#FFFFFF',]} triangle="hide" />
                             </div>
                         }
                     </header>
@@ -274,17 +275,17 @@ export class _CardDetails extends Component {
                             overflowX: 'hidden',
                         }}>
                             <div className="modal-details-left">
-                                
-                                    
-                                   
-                                    
-                                          <EditableLabel 
-                         initialValue={(card.title)}
-                         save={value => {this.handleFocusOut(value)}}
-                         inputClass='title-input'
-                         labelClass='my-label-class'
-                         
-                            />
+
+
+
+
+                                <EditableLabel
+                                    initialValue={(card.title)}
+                                    save={value => { this.handleFocusOut(value) }}
+                                    inputClass='title-input'
+                                    labelClass='my-label-class'
+
+                                />
                                 <div>
                                     {(card.labels && card.labels.length > 0) &&
                                         <div style={{ margin: '15px 0', height: '40px' }} className="flex">
@@ -301,23 +302,23 @@ export class _CardDetails extends Component {
 
                                     {this.state.isDescriptionEdit ?
                                         <div className="edit-desc flex column align-center" >
-                                    
+
                                             <TextareaAutosize
-                                            rowsMax={4}
-                                            aria-label="maximum height"
-                                            placeholder="Enter description"
-                                            defaultValue={this.state.card.description}
-                                            border="none"
+                                                rowsMax={4}
+                                                aria-label="maximum height"
+                                                placeholder="Enter description"
+                                                defaultValue={this.state.card.description}
+                                                border="none"
                                                 className="edit-card-description"
                                                 onChange={ev => this.updateLocalCard('description', ev.target.value)}
-                                          />
+                                            />
                                             <button onClick={this.saveCard} className="btn">Save</button>
                                         </div>
                                         :
                                         <div
-                                        onClick={() => this.updateState('isDescriptionEdit', true)}> 
-                                        <pre>{this.state.card.description ? this.state.card.description : "Add a more details description..."}
-                                   </pre>  </div>
+                                            onClick={() => this.updateState('isDescriptionEdit', true)}>
+                                            <pre>{this.state.card.description ? this.state.card.description : "Add a more details description..."}
+                                            </pre>  </div>
                                     }
                                 </div>
 
@@ -359,37 +360,34 @@ export class _CardDetails extends Component {
 
 
                             </div>
-                        </Element >
+                        </Element>
+
                         <div className="side-bar-details-right flex column justify-start">
-                            <button className="details-btn align-center" style={{display: 'flex'}} onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{ marginRight: "7px" }} />Cover</button>
+                            <button className="details-btn align-center" style={{ display: 'flex' }} onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{ marginRight: "7px" }} />Cover</button>
 
-                            <button className="details-btn align-center" style={{display: 'flex'}} onClick={this.onOpenColorModal}><MdColorLens style={{ marginRight: "3px", height: '12px', width: '12px' }} />Color</button>
+                            <button className="details-btn align-center" style={{ display: 'flex' }} onClick={this.onOpenColorModal}><MdColorLens style={{ marginRight: "3px", height: '12px', width: '12px' }} />Color</button>
 
-                            <button className="details-btn align-center" style={{display: 'flex'}} onClick={() => this.openChecklistEditor()}><FaCheckCircle style={{ marginRight: "6px" }} />Checklist</button>
+                            <button className="details-btn align-center" style={{ display: 'flex' }} onClick={() => this.openChecklistEditor()}><FaCheckCircle style={{ marginRight: "6px" }} />Checklist</button>
                             <button onClick={this.onOpenDuedate} className="details-btn align-center"><FaCalendarAlt style={{ marginRight: "5px" }} /> Duedate</button>
-                            <button onClick={this.onOpenLabelModal} style={{display: 'flex'}} className="details-btn align-center"><MdInvertColors style={{ marginRight: "5px", height: '12px', width: '12px' }} />Labels</button>
+                            <button onClick={this.onOpenLabelModal} style={{ display: 'flex' }} className="details-btn align-center"><MdInvertColors style={{ marginRight: "5px", height: '12px', width: '12px' }} />Labels</button>
                             {this.state.isLabelesEdit &&
                                 <ColorModal className="color-modal" onSaveLabels={this.onSaveLabels} labels={card.labels} />}
 
-                            <button className="details-btn align-center" style={{display: 'flex'}} onClick={() => (this.setState({ isYoutubeShown: true }))}><FaYoutube style={{ marginRight: "6px", height: '12px', width: '12px' }}/> YouTube</button>
-                            {this.state.isYoutubeShown && <div style={{border: "1px solid black"}}><EditableLabel 
+                            <button className="details-btn align-center" style={{ display: 'flex' }} onClick={() => (this.setState({ isYoutubeShown: true }))}><FaYoutube style={{ marginRight: "6px", height: '12px', width: '12px' }} /> YouTube</button>
+                            {this.state.isYoutubeShown && <div style={{ border: "1px solid black" }}><EditableLabel
                                 initialValue={'Paste Url'}
-                                save={(url)=>this.youtubeFunc(url)}
+                                save={(url) => this.youtubeFunc(url)}
                                 labelClassName='youtube-label'
                                 inputClassName='youtube-input'
-                                /></div>
+                            /></div>
                             }
-                            {!card.youtube &&<button onClick={()=>this.setState({isCanvas:true})} className="details-btn"><FaPaintBrush style={{ marginRight: "6px" }}/>
-
-                
-Canvas
-</button>}
+                            {!card.youtube && <button onClick={() => this.setState({ isCanvas: true })} className="details-btn"><FaPaintBrush style={{ marginRight: "6px" }} />Canvas</button>}
                             <button onClick={this.onHandleRemove} className="details-btn"> <FaTrashAlt style={{ marginRight: "6px" }} />Card</button>
                         </div>
 
                     </div >
                     {this.state.isAddImgModalShown && <AddImg card={card} updateState={this.updateState} />}
-                    {this.state.isCanvas && <Canvas updateLocalCard={this.updateLocalCard} updateState={this.updateState} card={this.state.card}/>}
+                    {this.state.isCanvas && <Canvas updateLocalCard={this.updateLocalCard} updateState={this.updateState} card={this.state.card} />}
                 </div >
             </div >
         )
@@ -397,16 +395,16 @@ Canvas
 }
 
 const mapStateToProps = (state) => {
-  return {
-    board: state.boardReducer.currBoard,
-    currUser: state.userReducer.loggedInUser,
-  };
+    return {
+        board: state.boardReducer.currBoard,
+        currUser: state.userReducer.loggedInUser,
+    };
 };
 const mapDispatchToProps = {
-  updateBoard,
+    updateBoard,
 };
 
 export const CardDetails = connect(
-  mapStateToProps,
-  mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(_CardDetails);
