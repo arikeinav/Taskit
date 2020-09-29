@@ -2,14 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
-import { FaCheckCircle, FaFileImage, FaTrashAlt, FaCalendarAlt, FaYoutube ,FaPaintBrush} from "react-icons/fa";
+import { FaCheckCircle, FaFileImage, FaTrashAlt,FaUserCircle, FaCalendarAlt, FaYoutube ,FaPaintBrush} from "react-icons/fa";
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { BiMenu, } from "react-icons/bi";
 import { MdColorLens, MdInvertColors } from "react-icons/md";
 import { TwitterPicker } from "react-color";
 import EditableLabel from 'react-editable-label'
 import ReactPlayer from 'react-player/youtube'
-import TextField from '@material-ui/core/TextField';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Scroll from 'react-scroll';
@@ -316,9 +315,9 @@ export class _CardDetails extends Component {
                                         </div>
                                         :
                                         <div
-                                            className="not-edit-card-description"
-                                            onClick={() => this.updateState('isDescriptionEdit', true)}>{this.state.card.description ? this.state.card.description : "Add a more details description..."}
-                                        </div>
+                                        onClick={() => this.updateState('isDescriptionEdit', true)}> 
+                                        <pre>{this.state.card.description ? this.state.card.description : "Add a more details description..."}
+                                   </pre>  </div>
                                     }
                                 </div>
 
