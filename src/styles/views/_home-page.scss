@@ -1,8 +1,14 @@
 
 
 .home{
-background: url(../imgs/kanban5.jpg) no-repeat ;
-background-size:contain;
+  img{
+    object-fit:contain;
+
+    max-width: 100vw;
+    max-height: calc(100vh - 50px);
+  }
+// background: url(../imgs/kanban5.jpg) no-repeat ;
+// background-size:contain;
 height: calc(100vh - 50px);
 width: 100vw;
 text-align: center;
@@ -10,31 +16,29 @@ color:rgb(10, 10, 10);
 font-size: 3rem;
 font-family: hand-write;
 background-color: #13809F;
+position: relative;
 
   
 a{
   color:white;
-  margin-top: 50px;
-  font-size: 3.5rem;
+  // margin-top: auto;
+  position:fixed;
+  font-size: 5rem;
   font-weight: 600;
   transform: scale(1);
   animation: tilt 5s infinite;
   font-family: vidaloka;
-  justify-content: flex-end;
-  margin-right:15vw;
-  margin-top: 15vh;
+  top: 80px;
+  
+
 }
 
 p{
-  // transform: translate(395px, 65px);
- 
+  transform: translate(22px, 95px);
+//  align-self: center;
 }
 
-img{
-  max-width: 100vw;
-  // max-height: 100vh;
-  max-height: calc(100vh - 60px);
-}
+
 h1{
   font-weight: 600;
   margin:90px 0 105px;
@@ -116,13 +120,48 @@ font-family: hand-write;
     }
   }
 }
-@media (max-width:900px){
+
+@media (max-width:980px){
   .home{
    .enter{
-    display:none;
+    font-size: 4rem;
+    top:100px;
+
     }
   }
 }
+@media (max-width:850px){
+  .home{
+   .enter{
+    font-size: 3.5rem;
+    top:120px;
+    margin-right: 5px;
+    }
+  }
+}
+
+
+@media (max-width:800px){
+  .home{
+   .enter{
+    font-size: 3.5rem;
+    top:130px;
+    margin-right: 5px;
+    }
+  }
+}
+
+@media (max-width:750px){
+  .home{
+   .enter{
+    font-size: 3.5rem;
+    top:0px;
+    position:absolute;
+    }
+  }
+}
+
+
 @media (max-width: 700px){
   .home-details{
     flex-direction: column-reverse;

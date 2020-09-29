@@ -3,16 +3,17 @@ import { Link } from 'react-router-dom'
 
 
 
+
 export function Home() {
     return (
         <div>
-            <div className="home flex column">
+            <div className="home flex column align-center justify-center">
             <Link className="enter flex" to="/board"><p>Enter</p></Link>
-        {/* <img src="https://res.cloudinary.com/dsfnyykw9/image/upload/v1601112428/kanban5_fll98a.jpg" alt="img"/> */}
+        <img src="https://res.cloudinary.com/dib9frb0w/image/upload/v1601370863/kanban5_wdldql.jpg" alt=""/>
             
             </div>
             <div className="home-details-container">
-               
+              
                 <div className="home-details flex">
                     <img src="https://res.cloudinary.com/dsfnyykw9/image/upload/v1601040007/vectorstock_25716430_e79vvh.jpg" alt="img"/>
                     <div className="info">
