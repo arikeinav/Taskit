@@ -31,7 +31,8 @@ function Canvas({updateState,card}) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const startDrawing = ({nativeEvent}) => {
+  const startDrawing = (ev,{nativeEvent}) => {
+    ev.preventDefault()
     contextRef.current.strokeStyle = color
     const {offsetX, offsetY} = nativeEvent;
     contextRef.current.beginPath()
@@ -39,7 +40,8 @@ function Canvas({updateState,card}) {
     setIsDrawing(true)
   }
 
-  const finishDrawing = () => {
+  const finishDrawing = (ev) => {
+    ev.preventDefault()
    contextRef.current.closePath()
    setIsDrawing(false)
   }
@@ -64,7 +66,8 @@ const changeStrokeStyle =(color)=>{
 }
 
 
-  const draw = ({nativeEvent}) => {
+  const draw = (ev,{nativeEvent}) => {
+    ev.preventDefault()
     if(!isDrawing){
       return
     }
@@ -82,6 +85,7 @@ const changeStrokeStyle =(color)=>{
     onMouseDown={startDrawing}
     onMouseUp={finishDrawing}
     onMouseMove={draw}
+    onTouchStart={startDrawing} onTouchEnd={finishDrawing} onTouchMove={draw} 
     ref={canvasRef}
   />
    <CirclePicker className="self-center"

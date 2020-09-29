@@ -23,20 +23,27 @@
 .login-modal{
     justify-content: space-around;
     background: white;
-    max-width: 35%;
+    max-width: 40%;
     min-width: 25%;
     height: 500px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
     border-radius: 10px;
     position: relative;
+    padding: 10px;
 }
 .login-modal p{
     color: #1b0f07;
     margin-bottom: 10px;
+    padding: 8px;
     
 }
 .login-modal span{
-    color: blue;
+    color: rgb(107, 107, 255);
+    cursor: pointer;
+
+    &:hover{
+        color: rgb(3, 3, 204); 
+    }
     
     
 }
@@ -51,5 +58,7 @@
     .modal-content {
     max-width: 65%;
     }
-    
+    .login-modal{
+        max-width: 80%
+    }
 }
