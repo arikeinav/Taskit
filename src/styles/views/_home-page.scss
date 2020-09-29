@@ -1,25 +1,27 @@
-.home{
 
+
+.home{
+  height: 100vh;
 text-align: center;
 color:rgb(10, 10, 10);
 font-size: 3rem;
 font-family: hand-write;
 background-color: #13809F;
-position: relative;
-  a{
+
+  
+a{
   color:white;
   margin-top: 50px;
   font-size: 3.5rem;
   font-weight: 600;
-  position:fixed;
   transform: scale(1);
-animation: tilt 5s infinite;
-font-family: vidaloka;
+  animation: tilt 5s infinite;
+  font-family: vidaloka;
 }
 
-p{
-  transform: translate(395px, 65px);
-}
+// p{
+//   transform: translate(395px, 65px);
+// }
 
 img{
   max-width: 100vw;
@@ -73,7 +75,7 @@ font-family: hand-write;
   color:black;
 }
 
-.home-details-comtainer{
+.home-details-container{
   display: flex;
   flex-direction: column;
   text-align: center;

@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom'
 
 export function Home() {
     return (
-        <div>
+        <div className="cover-homepage">
             <div className="home">
             <Link className="enter" to="/board"><p>Enter</p></Link>
-    <img src="https://res.cloudinary.com/dsfnyykw9/image/upload/v1601112428/kanban5_fll98a.jpg" alt="img"/>
+        {/* <img src="https://res.cloudinary.com/dsfnyykw9/image/upload/v1601112428/kanban5_fll98a.jpg" alt="img"/> */}
             
             </div>
-            <div className="home-details-comtainer">
+            <div className="home-details-container">
                
                 <div className="home-details flex">
                     <img src="https://res.cloudinary.com/dsfnyykw9/image/upload/v1601040007/vectorstock_25716430_e79vvh.jpg" alt="img"/>
