@@ -2,17 +2,20 @@
     grid-template-columns: repeat(4,1fr);
     gap: 15px;
     margin: 30px 50px;
+    background-color: #ffffff2e;
+    padding: 10px;
+    border-radius: 8px;
+
   @media (max-width: 1100px){
     margin: 30px 80px;
     grid-template-columns: repeat(3,1fr);
-
-
+    background-color: #ffffff4f;
   }
   @media (max-width: 500px){
     margin: 30px;
     margin-top: 60px;
     grid-template-columns: repeat(2,1fr);
-
+    background-color: #ffffff47;
   }
 }
 .board-app{
