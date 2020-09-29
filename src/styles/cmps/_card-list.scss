@@ -7,10 +7,10 @@
     height: auto;
     align-self: flex-start;
 
-    @media (max-width: $small-screen){
-        min-width: 90vw;
-        max-width: 90vw;
-    }
+    // @media (max-width: $small-screen){
+    //     min-width: 90vw;
+    //     max-width: 90vw;
+    // }
 }
 .group-title{
     margin:auto;
