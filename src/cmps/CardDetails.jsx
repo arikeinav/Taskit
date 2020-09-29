@@ -262,7 +262,7 @@ export class _CardDetails extends Component {
 
                         {this.state.isAddColorModalShown &&
                             <div>
-                                <TwitterPicker onChange={this.handleChangeBGColor} colors={['#99f3bd', '#332dbb', '#7ea04d', '#f0a500', '#de4463', '#fccbcb', '#70adb5', '#625261', '#89beb3', '#efbbcf', '#8ED1FC', '#008000', '#ff0000','#FFFFFF',]} triangle="hide" />
+                                <TwitterPicker onChange={this.handleChangeBGColor} colors={['#FEEDCC', '#DDDEAD', '#A9D7A9', '#51C2B1', '#24A39A', '#679CB4', '#A67376', '#FE797B', '#FFB750', '#FFEA56', '#8FE968', '#36CEDC', '#A587CA','#F3F3F6',]} triangle="hide" />
                             </div>
                         }
                     </header>
