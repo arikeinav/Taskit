@@ -15,13 +15,14 @@ export default function BoardPreview({ board }) {
                 backgroundRepeat: "no-repeat",
               }
               : {
-                backgroundColor: `${board.style.bgColor ? board.style.bgColor : "#c050fbc7"
+                backgroundColor: `${board.style.bgColor ? board.style.bgColor : "green"
                   }`,
               }
           }
           className="board-preview flex align-center"
         >
-          <h3 style={{ width: '100%'}}>{board.title}</h3>
+          <h3 style={{backgroundColor: 'rgb(1 139 152 / 15%)',
+    height: '25px', width: '100%'}}>{board.title}</h3>
 
 
         </div>

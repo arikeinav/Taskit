@@ -120,7 +120,7 @@ export class _SideMenu extends Component {
                     </div>
 
                     <hr />
-                    {this.state.isChooseImg && <AddImg isForBoard={true} isForMenu={true} onAddimg={this.onChangeImg} />}
+                    {this.state.isChooseImg && <AddImg isForBoard={true} onAddimg={this.onChangeImg} />}
                     {this.state.isChooseColor && <MenuColorModal onAddColor={this.onChangeColor} />}
                     {!this.state.isChooseImg && !this.state.isChooseColor && <div>
                         <div className="menu-actions flex column">

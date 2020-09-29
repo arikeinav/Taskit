@@ -5,7 +5,7 @@ import { AvatarGroup } from '@material-ui/lab';
 import { AiOutlineMenu } from "react-icons/ai";
 
 import { SideMenu } from './SideBarMenu'
-import EditableLabel from 'react-editable-label'
+import EditableLabel from 'react-inline-editing'
 import { BoardInvite } from './BoardInvite'
 
 export class BoardHeader extends Component {
@@ -39,14 +39,11 @@ export class BoardHeader extends Component {
         return (
             <div className="board-header flex space-between">
                 <div className="name-and-member flex">
-                    <div style={{ marginLeft: "10px", alignSelf: "center" }}>  
-                            <EditableLabel 
-                         initialValue={(board.title)}
-                         save={value => {this.handleFocusOut(value)}}
-                         inputClass='title-input'
-                         labelClass='my-label-class'
-                         
-                            />
+                    <div style={{ marginLeft: "10px", alignSelf: "center" }}>  <EditableLabel text={board.title} onFocusOut={this.handleFocusOut}
+                        inputWidth='200px'
+                        inputHeight='34px'
+                        cursor='pointer'
+                        inputFontWeight='400' />
                     </div>
 
                     {board.members &&

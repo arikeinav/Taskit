@@ -20,7 +20,6 @@ import { Checklist } from './Checklist'
 import ChecklistAdd from './ChecklistAdd';
 import { updateBoard } from '../store/actions/boardActions'
 import { CardInvite } from './CardInvite'
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 var Element = Scroll.Element;
 
@@ -301,7 +300,7 @@ export class _CardDetails extends Component {
 
                                     {this.state.isDescriptionEdit ?
                                         <div className="edit-desc flex column align-center" >
-                                            {/* <TextField
+                                            <TextField
                                                 border="none"
                                                 multiline
                                                 rows={6}
@@ -309,24 +308,14 @@ export class _CardDetails extends Component {
                                                 // variant="outlined"
                                                 className="edit-card-description"
                                                 onChange={ev => this.updateLocalCard('description', ev.target.value)}
-                                            /> */}
-                                            <TextareaAutosize
-                                            rowsMax={4}
-                                            aria-label="maximum height"
-                                            placeholder="Enter description"
-                                            defaultValue={this.state.card.description}
-                                            border="none"
-                                                className="edit-card-description"
-                                                onChange={ev => this.updateLocalCard('description', ev.target.value)}
-                                          />
+                                            />
                                             <button onClick={this.saveCard} className="btn">Save</button>
                                         </div>
                                         :
                                         <div
                                             className="not-edit-card-description"
-                                            onClick={() => this.updateState('isDescriptionEdit', true)}> 
-                                            <pre>{this.state.card.description ? this.state.card.description : "Add a more details description..."}
-                                       </pre>  </div>
+                                            onClick={() => this.updateState('isDescriptionEdit', true)}>{this.state.card.description ? this.state.card.description : "Add a more details description..."}
+                                        </div>
                                     }
                                 </div>
 

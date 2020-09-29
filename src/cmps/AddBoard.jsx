@@ -26,15 +26,15 @@ export class AddBoard extends React.Component {
         return (
             <div>
                 <form className="add-board-form flex column" onSubmit={this.onSubmit}>
-                    <input className="board-name-input" placeholder=" Enter Board name"
+                    <input className="board-name-input" placeholder="Board name"
                         type="text"
                         onChange={this.handleValueChange}
                         value={this.state.text}
                     />
-                    <div><AddImg isForBoard={this.props.isForBoard} onAddimg={this.onAddimg} /></div>
+                    <AddImg isForBoard={this.props.isForBoard} onAddimg={this.onAddimg} />
                     <div className="flex">
-                        <button className="btn" style={{marginTop:'10px'}} >Add Board</button>
-                        {this.state.imgUrl && <img className="img-preview" src={this.state.imgUrl} alt="Loading" />}
+                        <button className="btn" >Add Board</button>
+                        {this.state.imgUrl && <img className="img-board-preview" src={this.state.imgUrl} alt="Loading" />}
                     </div>
 
                 </form>
