@@ -22,7 +22,6 @@ export class MenuColorModal extends React.Component {
             '#FFEA56',
             '#8FE968',
             '#36CEDC',
-            '#A587CA',
             '#F3F3F6',
         ]
         return (
