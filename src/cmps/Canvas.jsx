@@ -7,7 +7,7 @@ function Canvas({ updateState, card }) {
   const contextRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [color, setColor] = useState(null);
-
+ 
 
   useEffect( () => {
     const canvas = canvasRef.current;
@@ -18,7 +18,7 @@ function Canvas({ updateState, card }) {
     context.strokeStyle = setColor('black');
     context.lineWidth = 3;
     contextRef.current = drawImg(context,canvas)
-  
+    
   },[])
 
   const startDrawing = ({ nativeEvent }) => {
@@ -28,12 +28,7 @@ function Canvas({ updateState, card }) {
     contextRef.current.moveTo(offsetX, offsetY);
     setIsDrawing(true);
   };
-
-  const finishDrawing = () => {
-    contextRef.current.closePath();
-    setIsDrawing(false);
-  };
-
+  
   const draw = ({ nativeEvent }) => {
     if (!isDrawing) {
       return;
@@ -41,6 +36,11 @@ function Canvas({ updateState, card }) {
     const { offsetX, offsetY } = nativeEvent;
     contextRef.current.lineTo(offsetX, offsetY);
     contextRef.current.stroke();
+  };
+
+  const finishDrawing = () => {
+    contextRef.current.closePath();
+    setIsDrawing(false);
   };
 
   const closeCanvas = () => {
@@ -69,19 +69,51 @@ function Canvas({ updateState, card }) {
     img.src = card.imgUrl;
     return context
   }
+  const startTouchDrawing = ({ nativeEvent }) => {
+    console.log(nativeEvent);
+    
+      
+    
+      
+    
+    //  nativeEvent.preventDefault()
+    contextRef.current.strokeStyle = color;
+    const { clientX, clientY } = nativeEvent.touches[0];
+    contextRef.current.beginPath();
+    contextRef.current.moveTo(clientX-25, clientY-100);
+    setIsDrawing(true);
+  };
+  const touchdraw = ({ nativeEvent }) => {
+    console.log(nativeEvent);
+    
+      
+   
+    if (!isDrawing) {
+      return;
+    }
+    const { clientX, clientY } = nativeEvent.touches[0];
+    contextRef.current.lineTo(clientX-25, clientY-100 );
+    contextRef.current.stroke();
+  };
+
+
  
 
   return (
-    <div className="modal-wrapper" onClick={closeCanvas}>
+    <div className="canvas-wrapper" onClick={closeCanvas}>
       <div
         className="canvas-modal-content flex column justify-center space-evenly "
         onClick={(nativeEvent) => nativeEvent.stopPropagation()}
       >
         <canvas
+        
           style={{ marginBottom: "10px" }}
           onMouseDown={startDrawing}
           onMouseUp={finishDrawing}
           onMouseMove={draw}
+          onTouchStart={startTouchDrawing}
+          onTouchEnd={finishDrawing}
+          onTouchMove={touchdraw}
           ref={canvasRef}
         />
         <CirclePicker
