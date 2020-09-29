@@ -297,19 +297,11 @@ export class _CardDetails extends Component {
                                     <div className="flex align-center"><BiMenu style={{
                                         marginRight: '5px', width: '18px',
                                         height: '18px'
-                                    }} /><p onClick={() => this.updateState('isDescriptionEdit', true)} className="cd-subt"> Description:</p></div>
+                                    }} /><p onClick={() => this.updateState('isDescriptionEdit', true)} className="cd-subt"> Description</p></div>
 
                                     {this.state.isDescriptionEdit ?
                                         <div className="edit-desc flex column align-center" >
-                                            {/* <TextField
-                                                border="none"
-                                                multiline
-                                                rows={6}
-                                                defaultValue={this.state.card.description}
-                                                // variant="outlined"
-                                                className="edit-card-description"
-                                                onChange={ev => this.updateLocalCard('description', ev.target.value)}
-                                            /> */}
+                                    
                                             <TextareaAutosize
                                             rowsMax={4}
                                             aria-label="maximum height"
@@ -382,9 +374,8 @@ export class _CardDetails extends Component {
 
                             <button className="btn align-center" style={{display: 'flex'}} onClick={() => (this.setState({ isYoutubeShown: true }))}><FaYoutube style={{ marginRight: "6px", height: '12px', width: '12px' }}/> YouTube</button>
                             {this.state.isYoutubeShown && <div style={{border: "1px solid black"}}><EditableLabel 
-                                initialValue={'Paste Url Here'}
+                                initialValue={'Paste Url'}
                                 save={(url)=>this.youtubeFunc(url)}
-                         
                                 labelClassName='youtube-label'
                                 inputClassName='youtube-input'
                                 /></div>

@@ -99,3 +99,11 @@
 .text-dec-none{
     text-decoration:none;
 }
+.my-label-class{
+cursor:text;
+&:hover{
+    border: solid 1px rgb(110, 110, 110);
+    cursor:text;
+    padding:4px 10px;
+}
+}
