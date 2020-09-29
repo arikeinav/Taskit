@@ -67,7 +67,7 @@ export function SimpleMenu({ onRemove, group,isGroupColor,onShowColorTogglle, is
         {/* <div style={{color:"#666666",textAlign:"center"}} >List menu </div>
         <hr style={{margin:"3px 7px"}}/> */}
         <MenuItem onClick={onColorTogglle} >Background color</MenuItem>
-        {isGroupColor &&<TwitterPicker onChange={handlecolor}  colors={['#FFCBA5', '#FEEDCC', '#FFC6E7', '#C9FEC0', '#49D5D0']} triangle="hide" />}
+        {isGroupColor &&<TwitterPicker onChange={handlecolor}  colors={['#FFCBA5', '#FEEDCC', '#FFC6E7', '#C9FEC0', '#49D5D0','#EBECF0']} triangle="hide" />}
         <MenuItem onClick={handleAdd}>Add card</MenuItem>
         <MenuItem onClick={handledelete}>Delete list</MenuItem>
         {isDeleteGroup && <MenuItem ><button className="btn" style={{ color: 'red', marginRight: '2px' }} onClick={onDelete}>Delete</button> <button style={{ marginLeft: '2px' }} className="btn" onClick={handleClose}>Cancel</button></MenuItem>}
