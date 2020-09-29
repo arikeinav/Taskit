@@ -2,17 +2,19 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
-import { FaCheckCircle, FaFileImage, FaTrashAlt,FaUserCircle, FaCalendarAlt, FaYoutube ,FaPaintBrush} from "react-icons/fa";
+import { FaCheckCircle, FaFileImage, FaTrashAlt, FaCalendarAlt, FaYoutube ,FaPaintBrush} from "react-icons/fa";
+import LinearProgress from '@material-ui/core/LinearProgress';
 import { BiMenu, } from "react-icons/bi";
 import { MdColorLens, MdInvertColors } from "react-icons/md";
 import { TwitterPicker } from "react-color";
 import EditableLabel from 'react-editable-label'
 import ReactPlayer from 'react-player/youtube'
-import Canvas from "./Canvas";
 import TextField from '@material-ui/core/TextField';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Scroll from 'react-scroll';
+
+import Canvas from "./Canvas";
 import { ColorModal } from './ColorModal'
 import { boardService } from '../services/boardService'
 import { AddImg } from './AddImg'
@@ -238,7 +240,7 @@ export class _CardDetails extends Component {
     }
 
     render() {
-        if (!this.state.card) return <div>Loading...</div>
+        if (!this.state.card) return <LinearProgress />
         const { card } = this.state
         const { board } = this.props
 

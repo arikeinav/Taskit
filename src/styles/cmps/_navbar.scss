@@ -36,6 +36,13 @@
 .hide {
     display: none;
 }
+.user-avatar-navbar{
+    margin-right: -4px;
+}
+.logout{
+    margin-right: -17px;
+}
+
 @media (max-width: $medium-screen){
     .navdiv-s{
         font-size: 1.1rem;
