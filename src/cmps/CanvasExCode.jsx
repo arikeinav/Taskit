@@ -36,9 +36,13 @@ function Canvas({ updateState, card }) {
   };
   const startTouchDrawing = ({ nativeEvent }) => {
     console.log(nativeEvent);
+    contextRef.current.addEventListener(nativeEvent) 
+      const { clientX, clientY } = nativeEvent.touches[0];
+      
+    
     //  nativeEvent.preventDefault()
     contextRef.current.strokeStyle = color;
-    const { clientX, clientY } = nativeEvent.touches[0];
+    // const { clientX, clientY } = nativeEvent.touches[0];
     contextRef.current.beginPath();
     contextRef.current.moveTo(clientX, clientY);
     setIsDrawing(true);
@@ -82,11 +86,13 @@ function Canvas({ updateState, card }) {
   };
   const touchdraw = ({ nativeEvent }) => {
     console.log(nativeEvent);
+    contextRef.current.addEventListener(nativeEvent) 
+      const { clientX, clientY } = nativeEvent.touches[0];
     nativeEvent.preventDefault();
     if (!isDrawing) {
       return;
     }
-    const { clientX, clientY } = nativeEvent.touches[0];
+    // const { clientX, clientY } = nativeEvent.touches[0];
     contextRef.current.lineTo(clientX, clientY);
     contextRef.current.stroke();
   };
