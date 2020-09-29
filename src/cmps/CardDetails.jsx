@@ -380,11 +380,11 @@ export class _CardDetails extends Component {
                                 inputClassName='youtube-input'
                                 /></div>
                             }
-                            <button onClick={()=>this.setState({isCanvas:true})} className="btn"><FaPaintBrush style={{ marginRight: "6px" }}/>
+                            {!card.youtube &&<button onClick={()=>this.setState({isCanvas:true})} className="btn"><FaPaintBrush style={{ marginRight: "6px" }}/>
 
                 
 Canvas
-</button>
+</button>}
                             <button onClick={this.onHandleRemove} className="btn"> <FaTrashAlt style={{ marginRight: "6px" }} />Card</button>
                         </div>
 
