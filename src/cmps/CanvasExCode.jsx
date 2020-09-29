@@ -23,6 +23,7 @@ function Canvas({ updateState, card }) {
     context.strokeStyle = color;
     context.lineWidth = 3;
     contextRef.current = context;
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -33,8 +34,21 @@ function Canvas({ updateState, card }) {
     contextRef.current.moveTo(offsetX, offsetY);
     setIsDrawing(true);
   };
+  const startTouchDrawing = ({ nativeEvent }) => {
+    console.log(nativeEvent);
+    //  nativeEvent.preventDefault()
+    contextRef.current.strokeStyle = color;
+    const { clientX, clientY } = nativeEvent.touches[0];
+    contextRef.current.beginPath();
+    contextRef.current.moveTo(clientX, clientY);
+    setIsDrawing(true);
+  };
 
   const finishDrawing = () => {
+    contextRef.current.closePath();
+    setIsDrawing(false);
+  };
+  const finishTouchDrawing = () => {
     contextRef.current.closePath();
     setIsDrawing(false);
   };
@@ -46,13 +60,15 @@ function Canvas({ updateState, card }) {
   const addCanvasToCard = async () => {
     const canvas = canvasRef.current;
     card.imgUrl = canvas.toDataURL();
-    var file = cloudinaryService.dataURLtoFile(card.imgUrl, "canvas.png");
-    card.imgUrl = await cloudinaryService.uploadCanvasImg(file);
     closeCanvas();
+    var file = cloudinaryService.dataURLtoFile(card.imgUrl, "canvas.png");
+    const imgUrl = await cloudinaryService.uploadCanvasImg(file);
+    card.imgUrl = imgUrl;
     return card;
   };
 
   const changeStrokeStyle = (color) => {
+    console.log(color.hex, color);
     setColor(color.hex);
   };
 
@@ -62,6 +78,16 @@ function Canvas({ updateState, card }) {
     }
     const { offsetX, offsetY } = nativeEvent;
     contextRef.current.lineTo(offsetX, offsetY);
+    contextRef.current.stroke();
+  };
+  const touchdraw = ({ nativeEvent }) => {
+    console.log(nativeEvent);
+    nativeEvent.preventDefault();
+    if (!isDrawing) {
+      return;
+    }
+    const { clientX, clientY } = nativeEvent.touches[0];
+    contextRef.current.lineTo(clientX, clientY);
     contextRef.current.stroke();
   };
 
@@ -76,6 +102,9 @@ function Canvas({ updateState, card }) {
           onMouseDown={startDrawing}
           onMouseUp={finishDrawing}
           onMouseMove={draw}
+          onTouchStart={startTouchDrawing}
+          onTouchEnd={finishTouchDrawing}
+          onTouchMove={touchdraw}
           ref={canvasRef}
         />
         <CirclePicker

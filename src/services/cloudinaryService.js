@@ -24,7 +24,7 @@ async function uploadImg(ev) {
         console.log(err);
     }
 }
-function dataURLtoFile(dataurl, filename) {
+ function dataURLtoFile(dataurl, filename) {
  
     var arr = dataurl.split(','),
         mime = arr[0].match(/:(.*?);/)[1],
@@ -36,7 +36,7 @@ function dataURLtoFile(dataurl, filename) {
         u8arr[n] = bstr.charCodeAt(n);
     }
     
-    return new File([u8arr], filename, {type:mime}); 
+    return  new File([u8arr],filename,{type:mime});
 }
 
 async function uploadCanvasImg(file) {
