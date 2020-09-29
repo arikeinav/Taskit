@@ -10,16 +10,20 @@ export class MenuColorModal extends React.Component {
 
     render() {
         const colors = [
-            '#00ffab',
-            '#3EB650',
-            '#5784BA',
-            '#37667E',
-            '#E5BACE',
-            '#913f92',
-            '#ffd5cd',
-            '#EF0D50',
-            '#eaff7b',
-            '#FCC133',
+            '#FEEDCC',
+            '#DDDEAD',
+            '#A9D7A9',
+            '#51C2B1',
+            '#24A39A',
+            '#679CB4',
+            '#A67376',
+            '#FE797B',
+            '#FFB750',
+            '#FFEA56',
+            '#8FE968',
+            '#36CEDC',
+            '#A587CA',
+            '#F3F3F6',
         ]
         return (
             <div className="board-menu-color-container">
