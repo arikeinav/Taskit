@@ -4,6 +4,24 @@
     background-color: rgba(255, 255, 255, 0.904);
     position: fixed;
     z-index: 100;
+    top: 28vh;
+    @media (max-width:1300px){
+        left: 30vw;
+    }
+    @media (max-width:1200px){
+        left: 28vw;
+    }
+    @media (max-width:1000px){
+        left: 55vh;
+    }
+    @media (max-width:770px){
+        left: 40vh;
+    }
+    @media (max-width:530px){
+        left: 30vh;
+    width: 100px;
+
+    }
 
     span{
         height: 32px;
