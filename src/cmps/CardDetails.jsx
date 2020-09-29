@@ -13,7 +13,7 @@ import TextField from '@material-ui/core/TextField';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Scroll from 'react-scroll';
-
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Canvas from "./Canvas";
 import { ColorModal } from './ColorModal'
 import { boardService } from '../services/boardService'
