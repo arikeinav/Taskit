@@ -44,11 +44,11 @@ export class AddImg extends Component {
                 {!this.props.isForBoard && <div className="empty-modal" onClick={() => this.props.updateState('isAddImgModalShown', false)}></div>}
 
                 <div className={(this.props.isForBoard) ? '' : 'add-img-modal flex column'}>
-                    <div className="add-private-img">
-                        {imgUrls.map((imgUrl, index) => <img onClick={() => this.onSelectImg(imgUrl)} className="img-preview" key={index} src={imgUrl} alt="Loading" />)}
-                        <input onChange={this.onAddImg} style={{ width: '180px' }} type="file" />
+                <div className='add-private-img'>
+                        {imgUrls.map((imgUrl, index) => <img onClick={() => this.onSelectImg(imgUrl)} className={(this.props.isForMenu) ? 'bg-img-preview' :'img-preview' } key={index} src={imgUrl} alt="Loading" />)}
 
                     </div>
+                    <input onChange={this.onAddImg} className="self-center" style={{ width: '180px',marginBottom:'5px' }} type="file" />
                 </div>
             </div>
         )

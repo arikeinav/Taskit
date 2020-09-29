@@ -18,7 +18,8 @@
     font-weight: 500;
     margin-left:10px;
     align-self: center;
-    color:#3f3f3f
+    color:#3f3f3f;
+    outline: none;
     
 }
 .add-card-btn{
@@ -96,13 +97,20 @@
 }
 
  .my-label-class{
-     color: #7a7979;
-     font-weight: 400;
      cursor:pointer;
+     color: #313131;
+     font-weight: 600;
+     margin-left: 10px;
+     font-size: 0.95rem;
  }
+ 
+
 .title-input{
     width:200px;
     height:34px;
-    cursor: pointer;;
+    cursor: pointer;
+    outline: none;
+    border: 2px solid rgb(82, 82, 82);
+    border-radius: 5px;
     
 }
