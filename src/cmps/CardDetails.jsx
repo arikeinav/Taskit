@@ -2,17 +2,19 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
-import { FaCheckCircle, FaFileImage, FaTrashAlt,FaUserCircle, FaCalendarAlt, FaYoutube ,FaPaintBrush} from "react-icons/fa";
+import { FaCheckCircle, FaFileImage, FaTrashAlt, FaCalendarAlt, FaYoutube ,FaPaintBrush} from "react-icons/fa";
+import LinearProgress from '@material-ui/core/LinearProgress';
 import { BiMenu, } from "react-icons/bi";
 import { MdColorLens, MdInvertColors } from "react-icons/md";
 import { TwitterPicker } from "react-color";
 import EditableLabel from 'react-editable-label'
 import ReactPlayer from 'react-player/youtube'
-import Canvas from "./Canvas";
 import TextField from '@material-ui/core/TextField';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Scroll from 'react-scroll';
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import Canvas from "./Canvas";
 import { ColorModal } from './ColorModal'
 import { boardService } from '../services/boardService'
 import { AddImg } from './AddImg'
@@ -20,7 +22,6 @@ import { Checklist } from './Checklist'
 import ChecklistAdd from './ChecklistAdd';
 import { updateBoard } from '../store/actions/boardActions'
 import { CardInvite } from './CardInvite'
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 var Element = Scroll.Element;
 
@@ -239,7 +240,7 @@ export class _CardDetails extends Component {
     }
 
     render() {
-        if (!this.state.card) return <div>Loading...</div>
+        if (!this.state.card) return <LinearProgress />
         const { card } = this.state
         const { board } = this.props
 
@@ -297,19 +298,11 @@ export class _CardDetails extends Component {
                                     <div className="flex align-center"><BiMenu style={{
                                         marginRight: '5px', width: '18px',
                                         height: '18px'
-                                    }} /><p onClick={() => this.updateState('isDescriptionEdit', true)} className="cd-subt"> Description:</p></div>
+                                    }} /><p onClick={() => this.updateState('isDescriptionEdit', true)} className="cd-subt"> Description</p></div>
 
                                     {this.state.isDescriptionEdit ?
                                         <div className="edit-desc flex column align-center" >
-                                            {/* <TextField
-                                                border="none"
-                                                multiline
-                                                rows={6}
-                                                defaultValue={this.state.card.description}
-                                                // variant="outlined"
-                                                className="edit-card-description"
-                                                onChange={ev => this.updateLocalCard('description', ev.target.value)}
-                                            /> */}
+                                    
                                             <TextareaAutosize
                                             rowsMax={4}
                                             aria-label="maximum height"
@@ -324,9 +317,8 @@ export class _CardDetails extends Component {
                                         :
                                         <div
                                             className="not-edit-card-description"
-                                            onClick={() => this.updateState('isDescriptionEdit', true)}> 
-                                            <pre>{this.state.card.description ? this.state.card.description : "Add a more details description..."}
-                                       </pre>  </div>
+                                            onClick={() => this.updateState('isDescriptionEdit', true)}>{this.state.card.description ? this.state.card.description : "Add a more details description..."}
+                                        </div>
                                     }
                                 </div>
 
@@ -382,9 +374,8 @@ export class _CardDetails extends Component {
 
                             <button className="btn align-center" style={{display: 'flex'}} onClick={() => (this.setState({ isYoutubeShown: true }))}><FaYoutube style={{ marginRight: "6px", height: '12px', width: '12px' }}/> YouTube</button>
                             {this.state.isYoutubeShown && <div style={{border: "1px solid black"}}><EditableLabel 
-                                initialValue={'Paste Url Here'}
+                                initialValue={'Paste Url'}
                                 save={(url)=>this.youtubeFunc(url)}
-                         
                                 labelClassName='youtube-label'
                                 inputClassName='youtube-input'
                                 /></div>

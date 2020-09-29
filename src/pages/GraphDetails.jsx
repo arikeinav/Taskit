@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { Doughnut, Pie } from 'react-chartjs-2';
 import { Line as LineChartData } from 'react-chartjs-2';
 import { withRouter } from "react-router";
-
 import { MembersChart } from '../cmps/MembersChart'
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const datasetsForLine = [
     {
@@ -133,7 +133,8 @@ class _GraphDetails extends Component {
         data1: null,
         data2: null,
         data3: null,
-        currUser: 'Arik Einav'
+        currUser: 'Arik Einav',
+        isChartsOn: true
     }
     componentDidMount() {
         const { boardId } = this.props.match.params;
@@ -143,9 +144,13 @@ class _GraphDetails extends Component {
         this.setState({ data3: lineData(0) })
     }
     memberNumber = (userToShow) => {
-        console.log("memberNumber -> userToShow", userToShow)
         this.setState({ data3: lineData(userToShow.num) })
         this.setState({ currUser: userToShow.userName })
+        this.setState({ isChartsOn: false })
+        setTimeout(() => {
+            this.setState({ isChartsOn: true })
+        }, 10);
+
     }
     backToBoard = () => {
         this.props.history.push(`/board/${this.state.boardId}`)
@@ -154,7 +159,7 @@ class _GraphDetails extends Component {
 
     render() {
 
-        if (!this.state.data1 || !this.state.data2 || !this.state.data3) return <div>Loading...</div>
+        if (!this.state.data1 || !this.state.data2 || !this.state.data3) return <LinearProgress />
 
         return (
             <div>
@@ -164,15 +169,15 @@ class _GraphDetails extends Component {
                     <div className="doughnut-chart">
                         <h3>All Tasks</h3>
                         <div className="graph-container">
-                            <Doughnut data={this.state.data1} options={options}
-                                width={500} height={250} />
+                            {this.state.isChartsOn && <Doughnut data={this.state.data1} options={options}
+                                width={500} height={250} />}
                         </div>
                     </div>
                     <div className="pie-chart">
                         <h3>Status per member</h3>
                         <div className="graph-container">
-                            <Pie data={this.state.data2} options={options}
-                                width={500} height={250} />
+                            {this.state.isChartsOn && <Pie data={this.state.data2} options={options}
+                                width={500} height={250} />}
                         </div>
                     </div>
                 </div>
@@ -181,9 +186,9 @@ class _GraphDetails extends Component {
                     <MembersChart memberNumber={this.memberNumber} />
                     <p>Tasks</p>
                     <div style={styles.graphContainer}>
-                        <LineChartData data={this.state.data3}
+                        {this.state.isChartsOn && <LineChartData data={this.state.data3}
                             options={options}
-                            width={600} height={150} />
+                            width={600} height={150} />}
                     </div>
                 </div>
             </div>

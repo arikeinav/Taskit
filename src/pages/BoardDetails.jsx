@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import StickyBox from "react-sticky-box";
-
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 import { loadBoard, updateBoard, updateBoardFromSocket } from "../store/actions/boardActions";
 import { BoardHeader } from "../cmps/BoardHeader";
@@ -147,7 +147,7 @@ export class _BoardDetails extends Component {
 
   render() {
     const { board } = this.props
-    if (board === null) return <div>Loading...</div>
+    if (board === null) return <LinearProgress />
     return (
       <div className="board-details " style={{ backgroundImage: `url(${board.style.bgImg ? board.style.bgImg : ''})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", minHeight: "90vh", backgroundColor: `${board.style.bgColor ? board.style.bgColor : ''}` }} >
 
@@ -158,7 +158,7 @@ export class _BoardDetails extends Component {
           <StickyBox className="groups-container flex">
             {board.groups.map(group => <CardList onAdd={this.onAdd} group={group} key={group.id} updateState={this.updateState} onRemoveGroup={this.onRemoveGroup} />)}
             {this.state.isAddGroup ?
-              <AddText  updateState={this.updateState} onAdd={this.onAdd} type="Group" groupId={null} />
+              <AddText updateState={this.updateState} onAdd={this.onAdd} type="Group" groupId={null} />
               :
               <button className="add-group btn" onClick={() => this.onEditGroup()}>Add List</button>
             }

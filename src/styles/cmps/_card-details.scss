@@ -70,7 +70,7 @@
 
         .modal-details-left{
             width:100%;
-            padding:0 10px 20px;
+            padding:6px 10px 20px;
         }
         .side-bar-details-right{
             width: 20%;
@@ -86,12 +86,6 @@
             width: 100%;
             border-style: none;
             margin:0 0 25px ;
-            pre{
-                font-family: inherit;
-                font-size: 0.9rem;
-                font-weight: 100;
-                color: rgb(54, 54, 54);
-            }
         }
         .edit-card-description{
             width: 100%;
@@ -99,7 +93,7 @@
             outline:none;
             border:none;
             background-color: rgba(9, 30, 66,0);
-          
+       
         }
         .edit-header{
             margin-top:15px;
@@ -144,11 +138,13 @@
     font-weight: 600;
 }
 .youtube-input{
-    width:100%;
+    width:60px;
+    height: 30px;
     
 }
 .youtube-label{
-    
+    width: 50px;
+    height: 30px;
     font-weight:400;
     cursor:pointer;
     font-size:0.8rem;

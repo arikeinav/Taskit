@@ -29,11 +29,10 @@ export class AddText extends React.Component {
                 <form onSubmit={this.onSubmit}>
                     
                     {/* <TextField  className="title-input" value={this.state.text} onChange={this.handleValueChange} type="text" id="outlined-basic" label="Outlined" variant="outlined" placeholder={this.props.type === 'Card' ? "Card name" : "List name"} /> */}
-                    <input className="title-input"  placeholder={this.props.type === 'Card' ? "Card name" : "List name"}
+                    <input className="title-input" placeholder={this.props.type === 'Card' ? "Card name" : "List name"}
                         type="text"
                         onChange={this.handleValueChange}
                         value={this.state.text}
-                        autoFocus
                     />
                     <div className="flex">
                         <button className="btn" onClick={this.onSubmit}>{this.props.type === 'Card' ? "Add Card" : "Add List"}</button>

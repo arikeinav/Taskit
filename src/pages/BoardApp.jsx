@@ -36,8 +36,8 @@ class _BoardApp extends Component {
             <div className="board-app flex column">
 
 
-                <div className="ba-boards flex align-center fiftyPh hundredPw space-evenly">
-                    <div  className=" h1-div thirdyPw flex hundredPh"><h1>Your Boards:</h1></div>
+                <div className="ba-boards flex align-center fiftyPh hundredPw space-evenly ">
+                    <div  className=" h1-div thirdyPw flex hundredPh "><h1>Your Boards:</h1></div>
 
                     <div className="seventyPw flex justify-center"><BoardList boards={boards} onAddBoard={this.onShowModal} />
                     </div>

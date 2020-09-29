@@ -99,3 +99,11 @@
 .text-dec-none{
     text-decoration:none;
 }
+.my-label-class{
+cursor:text;
+&:hover{
+ 
+    cursor:text;
+    text-decoration: underline  rgb(110, 110, 110);
+}
+}
