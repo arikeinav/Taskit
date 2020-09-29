@@ -103,7 +103,7 @@ export class _CardList extends Component {
                          
                             />
                   
-                 <SimpleMenu style={{widte:'52px'}} onShowColorTogglle={this.onShowColorTogglle} onGroupColorChange={this.onGroupColorChange} isGroupColor={this.state.isGroupColor} isDeleteGroup={this.state.isDeleteGroup} onAddCard={this.updateState} onShowDeleteTogglle={this.onShowDeleteTogglle} onRemove={this.onRemoveGroup} group={group} />
+                   <SimpleMenu onShowColorTogglle={this.onShowColorTogglle} onGroupColorChange={this.onGroupColorChange} isGroupColor={this.state.isGroupColor} isDeleteGroup={this.state.isDeleteGroup} onAddCard={this.updateState} onShowDeleteTogglle={this.onShowDeleteTogglle} onRemove={this.onRemoveGroup} group={group} />
                 </header>
                 <Element style={{
                     height: 'auto',
@@ -127,7 +127,7 @@ export class _CardList extends Component {
 
                 </Element>
                 {this.state.isAddCard ?
-                    <AddText style={{margin:"0"}} onAdd={this.props.onAdd} type="Card" groupId={group.id} updateState={this.updateState} />
+                    <AddText onAdd={this.props.onAdd} type="Card" groupId={group.id} updateState={this.updateState} />
                     :
                     <button className=" add-card-btn" onClick={() => this.updateState('isAddCard', true)}>+ Add card</button>
                 }

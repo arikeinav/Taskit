@@ -53,9 +53,9 @@ export function SimpleMenu({ onRemove, group,isGroupColor,onShowColorTogglle, is
 
 
   return (
-    <div >
-      <Button style={{fontWeight:'900',minWidth:'45px'}} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-         <span style={{marginBottom:"2px"}}>. . .</span> 
+    <div>
+      <Button style={{fontWeight:'900'}} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+          . . .
       </Button>
       <Menu
         id="simple-menu"

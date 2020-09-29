@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { Doughnut, Pie } from 'react-chartjs-2';
 import { Line as LineChartData } from 'react-chartjs-2';
 import { withRouter } from "react-router";
-
 import { MembersChart } from '../cmps/MembersChart'
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const datasetsForLine = [
     {
@@ -154,7 +154,7 @@ class _GraphDetails extends Component {
 
     render() {
 
-        if (!this.state.data1 || !this.state.data2 || !this.state.data3) return <div>Loading...</div>
+        if (!this.state.data1 || !this.state.data2 || !this.state.data3) return <LinearProgress />
 
         return (
             <div>
