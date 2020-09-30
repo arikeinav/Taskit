@@ -41,8 +41,6 @@ export class BoardHeader extends Component {
         const board = this.props.board
         const memberInBoard = board.members.filter(member => member._id !== memberId)
         board.members = memberInBoard
-        console.log("BoardHeader -> removeMemberFromBoard -> memberInBoard", memberInBoard)
-        // this.updateLocalCard('members', memberInCard)
         this.props.updateBoard(this.props.board)
     }
 
