@@ -1,5 +1,5 @@
-
 import httpService from './httpService';
+
 
 export const boardService = {
   query,
@@ -12,6 +12,8 @@ export const boardService = {
   addActivity,
   removeActivities
 };
+
+
 
 function query(filterBy) {
   return httpService.get(`board`);

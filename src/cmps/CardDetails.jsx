@@ -224,19 +224,25 @@ export class _CardDetails extends Component {
     }
     getAvatar(member) {
         if (member && member.imgUrl) {
-            return <Avatar key={member._id} src={member.imgUrl} className="avatar" />
+            return <Avatar key={member._id} src={member.imgUrl} className="avatar" onClick={(ev) => this.removeMemberFromCard(member._id, ev)}/>
         }
         if (member) {
-            return <Avatar key={member._id} className="avatar">{member.userName.substring(0, 1).toUpperCase()}{member.userName.substring(1, 2).toUpperCase()}</Avatar>
+            return <Avatar key={member._id} className="avatar" onClick={(ev) => this.removeMemberFromCard(member._id, ev)}>{member.userName.substring(0, 1).toUpperCase()}{member.userName.substring(1, 2).toUpperCase()}</Avatar>
         }
-        return <Avatar className="avatar" />
+        return <Avatar className="avatar" onClick={(ev) => this.removeMemberFromCard(member._id, ev)}/>
     }
-
+    removeMemberFromCard = (memberId, ev) => {
+        ev.stopPropagation()
+        const card = this.state.card
+        const memberInCard = card.members.filter(member => member._id !== memberId)
+        card.members = memberInCard
+        this.updateLocalCard('members', memberInCard)
+        updateBoard(this.props.board)
+    }
     youtubeFunc = (url) => {
         this.setState({ isYoutubeShown: false })
         this.onRemoveImg()
         this.updateLocalCard('youtube', url)
-        // this.saveCard()
     }
 
     render() {
@@ -363,17 +369,17 @@ export class _CardDetails extends Component {
                         </Element>
 
                         <div className="side-bar-details-right flex column justify-start">
-                            <button className="details-btn align-center" style={{ display: 'flex' }} onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{ marginRight: "7px" }} />Cover</button>
+                            <button className="btn align-center" style={{ display: 'flex' }} onClick={() => this.updateState('isAddImgModalShown', true)}><FaFileImage style={{ marginRight: "7px" }} />Cover</button>
 
-                            <button className="details-btn align-center" style={{ display: 'flex' }} onClick={this.onOpenColorModal}><MdColorLens style={{ marginRight: "3px", height: '12px', width: '12px' }} />Color</button>
+                            <button className="btn align-center" style={{ display: 'flex' }} onClick={this.onOpenColorModal}><MdColorLens style={{ marginRight: "3px", height: '12px', width: '12px' }} />Color</button>
 
-                            <button className="details-btn align-center" style={{ display: 'flex' }} onClick={() => this.openChecklistEditor()}><FaCheckCircle style={{ marginRight: "6px" }} />Checklist</button>
-                            <button onClick={this.onOpenDuedate} className="details-btn align-center"><FaCalendarAlt style={{ marginRight: "5px" }} /> Duedate</button>
-                            <button onClick={this.onOpenLabelModal} style={{ display: 'flex' }} className="details-btn align-center"><MdInvertColors style={{ marginRight: "5px", height: '12px', width: '12px' }} />Labels</button>
+                            <button className="btn align-center" style={{ display: 'flex' }} onClick={() => this.openChecklistEditor()}><FaCheckCircle style={{ marginRight: "6px" }} />Checklist</button>
+                            <button onClick={this.onOpenDuedate} className="btn align-center"><FaCalendarAlt style={{ marginRight: "5px" }} /> Duedate</button>
+                            <button onClick={this.onOpenLabelModal} style={{ display: 'flex' }} className="btn align-center"><MdInvertColors style={{ marginRight: "5px", height: '12px', width: '12px' }} />Labels</button>
                             {this.state.isLabelesEdit &&
                                 <ColorModal className="color-modal" onSaveLabels={this.onSaveLabels} labels={card.labels} />}
 
-                            <button className="details-btn align-center" style={{ display: 'flex' }} onClick={() => (this.setState({ isYoutubeShown: true }))}><FaYoutube style={{ marginRight: "6px", height: '12px', width: '12px' }} /> YouTube</button>
+                            <button className="btn align-center" style={{ display: 'flex' }} onClick={() => (this.setState({ isYoutubeShown: true }))}><FaYoutube style={{ marginRight: "6px", height: '12px', width: '12px' }} /> YouTube</button>
                             {this.state.isYoutubeShown && <div style={{ border: "1px solid black" }}><EditableLabel
                                 initialValue={'Paste Url'}
                                 save={(url) => this.youtubeFunc(url)}
@@ -381,8 +387,8 @@ export class _CardDetails extends Component {
                                 inputClassName='youtube-input'
                             /></div>
                             }
-                            {!card.youtube && <button onClick={() => this.setState({ isCanvas: true })} className="details-btn"><FaPaintBrush style={{ marginRight: "6px" }} />Canvas</button>}
-                            <button onClick={this.onHandleRemove} className="details-btn"> <FaTrashAlt style={{ marginRight: "6px" }} />Card</button>
+                            {!card.youtube && <button onClick={() => this.setState({ isCanvas: true })} className="btn"><FaPaintBrush style={{ marginRight: "6px" }} />Canvas</button>}
+                            <button onClick={this.onHandleRemove} className="btn"> <FaTrashAlt style={{ marginRight: "6px" }} />Card</button>
                         </div>
 
                     </div >
