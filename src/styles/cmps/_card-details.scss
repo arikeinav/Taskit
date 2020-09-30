@@ -52,7 +52,7 @@
         padding: 20px;
         transform: translate(0, -15px);
         @media (max-width:1000px){
-            width: 70%;
+            width: 75%;
         }
         .btn-card-remove{
             padding:0;
@@ -74,6 +74,12 @@
         }
         .side-bar-details-right{
             width: 20%;
+            @media (max-width:750px){
+                width: 30%;
+            }
+            @media (max-width:500px){
+                width: 40%;
+            }
         }
         .edit-desc{
             background-color:rgba(9,30,66,.04);
@@ -128,16 +134,16 @@
     }
 }
 
-@media (max-width:650px){
+@media (max-width:700px){
     .card-modal{
     .details-modal{
-        width: 80%;
+        width: 90%;
     }}
 }
-@media (max-width:420px){
+@media (max-width:480px){
     .card-modal{
     .details-modal{
-        width: 95%;
+        width: 100%;
     }}
 }
 .cd-subt{
@@ -161,4 +167,4 @@
     font-weight: 400;
     width:80px;
     height:30px;
-        }
+}
