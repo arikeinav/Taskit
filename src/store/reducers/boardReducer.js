@@ -32,6 +32,11 @@ const initialState = {
           ...state,
           currBoard: {...action.board},
         };
+        case "CLEAN_BOARD":
+        return {
+          ...state,
+          currBoard: action.value,
+        };
   
       default:
         return state;

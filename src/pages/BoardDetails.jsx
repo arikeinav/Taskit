@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import StickyBox from "react-sticky-box";
 import LinearProgress from '@material-ui/core/LinearProgress';
-
-import { loadBoard, updateBoard, updateBoardFromSocket } from "../store/actions/boardActions";
+import { cleanBoard,loadBoard, updateBoard, updateBoardFromSocket } from "../store/actions/boardActions";
 import { BoardHeader } from "../cmps/BoardHeader";
 import { CardList } from "../cmps/CardList";
 import { CardDetails } from "../cmps/CardDetails";
@@ -18,9 +17,10 @@ export class _BoardDetails extends Component {
     isDetailsShown: false,
     isAddGroup: false,
     board:null
+
   };
 
-  componentDidMount() {
+  componentDidMount ()  {
     const { boardId } = this.props.match.params;
     this.props.loadBoard(boardId);
     socketService.setup();
@@ -30,6 +30,7 @@ export class _BoardDetails extends Component {
 
   componentWillUnmount() {
     socketService.terminate();
+    this.props.cleanBoard()  
   }
  
   updateState = (key, val) => {
@@ -147,11 +148,13 @@ export class _BoardDetails extends Component {
 
   render() {
     const { board } = this.props
-    if (board === null) return <LinearProgress />
+    
+    if (board===null) return <LinearProgress />
+    console.log(board.title)
     return (
       <div className="board-details " style={{ backgroundImage: `url(${board.style.bgImg ? board.style.bgImg : ''})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", minHeight: "90vh", backgroundColor: `${board.style.bgColor ? board.style.bgColor : ''}` }} >
 
-        <BoardHeader board={board} updateBoard={this.props.updateBoard}/>
+        <BoardHeader board={board}  updateBoard={this.props.updateBoard}/>
 
 
         <DragDropContext onDragEnd={this.onDragEnd}>
@@ -180,7 +183,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   loadBoard,
   updateBoard,
-  updateBoardFromSocket
+  updateBoardFromSocket,
+  cleanBoard
 };
 export const BoardDetails = connect(
   mapStateToProps,
