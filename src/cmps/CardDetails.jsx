@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
-import { FaCheckCircle, FaFileImage, FaTrashAlt, FaUserCircle, FaCalendarAlt, FaYoutube, FaPaintBrush } from "react-icons/fa";
+import { FaCheckCircle, FaFileImage, FaTrashAlt,FaCalendarAlt, FaYoutube, FaPaintBrush } from "react-icons/fa";
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { BiMenu, } from "react-icons/bi";
 import { MdColorLens, MdInvertColors } from "react-icons/md";
