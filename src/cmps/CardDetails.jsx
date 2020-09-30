@@ -224,19 +224,25 @@ export class _CardDetails extends Component {
     }
     getAvatar(member) {
         if (member && member.imgUrl) {
-            return <Avatar key={member._id} src={member.imgUrl} className="avatar" />
+            return <Avatar key={member._id} src={member.imgUrl} className="avatar" onClick={(ev) => this.removeMemberFromCard(member._id, ev)}/>
         }
         if (member) {
-            return <Avatar key={member._id} className="avatar">{member.userName.substring(0, 1).toUpperCase()}{member.userName.substring(1, 2).toUpperCase()}</Avatar>
+            return <Avatar key={member._id} className="avatar" onClick={(ev) => this.removeMemberFromCard(member._id, ev)}>{member.userName.substring(0, 1).toUpperCase()}{member.userName.substring(1, 2).toUpperCase()}</Avatar>
         }
-        return <Avatar className="avatar" />
+        return <Avatar className="avatar" onClick={(ev) => this.removeMemberFromCard(member._id, ev)}/>
     }
-
+    removeMemberFromCard = (memberId, ev) => {
+        ev.stopPropagation()
+        const card = this.state.card
+        const memberInCard = card.members.filter(member => member._id !== memberId)
+        card.members = memberInCard
+        this.updateLocalCard('members', memberInCard)
+        updateBoard(this.props.board)
+    }
     youtubeFunc = (url) => {
         this.setState({ isYoutubeShown: false })
         this.onRemoveImg()
         this.updateLocalCard('youtube', url)
-        // this.saveCard()
     }
 
     render() {
