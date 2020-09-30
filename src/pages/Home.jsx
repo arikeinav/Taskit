@@ -8,7 +8,7 @@ export function Home() {
     return (
         <div>
             <div className="home flex column align-center justify-center">
-            <Link className="enter flex" to="/board"><p>Enter</p></Link>
+            <Link className="enter flex" to="/board"><p>Try It Now</p></Link>
         <img src="https://res.cloudinary.com/dib9frb0w/image/upload/v1601370863/kanban5_wdldql.jpg" alt=""/>
             
             </div>
