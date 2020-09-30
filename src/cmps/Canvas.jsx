@@ -7,8 +7,8 @@ function Canvas({ updateState, card }) {
   const contextRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [color, setColor] = useState(null);
-  window.addEventListener ("touchmove", function (event) { event.preventDefault (); }, {passive: false});
  
+
   useEffect( () => {
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
@@ -40,10 +40,11 @@ function Canvas({ updateState, card }) {
   const finishDrawing = () => {
     contextRef.current.closePath();
     setIsDrawing(false);
-  };
+  }
 
   const closeCanvas = () => {
     updateState("isCanvas", false);
+  
   };
 
   const addCanvasToCard = async () => {
