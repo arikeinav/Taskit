@@ -1,5 +1,6 @@
 .board-app{
-    height:92.5vh;
+    // height:92.5vh;
+    height: calc(100vh - 50px);
     padding-top: 20px;
     @media (max-width:1200px){
         padding: 0 10px;

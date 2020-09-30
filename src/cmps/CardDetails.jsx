@@ -195,7 +195,7 @@ export class _CardDetails extends Component {
             return
         }
         if (this.state.card.labels) {
-            if (this.state.card.labels.length < 6) {
+            if (this.state.card.labels.length < 5) {
                 this.setState({ isLabelesEdit: true })
             }
         } else {

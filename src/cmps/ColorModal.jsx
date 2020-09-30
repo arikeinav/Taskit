@@ -3,12 +3,11 @@ import React from "react";
 export class ColorModal extends React.Component {
 
     onClickColor = (color, ev) => {
-
         const labels = this.props.labels
         ev.stopPropagation();
         if (labels && labels.length > 0) {
+            if(labels.length >= 4) return
             const isColorInLabels = labels.filter(label => label === color)
-
             if (isColorInLabels.length > 0) {
                 return
             } else {
