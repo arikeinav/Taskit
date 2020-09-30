@@ -7,6 +7,7 @@ function Canvas({ updateState, card }) {
   const contextRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [color, setColor] = useState(null);
+  window.addEventListener ("touchmove", function (event) { event.preventDefault (); }, {passive: false});
  
   useEffect( () => {
     const canvas = canvasRef.current;
@@ -68,25 +69,20 @@ function Canvas({ updateState, card }) {
     return context
   }
   const startTouchDrawing = ({ nativeEvent }) => {
-    contextRef.current.strokeStyle = color;
-    const { clientX, clientY } = nativeEvent.touches[0];
-    contextRef.current.beginPath();
-    contextRef.current.moveTo(clientX-25, clientY-100);
-    setIsDrawing(true);
-  }
-
+        contextRef.current.strokeStyle = color;
+        const { clientX, clientY } = nativeEvent.touches[0];
+        contextRef.current.beginPath();
+        contextRef.current.lineTo(clientX-50, clientY-190); 
+        setIsDrawing(true);
+      }
   const touchdraw = ({ nativeEvent }) => {
-
-
-    if (!isDrawing) {
-      return;
-    }
-    const { clientX, clientY } = nativeEvent.touches[0];
-    contextRef.current.lineTo(clientX-25, clientY-100 );
-    contextRef.current.stroke();
-  };
-
-
+        if (!isDrawing) {
+          return;
+        }
+        const { clientX, clientY } = nativeEvent.touches[0];
+        contextRef.current.lineTo(clientX-55, clientY-195);
+        contextRef.current.stroke();
+      };
  
 
   return (

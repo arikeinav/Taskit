@@ -46,12 +46,16 @@ export class BoardHeader extends Component {
 
     render() {
         const { board } = this.props
+        
+
+
         return (
             <div className="board-header flex space-between">
                 <div className="name-and-member flex">
                 <div style={{ marginLeft: "10px", alignSelf: "center",color:"white" }}>  
                             <EditableLabel 
-                         initialValue={(board.title)}
+                           
+                         initialValue={board.title}
                          save={value => {this.handleFocusOut(value)}}
                          inputClass='title-input'
                          labelClass='header-label-class'
