@@ -1,10 +1,10 @@
-{
-    "gtemplateBoards": [
+
+     [
         {
-            "_id": {
-                "$oid": "5f7435beae04d43784f2bfde"
-            },
-            "title": "Template 1",
+            "_id": 
+                 "5f7435beae04d43784f2bfde"
+            ,
+            "title": "Online Speaker Guide",
             "style": {
                 "bgImg": "https://res.cloudinary.com/cloudinary-img/image/upload/v1600352678/Taskit/seth-doyle--AFVBe7VGqQ-unsplash_xjlclq.jpg"
             },
@@ -220,10 +220,9 @@
             ]
         },
         {
-            "_id": {
-                "$oid": "5f743801ae04d43784f2bfdf"
-            },
-            "title": "Template 2",
+            "_id":  "5f743801ae04d43784f2bfdf"
+            ,
+            "title": "Remote Class",
             "style": {
                 "bgImg": "https://res.cloudinary.com/dsfnyykw9/image/upload/v1600670064/you-x-ventures-Oalh2MojUuk-unsplash_vl1wmw.jpg",
                 "bgColor": ""
@@ -377,10 +376,9 @@
             ]
         },
         {
-            "_id": {
-                "$oid": "5f7439dbae04d43784f2bfe0"
-            },
-            "title": "Template 3",
+            "_id":  "5f7439dbae04d43784f2bfe0"
+            ,
+            "title": "Design Sprint",
             "style": {
                 "bgImg": "https://res.cloudinary.com/dsfnyykw9/image/upload/v1600680300/irfan-simsar-wxWulfjN-G0-unsplash_xwffbk.jpg"
             },
@@ -723,10 +721,9 @@
             ]
         },
         {
-            "_id": {
-                "$oid": "5f743cadae04d43784f2bfe1"
-            },
-            "title": "Template 4",
+            "_id":  "5f743cadae04d43784f2bfe1"
+            ,
+            "title": "Simple Project Board",
             "style": {
                 "bgImg": "https://res.cloudinary.com/dsfnyykw9/image/upload/v1600670086/giusy-iordache-ZtqDLEkJPcc-unsplash_ywibhv.jpg"
             },
@@ -826,4 +823,3 @@
             ]
         }
     ]
-}
