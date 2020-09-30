@@ -13,6 +13,8 @@ export const boardService = {
   removeActivities
 };
 
+
+
 function query(filterBy) {
   return httpService.get(`board`);
 }
