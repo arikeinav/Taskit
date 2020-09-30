@@ -19,7 +19,6 @@ class _BoardApp extends Component {
 
     componentDidMount() {
         this.props.loadBoards()
-        console.log(templates);
     }
 
     onShowModal = () => {
