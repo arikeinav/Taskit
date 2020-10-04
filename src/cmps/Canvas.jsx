@@ -2,13 +2,12 @@ import React, { useRef, useEffect, useState } from "react";
 import { cloudinaryService } from "../services/cloudinaryService";
 import { CirclePicker } from "react-color";
 
-function Canvas({ updateState, card }) {
+function Painter({ updateState, card }) {
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [color, setColor] = useState(null);
  
-
   useEffect( () => {
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
@@ -26,7 +25,7 @@ function Canvas({ updateState, card }) {
     contextRef.current.beginPath();
     contextRef.current.moveTo(offsetX, offsetY);
     setIsDrawing(true);
-  };
+  }
   
   const draw = ({ nativeEvent }) => {
     if (!isDrawing) {
@@ -35,7 +34,7 @@ function Canvas({ updateState, card }) {
     const { offsetX, offsetY } = nativeEvent;
     contextRef.current.lineTo(offsetX, offsetY);
     contextRef.current.stroke();
-  };
+  }
 
   const finishDrawing = () => {
     contextRef.current.closePath();
@@ -45,7 +44,7 @@ function Canvas({ updateState, card }) {
   const closeCanvas = () => {
     updateState("isCanvas", false);
   
-  };
+  }
 
   const addCanvasToCard = async () => {
     const canvas = canvasRef.current;
@@ -54,53 +53,34 @@ function Canvas({ updateState, card }) {
     card.imgUrl = await cloudinaryService.uploadCanvasImg(file);
     closeCanvas();
     return card;
-  };
+  }
 
   const changeStrokeStyle = (color) => {
     setColor(color.hex);
-  };
+  }
 
   const drawImg=(context,canvas)=>{
-    const img = new Image();
+    const img = new Image()
     img.onload = () => {
-      context.drawImage(img, 0, 0, canvas.width, canvas.height);
-    };
+      context.drawImage(img, 0, 0, canvas.width, canvas.height)
+    }
     img.crossOrigin = "Anonymous";
     img.src = card.imgUrl;
     return context
   }
-  const startTouchDrawing = ({ nativeEvent }) => {
-        contextRef.current.strokeStyle = color;
-        const { clientX, clientY } = nativeEvent.touches[0];
-        contextRef.current.beginPath();
-        contextRef.current.lineTo(clientX-50, clientY-190); 
-        setIsDrawing(true);
-      }
-  const touchdraw = ({ nativeEvent }) => {
-        if (!isDrawing) {
-          return;
-        }
-        const { clientX, clientY } = nativeEvent.touches[0];
-        contextRef.current.lineTo(clientX-55, clientY-195);
-        contextRef.current.stroke();
-      };
- 
 
+ 
   return (
     <div className="canvas-wrapper" onClick={closeCanvas}>
       <div
         className="canvas-modal-content flex column justify-center space-evenly "
         onClick={(nativeEvent) => nativeEvent.stopPropagation()}
       >
-        <canvas
-        
+        <canvas       
           style={{ marginBottom: "10px" }}
           onMouseDown={startDrawing}
           onMouseUp={finishDrawing}
           onMouseMove={draw}
-          onTouchStart={startTouchDrawing}
-          onTouchEnd={finishDrawing}
-          onTouchMove={touchdraw}
           ref={canvasRef}
         />
         <CirclePicker
@@ -123,4 +103,4 @@ function Canvas({ updateState, card }) {
   );
 }
 
-export default Canvas;
+export default Painter;

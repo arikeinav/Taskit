@@ -42,8 +42,9 @@ export function addBoard(txt, imgUrl) {
   };
 }
 export function updateBoard(board) {
-  //I'm updating the board
+ 
   return async (dispatch) => {
+    if (board.isTemplate) return
     dispatch({ type: "UPDATE_BOARD", board });
     try {
       await boardService.update(board);

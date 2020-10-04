@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import StickyBox from "react-sticky-box";
 import LinearProgress from '@material-ui/core/LinearProgress';
-import { cleanBoard,loadBoard, updateBoard, updateBoardFromSocket } from "../store/actions/boardActions";
+import { cleanBoard,loadBoard, updateBoard, updateBoardFromSocket,addBoard } from "../store/actions/boardActions";
 import { BoardHeader } from "../cmps/BoardHeader";
 import { CardList } from "../cmps/CardList";
 import { CardDetails } from "../cmps/CardDetails";
@@ -23,6 +23,7 @@ export class _BoardDetails extends Component {
   componentDidMount ()  {
     const { boardId } = this.props.match.params;
     this.props.loadBoard(boardId);
+    
     socketService.setup();
     socketService.emit('connect to board', boardId);
     socketService.on('send updated board', this.props.updateBoardFromSocket);
@@ -145,6 +146,19 @@ export class _BoardDetails extends Component {
     newboard.groups[groupIdx].cards = newCards;
     this.props.updateBoard(newboard);
   };
+  addTemplateToBoards  =async()=>{
+    let {board}=this.props
+    await this.props.addBoard(board.title,board.style.bgImg)
+    const {boards}=this.props
+    const newBoard = boards.find(newBoard=>((newBoard.title===board.title)&&(newBoard.style.bgImg===board.style.bgImg)&&(!('isTemplate' in newBoard))
+    ))
+    console.log(newBoard)
+    board._id =newBoard._id
+    delete board.isTemplate
+    this.props.updateBoard(board) 
+    this.props.history.push('/board')
+
+  }
 
   render() {
     const { board } = this.props
@@ -169,7 +183,9 @@ export class _BoardDetails extends Component {
 
         {this.state.isDetailsShown.cardId &&
           <CardDetails updateState={this.updateState} onRemoveCard={this.onRemoveCard} cardId={this.state.isDetailsShown.cardId} groupId={this.state.isDetailsShown.groupId} />}
+           {board.isTemplate && <footer  style={{height:'150px',bottom:'0',position:'fixed',textAlign:'center',backgroundColor:'rgb(7 123 145 / 55%)',width:'100%'}}> <button onClick={this.addTemplateToBoards}>add this board</button> </footer>}
       </div>
+     
     )
   }
 }
@@ -177,13 +193,15 @@ export class _BoardDetails extends Component {
 const mapStateToProps = (state) => {
   return {
     board: state.boardReducer.currBoard,
+    boards: state.boardReducer.boards,
   };
 };
 const mapDispatchToProps = {
   loadBoard,
   updateBoard,
   updateBoardFromSocket,
-  cleanBoard
+  cleanBoard,
+  addBoard
 };
 export const BoardDetails = connect(
   mapStateToProps,
