@@ -5,9 +5,9 @@ import { loadBoards, addBoard } from "../store/actions/boardActions";
 import { Modal } from "../cmps/Modal";
 import { AddBoard } from "../cmps/AddBoard";
 
-import BoardPreview from "../cmps/BoardPreview";
 
-const templates = require("../services/templateBoards.json");
+
+
 
 class _BoardApp extends Component {
   state = {
