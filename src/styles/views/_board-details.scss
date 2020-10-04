@@ -20,4 +20,21 @@
     text-shadow:none;
 }
 
+footer{
+    color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    height:150px;
+    bottom:0;
+    position:fixed;
+    background-color:#077a919f;
+    width:100%;
+    &:hover{
+        cursor: pointer;
+        background-color: #f4f5f76b;
+        color:rgb(2, 3, 99);
+    }
+}
 }

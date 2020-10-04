@@ -183,7 +183,7 @@ export class _BoardDetails extends Component {
 
         {this.state.isDetailsShown.cardId &&
           <CardDetails updateState={this.updateState} onRemoveCard={this.onRemoveCard} cardId={this.state.isDetailsShown.cardId} groupId={this.state.isDetailsShown.groupId} />}
-           {board.isTemplate && <footer  style={{height:'150px',bottom:'0',position:'fixed',textAlign:'center',backgroundColor:'rgb(7 123 145 / 55%)',width:'100%'}}> <button onClick={this.addTemplateToBoards}>add this board</button> </footer>}
+           {board.isTemplate && <footer onClick={this.addTemplateToBoards}> Use This Board</footer>}
       </div>
      
     )
